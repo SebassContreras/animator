@@ -1,0 +1,911 @@
+{
+ "size": [
+  1080,
+  1920
+ ],
+ "duration": 6,
+ "fps": 30,
+ "background": {
+  "color": "#87CEEB",
+  "gradient": true,
+  "color2": "#E0F2FE",
+  "angle": 90,
+  "dots": false,
+  "spotlight": 0
+ },
+ "elements": [
+  {
+   "id": "shot-road",
+   "kind": "group",
+   "name": "Toma 1 · carretera",
+   "x": 0,
+   "y": 0,
+   "w": 1080,
+   "h": 1920,
+   "cw": 1080,
+   "ch": 1920,
+   "anim": {
+    "out": {
+     "kind": "fade",
+     "delay": 2.9,
+     "duration": 0.1
+    }
+   },
+   "children": [
+    {
+     "id": "sun",
+     "kind": "ellipse",
+     "x": 760,
+     "y": 260,
+     "w": 180,
+     "h": 180,
+     "fill": {
+      "gradient": false,
+      "color": "#FDE047"
+     },
+     "border": {
+      "width": 0
+     },
+     "bgGlow": {
+      "enabled": true,
+      "color": "#FDE047",
+      "blur": 80,
+      "strength": 1
+     },
+     "shadow": {
+      "enabled": false
+     }
+    },
+    {
+     "id": "hills",
+     "kind": "path",
+     "x": 0,
+     "y": 900,
+     "w": 1080,
+     "h": 300,
+     "view": {
+      "x": 0,
+      "y": 0,
+      "w": 1080,
+      "h": 300
+     },
+     "shapes": [
+      {
+       "d": "M0 300 Q180 40 360 220 T720 160 T1080 120 V300 Z"
+      }
+     ],
+     "fill": {
+      "gradient": false,
+      "color": "#4ADE80",
+      "opacity": 1
+     },
+     "border": {
+      "width": 0
+     },
+     "shadow": {
+      "enabled": false
+     }
+    },
+    {
+     "id": "grass",
+     "kind": "rect",
+     "x": 0,
+     "y": 1180,
+     "w": 1080,
+     "h": 740,
+     "radius": 0,
+     "fill": {
+      "gradient": false,
+      "color": "#22C55E",
+      "opacity": 1
+     },
+     "border": {
+      "width": 0
+     },
+     "shadow": {
+      "enabled": false
+     }
+    },
+    {
+     "id": "road",
+     "kind": "rect",
+     "x": 0,
+     "y": 1300,
+     "w": 1080,
+     "h": 320,
+     "radius": 0,
+     "fill": {
+      "gradient": false,
+      "color": "#374151",
+      "opacity": 1
+     },
+     "border": {
+      "width": 0
+     },
+     "shadow": {
+      "enabled": false
+     }
+    },
+    {
+     "id": "dashes",
+     "kind": "group",
+     "x": 0,
+     "y": 1450,
+     "w": 2160,
+     "h": 20,
+     "cw": 2160,
+     "ch": 20,
+     "tracks": {
+      "x": [
+       [
+        0,
+        0,
+        "linear"
+       ],
+       [
+        3,
+        -1080
+       ]
+      ]
+     },
+     "children": [
+      {
+       "id": "d1",
+       "kind": "rect",
+       "x": 0,
+       "y": 0,
+       "w": 160,
+       "h": 20,
+       "radius": 4,
+       "fill": {
+        "gradient": false,
+        "color": "#F9FAFB",
+        "opacity": 1
+       },
+       "border": {
+        "width": 0
+       },
+       "shadow": {
+        "enabled": false
+       }
+      },
+      {
+       "id": "d2",
+       "kind": "rect",
+       "x": 270,
+       "y": 0,
+       "w": 160,
+       "h": 20,
+       "radius": 4,
+       "fill": {
+        "gradient": false,
+        "color": "#F9FAFB",
+        "opacity": 1
+       },
+       "border": {
+        "width": 0
+       },
+       "shadow": {
+        "enabled": false
+       }
+      },
+      {
+       "id": "d3",
+       "kind": "rect",
+       "x": 540,
+       "y": 0,
+       "w": 160,
+       "h": 20,
+       "radius": 4,
+       "fill": {
+        "gradient": false,
+        "color": "#F9FAFB",
+        "opacity": 1
+       },
+       "border": {
+        "width": 0
+       },
+       "shadow": {
+        "enabled": false
+       }
+      },
+      {
+       "id": "d4",
+       "kind": "rect",
+       "x": 810,
+       "y": 0,
+       "w": 160,
+       "h": 20,
+       "radius": 4,
+       "fill": {
+        "gradient": false,
+        "color": "#F9FAFB",
+        "opacity": 1
+       },
+       "border": {
+        "width": 0
+       },
+       "shadow": {
+        "enabled": false
+       }
+      },
+      {
+       "id": "d5",
+       "kind": "rect",
+       "x": 1080,
+       "y": 0,
+       "w": 160,
+       "h": 20,
+       "radius": 4,
+       "fill": {
+        "gradient": false,
+        "color": "#F9FAFB",
+        "opacity": 1
+       },
+       "border": {
+        "width": 0
+       },
+       "shadow": {
+        "enabled": false
+       }
+      },
+      {
+       "id": "d6",
+       "kind": "rect",
+       "x": 1350,
+       "y": 0,
+       "w": 160,
+       "h": 20,
+       "radius": 4,
+       "fill": {
+        "gradient": false,
+        "color": "#F9FAFB",
+        "opacity": 1
+       },
+       "border": {
+        "width": 0
+       },
+       "shadow": {
+        "enabled": false
+       }
+      },
+      {
+       "id": "d7",
+       "kind": "rect",
+       "x": 1620,
+       "y": 0,
+       "w": 160,
+       "h": 20,
+       "radius": 4,
+       "fill": {
+        "gradient": false,
+        "color": "#F9FAFB",
+        "opacity": 1
+       },
+       "border": {
+        "width": 0
+       },
+       "shadow": {
+        "enabled": false
+       }
+      },
+      {
+       "id": "d8",
+       "kind": "rect",
+       "x": 1890,
+       "y": 0,
+       "w": 160,
+       "h": 20,
+       "radius": 4,
+       "fill": {
+        "gradient": false,
+        "color": "#F9FAFB",
+        "opacity": 1
+       },
+       "border": {
+        "width": 0
+       },
+       "shadow": {
+        "enabled": false
+       }
+      }
+     ]
+    },
+    {
+     "id": "car",
+     "kind": "group",
+     "x": 290,
+     "y": 1180,
+     "w": 500,
+     "h": 240,
+     "cw": 500,
+     "ch": 240,
+     "anim": {
+      "loop": {
+       "kind": "float",
+       "amount": 4,
+       "cycles": 6
+      }
+     },
+     "children": [
+      {
+       "id": "car-body",
+       "kind": "path",
+       "x": 0,
+       "y": 0,
+       "w": 500,
+       "h": 180,
+       "view": {
+        "x": 0,
+        "y": 0,
+        "w": 500,
+        "h": 180
+       },
+       "shapes": [
+        {
+         "d": "M20 150 L20 100 Q30 80 80 75 L140 20 Q150 10 170 10 L330 10 Q350 10 365 25 L420 75 Q480 80 490 110 L490 150 Z"
+        }
+       ],
+       "fill": {
+        "gradient": false,
+        "color": "#EF4444",
+        "opacity": 1
+       },
+       "border": {
+        "width": 0
+       },
+       "shadow": {
+        "enabled": false
+       }
+      },
+      {
+       "id": "car-body-1",
+       "kind": "path",
+       "x": 0,
+       "y": 0,
+       "w": 500,
+       "h": 180,
+       "view": {
+        "x": 0,
+        "y": 0,
+        "w": 500,
+        "h": 180
+       },
+       "shapes": [
+        {
+         "d": "M160 30 L320 30 L360 75 L130 75 Z"
+        }
+       ],
+       "fill": {
+        "gradient": false,
+        "color": "#BFDBFE",
+        "opacity": 1
+       },
+       "border": {
+        "width": 0
+       },
+       "shadow": {
+        "enabled": false
+       }
+      },
+      {
+       "id": "wheel-l",
+       "kind": "path",
+       "x": 70,
+       "y": 120,
+       "w": 110,
+       "h": 110,
+       "view": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 100
+       },
+       "shapes": [
+        {
+         "d": "M50 0 A50 50 0 1 1 49.9 0 Z"
+        }
+       ],
+       "fill": {
+        "gradient": false,
+        "color": "#111827",
+        "opacity": 1
+       },
+       "border": {
+        "width": 0
+       },
+       "tracks": {
+        "@rotate": [
+         [
+          0,
+          0,
+          "linear"
+         ],
+         [
+          3,
+          1080
+         ]
+        ]
+       },
+       "shadow": {
+        "enabled": false
+       }
+      },
+      {
+       "id": "wheel-l-1",
+       "kind": "path",
+       "x": 70,
+       "y": 120,
+       "w": 110,
+       "h": 110,
+       "view": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 100
+       },
+       "shapes": [
+        {
+         "d": "M50 22 A28 28 0 1 1 49.9 22 Z"
+        }
+       ],
+       "fill": {
+        "gradient": false,
+        "color": "#9CA3AF",
+        "opacity": 1
+       },
+       "border": {
+        "width": 0
+       },
+       "tracks": {
+        "@rotate": [
+         [
+          0,
+          0,
+          "linear"
+         ],
+         [
+          3,
+          1080
+         ]
+        ]
+       },
+       "shadow": {
+        "enabled": false
+       }
+      },
+      {
+       "id": "wheel-l-2",
+       "kind": "path",
+       "x": 70,
+       "y": 120,
+       "w": 110,
+       "h": 110,
+       "view": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 100
+       },
+       "shapes": [
+        {
+         "d": "M46 22 H54 V78 H46 Z M22 46 H78 V54 H22 Z"
+        }
+       ],
+       "fill": {
+        "gradient": false,
+        "color": "#4B5563",
+        "opacity": 1
+       },
+       "border": {
+        "width": 0
+       },
+       "tracks": {
+        "@rotate": [
+         [
+          0,
+          0,
+          "linear"
+         ],
+         [
+          3,
+          1080
+         ]
+        ]
+       },
+       "shadow": {
+        "enabled": false
+       }
+      },
+      {
+       "id": "wheel-r",
+       "kind": "path",
+       "x": 330,
+       "y": 120,
+       "w": 110,
+       "h": 110,
+       "view": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 100
+       },
+       "shapes": [
+        {
+         "d": "M50 0 A50 50 0 1 1 49.9 0 Z"
+        }
+       ],
+       "fill": {
+        "gradient": false,
+        "color": "#111827",
+        "opacity": 1
+       },
+       "border": {
+        "width": 0
+       },
+       "tracks": {
+        "@rotate": [
+         [
+          0,
+          0,
+          "linear"
+         ],
+         [
+          3,
+          1080
+         ]
+        ]
+       },
+       "shadow": {
+        "enabled": false
+       }
+      },
+      {
+       "id": "wheel-r-1",
+       "kind": "path",
+       "x": 330,
+       "y": 120,
+       "w": 110,
+       "h": 110,
+       "view": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 100
+       },
+       "shapes": [
+        {
+         "d": "M50 22 A28 28 0 1 1 49.9 22 Z"
+        }
+       ],
+       "fill": {
+        "gradient": false,
+        "color": "#9CA3AF",
+        "opacity": 1
+       },
+       "border": {
+        "width": 0
+       },
+       "tracks": {
+        "@rotate": [
+         [
+          0,
+          0,
+          "linear"
+         ],
+         [
+          3,
+          1080
+         ]
+        ]
+       },
+       "shadow": {
+        "enabled": false
+       }
+      },
+      {
+       "id": "wheel-r-2",
+       "kind": "path",
+       "x": 330,
+       "y": 120,
+       "w": 110,
+       "h": 110,
+       "view": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 100
+       },
+       "shapes": [
+        {
+         "d": "M46 22 H54 V78 H46 Z M22 46 H78 V54 H22 Z"
+        }
+       ],
+       "fill": {
+        "gradient": false,
+        "color": "#4B5563",
+        "opacity": 1
+       },
+       "border": {
+        "width": 0
+       },
+       "tracks": {
+        "@rotate": [
+         [
+          0,
+          0,
+          "linear"
+         ],
+         [
+          3,
+          1080
+         ]
+        ]
+       },
+       "shadow": {
+        "enabled": false
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "shot-tree",
+   "kind": "group",
+   "name": "Toma 2 · árbol",
+   "x": 0,
+   "y": 0,
+   "w": 1080,
+   "h": 1920,
+   "cw": 1080,
+   "ch": 1920,
+   "anim": {
+    "in": {
+     "kind": "fade",
+     "delay": 3,
+     "duration": 0.1
+    }
+   },
+   "tracks": {
+    "@scale": [
+     [
+      3,
+      1,
+      "linear"
+     ],
+     [
+      6,
+      1.15
+     ]
+    ]
+   },
+   "children": [
+    {
+     "id": "sky2",
+     "kind": "rect",
+     "x": 0,
+     "y": 0,
+     "w": 1080,
+     "h": 1920,
+     "radius": 0,
+     "fill": {
+      "gradient": true,
+      "color": "#FDE68A",
+      "color2": "#FB923C",
+      "angle": 90,
+      "opacity": 1
+     },
+     "border": {
+      "width": 0
+     },
+     "shadow": {
+      "enabled": false
+     }
+    },
+    {
+     "id": "ground2",
+     "kind": "path",
+     "x": 0,
+     "y": 1400,
+     "w": 1080,
+     "h": 520,
+     "view": {
+      "x": 0,
+      "y": 0,
+      "w": 1080,
+      "h": 520
+     },
+     "shapes": [
+      {
+       "d": "M0 120 Q540 0 1080 120 V520 H0 Z"
+      }
+     ],
+     "fill": {
+      "gradient": false,
+      "color": "#15803D",
+      "opacity": 1
+     },
+     "border": {
+      "width": 0
+     },
+     "shadow": {
+      "enabled": false
+     }
+    },
+    {
+     "id": "trunk",
+     "kind": "rect",
+     "x": 490,
+     "y": 1000,
+     "w": 100,
+     "h": 460,
+     "radius": 20,
+     "fill": {
+      "gradient": false,
+      "color": "#78350F",
+      "opacity": 1
+     },
+     "border": {
+      "width": 0
+     },
+     "shadow": {
+      "enabled": false
+     }
+    },
+    {
+     "id": "crown",
+     "kind": "group",
+     "x": 240,
+     "y": 520,
+     "w": 600,
+     "h": 600,
+     "cw": 600,
+     "ch": 600,
+     "anim": {
+      "loop": {
+       "kind": "swing",
+       "amount": 3,
+       "cycles": 2
+      }
+     },
+     "children": [
+      {
+       "id": "leaf-a",
+       "kind": "ellipse",
+       "x": 0,
+       "y": 160,
+       "w": 340,
+       "h": 340,
+       "fill": {
+        "gradient": false,
+        "color": "#16A34A",
+        "opacity": 1
+       },
+       "border": {
+        "width": 0
+       },
+       "shadow": {
+        "enabled": false
+       }
+      },
+      {
+       "id": "leaf-b",
+       "kind": "ellipse",
+       "x": 260,
+       "y": 160,
+       "w": 340,
+       "h": 340,
+       "fill": {
+        "gradient": false,
+        "color": "#15803D",
+        "opacity": 1
+       },
+       "border": {
+        "width": 0
+       },
+       "shadow": {
+        "enabled": false
+       }
+      },
+      {
+       "id": "leaf-c",
+       "kind": "ellipse",
+       "x": 120,
+       "y": 0,
+       "w": 360,
+       "h": 360,
+       "fill": {
+        "gradient": false,
+        "color": "#22C55E",
+        "opacity": 1
+       },
+       "border": {
+        "width": 0
+       },
+       "shadow": {
+        "enabled": false
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "title-1",
+   "kind": "rect",
+   "name": "title-1",
+   "x": 0,
+   "y": 420,
+   "w": 1080,
+   "h": 134.4,
+   "radius": 0,
+   "fill": {
+    "opacity": 0,
+    "gradient": false
+   },
+   "border": {
+    "width": 0
+   },
+   "shadow": {
+    "enabled": false
+   },
+   "label": {
+    "text": "Rumbo al campo",
+    "font": "Inter",
+    "size": 84,
+    "weight": 800,
+    "color": "#0F172A",
+    "align": "center"
+   },
+   "anim": {
+    "in": {
+     "kind": "slide",
+     "from": "down",
+     "delay": 0.2,
+     "duration": 0.5
+    },
+    "out": {
+     "kind": "fade",
+     "delay": 2.9,
+     "duration": 0.1
+    }
+   }
+  },
+  {
+   "id": "title-2",
+   "kind": "rect",
+   "name": "title-2",
+   "x": 0,
+   "y": 260,
+   "w": 1080,
+   "h": 102.4,
+   "radius": 0,
+   "fill": {
+    "opacity": 0,
+    "gradient": false
+   },
+   "border": {
+    "width": 0
+   },
+   "shadow": {
+    "enabled": false
+   },
+   "label": {
+    "text": "…y una sombra donde parar",
+    "font": "Inter",
+    "size": 64,
+    "weight": 700,
+    "color": "#7C2D12",
+    "align": "center"
+   },
+   "anim": {
+    "in": {
+     "kind": "fade",
+     "delay": 3.4,
+     "duration": 0.6
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,78 @@
+# Findings log
+
+Sessions using the `lienzo-animate` skill against real Lienzo. Each entry: what happened, the cause, what changed in the skill (or a proposal for Lienzo, tracked in `LIENZO-IMPROVEMENTS.md`).
+
+## Session 2026-10-24 · project `animator-lab`, scene `viaje`
+
+Goal: a 12 s vertical video with 4 shots, in joint mode (the user corrects by hand between turns).
+
+### Shot list
+
+| Shot | Start–end | Framing | Motion | Text |
+|---|---|---|---|---|
+| 1 | 0–3 | wide, countryside by day | parallax world, clouds, car with spinning wheels | "Un día de viaje" |
+| 2 | 3–6 | tree shot | slow zoom, wind, floating leaves (particles) | "Paradas con sombra" |
+| 3 | 6–9 | town at dusk | houses, windows lighting up, car crossing left to right | "Pueblos al atardecer" |
+| 4 | 9–12 | night | stars, glowing moon, fade to black at the end | "Fin del viaje" |
+
+### Findings
+
+1. **Generic validation error.** `scene_build` returned `compact.elements.3: Invalid input` without naming the field. Cause: the Zod union loses the inner path. Fix: validate the children one by one until the culprit shows up. **Skill:** added to gotchas. **Lienzo:** improvement #5.
+2. **`particles.speed` is an integer ≥ 1** (laps per loop), not a continuous speed. `0.3` invalidated the whole shot. **Skill:** documented in elements and gotchas.
+3. **Particles do not fall.** They only float around their place inside the box (`drift`). Falling leaves or real rain are not possible with `particles`. **Skill:** documented. **Lienzo:** improvement #12.
+4. **`scene_inspect_layout` ignores visibility windows.** It flags shot 2 as `out_of_bounds` at t=7.5 and t=10.5, when it is no longer visible. **Skill:** ignore warnings for shots outside their window. **Lienzo:** improvement #13.
+5. **Repetition.** Car, wheels, houses and shots repeat a lot. Writing the JSON by hand is slow and error-prone. A small generator script (`lab/viaje.gen.cjs`) with `shot`, `car`, `rect`… helpers fixed the dangerous defaults once. **Skill:** recommended for scenes with more than one shot. **Lienzo:** improvement #10.
+6. **Joint mode: do not overwrite the user.** Rebuilding with `scene_build` + `overwrite` wipes manual corrections. **Skill:** after the user's turn, read `scene_get` and apply `element_update`/`keyframe_set`. If a rebuild is needed, carry the user's changes into the generator first. **Lienzo:** improvement #6.
+
+### User's turn
+
+The user reviewed the scene in the editor and reported four problems in words. They did not edit by hand because they could not find the elements among so many.
+
+7. **The car "stops moving" before the end of shot 1.** The road markings had an `x` track from 0 to 1.5 s in a 3 s shot. Tracks hold their last value, so the road froze. Fix: period equal to the shot length. **Skill:** rule in motion and gotchas. **Lienzo:** improvement #2.
+8. **The tree crown comes off the trunk.** They overlapped by only 20 px, and `swing` turns around the crown's centre, which moves its base. Fix: crown group with its box centred on the trunk top, so it pivots there. **Skill:** pivot recipe. **Lienzo:** improvement #3.
+9. **The roofs float above the houses.** `polygon` with `sides: 3` is regular and inscribed: its base sits at ~75 % of the box, not at the bottom. Fix: triangle drawn with `path`. **Skill:** gotcha. **Lienzo:** improvement #14.
+10. **The stars move.** `particles` always wander; the minimum `speed` is 1. Fix: `drift: 0`. **Skill:** gotcha. **Lienzo:** improvement #12.
+11. **The user cannot find elements to fix.** The scene has more than 100 nested elements with technical ids. **Skill:** a readable `name` on every group and main piece (added to the generator). **Lienzo:** improvement #20.
+
+## Session 2026-10-24 · project `ringana`, scene `omega`
+
+Goal: a 24 s vertical reel about the benefits of RINGANA BEYOND omega (omega 3 from microalgae), with a voice-over. Files: `briefs/ringana-omega.md`, `briefs/ringana-omega.research.md`, `lab/ringana-omega.gen.cjs`, export `projects/ringana/exports/omega.mp4` in Lienzo.
+
+### Research
+
+1. **The brand site blocks crawlers.** `ringana.com` has `robots.txt: disallow: /`. WebSearch found only retailer pages, and WebFetch/curl could not reach the product page. The first fact sheet was built from third-party data and marked uncertain. **Next time:** for product videos, open the official page in the user's real browser with `pwa-nav` (`open <url> --launch --allow-origin`) from the start, or ask the user to paste the product page text.
+2. **`pwa-nav` snapshots only show interactive elements and headings.** Body text inside tabs (description, supplement facts) did not appear in `snapshot`/`extract`. The "Read more" link led to the official study PDF, which `pwa-nav download --armed` saved and the Read tool could read. The user pasted the tab text. **Next time:** look for linked PDFs (studies, data sheets) first; they hold the richest facts.
+3. **Official sources changed the brief a lot.** They confirmed the dose (960 mg EPA + DHA), the ingredients and the claims, and added a study with numbers (+63.5 % Omega-3 Index in 90 days). That became a new shot (a gauge).
+4. **Health claims: stay inside authorised wording.** Benefits were phrased like the EU authorised claims (Reg. 432/2012): "normal heart function", "normal brain function and vision". Seller claims (anti-inflammatory, disease prevention, "cellular energy") were left out. The brand's own study is attributed on screen ("*RINGANA study, 27 people, 3 capsules/day").
+
+### Language
+
+5. **Everything in the repo and in the video goes in English; chat with the user is in Spanish.** The first brief was written in Spanish and had to be redone.
+
+### Build
+
+6. **Fonts must be installed in the project.** Montserrat fell back to a serif font until `font_install` (project `ringana`, weights 500 and 800). **Skill:** check `font_list` before building.
+7. **88 px is too big for a 20-character title** on 1080 width ("RINGANA BEYOND omega" was cut off). 72 px fit.
+8. **Large compact scenes go through the CLI.** The 45 KB compact JSON was built with `pnpm lienzo scene_build --json @file`, not inline through MCP.
+9. **A numeric count-up works with `label.text` keyframes** (4.8% → 5.9% → 7.0% → 7.9%).
+
+### Voice-over (Kokoro, local)
+
+10. **One clip for the whole script does not fit the shots.** The full script read by Kokoro lasted 12.4 s against 24 s of video. Fix: one clip per shot, placed with `audioTracks[].startOffset`.
+11. **`scene_generate_speech` keeps only one clip.** Each call overwrites `scene.audio`. Multiple clips had to be written by hand into the scene file as `audioTracks`. A later `scene_build` + `overwrite` would erase them. **Lienzo:** proposal: `scene_generate_speech` should append a track (with `startOffset`) instead of replacing the audio.
+12. **The voice must not repeat the on-screen text.** The first script repeated "EPA and DHA" and "contribute to normal" in shots 3 and 4. The user found it repetitive. What worked: short, varied lines; numbers and terms stay on screen; one sentence can run across two shots ("Supporting a normal heart, your brain, and your vision.") as a single clip placed across the cut.
+13. **Don't split one sentence into two clips.** The halves had a 2.5 s gap and sounded broken.
+14. **Keep the brand out of the voice unless asked.** The user preferred "BEYOND omega." alone over "BEYOND omega. By RINGANA."
+15. **`audioDuration` can be wrong.** The merged clip reported 1.5 s but sounds for about 2.7 s. Measure with `ffmpeg -af silencedetect` on the export.
+16. **Voice: `af_bella`** (Kokoro, female); the user approved it.
+
+## Session 2026-10-24 · scene `omega-v2` (art direction pass)
+
+Goal: test the new `lienzo-art-direction` skill by redesigning `omega` without touching story, text, facts or voice. Files: `briefs/ringana-omega-v2.md`, `lab/ringana-omega-v2.gen.cjs`, `lab/lib/compact.cjs`. Exports in Lienzo: `omega-v2.mp4` and `omega-compare.mp4` (v1 | v2 side by side).
+
+1. **Shared primitives moved to `lab/lib/compact.cjs`** (now used by two generators). The v1 output was byte-identical before and after the move.
+2. **A large `bgGlow` washes the frame white.** Halos of 400–520 px with `bgGlow` turned shots 3–5 into a white haze and hid the heart. Fix: big halos are plain discs at 4–12 % opacity; `bgGlow` only on small focal objects. **Skill:** rule in `styles.md`.
+3. **The review checklist caught both defects** (focal point, contrast) on the first preview pass.
+4. **Voice tracks had to be copied by hand again** from `omega.json` into the new scene (see improvement for `scene_generate_speech`).
+5. **User verdict: "much, much better" than v1.** The art-direction pass (three tones per object, three planes, ambient motion, overshoot and stagger) is the default from now on for every new piece. v2 is the verified example in `lienzo-art-direction`.
+6. **How to compare versions:** `ffmpeg -i v1.mp4 -i v2.mp4 -filter_complex "[0:v]scale=540:-2[a];[1:v]scale=540:-2[b];[a][b]hstack" -map 1:a? out.mp4`, then grab frames at mid-shot times and run the review checklist on them.
