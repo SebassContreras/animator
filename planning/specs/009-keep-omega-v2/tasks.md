@@ -10,5 +10,5 @@
       covers: R3@1, D3@1
       changes: README.md (+3 -3), lib/primitives.cjs (+1 -1), skills/lienzo-storyboard/SKILL.md (+1 -1)
 - [x] T004 [agent] [status:done] Move `research.md` from the removed v1 folder into `videos/ringana-omega-v2/` and repoint v2's brief, learnings and generator header, and the `recipes.md` "Tested in" line, so nothing cites a removed path
-      covers: R1@1, R3@1
+      covers: R1@1, R3@1, D4@1
       changes: skills/lienzo-animate/references/recipes.md (+1 -1), videos/ringana-omega-v2/brief.md (+128 -1), videos/ringana-omega-v2/learnings.md (+1 -1), videos/ringana-omega-v2/research.md (+35 -0), videos/ringana-omega-v2/scene.gen.cjs (+1 -1)
