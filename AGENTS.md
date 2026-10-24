@@ -20,7 +20,6 @@ Agent skills plus a shared Node library for making Lienzo videos: one folder per
 - `lib/` pieces take a palette argument, never hardcoded colours (A11); flat by default (A12).
 - Promote a learning only after it worked in a real video, as a traced task (A13).
 - Every video goes through `lienzo-art-direction` (A14).
-- CI (GitHub Actions) runs `pnpm test` and `trace check` on every push to `main` and every PR; a change is accepted only when both pass (A16).
 
 ## Style
 

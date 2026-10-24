@@ -20,4 +20,4 @@
 
 - D1. Pros: one glance shows every reusable piece and what to pass it. Cons: a hand-written line can describe a piece wrongly. Mitigation: each line is short, and a wrong signature fails the first time a generator uses it.
 - D2. Pros: the drift that just happened (six pieces promoted, none listed) can no longer happen silently. Cons: a name that happens to appear elsewhere in the section passes the check. Mitigation: only backticked names count, which matches the bullet format.
-- D3. Pros: no extra step to forget. Cons: the failure appears only when the tests run. Mitigation: spec 009 runs the suite on every push.
+- D3. Pros: no extra step to forget. Cons: the failure appears only when the tests run. Mitigation: `pnpm test` runs at session end (AGENTS.md → Testing).
