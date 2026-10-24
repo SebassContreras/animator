@@ -12,6 +12,7 @@ Project-wide decisions. Grammar: `.spectrace/format.md`.
 
 - A9@1: Node 24, CommonJS `.cjs`, no runtime dependencies; pnpm for any package work — why: what the generators already use; nothing to install.
 - A10@1: Tests use the built-in `node --test` — why: no dependency, ships with Node.
+- A16@1: CI on GitHub Actions runs `pnpm test` and `trace check` on every push to `main` and every pull request; a change is accepted only when both pass — why: the checks an agent runs locally also guard every change that reaches `main`.
 
 ## Conventions
 
@@ -25,7 +26,3 @@ Project-wide decisions. Grammar: `.spectrace/format.md`.
 - A13@1: A learning moves from a video's `learnings.md` to `lib/` (reusable piece) or a skill (rule) only after it worked in a real video, and the promotion is recorded as a spec task — why: global knowledge holds only proven things and stays traceable.
 - A14@1: Every new video goes through `lienzo-art-direction` (named style + frame review) — why: the redesigned ringana-omega v2 was rated "much, much better" than the flat v1.
 - A15@1: All repo content and on-screen text are in English; conversation with the user is in Spanish — why: user rule.
-
-## Still to define
-
-- CI: what has to pass before a change is accepted.

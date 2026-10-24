@@ -12,3 +12,5 @@ Index of every spec. `Status` and `Stage` are written only by `trace`. Grammar:
 | 005 | promote-viaje | done        | 002, 004 | —     | 5 |
 | 006 | promote-ringana-omega | done        | 002, 004 | —     | 6 |
 | 007 | promote-ringana-omega-v2 | done        | 004 | —     | 7 |
+| 008 | lib-discoverability | done        | 005, 006 | —     | 8 |
+| 009 | ci | in_progress | — | build | 9 |

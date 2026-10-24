@@ -1,0 +1,21 @@
+{
+ "files": {
+  ".github/workflows/ci.yml": {
+   "lang": "file",
+   "lines": [
+    25,
+    0
+   ],
+   "other": {
+    "file": [
+     25,
+     0
+    ]
+   },
+   "status": "new",
+   "symbols": []
+  }
+ },
+ "partial": false,
+ "skipped": []
+}

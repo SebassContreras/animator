@@ -1,0 +1,27 @@
+{
+ "files": {
+  "skills/lienzo-animate/SKILL.md": {
+   "lang": "markdown",
+   "lines": [
+    4,
+    4
+   ],
+   "other": {},
+   "status": "modified",
+   "symbols": [
+    {
+     "body": "92ff350a238bb6dd",
+     "change": "modified",
+     "kind": "section",
+     "lines": [
+      4,
+      4
+     ],
+     "name": "Lienzo: complex animations > Large scenes: use a generator > Start from lib/"
+    }
+   ]
+  }
+ },
+ "partial": false,
+ "skipped": []
+}

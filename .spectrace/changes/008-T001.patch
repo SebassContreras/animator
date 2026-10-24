@@ -1,0 +1,43 @@
+diff --git a/tests/skills/lib-list.test.cjs b/tests/skills/lib-list.test.cjs
+new file mode 100644
+index 0000000..2beed80
+--- /dev/null
++++ b/tests/skills/lib-list.test.cjs
+@@ -0,0 +1,37 @@
++// Every lib/ export is named in the lienzo-animate "Start from lib/" list, so agents reuse it (008/R2).
++const { test } = require("node:test");
++const assert = require("node:assert/strict");
++const fs = require("node:fs");
++const path = require("node:path");
++
++const ROOT = path.join(__dirname, "../..");
++const SKILL = fs.readFileSync(path.join(ROOT, "skills/lienzo-animate/SKILL.md"), "utf8");
++const SECTION = SKILL.split("### Start from lib/")[1].split(/\r?\n##/)[0];
++
++// exports of lib/<module>.cjs not named in backticks (`name` or `name(`) in the section
++const missing = (module) => Object.keys(require(path.join(ROOT, "lib", module + ".cjs")))
++  .filter((name) => !SECTION.includes("`" + name + "`") && !SECTION.includes("`" + name + "("));
++
++test("every primitives export is listed in Start from lib/", () => {
++  assert.deepEqual(missing("primitives"), []);
++});
++
++test("every scene export is listed in Start from lib/", () => {
++  assert.deepEqual(missing("scene"), []);
++});
++
++test("every environment export is listed in Start from lib/", () => {
++  assert.deepEqual(missing("environment"), []);
++});
++
++test("every objects export is listed in Start from lib/", () => {
++  assert.deepEqual(missing("objects"), []);
++});
++
++test("every motion export is listed in Start from lib/", () => {
++  assert.deepEqual(missing("motion"), []);
++});
++
++test("every palette export is listed in Start from lib/", () => {
++  assert.deepEqual(missing("palette"), []);
++});
