@@ -40,7 +40,7 @@ tests/             node --test suites
 planning/          specs and decisions (spectrace)
 ```
 
-Example videos: `videos/viaje/` (a 12 s road trip), `videos/ringana-omega/` and its redesigned version `videos/ringana-omega-v2/` (a 24 s product reel with voice-over).
+Example video: `videos/ringana-omega-v2/` (a 24 s product reel with voice-over).
 
 ## Requirements
 
@@ -74,8 +74,8 @@ Example videos: `videos/viaje/` (a 12 s road trip), `videos/ringana-omega/` and 
 ## Regenerate a scene and run the tests
 
 ```sh
-node videos/viaje/scene.gen.cjs   # writes videos/viaje/scene.json
-pnpm test                         # generators still produce their known scenes
+node videos/ringana-omega-v2/scene.gen.cjs   # writes videos/ringana-omega-v2/scene.json
+pnpm test                                    # generators still produce their known scenes
 ```
 
 ## License

@@ -42,4 +42,4 @@ Output: the video folder `videos/<slug>/`, copied from `videos/_template/`, with
 - `lienzo-art-direction` skill — named styles, object design, motion polish, frame critique.
 - `references/craft.md` — storytelling, pacing, composition, colour and motion language.
 - `references/feasibility.md` — what Lienzo can and cannot do, with substitutions.
-- `videos/viaje/brief.md` in the Animator repo — a complete brief (the 4-shot road trip).
+- `videos/ringana-omega-v2/brief.md` in the Animator repo — a complete brief (the 24 s product reel).

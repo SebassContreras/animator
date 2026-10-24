@@ -1,0 +1,44 @@
+diff --git a/README.md b/README.md
+index cb2013e..16ceb7b 100644
+--- a/README.md
++++ b/README.md
+@@ -40,7 +40,7 @@ tests/             node --test suites
+ planning/          specs and decisions (spectrace)
+ ```
+ 
+-Example videos: `videos/viaje/` (a 12 s road trip), `videos/ringana-omega/` and its redesigned version `videos/ringana-omega-v2/` (a 24 s product reel with voice-over).
++Example video: `videos/ringana-omega-v2/` (a 24 s product reel with voice-over).
+ 
+ ## Requirements
+ 
+@@ -74,8 +74,8 @@ Example videos: `videos/viaje/` (a 12 s road trip), `videos/ringana-omega/` and
+ ## Regenerate a scene and run the tests
+ 
+ ```sh
+-node videos/viaje/scene.gen.cjs   # writes videos/viaje/scene.json
+-pnpm test                         # generators still produce their known scenes
++node videos/ringana-omega-v2/scene.gen.cjs   # writes videos/ringana-omega-v2/scene.json
++pnpm test                                    # generators still produce their known scenes
+ ```
+ 
+ ## License
+diff --git a/lib/primitives.cjs b/lib/primitives.cjs
+index 77693d0..a75bd7c 100644
+--- a/lib/primitives.cjs
++++ b/lib/primitives.cjs
+@@ -1,4 +1,4 @@
+-// Compact-scene primitives shared by the ringana-omega generators.
++// Compact-scene primitives shared by every generator and lib/ piece.
+ // Flat by default: Lienzo turns gradient and shadow on unless told otherwise.
+ const flat = (o) => ({ border: { width: 0 }, shadow: { enabled: false }, ...o, fill: { gradient: false, opacity: 1, ...(o.fill || {}) } });
+ const rect = (id, x, y, w, h, color, extra = {}) => flat({ id, kind: "rect", x, y, w, h, radius: 0, ...extra, fill: { color, ...(extra.fill || {}) } });
+diff --git a/skills/lienzo-storyboard/SKILL.md b/skills/lienzo-storyboard/SKILL.md
+index 3679e16..f822212 100644
+--- a/skills/lienzo-storyboard/SKILL.md
++++ b/skills/lienzo-storyboard/SKILL.md
+@@ -42,4 +42,4 @@ Output: the video folder `videos/<slug>/`, copied from `videos/_template/`, with
+ - `lienzo-art-direction` skill — named styles, object design, motion polish, frame critique.
+ - `references/craft.md` — storytelling, pacing, composition, colour and motion language.
+ - `references/feasibility.md` — what Lienzo can and cannot do, with substitutions.
+-- `videos/viaje/brief.md` in the Animator repo — a complete brief (the 4-shot road trip).
++- `videos/ringana-omega-v2/brief.md` in the Animator repo — a complete brief (the 24 s product reel).

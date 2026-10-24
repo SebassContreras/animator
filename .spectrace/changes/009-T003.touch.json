@@ -1,0 +1,73 @@
+{
+ "files": {
+  "README.md": {
+   "lang": "markdown",
+   "lines": [
+    3,
+    3
+   ],
+   "other": {},
+   "status": "modified",
+   "symbols": [
+    {
+     "body": "8918454614029c6f",
+     "change": "modified",
+     "kind": "section",
+     "lines": [
+      2,
+      2
+     ],
+     "name": "animator > Regenerate a scene and run the tests"
+    },
+    {
+     "body": "50f7a94a955219b2",
+     "change": "modified",
+     "kind": "section",
+     "lines": [
+      1,
+      1
+     ],
+     "name": "animator > Repo layout"
+    }
+   ]
+  },
+  "lib/primitives.cjs": {
+   "lang": "file",
+   "lines": [
+    1,
+    1
+   ],
+   "other": {
+    "file": [
+     1,
+     1
+    ]
+   },
+   "status": "modified",
+   "symbols": []
+  },
+  "skills/lienzo-storyboard/SKILL.md": {
+   "lang": "markdown",
+   "lines": [
+    1,
+    1
+   ],
+   "other": {},
+   "status": "modified",
+   "symbols": [
+    {
+     "body": "a8a631a9706db3dc",
+     "change": "modified",
+     "kind": "section",
+     "lines": [
+      1,
+      1
+     ],
+     "name": "Lienzo storyboard > References"
+    }
+   ]
+  }
+ },
+ "partial": false,
+ "skipped": []
+}

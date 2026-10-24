@@ -31,16 +31,16 @@ Lienzo has "Modo conjunto" (joint mode): the editor shows each change the agent 
 
 ## Large scenes: use a generator
 
-Every video builds from its generator, `videos/<slug>/scene.gen.cjs`, which outputs the compact JSON with helpers such as `shot()`, `rect()`, `car()`. Dangerous defaults get fixed once and pieces are reused. Start from `videos/_template/scene.gen.cjs` (smallest working generator); `videos/ringana-omega-v2/scene.gen.cjs` is the full example.
+Every video builds from its generator, `videos/<slug>/scene.gen.cjs`, which outputs the compact JSON with helpers such as `shot()`, `rect()`, `heart()`. Dangerous defaults get fixed once and pieces are reused. Start from `videos/_template/scene.gen.cjs` (smallest working generator); `videos/ringana-omega-v2/scene.gen.cjs` is the full example.
 
 ### Start from lib/
 
 Before drawing a piece, check the Animator repo's `lib/` and reuse what is there. Every piece takes its colours from the palette (`C.<role>.<tone>`).
 
 - `lib/primitives.cjs` — `rect`, `ell`, `path`, `group`, `flat`: flat by default (gradient and shadow off).
-- `lib/scene.cjs` — `sceneHelpers({ w, h, duration, palette })` → `shot`, `text`, `fadeToBlack`; `nameAll(els, names, parts, endings)`: readable layer names in place (colourless).
-- `lib/environment.cjs` — `sea(id, frame, deep, light)`: full-frame gradient backdrop; `particles(id, name, box, { …, color })`; `cloud(id, x, y, s, dx, color, period)`: three-ellipse cloud drifting left (parallax); `dashes(id, y, period, { width, color })`: road markings sliding one width per `period` (= shot length).
-- `lib/objects.cjs` — `heart(id, x, y, color)`; `car(id, x, y, colors = { body, glass, light, tyre, rim, spokes }, { spin })`: side-view car, wheels spin for `spin` s; `house(id, x, ground, w, h, colors = { wall, roof, window, lit, door }, litAt)`: windows light up from `litAt`.
+- `lib/scene.cjs` — `sceneHelpers({ w, h, duration, palette })` → `shot`, `text`, `fadeToBlack`.
+- `lib/environment.cjs` — `sea(id, frame, deep, light)`: full-frame gradient backdrop; `particles(id, name, box, { …, color })`.
+- `lib/objects.cjs` — `heart(id, x, y, color)`.
 - `lib/motion.cjs` — `heartbeat(t0, beats, opts)`: scale pulse tracks; `countUp(steps)`: `label.text` track for a counting number (colourless).
 - `lib/palette.cjs` — `checkPalette(require("./palette.json"))`.
 

@@ -1,4 +1,4 @@
-// Generates scene.json beside this file: same story, text and timing as ../ringana-omega/scene.gen.cjs,
+// Generates scene.json beside this file: same story, text and timing as the first ringana-omega piece,
 // redesigned with lienzo-art-direction (style "Bright science", see brief.md); colours come from palette.json.
 // Run: node videos/ringana-omega-v2/scene.gen.cjs
 const fs = require("fs");

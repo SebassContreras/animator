@@ -2,7 +2,7 @@
 
 What this video taught, one bullet per finding, under its kind (004/R1). Close-out promotes `Piece` and `Rule` findings. A promoted finding ends with `— promoted: <repo path>`; every `Engine` finding ends with `— tracks: <url>`.
 
-Session 2026-10-24, scene `omega-v2`: the art-direction pass that redesigned `ringana-omega` without touching story, text, facts or voice. Exports in Lienzo: `omega-v2.mp4` and `omega-compare.mp4` (v1 | v2 side by side).
+Session 2026-10-24, scene `omega-v2`: the art-direction pass that redesigned the first `ringana-omega` piece (since removed) without touching story, text, facts or voice. Exports in Lienzo: `omega-v2.mp4` and `omega-compare.mp4` (v1 | v2 side by side).
 
 ## Piece
 

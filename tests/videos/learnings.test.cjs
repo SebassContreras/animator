@@ -1,4 +1,4 @@
-// Learnings format: each video's learnings.md has the four kind sections and links every engine finding (004/R1, 004/R5).
+// Learnings format: the video's learnings.md has the four kind sections and links every engine finding (004/R1, 004/R5).
 const { test } = require("node:test");
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
@@ -17,39 +17,11 @@ const sections = (slug) => fs.readFileSync(path.join(root, "videos", slug, "lear
   });
 const untracked = (slug) => sections(slug).find((s) => s.heading === "Engine").bullets.filter((b) => !TRACKED.test(b));
 
-test("viaje learnings has the four kind sections once and in order", () => {
-  // Arrange / Act
-  const headings = sections("viaje").map((s) => s.heading);
-  // Assert
-  assert.deepEqual(headings, KINDS);
-});
-
-test("ringana-omega learnings has the four kind sections once and in order", () => {
-  // Arrange / Act
-  const headings = sections("ringana-omega").map((s) => s.heading);
-  // Assert
-  assert.deepEqual(headings, KINDS);
-});
-
 test("ringana-omega-v2 learnings has the four kind sections once and in order", () => {
   // Arrange / Act
   const headings = sections("ringana-omega-v2").map((s) => s.heading);
   // Assert
   assert.deepEqual(headings, KINDS);
-});
-
-test("every viaje engine finding links the Lienzo issue that tracks it", () => {
-  // Arrange / Act
-  const missing = untracked("viaje");
-  // Assert
-  assert.deepEqual(missing, []);
-});
-
-test("every ringana-omega engine finding links the Lienzo issue that tracks it", () => {
-  // Arrange / Act
-  const missing = untracked("ringana-omega");
-  // Assert
-  assert.deepEqual(missing, []);
 });
 
 test("every ringana-omega-v2 engine finding links the Lienzo issue that tracks it", () => {

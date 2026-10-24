@@ -1,0 +1,127 @@
+{
+ "files": {
+  "lib/environment.cjs": {
+   "lang": "file",
+   "lines": [
+    2,
+    15
+   ],
+   "other": {
+    "file": [
+     2,
+     15
+    ]
+   },
+   "status": "modified",
+   "symbols": []
+  },
+  "lib/objects.cjs": {
+   "lang": "file",
+   "lines": [
+    3,
+    38
+   ],
+   "other": {
+    "file": [
+     3,
+     38
+    ]
+   },
+   "status": "modified",
+   "symbols": []
+  },
+  "lib/scene.cjs": {
+   "lang": "file",
+   "lines": [
+    1,
+    14
+   ],
+   "other": {
+    "file": [
+     1,
+     14
+    ]
+   },
+   "status": "modified",
+   "symbols": []
+  },
+  "skills/lienzo-animate/SKILL.md": {
+   "lang": "markdown",
+   "lines": [
+    4,
+    4
+   ],
+   "other": {},
+   "status": "modified",
+   "symbols": [
+    {
+     "body": "f3170d9ebdee239e",
+     "change": "modified",
+     "kind": "section",
+     "lines": [
+      1,
+      1
+     ],
+     "name": "Lienzo: complex animations > Large scenes: use a generator"
+    },
+    {
+     "body": "bbfbde7ab3850537",
+     "change": "modified",
+     "kind": "section",
+     "lines": [
+      3,
+      3
+     ],
+     "name": "Lienzo: complex animations > Large scenes: use a generator > Start from lib/"
+    }
+   ]
+  },
+  "tests/lib/environment.test.cjs": {
+   "lang": "file",
+   "lines": [
+    0,
+    13
+   ],
+   "other": {
+    "file": [
+     0,
+     13
+    ]
+   },
+   "status": "deleted",
+   "symbols": []
+  },
+  "tests/lib/objects.test.cjs": {
+   "lang": "file",
+   "lines": [
+    0,
+    25
+   ],
+   "other": {
+    "file": [
+     0,
+     25
+    ]
+   },
+   "status": "deleted",
+   "symbols": []
+  },
+  "tests/lib/scene.test.cjs": {
+   "lang": "file",
+   "lines": [
+    1,
+    10
+   ],
+   "other": {
+    "file": [
+     1,
+     10
+    ]
+   },
+   "status": "modified",
+   "symbols": []
+  }
+ },
+ "partial": false,
+ "skipped": []
+}

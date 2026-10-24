@@ -14,7 +14,7 @@ The user and the coding agents that research, storyboard, art-direct and build L
 - A shared generator library whose pieces take the palette as a parameter.
 - A template to start a new video.
 - A close-out step that promotes each video's learnings to `lib/` or the skills.
-- Migration of the existing videos (`ringana-omega` v1 and v2, `viaje`) and of the old session log into each video's `learnings.md`.
+- One reference video, `ringana-omega-v2`, with its learnings in `learnings.md` (the earlier videos were removed in spec 009).
 
 ## Not for now
 

@@ -1,0 +1,295 @@
+{
+ "files": {
+  "skills/lienzo-animate/references/recipes.md": {
+   "lang": "markdown",
+   "lines": [
+    1,
+    1
+   ],
+   "other": {},
+   "status": "modified",
+   "symbols": [
+    {
+     "body": "c97058fecb3751de",
+     "change": "modified",
+     "kind": "section",
+     "lines": [
+      1,
+      1
+     ],
+     "name": "Recipes"
+    }
+   ]
+  },
+  "videos/ringana-omega-v2/brief.md": {
+   "lang": "markdown",
+   "lines": [
+    128,
+    1
+   ],
+   "other": {},
+   "status": "modified",
+   "symbols": [
+    {
+     "body": "a19c79e622111353",
+     "change": "modified",
+     "kind": "section",
+     "lines": [
+      2,
+      1
+     ],
+     "name": "RINGANA omega 3 · v2 (art direction pass)"
+    },
+    {
+     "body": "a93950ab9f2b7c61",
+     "change": "added",
+     "kind": "section",
+     "lines": [
+      4,
+      0
+     ],
+     "name": "RINGANA omega 3 · v2 (art direction pass) > Audio (optional)"
+    },
+    {
+     "body": "2c6ec79c8b83a69b",
+     "change": "added",
+     "kind": "section",
+     "lines": [
+      4,
+      0
+     ],
+     "name": "RINGANA omega 3 · v2 (art direction pass) > Build prompt"
+    },
+    {
+     "body": "25160a936463380e",
+     "change": "modified",
+     "kind": "section",
+     "lines": [
+      1,
+      0
+     ],
+     "name": "RINGANA omega 3 · v2 (art direction pass) > Changes per shot"
+    },
+    {
+     "body": "f2841c1a6339b4f4",
+     "change": "added",
+     "kind": "section",
+     "lines": [
+      4,
+      0
+     ],
+     "name": "RINGANA omega 3 · v2 (art direction pass) > Concept"
+    },
+    {
+     "body": "f6a9750430d76782",
+     "change": "added",
+     "kind": "section",
+     "lines": [
+      5,
+      0
+     ],
+     "name": "RINGANA omega 3 · v2 (art direction pass) > Feasibility notes"
+    },
+    {
+     "body": "9a54e91a3d523b53",
+     "change": "added",
+     "kind": "section",
+     "lines": [
+      7,
+      0
+     ],
+     "name": "RINGANA omega 3 · v2 (art direction pass) > Idea"
+    },
+    {
+     "body": "42c32ac94a6640b0",
+     "change": "added",
+     "kind": "section",
+     "lines": [
+      5,
+      0
+     ],
+     "name": "RINGANA omega 3 · v2 (art direction pass) > Recurring objects"
+    },
+    {
+     "body": "f6390c287693eab6",
+     "change": "added",
+     "kind": "section",
+     "lines": [
+      11,
+      0
+     ],
+     "name": "RINGANA omega 3 · v2 (art direction pass) > Shot list"
+    },
+    {
+     "body": "5e1b30529cc4359c",
+     "change": "added",
+     "kind": "section",
+     "lines": [
+      2,
+      0
+     ],
+     "name": "RINGANA omega 3 · v2 (art direction pass) > Shots"
+    },
+    {
+     "body": "a9766d1b34bd055f",
+     "change": "added",
+     "kind": "section",
+     "lines": [
+      11,
+      0
+     ],
+     "name": "RINGANA omega 3 · v2 (art direction pass) > Shots > Shot 1 · Algae sea (0–3 s)"
+    },
+    {
+     "body": "48e0f5423ed7b5ba",
+     "change": "added",
+     "kind": "section",
+     "lines": [
+      12,
+      0
+     ],
+     "name": "RINGANA omega 3 · v2 (art direction pass) > Shots > Shot 2 · From alga to capsule (3–6.5 s)"
+    },
+    {
+     "body": "9494b2fe18091e1c",
+     "change": "added",
+     "kind": "section",
+     "lines": [
+      12,
+      0
+     ],
+     "name": "RINGANA omega 3 · v2 (art direction pass) > Shots > Shot 3 · Heart (6.5–10 s)"
+    },
+    {
+     "body": "566f34e2a48a96d0",
+     "change": "added",
+     "kind": "section",
+     "lines": [
+      11,
+      0
+     ],
+     "name": "RINGANA omega 3 · v2 (art direction pass) > Shots > Shot 4 · Brain and vision (10–13.5 s)"
+    },
+    {
+     "body": "d4226621f178f03f",
+     "change": "added",
+     "kind": "section",
+     "lines": [
+      10,
+      0
+     ],
+     "name": "RINGANA omega 3 · v2 (art direction pass) > Shots > Shot 5 · Extras (13.5–16.5 s)"
+    },
+    {
+     "body": "a5d3b9f6d9c18244",
+     "change": "added",
+     "kind": "section",
+     "lines": [
+      11,
+      0
+     ],
+     "name": "RINGANA omega 3 · v2 (art direction pass) > Shots > Shot 6 · The proof (16.5–20.5 s)"
+    },
+    {
+     "body": "3c570f4bad4171a3",
+     "change": "added",
+     "kind": "section",
+     "lines": [
+      11,
+      0
+     ],
+     "name": "RINGANA omega 3 · v2 (art direction pass) > Shots > Shot 7 · Closing (20.5–24 s)"
+    },
+    {
+     "body": "b17cac2555ddf664",
+     "change": "added",
+     "kind": "section",
+     "lines": [
+      5,
+      0
+     ],
+     "name": "RINGANA omega 3 · v2 (art direction pass) > Sources"
+    }
+   ]
+  },
+  "videos/ringana-omega-v2/learnings.md": {
+   "lang": "markdown",
+   "lines": [
+    1,
+    1
+   ],
+   "other": {},
+   "status": "modified",
+   "symbols": [
+    {
+     "body": "c2adca3e06153869",
+     "change": "modified",
+     "kind": "section",
+     "lines": [
+      1,
+      1
+     ],
+     "name": "ringana-omega-v2 — Learnings"
+    }
+   ]
+  },
+  "videos/ringana-omega-v2/research.md": {
+   "lang": "markdown",
+   "lines": [
+    35,
+    0
+   ],
+   "other": {},
+   "status": "new",
+   "symbols": [
+    {
+     "body": "533313c854add527",
+     "change": "added",
+     "kind": "section",
+     "lines": [
+      27,
+      0
+     ],
+     "name": "Fact sheet · RINGANA BEYOND omega"
+    },
+    {
+     "body": "0bb3874c6a11f92c",
+     "change": "added",
+     "kind": "section",
+     "lines": [
+      2,
+      0
+     ],
+     "name": "Fact sheet · RINGANA BEYOND omega > Disclaimer for the video"
+    },
+    {
+     "body": "e6b125e525707920",
+     "change": "added",
+     "kind": "section",
+     "lines": [
+      6,
+      0
+     ],
+     "name": "Fact sheet · RINGANA BEYOND omega > Myths and claims not to use"
+    }
+   ]
+  },
+  "videos/ringana-omega-v2/scene.gen.cjs": {
+   "lang": "file",
+   "lines": [
+    1,
+    1
+   ],
+   "other": {
+    "file": [
+     1,
+     1
+    ]
+   },
+   "status": "modified",
+   "symbols": []
+  }
+ },
+ "partial": false,
+ "skipped": []
+}
