@@ -1,0 +1,21 @@
+{
+ "files": {
+  "tests/lib/scene.test.cjs": {
+   "lang": "file",
+   "lines": [
+    19,
+    0
+   ],
+   "other": {
+    "file": [
+     19,
+     0
+    ]
+   },
+   "status": "new",
+   "symbols": []
+  }
+ },
+ "partial": false,
+ "skipped": []
+}

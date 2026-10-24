@@ -1,0 +1,27 @@
+{
+ "files": {
+  "AGENTS.md": {
+   "lang": "markdown",
+   "lines": [
+    1,
+    1
+   ],
+   "other": {},
+   "status": "modified",
+   "symbols": [
+    {
+     "body": "bf8f731fdae5cb28",
+     "change": "modified",
+     "kind": "section",
+     "lines": [
+      1,
+      1
+     ],
+     "name": "Animator > Testing"
+    }
+   ]
+  }
+ },
+ "partial": false,
+ "skipped": []
+}

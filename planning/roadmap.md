@@ -6,6 +6,6 @@ Index of every spec. `Status` and `Stage` are written only by `trace`. Grammar:
 | ID  | Spec | Status | Depends on | Stage | Priority |
 |-----|------|--------|------------|-------|----------|
 | 001 | video-folders | done        | — | —      | 1 |
-| 002 | shared-lib | todo | 001 | build  | 2 |
+| 002 | shared-lib | done        | 001 | —      | 2 |
 | 003 | video-template | todo | 001, 002 | design | 3 |
 | 004 | learning-promotion | todo | 001, 002 | design | 4 |

@@ -1,0 +1,36 @@
+{
+ "files": {
+  "videos/ringana-omega-v2/palette.json": {
+   "lang": "file",
+   "lines": [
+    11,
+    21
+   ],
+   "other": {
+    "file": [
+     11,
+     21
+    ]
+   },
+   "status": "modified",
+   "symbols": []
+  },
+  "videos/ringana-omega-v2/scene.gen.cjs": {
+   "lang": "file",
+   "lines": [
+    62,
+    61
+   ],
+   "other": {
+    "file": [
+     62,
+     61
+    ]
+   },
+   "status": "modified",
+   "symbols": []
+  }
+ },
+ "partial": false,
+ "skipped": []
+}

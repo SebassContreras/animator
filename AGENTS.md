@@ -45,7 +45,7 @@ Agent skills plus a shared Node library for making Lienzo videos: one folder per
 
 - narrowest (one file or module): `node --test tests/<path>.test.cjs`
 - affected only: none (`node --test` has no affected mode)
-- full suite: `node --test tests/`
+- full suite: `pnpm test` (runs `node --test "tests/**/*.test.cjs"`; a bare folder argument fails on Node 24)
 - verification: unit tests only; visual quality is checked by eye on previews with the `lienzo-art-direction` review checklist.
 
 Hard rules:

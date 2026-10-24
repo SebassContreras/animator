@@ -1,0 +1,33 @@
+diff --git a/tests/lib/palette.test.cjs b/tests/lib/palette.test.cjs
+new file mode 100644
+index 0000000..f53dbe4
+--- /dev/null
++++ b/tests/lib/palette.test.cjs
+@@ -0,0 +1,27 @@
++// checkPalette accepts role → { base, shadow?, highlight? } hex maps and names the role it rejects (002/R4).
++const { test } = require("node:test");
++const assert = require("node:assert/strict");
++const { checkPalette } = require("../../lib/palette.cjs");
++
++test("a palette with three-tone and one-tone roles is returned unchanged", () => {
++  // Arrange
++  const palette = { sea: { base: "#0E3B43", shadow: "#072630", highlight: "#1A6470" }, text: { base: "#FFFFFF" } };
++  // Act
++  const result = checkPalette(palette);
++  // Assert
++  assert.equal(result, palette);
++});
++
++test("a role without base throws naming that role", () => {
++  // Arrange
++  const palette = { sea: { shadow: "#072630" } };
++  // Act + Assert
++  assert.throws(() => checkPalette(palette), /"sea"/);
++});
++
++test("a tone with a bad hex throws naming that role", () => {
++  // Arrange
++  const palette = { drop: { base: "#F2B33D", highlight: "#FFE08" } };
++  // Act + Assert
++  assert.throws(() => checkPalette(palette), /"drop" has a bad highlight/);
++});

@@ -1,0 +1,51 @@
+{
+ "files": {
+  "lib/objects.cjs": {
+   "lang": "file",
+   "lines": [
+    9,
+    0
+   ],
+   "other": {
+    "file": [
+     9,
+     0
+    ]
+   },
+   "status": "new",
+   "symbols": []
+  },
+  "videos/ringana-omega-v2/scene.gen.cjs": {
+   "lang": "file",
+   "lines": [
+    2,
+    2
+   ],
+   "other": {
+    "file": [
+     2,
+     2
+    ]
+   },
+   "status": "modified",
+   "symbols": []
+  },
+  "videos/ringana-omega/scene.gen.cjs": {
+   "lang": "file",
+   "lines": [
+    2,
+    2
+   ],
+   "other": {
+    "file": [
+     2,
+     2
+    ]
+   },
+   "status": "modified",
+   "symbols": []
+  }
+ },
+ "partial": false,
+ "skipped": []
+}

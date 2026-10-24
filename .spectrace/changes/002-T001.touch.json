@@ -1,0 +1,21 @@
+{
+ "files": {
+  "lib/palette.cjs": {
+   "lang": "file",
+   "lines": [
+    17,
+    0
+   ],
+   "other": {
+    "file": [
+     17,
+     0
+    ]
+   },
+   "status": "new",
+   "symbols": []
+  }
+ },
+ "partial": false,
+ "skipped": []
+}

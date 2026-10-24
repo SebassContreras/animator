@@ -1,0 +1,127 @@
+diff --git a/lib/scene.cjs b/lib/scene.cjs
+new file mode 100644
+index 0000000..8d687c4
+--- /dev/null
++++ b/lib/scene.cjs
+@@ -0,0 +1,39 @@
++// Scene helpers: shots, on-screen text and the closing fade.
++// A factory because all three need the same frame size and duration, and text needs the palette (002/D4).
++const { rect, group } = require("./primitives.cjs");
++
++// Invisible hit box behind text labels: opacity 0, never drawn.
++const BOX = "#000000";
++
++// textMotion: v1 defaults; `amount` and the easings are only written when given (v1 omits them).
++const sceneHelpers = ({ w, h, duration, palette, textMotion = {} }) => {
++  const { amount, inDuration = 0.4, easeIn, easeOut } = textMotion;
++
++  // shot from a to b; `xin` = cross-fade length into this shot
++  const shot = (id, name, a, b, children, extra = {}, xin = 0.1) => group(id, 0, 0, w, h, children, {
++    name,
++    anim: {
++      ...(a > 0 ? { in: { kind: "fade", delay: a, duration: xin } } : {}),
++      ...(b < duration ? { out: { kind: "fade", delay: b - 0.05 + 0.4, duration: 0.05 } } : {}),
++    },
++    ...extra,
++  });
++
++  const text = (id, name, str, y, size, a, b, extra = {}) => rect(id, 0, y, w, size * 1.6, BOX, {
++    name,
++    fill: { color: BOX, opacity: 0 },
++    label: { text: str, font: "Montserrat", size, weight: extra.weight || 800, color: palette.text.base, align: "center" },
++    anim: {
++      in: { kind: extra.inKind || "slide", from: "down", ...(amount ? { amount } : {}), delay: a, duration: inDuration, ...(easeIn ? { easing: easeIn } : {}) },
++      out: { kind: "fade", delay: b - 0.25, duration: 0.25, ...(easeOut ? { easing: easeOut } : {}) },
++    },
++  });
++
++  const fadeToBlack = (color, length = 0.5) => rect("fade-black", 0, 0, w, h, color, {
++    name: "Fade to black", fill: { color, opacity: 0 }, tracks: { "fill.opacity": [[duration - length, 0, "ease-in"], [duration, 1]] },
++  });
++
++  return { shot, text, fadeToBlack };
++};
++
++module.exports = { sceneHelpers };
+diff --git a/videos/ringana-omega-v2/scene.gen.cjs b/videos/ringana-omega-v2/scene.gen.cjs
+index 8378a64..ba4e267 100644
+--- a/videos/ringana-omega-v2/scene.gen.cjs
++++ b/videos/ringana-omega-v2/scene.gen.cjs
+@@ -6,24 +6,9 @@ const { rect, ell, path, group } = require("../../lib/primitives.cjs");
+ const W = 1080, H = 1920, D = 24;
+ const { checkPalette } = require("../../lib/palette.cjs");
+ const C = checkPalette(require("./palette.json"));
++const { sceneHelpers } = require("../../lib/scene.cjs");
+ 
+-const shot = (id, name, a, b, children, extra = {}, xin = 0.1) => group(id, 0, 0, W, H, children, {
+-  name,
+-  anim: {
+-    ...(a > 0 ? { in: { kind: "fade", delay: a, duration: xin } } : {}),
+-    ...(b < D ? { out: { kind: "fade", delay: b - 0.05 + 0.4, duration: 0.05 } } : {}),
+-  },
+-  ...extra,
+-});
+-const text = (id, name, str, y, size, a, b, extra = {}) => rect(id, 0, y, W, size * 1.6, "#000000", {
+-  name,
+-  fill: { color: "#000000", opacity: 0 },
+-  label: { text: str, font: "Montserrat", size, weight: extra.weight || 800, color: C.text.base, align: "center" },
+-  anim: {
+-    in: { kind: extra.inKind || "slide", from: "down", amount: 30, delay: a, duration: 0.45, easing: "cubic-out" },
+-    out: { kind: "fade", delay: b - 0.25, duration: 0.25, easing: "cubic-in" },
+-  },
+-});
++const { shot, text, fadeToBlack } = sceneHelpers({ w: W, h: H, duration: D, palette: C, textMotion: { amount: 30, inDuration: 0.45, easeIn: "cubic-out", easeOut: "cubic-in" } });
+ 
+ // Environment: lit sea with three planes, light rays and plankton
+ const sea = (id) => rect(id, 0, 0, W, H, C.sea.shadow, { name: "Deep sea", fill: { gradient: true, color: C.sea.highlight, color2: C.sea.shadow, angle: 90 } });
+@@ -228,7 +213,7 @@ const s7 = shot("shot-7", "Shot 7 · closing", 20.5, D, [
+   spark("s7-spark-1", 200, 760, 46, C.drop.highlight, 3), spark("s7-spark-2", 840, 1080, 36, C.drop.highlight, 4),
+ ], { tracks: { "@scale": [[20.5, 1, "linear"], [24, 1.04]] } }, 0.4);
+ 
+-const fadeBlack = rect("fade-black", 0, 0, W, H, "#000000", { name: "Fade to black", fill: { color: "#000000", opacity: 0 }, tracks: { "fill.opacity": [[23.5, 0, "ease-in"], [24, 1]] } });
++const fadeBlack = fadeToBlack("#000000");
+ 
+ const scene = {
+   size: [W, H], duration: D, fps: 30,
+diff --git a/videos/ringana-omega/scene.gen.cjs b/videos/ringana-omega/scene.gen.cjs
+index 2cf2388..1698b87 100644
+--- a/videos/ringana-omega/scene.gen.cjs
++++ b/videos/ringana-omega/scene.gen.cjs
+@@ -4,26 +4,10 @@ const fs = require("fs");
+ const W = 1080, H = 1920, D = 24;
+ const { checkPalette } = require("../../lib/palette.cjs");
+ const C = checkPalette(require("./palette.json"));
++const { sceneHelpers } = require("../../lib/scene.cjs");
+ 
+ const { rect, ell, path, group } = require("../../lib/primitives.cjs");
+-// shot from a to b; `xin` = cross-fade length into this shot
+-const shot = (id, name, a, b, children, extra = {}, xin = 0.1) => group(id, 0, 0, W, H, children, {
+-  name,
+-  anim: {
+-    ...(a > 0 ? { in: { kind: "fade", delay: a, duration: xin } } : {}),
+-    ...(b < D ? { out: { kind: "fade", delay: b - 0.05 + 0.4, duration: 0.05 } } : {}),
+-  },
+-  ...extra,
+-});
+-const text = (id, name, str, y, size, a, b, extra = {}) => rect(id, 0, y, W, size * 1.6, "#000000", {
+-  name,
+-  fill: { color: "#000000", opacity: 0 },
+-  label: { text: str, font: "Montserrat", size, weight: extra.weight || 800, color: C.text.base, align: "center" },
+-  anim: {
+-    in: { kind: extra.inKind || "slide", from: "down", delay: a, duration: 0.4 },
+-    out: { kind: "fade", delay: b - 0.25, duration: 0.25 },
+-  },
+-});
++const { shot, text, fadeToBlack } = sceneHelpers({ w: W, h: H, duration: D, palette: C });
+ 
+ // Recurring objects
+ const drop = (id, x, y, s, extra = {}) => group(id, x, y, s, s, [
+@@ -140,7 +124,7 @@ const s7 = shot("shot-7", "Shot 7 · closing", 20.5, D, [
+   rect("s7-shine", -300, 700, 120, 500, "#FFFFFF", { name: "Shine", fill: { opacity: 0.18 }, tracks: { x: [[20.5, -300], [21, -300, "ease-in-out"], [22, 1200]], "@rotate": [[20.5, 20]] } }),
+ ], {}, 0.4);
+ 
+-const fadeBlack = rect("fade-black", 0, 0, W, H, "#000000", { name: "Fade to black", fill: { color: "#000000", opacity: 0 }, tracks: { "fill.opacity": [[23.5, 0, "ease-in"], [24, 1]] } });
++const fadeBlack = fadeToBlack("#000000");
+ 
+ const scene = {
+   size: [W, H], duration: D, fps: 30,

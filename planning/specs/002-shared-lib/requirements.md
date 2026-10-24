@@ -16,7 +16,7 @@ Every generator in `videos/`.
 - R4@1: `videos/<slug>/palette.json` maps roles to `{ base, shadow, highlight }` hex values (one-tone roles may give only `base`), and the generator reads its colours from it.
 - R5@1: After the refactor, `ringana-omega` and `ringana-omega-v2` generators write scenes byte-identical to before; a test fails if either output changes.
 - R6@1: Primitives produce flat elements (gradient and shadow off) unless the caller asks otherwise; a test proves it.
-- R7@1: `node --test tests/` passes with no dependencies installed.
+- R7@2: `pnpm test` (`node --test "tests/**/*.test.cjs"`) passes with no dependencies installed.
 
 ## Out of scope
 
