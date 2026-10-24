@@ -1,0 +1,28 @@
+// Template test: a copy of videos/_template runs as a new video with no edits (003/R2).
+const { test } = require("node:test");
+const assert = require("node:assert/strict");
+const { execFileSync } = require("node:child_process");
+const fs = require("node:fs");
+const path = require("node:path");
+
+const root = path.join(__dirname, "..", "..");
+
+test("a copied template writes a scene built from the copy's own palette", (t) => {
+  // Arrange: copy beside the real videos so ../../lib/ still resolves; give the copy its own background
+  const dir = fs.mkdtempSync(path.join(root, "videos", "tmp-"));
+  t.after(() => fs.rmSync(dir, { recursive: true, force: true }));
+  fs.cpSync(path.join(root, "videos", "_template"), dir, { recursive: true });
+  const palette = JSON.parse(fs.readFileSync(path.join(dir, "palette.json"), "utf8"));
+  palette.background.base = "#123456";
+  fs.writeFileSync(path.join(dir, "palette.json"), JSON.stringify(palette));
+
+  // Act
+  execFileSync(process.execPath, [path.join(dir, "scene.gen.cjs")]);
+  const scene = JSON.parse(fs.readFileSync(path.join(dir, "scene.json"), "utf8"));
+
+  // Assert
+  assert.deepEqual(scene.size, [1080, 1920]);
+  assert.ok(scene.duration > 0);
+  assert.ok(scene.elements.length > 0);
+  assert.equal(scene.background.color, "#123456");
+});

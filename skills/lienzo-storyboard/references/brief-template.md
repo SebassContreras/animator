@@ -1,6 +1,6 @@
 # Brief template
 
-Copy this structure exactly. Every section is required; write "none" when it does not apply.
+Copy this structure exactly. `videos/_template/brief.md` is a copy of the block below: change both together. Every section is required; write "none" when it does not apply.
 Units: seconds for time, canvas pixels for position and size (`x, y` = top-left corner).
 
 ````markdown
@@ -21,11 +21,12 @@ Units: seconds for time, canvas pixels for position and size (`x, y` = top-left 
 ## Visual style
 - **Style:** <name from `lienzo-art-direction` → `styles.md`> — <what this piece changes from it>
 - **References:** <2–4 links, what to take from each> or none
-- **Palette:**
+- **Palette:** (mirrors `palette.json`; if they differ, `palette.json` wins)
   | Role | Hex |
   |---|---|
-  | background / sky | #… |
-  | main subject | #… |
+  | background | #… |
+  | main | #… |
+  | secondary | #… |
   | accent | #… |
   | text | #… |
 - **Shapes:** <flat / rounded / geometric / outlined…>

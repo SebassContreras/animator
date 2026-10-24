@@ -1,0 +1,21 @@
+{
+ "files": {
+  "videos/_template/palette.json": {
+   "lang": "file",
+   "lines": [
+    7,
+    0
+   ],
+   "other": {
+    "file": [
+     7,
+     0
+    ]
+   },
+   "status": "new",
+   "symbols": []
+  }
+ },
+ "partial": false,
+ "skipped": []
+}

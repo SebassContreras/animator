@@ -1,0 +1,13 @@
+diff --git a/videos/_template/palette.json b/videos/_template/palette.json
+new file mode 100644
+index 0000000..e49d0f9
+--- /dev/null
++++ b/videos/_template/palette.json
+@@ -0,0 +1,7 @@
++{
++  "background": { "base": "#1B1F4B" },
++  "main": { "base": "#FF6B6B", "shadow": "#FF1F1F", "highlight": "#FFB8B8" },
++  "secondary": { "base": "#4ECDC4", "shadow": "#2DA199", "highlight": "#8ADED8" },
++  "accent": { "base": "#FFE66D", "shadow": "#FFD921", "highlight": "#FFF3BA" },
++  "text": { "base": "#FFFFFF" }
++}

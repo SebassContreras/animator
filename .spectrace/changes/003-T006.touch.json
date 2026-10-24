@@ -1,0 +1,67 @@
+{
+ "files": {
+  "videos/_template/learnings.md": {
+   "lang": "markdown",
+   "lines": [
+    19,
+    0
+   ],
+   "other": {},
+   "status": "new",
+   "symbols": [
+    {
+     "body": "ed64fcd4c92573b4",
+     "change": "added",
+     "kind": "section",
+     "lines": [
+      4,
+      0
+     ],
+     "name": "<slug> — Learnings"
+    },
+    {
+     "body": "113c39819fd4b7df",
+     "change": "added",
+     "kind": "section",
+     "lines": [
+      4,
+      0
+     ],
+     "name": "<slug> — Learnings > Engine"
+    },
+    {
+     "body": "da0032f5f4860f8f",
+     "change": "added",
+     "kind": "section",
+     "lines": [
+      3,
+      0
+     ],
+     "name": "<slug> — Learnings > Local"
+    },
+    {
+     "body": "c61a264b95f82c63",
+     "change": "added",
+     "kind": "section",
+     "lines": [
+      4,
+      0
+     ],
+     "name": "<slug> — Learnings > Piece"
+    },
+    {
+     "body": "60537e646d4d7511",
+     "change": "added",
+     "kind": "section",
+     "lines": [
+      4,
+      0
+     ],
+     "name": "<slug> — Learnings > Rule"
+    }
+   ]
+  }
+ },
+ "partial": false,
+ "skipped": []
+}

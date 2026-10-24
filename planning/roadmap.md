@@ -7,5 +7,5 @@ Index of every spec. `Status` and `Stage` are written only by `trace`. Grammar:
 |-----|------|--------|------------|-------|----------|
 | 001 | video-folders | done        | — | —      | 1 |
 | 002 | shared-lib | done        | 001 | —      | 2 |
-| 003 | video-template | todo | 001, 002 | design | 3 |
+| 003 | video-template | done        | 001, 002 | —      | 3 |
 | 004 | learning-promotion | todo | 001, 002 | design | 4 |

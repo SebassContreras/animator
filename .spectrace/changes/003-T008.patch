@@ -1,0 +1,61 @@
+diff --git a/skills/lienzo-art-direction/SKILL.md b/skills/lienzo-art-direction/SKILL.md
+index 1050bf1..c80536c 100644
+--- a/skills/lienzo-art-direction/SKILL.md
++++ b/skills/lienzo-art-direction/SKILL.md
+@@ -9,7 +9,7 @@ You are the art director. `lienzo-storyboard` decides **what** the story shows;
+ 
+ ## When it runs
+ 
+-1. **In the brief (storyboard step 3).** Choose one style from `references/styles.md` and copy its rules into the brief's "Visual style". Design every recurring object with `references/shapes.md`. Add motion polish from `references/motion-polish.md` to each shot's Motion lines.
++1. **In the brief (storyboard step 3).** Choose one style from `references/styles.md` and copy its rules into the brief's "Visual style". Write its colours, adapted to the brand, into `videos/<slug>/palette.json` under the roles `background`, `main`, `secondary`, `accent` and `text` (each `{ base, shadow?, highlight? }`; add roles if the piece needs more, never rename these five), and repeat the same roles and hexes in the brief's palette table. Design every recurring object with `references/shapes.md`. Add motion polish from `references/motion-polish.md` to each shot's Motion lines.
+ 2. **In the build (animate step 4).** After each `scene_preview`, critique the frame with `references/review.md`. Report failures as concrete fixes (layer, property, value), not opinions.
+ 3. **On request.** When the user wants references, give them from `references/review.md` → "Where to look", with what to take from each one.
+ 
+diff --git a/skills/lienzo-storyboard/references/brief-template.md b/skills/lienzo-storyboard/references/brief-template.md
+index b7efd10..2ffccfc 100644
+--- a/skills/lienzo-storyboard/references/brief-template.md
++++ b/skills/lienzo-storyboard/references/brief-template.md
+@@ -1,6 +1,6 @@
+ # Brief template
+ 
+-Copy this structure exactly. Every section is required; write "none" when it does not apply.
++Copy this structure exactly. `videos/_template/brief.md` is a copy of the block below: change both together. Every section is required; write "none" when it does not apply.
+ Units: seconds for time, canvas pixels for position and size (`x, y` = top-left corner).
+ 
+ ````markdown
+@@ -21,11 +21,12 @@ Units: seconds for time, canvas pixels for position and size (`x, y` = top-left
+ ## Visual style
+ - **Style:** <name from `lienzo-art-direction` → `styles.md`> — <what this piece changes from it>
+ - **References:** <2–4 links, what to take from each> or none
+-- **Palette:**
++- **Palette:** (mirrors `palette.json`; if they differ, `palette.json` wins)
+   | Role | Hex |
+   |---|---|
+-  | background / sky | #… |
+-  | main subject | #… |
++  | background | #… |
++  | main | #… |
++  | secondary | #… |
+   | accent | #… |
+   | text | #… |
+ - **Shapes:** <flat / rounded / geometric / outlined…>
+diff --git a/videos/_template/brief.md b/videos/_template/brief.md
+index 1d37539..c60f158 100644
+--- a/videos/_template/brief.md
++++ b/videos/_template/brief.md
+@@ -15,11 +15,12 @@
+ ## Visual style
+ - **Style:** <name from `lienzo-art-direction` → `styles.md`> — <what this piece changes from it>
+ - **References:** <2–4 links, what to take from each> or none
+-- **Palette:**
++- **Palette:** (mirrors `palette.json`; if they differ, `palette.json` wins)
+   | Role | Hex |
+   |---|---|
+-  | background / sky | #… |
+-  | main subject | #… |
++  | background | #… |
++  | main | #… |
++  | secondary | #… |
+   | accent | #… |
+   | text | #… |
+ - **Shapes:** <flat / rounded / geometric / outlined…>

@@ -9,7 +9,7 @@ You are the art director. `lienzo-storyboard` decides **what** the story shows; 
 
 ## When it runs
 
-1. **In the brief (storyboard step 3).** Choose one style from `references/styles.md` and copy its rules into the brief's "Visual style". Design every recurring object with `references/shapes.md`. Add motion polish from `references/motion-polish.md` to each shot's Motion lines.
+1. **In the brief (storyboard step 3).** Choose one style from `references/styles.md` and copy its rules into the brief's "Visual style". Write its colours, adapted to the brand, into `videos/<slug>/palette.json` under the roles `background`, `main`, `secondary`, `accent` and `text` (each `{ base, shadow?, highlight? }`; add roles if the piece needs more, never rename these five), and repeat the same roles and hexes in the brief's palette table. Design every recurring object with `references/shapes.md`. Add motion polish from `references/motion-polish.md` to each shot's Motion lines.
 2. **In the build (animate step 4).** After each `scene_preview`, critique the frame with `references/review.md`. Report failures as concrete fixes (layer, property, value), not opinions.
 3. **On request.** When the user wants references, give them from `references/review.md` → "Where to look", with what to take from each one.
 

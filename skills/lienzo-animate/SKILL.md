@@ -12,7 +12,7 @@ There is no native camera or "shot": **build them with groups** (see `references
 
 1. **Project.** `project_list`; if none fits, `project_create`. Every scene tool needs `project`.
 2. **Shot list.** If you were given a brief from the `lienzo-storyboard` skill (`videos/<slug>/brief.md`), it is your spec. If its Sources section says verification is "pending", stop and run `lienzo-research` in verify mode first. Follow its timings, palette, layer names, positions and text exactly, and do not redesign it, and never change or add factual text: on-screen facts come only from the verified brief. If a shot cannot be built as written, build the closest version and report the gap. Without a brief, write a table first: shot, start–end (s), what is seen, what moves, text. Total duration = end of the last shot. For anything beyond a simple scene, suggest running `lienzo-storyboard` first.
-3. **Compact scene.** Write ONE scene with `scene_build` (`compact` + `save` + `overwrite: true`). Each shot is a full-size `group`. See `references/compact-format.md`.
+3. **Compact scene.** Edit `videos/<slug>/scene.gen.cjs` (copied from `videos/_template/` by `lienzo-storyboard`), run `node videos/<slug>/scene.gen.cjs`, then write ONE scene with `scene_build` (`compact` = the contents of `videos/<slug>/scene.json`, + `save` + `overwrite: true`; with the CLI, `--json @file`). Each shot is a full-size `group`. See `references/compact-format.md`.
 4. **Look.** `scene_preview` at least once per shot, plus just before and after each cut. Actually look at the image, and critique it with `lienzo-art-direction` → `references/review.md`.
 5. **Measure.** `scene_inspect_layout` with `times` at the same moments. Its text widths are NOT reliable (see gotchas); trust the image.
 6. **Fix and repeat** steps 3–5 until every shot looks right.
@@ -30,7 +30,20 @@ Lienzo has "Modo conjunto" (joint mode): the editor shows each change the agent 
 
 ## Large scenes: use a generator
 
-With more than one shot, write a small Node script that outputs the compact JSON with helpers such as `shot()`, `rect()`, `car()`. Dangerous defaults get fixed once and pieces are reused. Example: `videos/viaje/scene.gen.cjs` in the Animator repo.
+Every video builds from its generator, `videos/<slug>/scene.gen.cjs`, which outputs the compact JSON with helpers such as `shot()`, `rect()`, `car()`. Dangerous defaults get fixed once and pieces are reused. Start from `videos/_template/scene.gen.cjs` (smallest working generator); `videos/ringana-omega-v2/scene.gen.cjs` is the full example.
+
+### Start from lib/
+
+Before drawing a piece, check the Animator repo's `lib/` and reuse what is there. Every piece takes its colours from the palette (`C.<role>.<tone>`).
+
+- `lib/primitives.cjs` — `rect`, `ell`, `path`, `group`, `flat`: flat by default (gradient and shadow off).
+- `lib/scene.cjs` — `sceneHelpers({ w, h, duration, palette })` → `shot`, `text`, `fadeToBlack`.
+- `lib/environment.cjs` — `sea` (full-frame gradient backdrop), `particles`.
+- `lib/objects.cjs` — `heart`.
+- `lib/motion.cjs` — `heartbeat` (scale pulse tracks).
+- `lib/palette.cjs` — `checkPalette(require("./palette.json"))`.
+
+A new piece stays in the video's generator; it moves to `lib/` only after the video worked, through close-out (Animator A13).
 
 ## Rules that fail most often (read `references/gotchas.md`)
 
