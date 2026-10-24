@@ -1,0 +1,19 @@
+diff --git a/skills/lienzo-art-direction/SKILL.md b/skills/lienzo-art-direction/SKILL.md
+index 9fb4d7e..9fb3bf3 100644
+--- a/skills/lienzo-art-direction/SKILL.md
++++ b/skills/lienzo-art-direction/SKILL.md
+@@ -36,7 +36,13 @@ You are the art director. `lienzo-storyboard` decides **what** the story shows;
+ 
+ 1. Keep story, text, facts, timing and voice; write a short `-v2` brief with only the style and the changes per shot.
+ 2. Copy the v1 generator, swap flat pieces for three-tone ones, add planes, ambient motion and polish.
+-3. Build as a new scene, copy `audioTracks` from v1, export, and compare side by side with ffmpeg `hstack` (command in `videos/ringana-omega-v2/learnings.md`).
++3. Build as a new scene, copy `audioTracks` from v1, export, and compare side by side with ffmpeg (needs `ffmpeg` on the PATH):
++
++   ```
++   ffmpeg -i v1.mp4 -i v2.mp4 -filter_complex "[0:v]scale=540:-2[a];[1:v]scale=540:-2[b];[a][b]hstack" -map 1:a? out.mp4
++   ```
++
++4. Grab frames of `out.mp4` at mid-shot times and run the `references/review.md` checklist on them.
+ 
+ ## References
+ 

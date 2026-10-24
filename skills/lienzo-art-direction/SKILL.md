@@ -28,7 +28,7 @@ You are the art director. `lienzo-storyboard` decides **what** the story shows; 
 | A closed library of named styles | consistent, fast, buildable | pieces can look alike | the brief may tweak palette and type; add a style to `styles.md` once it worked in a real piece |
 | Separate skill, not more text in `craft.md` | storyboard stays about story; design rules have one home | one more skill to install and invoke | storyboard step 3 and animate step 4 call it explicitly |
 | Critique from frames, not from JSON | judges what the viewer sees | previews cost time | review only the frames the animate workflow already previews |
-| Rules of thumb with numbers | the builder never guesses | numbers come from practice, not standards | log what the user corrects in `LOG.md` and update the numbers |
+| Rules of thumb with numbers | the builder never guesses | numbers come from practice, not standards | note what the user corrects in the video's `learnings.md` and update the numbers |
 
 ## Verified example
 
@@ -36,7 +36,13 @@ You are the art director. `lienzo-storyboard` decides **what** the story shows; 
 
 1. Keep story, text, facts, timing and voice; write a short `-v2` brief with only the style and the changes per shot.
 2. Copy the v1 generator, swap flat pieces for three-tone ones, add planes, ambient motion and polish.
-3. Build as a new scene, copy `audioTracks` from v1, export, and compare side by side with ffmpeg `hstack` (see `LOG.md`).
+3. Build as a new scene, copy `audioTracks` from v1, export, and compare side by side with ffmpeg (needs `ffmpeg` on the PATH):
+
+   ```
+   ffmpeg -i v1.mp4 -i v2.mp4 -filter_complex "[0:v]scale=540:-2[a];[1:v]scale=540:-2[b];[a][b]hstack" -map 1:a? out.mp4
+   ```
+
+4. Grab frames of `out.mp4` at mid-shot times and run the `references/review.md` checklist on them.
 
 ## References
 

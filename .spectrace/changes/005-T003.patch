@@ -1,0 +1,59 @@
+diff --git a/lib/environment.cjs b/lib/environment.cjs
+index 8113e18..b24a121 100644
+--- a/lib/environment.cjs
++++ b/lib/environment.cjs
+@@ -1,5 +1,5 @@
+ // Environment pieces: backdrops and ambient particles. Colours and frame size always come from the caller.
+-const { rect } = require("./primitives.cjs");
++const { rect, ell, group } = require("./primitives.cjs");
+ 
+ // full-frame vertical gradient: `light` at the top, `deep` at the bottom
+ const sea = (id, frame, deep, light, name = "Deep sea") => rect(id, 0, 0, frame.w, frame.h, deep, {
+@@ -12,4 +12,17 @@ const particles = (id, name, box, { count, drift, seed, size, color, opacity })
+   dot: { size, color, opacity }, link: { opacity: 0 },
+ });
+ 
+-module.exports = { sea, particles };
++// cloud of three ellipses at scale `s`, drifting left by `dx` over `period` seconds (parallax layer)
++const cloud = (id, x, y, s, dx, color, period) => group(id, x, y, 300 * s, 140 * s, [
++  ell(id + "-a", 0, 40 * s, 140 * s, 100 * s, color),
++  ell(id + "-b", 80 * s, 0, 150 * s, 140 * s, color),
++  ell(id + "-c", 170 * s, 40 * s, 130 * s, 100 * s, color),
++], { tracks: { x: [[0, x, "linear"], [period, x - dx]] } });
++
++// road markings over twice the frame `width`, sliding one width per `period`;
++// tracks hold their last value, so give `period` = the shot length or the road freezes
++const dashes = (id, y, period, { width, color }) => group(id, 0, y, width * 2, 20,
++  Array.from({ length: 8 }, (_, i) => rect(`${id}-${i}`, i * 270, 0, 160, 20, color, { radius: 4 })),
++  { tracks: { x: [[0, 0, "linear"], [period, -width]] } });
++
++module.exports = { sea, particles, cloud, dashes };
+diff --git a/videos/viaje/scene.gen.cjs b/videos/viaje/scene.gen.cjs
+index c5ed7e0..2dee443 100644
+--- a/videos/viaje/scene.gen.cjs
++++ b/videos/viaje/scene.gen.cjs
+@@ -1,6 +1,7 @@
+ // Generates scene.json beside this file (compact scene for Lienzo's scene_build). Run: node videos/viaje/scene.gen.cjs
+ const fs = require("fs");
+ const { car: libCar, house: libHouse } = require("../../lib/objects.cjs");
++const { cloud: libCloud, dashes: libDashes } = require("../../lib/environment.cjs");
+ const W = 1080, H = 1920, D = 12;
+ const flat = (o) => ({ border: { width: 0 }, shadow: { enabled: false }, ...o, fill: { gradient: false, opacity: 1, ...(o.fill || {}) } });
+ const rect = (id, x, y, w, h, color, extra = {}) => flat({ id, kind: "rect", x, y, w, h, radius: 0, fill: { color }, ...extra });
+@@ -29,14 +30,8 @@ const car = (id, x, y, body, extra = {}) => libCar(id, x, y, { ...CAR, body }, {
+ const house = (id, x, w, h, wall, roof, litAt) =>
+   libHouse(id, x, 1300, w, h, { wall, roof, window: "#1E293B", lit: "#FDE047", door: "#451A03" }, litAt);
+ 
+-const dashes = (id, y, period) => group(id, 0, y, W * 2, 20,
+-  Array.from({ length: 8 }, (_, i) => rect(`${id}-${i}`, i * 270, 0, 160, 20, "#F9FAFB", { radius: 4 })),
+-  { tracks: { x: [[0, 0, "linear"], [period, -W]] } });
+-const cloud = (id, x, y, s, dx) => group(id, x, y, 300 * s, 140 * s, [
+-  ell(id + "-a", 0, 40 * s, 140 * s, 100 * s, "#FFFFFF"),
+-  ell(id + "-b", 80 * s, 0, 150 * s, 140 * s, "#FFFFFF"),
+-  ell(id + "-c", 170 * s, 40 * s, 130 * s, 100 * s, "#FFFFFF"),
+-], { tracks: { x: [[0, x, "linear"], [3, x - dx]] } });
++const dashes = (id, y, period) => libDashes(id, y, period, { width: W, color: "#F9FAFB" });
++const cloud = (id, x, y, s, dx) => libCloud(id, x, y, s, dx, "#FFFFFF", 3);
+ 
+ // Shot 1: countryside, 0-3 s
+ const s1 = shot("toma-1-campo", 0, 3, [

@@ -1,0 +1,59 @@
+diff --git a/videos/ringana-omega-v2/learnings.md b/videos/ringana-omega-v2/learnings.md
+index 9962146..816958e 100644
+--- a/videos/ringana-omega-v2/learnings.md
++++ b/videos/ringana-omega-v2/learnings.md
+@@ -16,7 +16,7 @@ Session 2026-10-24, scene `omega-v2`: the art-direction pass that redesigned `ri
+ 
+ ## Engine
+ 
+-- Voice tracks had to be copied by hand from `omega.json` into the new scene: `scene_generate_speech` keeps one clip, and nothing carries `audioTracks` between scenes. — tracks: TODO
++- Voice tracks had to be copied by hand from `omega.json` into the new scene: `scene_generate_speech` keeps one clip, and nothing carries `audioTracks` between scenes. — tracks: https://github.com/SebassContreras/lienzo/issues/10
+ 
+ ## Local
+ 
+diff --git a/videos/ringana-omega/learnings.md b/videos/ringana-omega/learnings.md
+index f4b151a..c53d83e 100644
+--- a/videos/ringana-omega/learnings.md
++++ b/videos/ringana-omega/learnings.md
+@@ -26,9 +26,9 @@ Session 2026-10-24, project `ringana`, scene `omega`: a 24 s vertical reel about
+ 
+ ## Engine
+ 
+-- `scene_generate_speech` keeps only one clip: each call replaces `scene.audio`, so several clips must be written by hand as `audioTracks`, and a later `scene_build` + `overwrite` erases them. It should append a track with `startOffset`. — tracks: TODO
+-- `audioDuration` can be wrong: a merged clip reported 1.5 s but sounds for about 2.7 s. — tracks: TODO
+-- A font that is not installed in the project falls back to a serif with no warning from `scene_build`. — tracks: TODO
++- `scene_generate_speech` keeps only one clip: each call replaces `scene.audio`, so several clips must be written by hand as `audioTracks`, and a later `scene_build` + `overwrite` erases them. It should append a track with `startOffset`. — tracks: https://github.com/SebassContreras/lienzo/issues/10
++- `audioDuration` can be wrong: a merged clip reported 1.5 s but sounds for about 2.7 s. — tracks: https://github.com/SebassContreras/lienzo/issues/11
++- A font that is not installed in the project falls back to a serif with no warning from `scene_build`. — tracks: https://github.com/SebassContreras/lienzo/issues/12
+ 
+ ## Local
+ 
+diff --git a/videos/viaje/learnings.md b/videos/viaje/learnings.md
+index 7a327b7..cca5485 100644
+--- a/videos/viaje/learnings.md
++++ b/videos/viaje/learnings.md
+@@ -28,15 +28,15 @@ Session 2026-10-24, project `animator-lab`: a 12 s vertical video with 4 shots,
+ 
+ ## Engine
+ 
+-- `scene_build` validation errors lose the inner path of the compact union (`compact.elements.3: Invalid input`), so the faulty field is not named. — tracks: TODO
+-- `particles` cannot fall or stay still by speed: points always wander around their place, and `speed` has a minimum of 1. — tracks: TODO
+-- `scene_inspect_layout` ignores `anim.in`/`anim.out`, so it reports `out_of_bounds` for shots that are not visible at that time. — tracks: TODO
+-- Compact scenes have no reusable pieces: repeated objects (car, houses, shots) must be written out in full or produced by an external generator. — tracks: TODO
+-- Joint mode: `scene_build` + `overwrite` wipes the user's manual edits with no warning or merge. — tracks: TODO
+-- A looping track cannot be told to repeat over the shot; it holds its last value after its last keyframe. — tracks: TODO
+-- `swing` has no pivot setting; it always turns around the element's box centre. — tracks: TODO
+-- `polygon` `sides: 3` is inscribed in the box, so a triangle never touches the box's bottom edge. — tracks: TODO
+-- Elements get technical ids and no readable name by default, so a scene with 100+ nested elements is hard to edit by hand. — tracks: TODO
++- `scene_build` validation errors lose the inner path of the compact union (`compact.elements.3: Invalid input`), so the faulty field is not named. — tracks: https://github.com/SebassContreras/lienzo/issues/1
++- `particles` cannot fall or stay still by speed: points always wander around their place, and `speed` has a minimum of 1. — tracks: https://github.com/SebassContreras/lienzo/issues/2
++- `scene_inspect_layout` ignores `anim.in`/`anim.out`, so it reports `out_of_bounds` for shots that are not visible at that time. — tracks: https://github.com/SebassContreras/lienzo/issues/3
++- Compact scenes have no reusable pieces: repeated objects (car, houses, shots) must be written out in full or produced by an external generator. — tracks: https://github.com/SebassContreras/lienzo/issues/4
++- Joint mode: `scene_build` + `overwrite` wipes the user's manual edits with no warning or merge. — tracks: https://github.com/SebassContreras/lienzo/issues/5
++- A looping track cannot be told to repeat over the shot; it holds its last value after its last keyframe. — tracks: https://github.com/SebassContreras/lienzo/issues/6
++- `swing` has no pivot setting; it always turns around the element's box centre. — tracks: https://github.com/SebassContreras/lienzo/issues/7
++- `polygon` `sides: 3` is inscribed in the box, so a triangle never touches the box's bottom edge. — tracks: https://github.com/SebassContreras/lienzo/issues/8
++- Elements get technical ids and no readable name by default, so a scene with 100+ nested elements is hard to edit by hand. — tracks: https://github.com/SebassContreras/lienzo/issues/9
+ 
+ ## Local
+ 

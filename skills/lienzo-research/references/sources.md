@@ -25,3 +25,5 @@
 - Add the year for statistics ("2024", "2025").
 - Search "myth", "misconception" or "debunked" plus the topic to find pitfalls.
 - Run independent searches in parallel.
+- A brand site that blocks crawlers (`robots.txt: disallow: /`): open the official page in the user's real browser with `pwa-nav` (`open <url> --launch --allow-origin`) from the start, or ask the user to paste the page text.
+- Look for linked PDFs first (studies, data sheets): they hold the richest facts, and browser snapshots miss body text inside tabs.

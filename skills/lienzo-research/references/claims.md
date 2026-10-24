@@ -22,6 +22,12 @@ Short text is where truth breaks. Shorten wording, never meaning.
 | "71 % of Earth's surface is water" | "71 % del planeta es agua" | surface turned into the whole planet (water is a tiny share of its mass) |
 | "Studies suggest" | "Está demostrado" | inflated certainty |
 
+## Health claims
+
+- Phrase health benefits like the EU authorised claims (Regulation (EU) No 432/2012; check the wording in the [EU Register of health claims](https://food.ec.europa.eu/food-safety/labelling-and-nutrition/nutrition-and-health-claims/eu-register-health-claims_en)), e.g. "contributes to the normal function of the heart".
+- Leave out seller claims outside that wording (anti-inflammatory, disease prevention, "cellular energy").
+- Attribute a brand's own study on screen ("*RINGANA study, 27 people, 3 capsules/day").
+
 ## Visual claims
 
 - Charts must keep proportions: a bar for 30 must be half the height of one for 60. Axes start at 0 unless labelled.

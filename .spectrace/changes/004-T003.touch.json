@@ -1,0 +1,67 @@
+{
+ "files": {
+  "videos/ringana-omega/learnings.md": {
+   "lang": "markdown",
+   "lines": [
+    37,
+    1
+   ],
+   "other": {},
+   "status": "modified",
+   "symbols": [
+    {
+     "body": "d19b40a8ee20935f",
+     "change": "modified",
+     "kind": "section",
+     "lines": [
+      4,
+      1
+     ],
+     "name": "ringana-omega — Learnings"
+    },
+    {
+     "body": "7d91d5c1d06cd603",
+     "change": "added",
+     "kind": "section",
+     "lines": [
+      6,
+      0
+     ],
+     "name": "ringana-omega — Learnings > Engine"
+    },
+    {
+     "body": "9fc50d77b99d6c8a",
+     "change": "added",
+     "kind": "section",
+     "lines": [
+      7,
+      0
+     ],
+     "name": "ringana-omega — Learnings > Local"
+    },
+    {
+     "body": "10b2229ce9770c9d",
+     "change": "added",
+     "kind": "section",
+     "lines": [
+      4,
+      0
+     ],
+     "name": "ringana-omega — Learnings > Piece"
+    },
+    {
+     "body": "0be1a242b6471fa3",
+     "change": "added",
+     "kind": "section",
+     "lines": [
+      16,
+      0
+     ],
+     "name": "ringana-omega — Learnings > Rule"
+    }
+   ]
+  }
+ },
+ "partial": false,
+ "skipped": []
+}

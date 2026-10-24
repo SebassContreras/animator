@@ -1,0 +1,51 @@
+{
+ "files": {
+  "tests/lib/environment.test.cjs": {
+   "lang": "file",
+   "lines": [
+    13,
+    0
+   ],
+   "other": {
+    "file": [
+     13,
+     0
+    ]
+   },
+   "status": "new",
+   "symbols": []
+  },
+  "tests/lib/objects.test.cjs": {
+   "lang": "file",
+   "lines": [
+    25,
+    0
+   ],
+   "other": {
+    "file": [
+     25,
+     0
+    ]
+   },
+   "status": "new",
+   "symbols": []
+  },
+  "tests/lib/scene.test.cjs": {
+   "lang": "file",
+   "lines": [
+    10,
+    1
+   ],
+   "other": {
+    "file": [
+     10,
+     1
+    ]
+   },
+   "status": "modified",
+   "symbols": []
+  }
+ },
+ "partial": false,
+ "skipped": []
+}

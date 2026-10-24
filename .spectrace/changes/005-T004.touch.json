@@ -1,0 +1,36 @@
+{
+ "files": {
+  "lib/scene.cjs": {
+   "lang": "file",
+   "lines": [
+    14,
+    1
+   ],
+   "other": {
+    "file": [
+     14,
+     1
+    ]
+   },
+   "status": "modified",
+   "symbols": []
+  },
+  "videos/viaje/scene.gen.cjs": {
+   "lang": "file",
+   "lines": [
+    3,
+    6
+   ],
+   "other": {
+    "file": [
+     3,
+     6
+    ]
+   },
+   "status": "modified",
+   "symbols": []
+  }
+ },
+ "partial": false,
+ "skipped": []
+}

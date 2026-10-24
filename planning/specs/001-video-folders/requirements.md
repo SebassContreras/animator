@@ -20,7 +20,7 @@ Agents and the user starting, finding or fixing a video.
 
 ## Out of scope
 
-- The shared library (002), the template (003), splitting `LOG.md` (004).
+- The shared library (002), the template (003), splitting the session log (004).
 
 ## Dependencies
 

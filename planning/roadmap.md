@@ -8,4 +8,7 @@ Index of every spec. `Status` and `Stage` are written only by `trace`. Grammar:
 | 001 | video-folders | done        | — | —      | 1 |
 | 002 | shared-lib | done        | 001 | —      | 2 |
 | 003 | video-template | done        | 001, 002 | —      | 3 |
-| 004 | learning-promotion | todo | 001, 002 | design | 4 |
+| 004 | learning-promotion | done        | 001, 002 | —      | 4 |
+| 005 | promote-viaje | done        | 002, 004 | —     | 5 |
+| 006 | promote-ringana-omega | done        | 002, 004 | —     | 6 |
+| 007 | promote-ringana-omega-v2 | done        | 004 | —     | 7 |

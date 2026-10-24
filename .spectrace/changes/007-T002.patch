@@ -1,0 +1,13 @@
+diff --git a/videos/ringana-omega-v2/learnings.md b/videos/ringana-omega-v2/learnings.md
+index 816958e..bf3cd5d 100644
+--- a/videos/ringana-omega-v2/learnings.md
++++ b/videos/ringana-omega-v2/learnings.md
+@@ -12,7 +12,7 @@ Session 2026-10-24, scene `omega-v2`: the art-direction pass that redesigned `ri
+ 
+ - Big halos (400–520 px) are plain discs at 4–12 % opacity; `bgGlow` only on small focal objects, because a large one washes the frame white. — promoted: skills/lienzo-animate/references/drawing.md
+ - The art-direction pass (three tones per object, three planes, ambient motion, overshoot and stagger) is the default for every new piece. — promoted: skills/lienzo-art-direction/SKILL.md
+-- Compare two versions side by side: `ffmpeg -i v1.mp4 -i v2.mp4 -filter_complex "[0:v]scale=540:-2[a];[1:v]scale=540:-2[b];[a][b]hstack" -map 1:a? out.mp4`, then grab frames at mid-shot times and run the review checklist on them.
++- Compare two versions side by side: `ffmpeg -i v1.mp4 -i v2.mp4 -filter_complex "[0:v]scale=540:-2[a];[1:v]scale=540:-2[b];[a][b]hstack" -map 1:a? out.mp4`, then grab frames at mid-shot times and run the review checklist on them. — promoted: skills/lienzo-art-direction/SKILL.md
+ 
+ ## Engine
+ 

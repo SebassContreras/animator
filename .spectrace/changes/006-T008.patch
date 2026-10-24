@@ -1,0 +1,19 @@
+diff --git a/tests/lib/motion.test.cjs b/tests/lib/motion.test.cjs
+deleted file mode 100644
+index 172698f..0000000
+--- a/tests/lib/motion.test.cjs
++++ /dev/null
+@@ -1,13 +0,0 @@
+-// A count-up is the given steps as a label.text track (006/R1).
+-const { test } = require("node:test");
+-const assert = require("node:assert/strict");
+-const { countUp } = require("../../lib/motion.cjs");
+-
+-test("countUp writes the given steps as a label.text track", () => {
+-  // Arrange
+-  const steps = [[1, "1%"], [2, "2%"]];
+-  // Act
+-  const tracks = countUp(steps);
+-  // Assert
+-  assert.deepEqual(tracks, { "label.text": [[1, "1%"], [2, "2%"]] });
+-});

@@ -1,0 +1,27 @@
+{
+ "files": {
+  "skills/lienzo-research/references/claims.md": {
+   "lang": "markdown",
+   "lines": [
+    6,
+    0
+   ],
+   "other": {},
+   "status": "modified",
+   "symbols": [
+    {
+     "body": "4e29d6b9c66da533",
+     "change": "added",
+     "kind": "section",
+     "lines": [
+      6,
+      0
+     ],
+     "name": "Simplifying claims for the screen > Health claims"
+    }
+   ]
+  }
+ },
+ "partial": false,
+ "skipped": []
+}

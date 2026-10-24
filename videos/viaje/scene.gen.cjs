@@ -1,5 +1,8 @@
 // Generates scene.json beside this file (compact scene for Lienzo's scene_build). Run: node videos/viaje/scene.gen.cjs
 const fs = require("fs");
+const { car: libCar, house: libHouse } = require("../../lib/objects.cjs");
+const { cloud: libCloud, dashes: libDashes } = require("../../lib/environment.cjs");
+const { nameAll } = require("../../lib/scene.cjs");
 const W = 1080, H = 1920, D = 12;
 const flat = (o) => ({ border: { width: 0 }, shadow: { enabled: false }, ...o, fill: { gradient: false, opacity: 1, ...(o.fill || {}) } });
 const rect = (id, x, y, w, h, color, extra = {}) => flat({ id, kind: "rect", x, y, w, h, radius: 0, fill: { color }, ...extra });
@@ -23,30 +26,13 @@ const title = (id, text, y, color, a, b) => rect(id, 0, y, W, 130, "#000000", {
   },
 });
 
-const wheel = (id, x, y) => {
-  const spin = { "@rotate": [[0, 0, "linear"], [D, 360 * 2 * D]] };
-  return [
-    path(id, x, y, 110, 110, "M55 0 A55 55 0 1 1 54.9 0 Z", "#111827", { tracks: spin }),
-    path(id + "-rim", x, y, 110, 110, "M55 25 A30 30 0 1 1 54.9 25 Z", "#9CA3AF", { tracks: spin }),
-    path(id + "-spokes", x, y, 110, 110, "M51 25 H59 V85 H51 Z M25 51 H85 V59 H25 Z", "#4B5563", { tracks: spin }),
-  ];
-};
-const car = (id, x, y, color, extra = {}) => group(id, x, y, 500, 240, [
-  path(id + "-body", 0, 0, 500, 180, "M20 150 L20 100 Q30 80 80 75 L140 20 Q150 10 170 10 L330 10 Q350 10 365 25 L420 75 Q480 80 490 110 L490 150 Z", color),
-  path(id + "-glass", 0, 0, 500, 180, "M160 30 L320 30 L360 75 L130 75 Z", "#BFDBFE"),
-  ell(id + "-light", 470, 95, 26, 18, "#FEF3C7"),
-  ...wheel(id + "-wl", 70, 120),
-  ...wheel(id + "-wr", 330, 120),
-], { anim: { loop: { kind: "float", amount: 4, cycles: 24 } }, ...extra });
+const CAR = { glass: "#BFDBFE", light: "#FEF3C7", tyre: "#111827", rim: "#9CA3AF", spokes: "#4B5563" };
+const car = (id, x, y, body, extra = {}) => libCar(id, x, y, { ...CAR, body }, { spin: D, ...extra });
+const house = (id, x, w, h, wall, roof, litAt) =>
+  libHouse(id, x, 1300, w, h, { wall, roof, window: "#1E293B", lit: "#FDE047", door: "#451A03" }, litAt);
 
-const dashes = (id, y, period) => group(id, 0, y, W * 2, 20,
-  Array.from({ length: 8 }, (_, i) => rect(`${id}-${i}`, i * 270, 0, 160, 20, "#F9FAFB", { radius: 4 })),
-  { tracks: { x: [[0, 0, "linear"], [period, -W]] } });
-const cloud = (id, x, y, s, dx) => group(id, x, y, 300 * s, 140 * s, [
-  ell(id + "-a", 0, 40 * s, 140 * s, 100 * s, "#FFFFFF"),
-  ell(id + "-b", 80 * s, 0, 150 * s, 140 * s, "#FFFFFF"),
-  ell(id + "-c", 170 * s, 40 * s, 130 * s, 100 * s, "#FFFFFF"),
-], { tracks: { x: [[0, x, "linear"], [3, x - dx]] } });
+const dashes = (id, y, period) => libDashes(id, y, period, { width: W, color: "#F9FAFB" });
+const cloud = (id, x, y, s, dx) => libCloud(id, x, y, s, dx, "#FFFFFF", 3);
 
 // Shot 1: countryside, 0-3 s
 const s1 = shot("toma-1-campo", 0, 3, [
@@ -81,14 +67,6 @@ const s2 = shot("toma-2-arbol", 3, 6, [
 ], { tracks: { "@scale": [[3, 1, "linear"], [6, 1.12]] } });
 
 // Shot 3: town at dusk, 6-9 s
-const house = (id, x, w, h, wall, roof, litAt) => group(id, x, 1300 - h - 120, w, h + 120, [
-  // a path triangle: polygon sides:3 is inscribed and leaves a gap above the wall
-  path(id + "-roof", -20, 0, w + 40, 140, `M0 140 L${(w + 40) / 2} 0 L${w + 40} 140 Z`, roof),
-  rect(id + "-wall", 0, 120, w, h, wall),
-  rect(id + "-win", w * 0.2, 120 + h * 0.25, w * 0.25, h * 0.25, "#1E293B", { tracks: { "fill.color": [[litAt, "#1E293B"], [litAt + 0.3, "#FDE047"]] } }),
-  rect(id + "-win2", w * 0.55, 120 + h * 0.25, w * 0.25, h * 0.25, "#1E293B", { tracks: { "fill.color": [[litAt + 0.4, "#1E293B"], [litAt + 0.7, "#FDE047"]] } }),
-  rect(id + "-door", w * 0.38, 120 + h * 0.6, w * 0.24, h * 0.4, "#451A03"),
-]);
 const s3 = shot("toma-3-pueblo", 6, 9, [
   rect("s3-sky", 0, 0, W, H, "#7C3AED", { fill: { color: "#7C3AED", gradient: true, color2: "#F97316", angle: 90 } }),
   ell("s3-sun", 440, 980, 200, 200, "#FB923C", { tracks: { y: [[6, 980, "linear"], [9, 1120]] } }),
@@ -116,7 +94,7 @@ const fadeBlack = rect("fade-negro", 0, 0, W, H, "#000000", {
   tracks: { "fill.opacity": [[11, 0, "ease-in"], [12, 1]] },
 });
 
-// Readable names so the user finds pieces in the layers panel (LOG.md #11)
+// Readable names so the user finds pieces in the layers panel (learnings.md)
 const NAMES = {
   "toma-1-campo": "Toma 1 · campo", "toma-2-arbol": "Toma 2 · árbol", "toma-3-pueblo": "Toma 3 · pueblo", "toma-4-noche": "Toma 4 · noche",
   "s1-sky": "Cielo", "s1-sun": "Sol", "s1-cloud1": "Nube 1", "s1-cloud2": "Nube 2", "s1-hills": "Colinas", "s1-grass": "Pasto",
@@ -128,11 +106,7 @@ const NAMES = {
   t1: "Título 1", t2: "Título 2", t3: "Título 3", t4: "Título 4", "fade-negro": "Fundido a negro",
 };
 const PARTS = { "-body": "carrocería", "-glass": "ventanas", "-light": "faro", "-wl": "rueda trasera", "-wr": "rueda delantera", "-roof": "tejado", "-wall": "pared", "-win2": "ventana 2", "-win": "ventana 1", "-door": "puerta" };
-const nameAll = (els, parent) => els.forEach((e) => {
-  if (NAMES[e.id]) e.name = NAMES[e.id];
-  else if (parent) for (const [k, v] of Object.entries(PARTS)) if (e.id.includes(k)) { e.name = parent + " · " + v + (e.id.endsWith("-rim") ? " (llanta)" : e.id.endsWith("-spokes") ? " (radios)" : ""); break; }
-  if (e.children) nameAll(e.children, e.name);
-});
+const ENDINGS = { "-rim": " (llanta)", "-spokes": " (radios)" };
 const scene = {
   size: [W, H], duration: D, fps: 30,
   background: { color: "#000000", gradient: false, dots: false, spotlight: 0 },
@@ -143,5 +117,5 @@ const scene = {
     title("t4", "Fin del viaje", 700, "#F8FAFC", 9, D),
     fadeBlack],
 };
-nameAll(scene.elements);
+nameAll(scene.elements, NAMES, PARTS, ENDINGS);
 fs.writeFileSync(__dirname + "/scene.json", JSON.stringify(scene, null, 1));

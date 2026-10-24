@@ -6,7 +6,7 @@ const { checkPalette } = require("../../lib/palette.cjs");
 const C = checkPalette(require("./palette.json"));
 const { sceneHelpers } = require("../../lib/scene.cjs");
 const { heart } = require("../../lib/objects.cjs");
-const { heartbeat } = require("../../lib/motion.cjs");
+const { heartbeat, countUp } = require("../../lib/motion.cjs");
 const { sea, particles } = require("../../lib/environment.cjs");
 
 const { rect, ell, path, group } = require("../../lib/primitives.cjs");
@@ -108,7 +108,7 @@ const s6 = shot("shot-6", "Shot 6 · the proof", 16.5, 20.5, [
   group("s6-needle", gx(4.84) - 70, 760, 140, 140, [
     rect("s6-needle-val", 0, 0, 140, 60, "#000000", { fill: { color: "#000000", opacity: 0 },
       label: { text: "4.8%", font: "Montserrat", size: 40, weight: 800, color: C.text.base, align: "center" },
-      tracks: { "label.text": [[16.5, "4.8%"], [17.6, "5.9%"], [18.3, "7.0%"], [19, "7.9%"]] } }),
+      tracks: countUp([[16.5, "4.8%"], [17.6, "5.9%"], [18.3, "7.0%"], [19, "7.9%"]]) }),
     path("s6-needle-tri", 45, 80, 50, 50, "M0 0 L50 0 L25 50 Z", "#FFFFFF"),
   ], { name: "Needle", tracks: { x: [[16.5, gx(4.84) - 70], [17, gx(4.84) - 70, "ease-out"], [19, gx(7.87) - 70]] } }),
 ], {}, 0.4);

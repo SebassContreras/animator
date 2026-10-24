@@ -8,7 +8,7 @@ const { checkPalette } = require("../../lib/palette.cjs");
 const C = checkPalette(require("./palette.json"));
 const { sceneHelpers } = require("../../lib/scene.cjs");
 const { heart } = require("../../lib/objects.cjs");
-const { heartbeat } = require("../../lib/motion.cjs");
+const { heartbeat, countUp } = require("../../lib/motion.cjs");
 const { sea: seaFill, particles } = require("../../lib/environment.cjs");
 
 const { shot, text, fadeToBlack } = sceneHelpers({ w: W, h: H, duration: D, palette: C, textMotion: { amount: 30, inDuration: 0.45, easeIn: "cubic-out", easeOut: "cubic-in" } });
@@ -192,7 +192,7 @@ const s6 = shot("shot-6", "Shot 6 · the proof", 16.5, 20.5, [
   group("s6-needle", gx(4.84) - 80, 740, 160, 160, [
     rect("s6-needle-val", 0, 0, 160, 76, "#FFFFFF", { radius: 38,
       label: { text: "4.8%", font: "Montserrat", size: 40, weight: 800, color: C.sea.shadow, align: "center" },
-      tracks: { "label.text": [[16.5, "4.8%"], [17.6, "5.9%"], [18.3, "7.0%"], [19, "7.9%"]] } }),
+      tracks: countUp([[16.5, "4.8%"], [17.6, "5.9%"], [18.3, "7.0%"], [19, "7.9%"]]) }),
     path("s6-needle-tri", 55, 72, 50, 40, "M0 0 L50 0 L25 40 Z", "#FFFFFF"),
   ], { name: "Needle", tracks: { x: [[16.5, gx(4.84) - 80], [17, gx(4.84) - 80, "cubic-out"], [19, gx(7.87) - 80]], "@scale": [[19, 1, "ease-out"], [19.15, 1.1, "ease-in-out"], [19.4, 1]] } }),
 ], { tracks: { "@scale": [[16.5, 1, "linear"], [20.5, 1.03]] } }, 0.4);

@@ -17,6 +17,7 @@ There is no native camera or "shot": **build them with groups** (see `references
 5. **Measure.** `scene_inspect_layout` with `times` at the same moments. Its text widths are NOT reliable (see gotchas); trust the image.
 6. **Fix and repeat** steps 3–5 until every shot looks right.
 7. **Export.** `scene_export` with `format: "mp4"` (or `gif` for short loops).
+8. **Close out** (only after the user approves the export). Write every finding of the session into `videos/<slug>/learnings.md` under its kind: `Piece` (goes to `lib/`), `Rule` (goes to a skill), `Engine` (a Lienzo limitation) or `Local` (stays in the video). Show the classification to the user, who can move or drop any finding. For the confirmed `Piece` and `Rule` findings, open a promotion spec `NNN-promote-<slug>` in the Animator repo with `spectrace-start` (one R item per finding) and plan it with `spectrace-plan`; do not promote anything in this step, the spec's tasks do it and add `— promoted: <path>` to the finding. For each `Engine` finding, ask the user to file an issue in the Lienzo repo and end the finding with `— tracks: <url>`.
 
 ## Joint mode (the user corrects in the editor)
 
@@ -26,7 +27,7 @@ Lienzo has "Modo conjunto" (joint mode): the editor shows each change the agent 
 - When you come back, **always read the scene with `scene_get`** before touching anything. The user's changes win.
 - Use targeted changes (`element_update`, `keyframe_set`). **Never** run `scene_build` + `overwrite` on a scene the user corrected, unless you first carry their changes into the generator or the compact JSON.
 - When the user reports problems in words, fix them at the source (generator/compact JSON), confirm the scene file has no manual edits (compare with your last saved copy), then rebuild.
-- Log what the user corrected: it shows what is wrong in the way you build.
+- Note what the user corrected in `videos/<slug>/learnings.md`: it shows what is wrong in the way you build, and close-out (step 8) classifies it.
 
 ## Large scenes: use a generator
 

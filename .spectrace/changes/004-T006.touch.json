@@ -1,0 +1,69 @@
+{
+ "files": {
+  "videos/ringana-omega-v2/learnings.md": {
+   "lang": "markdown",
+   "lines": [
+    1,
+    1
+   ],
+   "other": {},
+   "status": "modified",
+   "symbols": [
+    {
+     "body": "f48dac7e87b28575",
+     "change": "modified",
+     "kind": "section",
+     "lines": [
+      1,
+      1
+     ],
+     "name": "ringana-omega-v2 — Learnings > Engine"
+    }
+   ]
+  },
+  "videos/ringana-omega/learnings.md": {
+   "lang": "markdown",
+   "lines": [
+    3,
+    3
+   ],
+   "other": {},
+   "status": "modified",
+   "symbols": [
+    {
+     "body": "0ed8706ff878c6a0",
+     "change": "modified",
+     "kind": "section",
+     "lines": [
+      3,
+      3
+     ],
+     "name": "ringana-omega — Learnings > Engine"
+    }
+   ]
+  },
+  "videos/viaje/learnings.md": {
+   "lang": "markdown",
+   "lines": [
+    9,
+    9
+   ],
+   "other": {},
+   "status": "modified",
+   "symbols": [
+    {
+     "body": "b3568a38712af215",
+     "change": "modified",
+     "kind": "section",
+     "lines": [
+      9,
+      9
+     ],
+     "name": "viaje — Learnings > Engine"
+    }
+   ]
+  }
+ },
+ "partial": false,
+ "skipped": []
+}

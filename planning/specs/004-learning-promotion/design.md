@@ -1,3 +1,41 @@
 # 004 — learning-promotion — Design
 
-TBD — closed by the `spectrace-plan` skill.
+## Approach
+
+- D1@1 (implements R1, R3, R5): `learnings.md` keeps the four section headings from 003/D5 (`## Piece`, `## Rule`, `## Engine`, `## Local`). The section is the finding's kind, so a bullet carries no kind tag. A bullet is one finding in one or two sentences, optionally ending with one status suffix: `— promoted: <repo path>` (Piece or Rule, once it lives in `lib/` or a skill) or `— tracks: <url>` (Engine, required). The placeholders in `videos/_template/learnings.md` show both suffixes. _(judgement, no standard)_
+- D2@1 (implements R3): Each the session log session moves to its video's `learnings.md`, one bullet per numbered finding, rewritten under its kind: `viaje` ← "project `animator-lab`, scene `viaje`", `ringana-omega` ← "project `ringana`, scene `omega`", `ringana-omega-v2` ← "scene `omega-v2`". Shot lists and goals are not findings. The generator already holds the shot list and the brief holds the goal, so both are dropped. _(judgement, no standard)_
+- D3@1 (implements R3): A Rule or Piece finding gets `— promoted: <path>` only when a search during migration finds the rule or piece in that file today. The log's "**Skill:** …" notes are not taken as proof. A finding the log says went to a skill, but that the search cannot find, stays unmarked and is listed in the task report. _(judgement, no standard)_
+- D4@1 (implements R5): Engine findings link to an issue in the Lienzo repo (`https://github.com/SebassContreras/lienzo/issues/<n>`). Lienzo has no issue for any of the log's "improvement #N" numbers today, so the user files one issue per engine finding (outward-facing, so a `[human]` task) and the `#N` numbers are dropped. This repo keeps no list of engine improvements: the issues are the list. _(standard: GitHub issues — https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues)_
+- D5@1 (implements R4): the session log is deleted, not reduced to a pointer. Every mention outside history is re-pointed to the video's `learnings.md` or to the skill file that now holds the rule. The mentions are in `README.md`, `planning/product.md`, `skills/lienzo-art-direction/SKILL.md`, `skills/lienzo-art-direction/references/motion-polish.md` and a comment in `videos/viaje/scene.gen.cjs`. `trace check` then proves that no file depends on it, because it flags any file that still mentions a deleted file. _(judgement, no standard)_
+- D6@1 (implements R2): `lienzo-animate` gets step 8, **Close out**, which runs only after the user approves the export. The agent (a) writes every finding of the session into `videos/<slug>/learnings.md` under its kind; (b) shows the classification to the user, who can move or drop any finding; (c) for each confirmed Piece or Rule, opens a promotion spec in the Animator repo with `spectrace-start` (`NNN-promote-<slug>`, one R item per finding) and plans it with `spectrace-plan`; (d) for each Engine finding, asks the user to file the Lienzo issue and writes the link. Nothing is promoted in this step. The promotion spec's tasks do that, and their last action adds the `— promoted:` suffix (A13). _(judgement, no standard)_
+- D7@1 (implements R1, R5): `tests/videos/learnings.test.cjs` checks the format of each real video's `learnings.md`, with one explicit test per video and rule and no loops. The checks: the four headings appear exactly once and in order, and every bullet under `## Engine` ends with `— tracks: https://…`. A small pure parser at the top of the test file splits the file into sections. It stays out of `lib/` because nothing else reads `learnings.md` (A5). _(standard: `node:test` — https://nodejs.org/api/test.html)_
+- D8@1 (implements R2, R3): The three migrated videos go through the D6 close-out after the migration. Their unmarked Piece and Rule findings already worked in an approved video, so A13 allows promoting them. The agent lists them per video, and the user confirms, moves or drops each one. Every video with at least one confirmed finding gets its own `NNN-promote-<slug>` spec. Findings the user drops stay in `learnings.md` without a suffix. _(judgement, no standard)_
+
+## Deliverables
+
+- Changed: `videos/_template/learnings.md` (status-suffix placeholders), `videos/{viaje,ringana-omega,ringana-omega-v2}/learnings.md` (migrated findings), `skills/lienzo-animate/SKILL.md` (step 8), `skills/lienzo-art-direction/SKILL.md`, `skills/lienzo-art-direction/references/motion-polish.md`, `videos/viaje/scene.gen.cjs` (comment only), `README.md`, `planning/product.md`.
+- New test: `tests/videos/learnings.test.cjs`.
+- Deleted: the session log.
+- External (user): one issue per engine finding in the Lienzo repo.
+- Unchanged: `lib/`, the generators' output (golden tests stay green), `.spectrace/`.
+
+## Sequencing
+
+1. The template format (T001) comes first, because the migration writes in that format.
+2. Migrate the three videos (T002–T004). Engine bullets end in `— tracks: TODO` for now.
+3. The user files the Lienzo issues (T005), then the links replace each `TODO` (T006).
+4. The format test (T007) comes after T006, so it lands green and guards the result.
+5. Re-point the mentions (T008), then delete the session log (T009). Deleting first would leave dangling mentions mid-spec.
+6. The close-out step (T010) can happen any time after T001. The user proves it on the next approved video (T011).
+7. The migrated videos' close-out (T012–T014) comes after T004 and T010: it needs the migrated findings and the written step.
+
+## Trade-offs
+
+- D1. Pros: no new syntax. The 003 template and its headings stay valid, so 003/D5 needs no change. Cons: a free-text suffix can be mistyped. Mitigation: D7's test checks the Engine suffix, which R5 makes mandatory. The `promoted` suffix is optional by nature.
+- D2. Pros: each video's file reads on its own. Cons: rewriting may lose nuance from the log. Mitigation: the deleted the session log stays in git history, and each migration task's patch in `.spectrace/changes/` shows the old and new text side by side.
+- D3. Pros: a `promoted` mark is a checked fact, not a claim copied from the log. Cons: more work per finding. Mitigation: the check is one search per rule, and unfound rules are reported, not silently fixed.
+- D4. Pros: engine work lives where Lienzo's owner tracks it, and R5's "no separate list" holds. Cons: it depends on the user filing issues, so the spec can stall. Mitigation: `[human]` tasks never hold a spec open, and the T002–T004 reports draft each issue's title and body so filing is copy-paste.
+- D5. Pros: one source of truth with nothing to keep in sync. Cons: a link to the session log from outside the repo breaks. Mitigation: git history keeps the file. The repo is the only known consumer, and `trace check` proves no internal mention is left.
+- D6. Pros: every promotion is a traced spec task (A13), and the user confirms each one (owner split). Cons: one small spec per video adds roadmap rows. Mitigation: a video with no Piece or Rule finding opens no spec. A promotion spec is tiny (one R item and one task per finding) and closes to `done`.
+- D7. Pros: it guards the two machine-checkable rules (headings, engine links) cheaply and offline (A10). Cons: one test per video means a new test each time a video is added. Mitigation: that is one copied test. A loop over `videos/` would break the no-loops rule for tests.
+- D8. Pros: nothing proven in the first three videos is left forgotten, and it is the first real run of the close-out step. Cons: up to three new specs and more work now. Mitigation: the user's confirmation filters out weak findings, and a video with nothing confirmed opens no spec.

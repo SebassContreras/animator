@@ -1,0 +1,36 @@
+{
+ "files": {
+  "tests/videos/scenes.test.cjs": {
+   "lang": "file",
+   "lines": [
+    5,
+    5
+   ],
+   "other": {
+    "file": [
+     5,
+     5
+    ]
+   },
+   "status": "modified",
+   "symbols": []
+  },
+  "videos/viaje/scene.gen.cjs": {
+   "lang": "file",
+   "lines": [
+    1,
+    1
+   ],
+   "other": {
+    "file": [
+     1,
+     1
+    ]
+   },
+   "status": "modified",
+   "symbols": []
+  }
+ },
+ "partial": false,
+ "skipped": []
+}

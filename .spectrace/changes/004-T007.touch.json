@@ -1,0 +1,21 @@
+{
+ "files": {
+  "tests/videos/learnings.test.cjs": {
+   "lang": "file",
+   "lines": [
+    60,
+    0
+   ],
+   "other": {
+    "file": [
+     60,
+     0
+    ]
+   },
+   "status": "new",
+   "symbols": []
+  }
+ },
+ "partial": false,
+ "skipped": []
+}

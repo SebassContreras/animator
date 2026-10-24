@@ -60,4 +60,12 @@ Pick the one that makes the message felt, not just stated.
 
 - ≤ 7 words per line, ≤ 2 lines at once, ≥ 1.5 s per line.
 - One typeface, two weights. Title 72–96 px, support 40–56 px on 1080-wide canvases.
+- Long titles take the low end: a 20-character title fits at 72 px on a 1080-wide canvas; 88 px was cut off.
 - Text enters after the image (0.2–0.4 s later), so the eye lands on the image first.
+
+## Voice-over
+
+- One clip per shot, placed with `audioTracks[].startOffset`; one clip for the whole script does not fit the shots.
+- The voice does not repeat the on-screen text: short, varied lines; numbers and terms stay on screen. One sentence may run across a cut as a single clip.
+- Never split one sentence into two clips: the gap makes it sound broken.
+- Keep the brand out of the voice unless the user asks for it.

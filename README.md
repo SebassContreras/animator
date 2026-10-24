@@ -37,7 +37,6 @@ videos/<slug>/     one folder per video:
   scene.json         the compact scene Lienzo builds
   learnings.md       what this video taught us
 tests/             node --test suites
-LOG.md             findings from each session against real Lienzo
 planning/          specs and decisions (spectrace)
 ```
 

@@ -1,0 +1,21 @@
+diff --git a/videos/viaje/learnings.md b/videos/viaje/learnings.md
+index cca5485..9367094 100644
+--- a/videos/viaje/learnings.md
++++ b/videos/viaje/learnings.md
+@@ -6,11 +6,11 @@ Session 2026-10-24, project `animator-lab`: a 12 s vertical video with 4 shots,
+ 
+ ## Piece
+ 
+-- `car` with spinning `wheel`s: a group with the body and two wheels whose rotation loops for the whole shot (`scene.gen.cjs` → `car`, `wheel`).
+-- `house` with a `path` roof that overlaps the wall and windows that light up at a given time (`scene.gen.cjs` → `house`).
+-- `cloud` drifting across the sky as a parallax layer (`scene.gen.cjs` → `cloud`).
+-- Road `dashes` that loop with a period equal to the shot length, so the road never freezes (`scene.gen.cjs` → `dashes`).
+-- `nameAll` gives every group and main piece a readable `name` so the user finds it in the layers panel (`scene.gen.cjs` → `nameAll`).
++- `car` with spinning `wheel`s: a group with the body and two wheels whose rotation loops for the whole shot (`scene.gen.cjs` → `car`, `wheel`). — promoted: lib/objects.cjs
++- `house` with a `path` roof that overlaps the wall and windows that light up at a given time (`scene.gen.cjs` → `house`). — promoted: lib/objects.cjs
++- `cloud` drifting across the sky as a parallax layer (`scene.gen.cjs` → `cloud`). — promoted: lib/environment.cjs
++- Road `dashes` that loop with a period equal to the shot length, so the road never freezes (`scene.gen.cjs` → `dashes`). — promoted: lib/environment.cjs
++- `nameAll` gives every group and main piece a readable `name` so the user finds it in the layers panel (`scene.gen.cjs` → `nameAll`). — promoted: lib/scene.cjs
+ 
+ ## Rule
+ 

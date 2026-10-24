@@ -1,0 +1,39 @@
+diff --git a/videos/ringana-omega/learnings.md b/videos/ringana-omega/learnings.md
+index c53d83e..50a7d7f 100644
+--- a/videos/ringana-omega/learnings.md
++++ b/videos/ringana-omega/learnings.md
+@@ -6,23 +6,23 @@ Session 2026-10-24, project `ringana`, scene `omega`: a 24 s vertical reel about
+ 
+ ## Piece
+ 
+-- Numeric count-up built from `label.text` keyframes (4.8% → 5.9% → 7.0% → 7.9%) (`scene.gen.cjs`, gauge shot).
++- Numeric count-up built from `label.text` keyframes (4.8% → 5.9% → 7.0% → 7.9%) (`scene.gen.cjs`, gauge shot). — promoted: lib/motion.cjs
+ 
+ ## Rule
+ 
+-- When a brand site blocks crawlers (`robots.txt: disallow: /`), open the official page in the user's real browser with `pwa-nav` (`open <url> --launch --allow-origin`) from the start, or ask the user to paste the product page text.
+-- Look for linked PDFs (studies, data sheets) first: they hold the richest facts, and `pwa-nav` snapshots do not show body text inside tabs.
++- When a brand site blocks crawlers (`robots.txt: disallow: /`), open the official page in the user's real browser with `pwa-nav` (`open <url> --launch --allow-origin`) from the start, or ask the user to paste the product page text. — promoted: skills/lienzo-research/references/sources.md
++- Look for linked PDFs (studies, data sheets) first: they hold the richest facts, and `pwa-nav` snapshots do not show body text inside tabs. — promoted: skills/lienzo-research/references/sources.md
+ - Official sources can change the brief a lot (a study with numbers became a new shot): research before the storyboard, not after.
+-- Health claims stay inside the EU authorised wording (Reg. 432/2012); seller claims are left out, and a brand's own study is attributed on screen.
++- Health claims stay inside the EU authorised wording (Reg. 432/2012); seller claims are left out, and a brand's own study is attributed on screen. — promoted: skills/lienzo-research/references/claims.md
+ - Everything in the repo and in the video is in English; chat with the user is in Spanish. — promoted: AGENTS.md
+-- Check `font_list` and run `font_install` before building; a missing font falls back to a serif.
+-- 88 px is too big for a 20-character title on a 1080-wide canvas; 72 px fit.
++- Check `font_list` and run `font_install` before building; a missing font falls back to a serif. — promoted: skills/lienzo-animate/references/gotchas.md
++- 88 px is too big for a 20-character title on a 1080-wide canvas; 72 px fit. — promoted: skills/lienzo-storyboard/references/craft.md
+ - Build large compact scenes (45 KB) through the CLI with `pnpm lienzo scene_build --json @file`, not inline through MCP. — promoted: skills/lienzo-animate/references/compact-format.md
+-- Voice-over: one clip per shot, placed with `audioTracks[].startOffset`; one clip for the whole script does not fit the shots.
+-- The voice must not repeat the on-screen text: short, varied lines; numbers and terms stay on screen; one sentence may run across a cut as a single clip.
+-- Never split one sentence into two clips; the gap makes it sound broken.
+-- Keep the brand out of the voice unless the user asks for it.
+-- Measure real audio length with `ffmpeg -af silencedetect` on the export; do not trust `audioDuration`.
++- Voice-over: one clip per shot, placed with `audioTracks[].startOffset`; one clip for the whole script does not fit the shots. — promoted: skills/lienzo-storyboard/references/craft.md
++- The voice must not repeat the on-screen text: short, varied lines; numbers and terms stay on screen; one sentence may run across a cut as a single clip. — promoted: skills/lienzo-storyboard/references/craft.md
++- Never split one sentence into two clips; the gap makes it sound broken. — promoted: skills/lienzo-storyboard/references/craft.md
++- Keep the brand out of the voice unless the user asks for it. — promoted: skills/lienzo-storyboard/references/craft.md
++- Measure real audio length with `ffmpeg -af silencedetect` on the export; do not trust `audioDuration`. — promoted: skills/lienzo-animate/references/gotchas.md
+ 
+ ## Engine
+ 

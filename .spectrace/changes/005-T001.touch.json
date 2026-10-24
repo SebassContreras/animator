@@ -1,0 +1,36 @@
+{
+ "files": {
+  "tests/videos/fixtures/viaje.scene.json": {
+   "lang": "file",
+   "lines": [
+    2805,
+    0
+   ],
+   "other": {
+    "file": [
+     2805,
+     0
+    ]
+   },
+   "status": "new",
+   "symbols": []
+  },
+  "tests/videos/scenes.test.cjs": {
+   "lang": "file",
+   "lines": [
+    10,
+    1
+   ],
+   "other": {
+    "file": [
+     10,
+     1
+    ]
+   },
+   "status": "modified",
+   "symbols": []
+  }
+ },
+ "partial": false,
+ "skipped": []
+}

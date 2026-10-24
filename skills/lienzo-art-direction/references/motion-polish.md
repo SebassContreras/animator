@@ -2,7 +2,7 @@
 
 `craft.md` says what a motion means; this file makes it feel crafted. Syntax is in `lienzo-animate` → `motion.md`.
 
-Numbers are rules of thumb from motion-design practice. Test them in the preview and log changes in `LOG.md`.
+Numbers are rules of thumb from motion-design practice. Test them in the preview and note changes in the video's `learnings.md`.
 
 | Principle | Rule | In Lienzo |
 |---|---|---|

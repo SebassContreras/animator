@@ -1,4 +1,4 @@
-// Golden tests: each ringana generator must keep writing the scene it wrote before the move (001/R4).
+// Golden tests: each generator must keep writing the scene it wrote before its pieces moved to lib/ (001/R4, 005/R6).
 const { test } = require("node:test");
 const assert = require("node:assert/strict");
 const { execFileSync } = require("node:child_process");
@@ -28,4 +28,13 @@ test("ringana-omega-v2 generator writes scene.json beside itself, byte-identical
   const actual = generate("ringana-omega-v2");
   // Assert
   assert.equal(actual, expected);
+});
+
+test("viaje generator writes the same scene values as before its pieces moved to lib/", () => {
+  // Arrange: values, not bytes: lib/ primitives may write keys in another order (005/R6)
+  const expected = JSON.parse(fixture("viaje"));
+  // Act
+  const actual = JSON.parse(generate("viaje"));
+  // Assert
+  assert.deepEqual(actual, expected);
 });

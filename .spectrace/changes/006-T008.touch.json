@@ -1,0 +1,21 @@
+{
+ "files": {
+  "tests/lib/motion.test.cjs": {
+   "lang": "file",
+   "lines": [
+    0,
+    13
+   ],
+   "other": {
+    "file": [
+     0,
+     13
+    ]
+   },
+   "status": "deleted",
+   "symbols": []
+  }
+ },
+ "partial": false,
+ "skipped": []
+}

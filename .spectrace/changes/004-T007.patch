@@ -1,0 +1,66 @@
+diff --git a/tests/videos/learnings.test.cjs b/tests/videos/learnings.test.cjs
+new file mode 100644
+index 0000000..35c99f3
+--- /dev/null
++++ b/tests/videos/learnings.test.cjs
+@@ -0,0 +1,60 @@
++// Learnings format: each video's learnings.md has the four kind sections and links every engine finding (004/R1, 004/R5).
++const { test } = require("node:test");
++const assert = require("node:assert/strict");
++const fs = require("node:fs");
++const path = require("node:path");
++
++const root = path.join(__dirname, "..", "..");
++const KINDS = ["Piece", "Rule", "Engine", "Local"];
++const TRACKED = /— tracks: https:\/\/github\.com\/[^/\s]+\/lienzo\/issues\/\d+$/;
++
++// Splits learnings.md into its `## ` sections: [{ heading, bullets }] in file order.
++const sections = (slug) => fs.readFileSync(path.join(root, "videos", slug, "learnings.md"), "utf8")
++  .split(/\r?\n(?=## )/).slice(1)
++  .map((block) => {
++    const [heading, ...lines] = block.split(/\r?\n/);
++    return { heading: heading.slice(3).trim(), bullets: lines.filter((l) => l.startsWith("- ")) };
++  });
++const untracked = (slug) => sections(slug).find((s) => s.heading === "Engine").bullets.filter((b) => !TRACKED.test(b));
++
++test("viaje learnings has the four kind sections once and in order", () => {
++  // Arrange / Act
++  const headings = sections("viaje").map((s) => s.heading);
++  // Assert
++  assert.deepEqual(headings, KINDS);
++});
++
++test("ringana-omega learnings has the four kind sections once and in order", () => {
++  // Arrange / Act
++  const headings = sections("ringana-omega").map((s) => s.heading);
++  // Assert
++  assert.deepEqual(headings, KINDS);
++});
++
++test("ringana-omega-v2 learnings has the four kind sections once and in order", () => {
++  // Arrange / Act
++  const headings = sections("ringana-omega-v2").map((s) => s.heading);
++  // Assert
++  assert.deepEqual(headings, KINDS);
++});
++
++test("every viaje engine finding links the Lienzo issue that tracks it", () => {
++  // Arrange / Act
++  const missing = untracked("viaje");
++  // Assert
++  assert.deepEqual(missing, []);
++});
++
++test("every ringana-omega engine finding links the Lienzo issue that tracks it", () => {
++  // Arrange / Act
++  const missing = untracked("ringana-omega");
++  // Assert
++  assert.deepEqual(missing, []);
++});
++
++test("every ringana-omega-v2 engine finding links the Lienzo issue that tracks it", () => {
++  // Arrange / Act
++  const missing = untracked("ringana-omega-v2");
++  // Assert
++  assert.deepEqual(missing, []);
++});
