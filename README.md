@@ -1,56 +1,84 @@
-# Animator
+# animator
 
-Skills that let an agent build complex animations with [Lienzo](../lienzo-agente): drawn objects, motion, parallax, and multi-shot videos with cuts and camera moves.
+Turn an idea into a finished animated video with an AI agent.
 
-## Contents
+You describe what you want ("a 15 s reel about how a seed becomes a forest"). The agent researches the facts, writes a storyboard, designs the look and builds the video in Lienzo, an animation engine the agent drives through MCP tools.
 
-- `skills/lienzo-research/` — the researcher: searches the web before scripting and fact-checks every claim in a brief, with sources and verdicts.
-- `skills/lienzo-storyboard/` — the director: turns an idea into an artistic, buildable brief (concept, style, palette, shot list, motion, text).
-- `skills/lienzo-art-direction/` — the art director: named styles, object design, motion polish and a frame-critique checklist, used by the storyboard and the builder.
-- `skills/lienzo-animate/` — the builder: executes a brief in Lienzo. Workflow, references, recipes, known pitfalls, and a verified example scene with its MP4.
-- `briefs/` — briefs written by `lienzo-storyboard`, one per piece.
-- `lab/` — test scenes built with the skill. `viaje.gen.cjs` generates a 12 s, four-shot video.
-- `LOG.md` — findings from each session using the skill against real Lienzo.
-- `LIENZO-IMPROVEMENTS.md` — engine limitations found along the way, prioritized and ready to turn into specs.
+This repo holds two things:
+
+- **Agent skills** — the know-how the agent follows, one skill per role.
+- **Real videos** — each one in its own folder, with everything that produced it.
+
+## How it works
+
+```
+idea ──▶ research ──▶ storyboard ──▶ art direction ──▶ build in Lienzo ──▶ MP4
+        (facts +      (brief: shots,  (style, palette,   (generator script
+         sources)      timing, text)   motion polish)     → scene JSON)
+```
+
+| Skill | Role | What it produces |
+|---|---|---|
+| `lienzo-research` | Researcher | A fact sheet with sources; later, a check of every claim in the brief |
+| `lienzo-storyboard` | Director | A buildable brief: concept, style, palette, shot list, motion, text |
+| `lienzo-art-direction` | Art director | A named style, object design and a frame-review checklist |
+| `lienzo-animate` | Builder | The scene in Lienzo, built from the brief |
+
+## Repo layout
+
+```
+skills/            the four skills above
+lib/primitives.cjs shared drawing helpers (rect, ell, path, group) with flat defaults
+videos/<slug>/     one folder per video:
+  brief.md           the storyboard
+  research.md        facts and sources (when the video states facts)
+  palette.json       the video's colours
+  scene.gen.cjs      Node script that writes the scene
+  scene.json         the compact scene Lienzo builds
+  learnings.md       what this video taught us
+tests/             node --test suites
+LOG.md             findings from each session against real Lienzo
+planning/          specs and decisions (spectrace)
+```
+
+Example videos: `videos/viaje/` (a 12 s road trip), `videos/ringana-omega/` and its redesigned version `videos/ringana-omega-v2/` (a 24 s product reel with voice-over).
+
+## Requirements
+
+- Node 24+ and pnpm.
+- Lienzo with its MCP server, to build and export videos. The generators and tests run without it.
 
 ## Install
 
-1. Set up Lienzo and its MCP server. From the Lienzo repo:
+1. Set up Lienzo and register its MCP server (from the Lienzo repo):
 
    ```sh
    pnpm install
    claude mcp add lienzo -- pnpm lienzo mcp
    ```
 
-2. Copy or link the skills where your agent reads skills:
+2. Copy the skills to where your agent reads them, e.g. Claude Code:
 
    ```sh
-   # Claude Code, for all your projects
-   cp -r skills/lienzo-research skills/lienzo-storyboard skills/lienzo-art-direction skills/lienzo-animate ~/.claude/skills/
-   # or only inside the Lienzo repo
-   cp -r skills/lienzo-research skills/lienzo-storyboard skills/lienzo-art-direction skills/lienzo-animate ../lienzo-agente/.claude/skills/
+   cp -r skills/lienzo-* ~/.claude/skills/
    ```
 
-## How to use
+## Make a video
 
-1. Describe your idea: "I want a 15 s reel about how a seed becomes a forest."
-2. If the idea states real facts, `lienzo-research` researches it and writes `briefs/<slug>.research.md` with sources.
-3. `lienzo-storyboard` proposes a concept and writes `briefs/<slug>.md`. Review and adjust it.
-4. `lienzo-research` verifies every claim in the brief and corrects or removes what is not backed by sources.
-5. Ask the agent to build it. `lienzo-animate` follows the brief's "Build prompt" section.
-6. Review in Lienzo's joint mode and report fixes in words or by hand.
+1. Tell the agent your idea.
+2. If it states real facts, `lienzo-research` writes `videos/<slug>/research.md` with sources.
+3. `lienzo-storyboard` writes `videos/<slug>/brief.md`. Review and adjust it.
+4. `lienzo-research` verifies every claim in the brief.
+5. Ask the agent to build it; `lienzo-animate` follows the brief's "Build prompt".
+6. Review the preview in Lienzo and ask for fixes in plain words.
 
-## Try the example
-
-From the Lienzo repo, with an existing project:
+## Regenerate a scene and run the tests
 
 ```sh
-pnpm lienzo scene_build --json @build.json   # {"compact": <example>, "project": "<slug>", "save": "car", "overwrite": true}
-pnpm lienzo scene_export --scene car --project <slug> --format mp4
+node videos/viaje/scene.gen.cjs   # writes videos/viaje/scene.json
+pnpm test                         # generators still produce their known scenes
 ```
 
-Regenerate the lab scene:
+## License
 
-```sh
-node lab/viaje.gen.cjs   # writes lab/viaje.json
-```
+[MIT](LICENSE)

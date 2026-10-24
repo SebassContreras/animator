@@ -1,10 +1,10 @@
-// Generates lab/ringana-omega.json (compact scene for Lienzo's scene_build) from briefs/ringana-omega.md.
-// Run: node lab/ringana-omega.gen.cjs
+// Generates scene.json beside this file (compact scene for Lienzo's scene_build) from brief.md; colours come from palette.json.
+// Run: node videos/ringana-omega/scene.gen.cjs
 const fs = require("fs");
 const W = 1080, H = 1920, D = 24;
-const C = { sea: "#0E3B43", sea2: "#145560", algae: "#4FA37B", drop: "#F2B33D", capsule: "#5B1F33", body: "#E8EFEA", organ: "#FF7A59", text: "#FFFFFF", low: "#E4572E" };
+const C = require("./palette.json");
 
-const { rect, ell, path, group } = require("./lib/compact.cjs");
+const { rect, ell, path, group } = require("../../lib/primitives.cjs");
 // shot from a to b; `xin` = cross-fade length into this shot
 const shot = (id, name, a, b, children, extra = {}, xin = 0.1) => group(id, 0, 0, W, H, children, {
   name,
@@ -163,4 +163,4 @@ const scene = {
 };
 // the last texts must not fade out before the end
 scene.elements.filter((e) => /^t7/.test(e.id)).forEach((e) => delete e.anim.out);
-fs.writeFileSync(__dirname + "/ringana-omega.json", JSON.stringify(scene, null, 1));
+fs.writeFileSync(__dirname + "/scene.json", JSON.stringify(scene, null, 1));

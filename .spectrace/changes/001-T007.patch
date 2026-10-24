@@ -1,0 +1,180 @@
+diff --git a/skills/lienzo-animate/SKILL.md b/skills/lienzo-animate/SKILL.md
+index 417ba21..48b01e2 100644
+--- a/skills/lienzo-animate/SKILL.md
++++ b/skills/lienzo-animate/SKILL.md
+@@ -11,7 +11,7 @@ There is no native camera or "shot": **build them with groups** (see `references
+ ## Required workflow
+ 
+ 1. **Project.** `project_list`; if none fits, `project_create`. Every scene tool needs `project`.
+-2. **Shot list.** If you were given a brief from the `lienzo-storyboard` skill (`briefs/<slug>.md`), it is your spec. If its Sources section says verification is "pending", stop and run `lienzo-research` in verify mode first. Follow its timings, palette, layer names, positions and text exactly, and do not redesign it, and never change or add factual text: on-screen facts come only from the verified brief. If a shot cannot be built as written, build the closest version and report the gap. Without a brief, write a table first: shot, start–end (s), what is seen, what moves, text. Total duration = end of the last shot. For anything beyond a simple scene, suggest running `lienzo-storyboard` first.
++2. **Shot list.** If you were given a brief from the `lienzo-storyboard` skill (`videos/<slug>/brief.md`), it is your spec. If its Sources section says verification is "pending", stop and run `lienzo-research` in verify mode first. Follow its timings, palette, layer names, positions and text exactly, and do not redesign it, and never change or add factual text: on-screen facts come only from the verified brief. If a shot cannot be built as written, build the closest version and report the gap. Without a brief, write a table first: shot, start–end (s), what is seen, what moves, text. Total duration = end of the last shot. For anything beyond a simple scene, suggest running `lienzo-storyboard` first.
+ 3. **Compact scene.** Write ONE scene with `scene_build` (`compact` + `save` + `overwrite: true`). Each shot is a full-size `group`. See `references/compact-format.md`.
+ 4. **Look.** `scene_preview` at least once per shot, plus just before and after each cut. Actually look at the image, and critique it with `lienzo-art-direction` → `references/review.md`.
+ 5. **Measure.** `scene_inspect_layout` with `times` at the same moments. Its text widths are NOT reliable (see gotchas); trust the image.
+@@ -30,7 +30,7 @@ Lienzo has "Modo conjunto" (joint mode): the editor shows each change the agent
+ 
+ ## Large scenes: use a generator
+ 
+-With more than one shot, write a small Node script that outputs the compact JSON with helpers such as `shot()`, `rect()`, `car()`. Dangerous defaults get fixed once and pieces are reused. Example: `lab/viaje.gen.cjs` in the Animator repo.
++With more than one shot, write a small Node script that outputs the compact JSON with helpers such as `shot()`, `rect()`, `car()`. Dangerous defaults get fixed once and pieces are reused. Example: `videos/viaje/scene.gen.cjs` in the Animator repo.
+ 
+ ## Rules that fail most often (read `references/gotchas.md`)
+ 
+diff --git a/skills/lienzo-animate/references/drawing.md b/skills/lienzo-animate/references/drawing.md
+index b88aeb7..eedea23 100644
+--- a/skills/lienzo-animate/references/drawing.md
++++ b/skills/lienzo-animate/references/drawing.md
+@@ -28,7 +28,7 @@ Mound (view 1080×520): M0 120 Q540 0 1080 120 V520 H0 Z
+ Roof (view w×h): M0 h L w/2 0 L w h Z
+ ```
+ 
+-## Three-tone pieces (verified in `lab/ringana-omega-v2.gen.cjs`)
++## Three-tone pieces (verified in `videos/ringana-omega-v2/scene.gen.cjs`)
+ 
+ Light from the top-left. Each piece = base + shadow path on top + highlight; see `lienzo-art-direction` → `shapes.md`.
+ 
+diff --git a/skills/lienzo-animate/references/recipes.md b/skills/lienzo-animate/references/recipes.md
+index ba4e083..c179213 100644
+--- a/skills/lienzo-animate/references/recipes.md
++++ b/skills/lienzo-animate/references/recipes.md
+@@ -1,6 +1,6 @@
+ # Recipes
+ 
+-Tested in `examples/car-road-tree.json` and `lab/viaje.gen.cjs`.
++Tested in `examples/car-road-tree.json` and `videos/viaje/scene.gen.cjs`.
+ 
+ ## Centred text (instead of `text` + `at`)
+ 
+diff --git a/skills/lienzo-art-direction/SKILL.md b/skills/lienzo-art-direction/SKILL.md
+index e56b9c8..1050bf1 100644
+--- a/skills/lienzo-art-direction/SKILL.md
++++ b/skills/lienzo-art-direction/SKILL.md
+@@ -32,7 +32,7 @@ You are the art director. `lienzo-storyboard` decides **what** the story shows;
+ 
+ ## Verified example
+ 
+-`briefs/ringana-omega-v2.md` + `lab/ringana-omega-v2.gen.cjs` (scene `omega-v2`, project `ringana`): the v1 piece redesigned with this skill; the user rated it "much, much better" (2026-10-24). To redesign an existing piece the same way:
++`videos/ringana-omega-v2/brief.md` + `videos/ringana-omega-v2/scene.gen.cjs` (scene `omega-v2`, project `ringana`): the v1 piece redesigned with this skill; the user rated it "much, much better" (2026-10-24). To redesign an existing piece the same way:
+ 
+ 1. Keep story, text, facts, timing and voice; write a short `-v2` brief with only the style and the changes per shot.
+ 2. Copy the v1 generator, swap flat pieces for three-tone ones, add planes, ambient motion and polish.
+diff --git a/skills/lienzo-art-direction/references/styles.md b/skills/lienzo-art-direction/references/styles.md
+index 2c2a0e0..86a7013 100644
+--- a/skills/lienzo-art-direction/references/styles.md
++++ b/skills/lienzo-art-direction/references/styles.md
+@@ -4,7 +4,7 @@ Pick one per piece and copy its block into the brief's "Visual style". Hex value
+ 
+ Add a style here only after it worked in a real piece (note the brief).
+ 
+-Used in: Bright science → `briefs/ringana-omega-v2.md`.
++Used in: Bright science → `videos/ringana-omega-v2/brief.md`.
+ 
+ ## Bright science (explainers, facts, products)
+ 
+diff --git a/skills/lienzo-research/SKILL.md b/skills/lienzo-research/SKILL.md
+index c628676..9483fa2 100644
+--- a/skills/lienzo-research/SKILL.md
++++ b/skills/lienzo-research/SKILL.md
+@@ -10,7 +10,7 @@ You make sure every animation tells the truth. Two modes:
+ - **Research** (before the storyboard): learn the topic and produce a fact sheet the storyboard must build from.
+ - **Verify** (after the storyboard): check every factual claim in a brief and mark it verified, corrected or removed.
+ 
+-Both write to `briefs/<slug>.research.md` using `references/fact-sheet-template.md`.
++Both write to `videos/<slug>/research.md` using `references/fact-sheet-template.md`.
+ 
+ ## Research mode
+ 
+@@ -23,7 +23,7 @@ Both write to `briefs/<slug>.research.md` using `references/fact-sheet-template.
+ 
+ ## Verify mode
+ 
+-1. **Extract claims.** Read the brief (`briefs/<slug>.md`). Every on-screen text, voice-over line and visual that asserts something about the world is a claim. Visual claims count: a chart's proportions, an order of steps, a map, an icon that implies a fact.
++1. **Extract claims.** Read the brief (`videos/<slug>/brief.md`). Every on-screen text, voice-over line and visual that asserts something about the world is a claim. Visual claims count: a chart's proportions, an order of steps, a map, an icon that implies a fact.
+ 2. **Match.** Link each claim to a fact ID from the fact sheet. Claims with no match get researched now (same rules as research mode).
+ 3. **Judge** each claim with one verdict:
+    - **verified** — matches a verified fact, including its simplification.
+diff --git a/skills/lienzo-research/references/fact-sheet-template.md b/skills/lienzo-research/references/fact-sheet-template.md
+index c24e13a..63e2287 100644
+--- a/skills/lienzo-research/references/fact-sheet-template.md
++++ b/skills/lienzo-research/references/fact-sheet-template.md
+@@ -1,11 +1,11 @@
+ # Fact sheet template
+ 
+-File: `briefs/<slug>.research.md`. Keep this structure.
++File: `videos/<slug>/research.md`. Keep this structure.
+ 
+ ````markdown
+ # Research: <topic>
+ 
+-- **Brief:** `briefs/<slug>.md` (or "not written yet")
++- **Brief:** `videos/<slug>/brief.md` (or "not written yet")
+ - **Date:** <YYYY-MM-DD>
+ - **Questions researched:** <count>
+ 
+diff --git a/skills/lienzo-storyboard/SKILL.md b/skills/lienzo-storyboard/SKILL.md
+index b08f88b..6c4ab0f 100644
+--- a/skills/lienzo-storyboard/SKILL.md
++++ b/skills/lienzo-storyboard/SKILL.md
+@@ -7,11 +7,11 @@ description: Turn a concrete idea into an artistic, buildable storyboard for a L
+ 
+ You are the director. The user brings an idea; you decide **how to tell it visually** and write a brief that another agent (with `lienzo-animate`) can build without asking anything.
+ 
+-Output: one file, `briefs/<slug>.md`, following `references/brief-template.md` exactly. Do not write scene JSON here.
++Output: one file, `videos/<slug>/brief.md`, following `references/brief-template.md` exactly. Do not write scene JSON here.
+ 
+ ## Workflow
+ 
+-0. **Research first when the piece states facts.** If the idea involves real-world facts (science, history, health, numbers, how something works, products), run the `lienzo-research` skill in research mode before anything else, and build the story only from its fact sheet (`briefs/<slug>.research.md`). Purely fictional or emotional pieces can skip this.
++0. **Research first when the piece states facts.** If the idea involves real-world facts (science, history, health, numbers, how something works, products), run the `lienzo-research` skill in research mode before anything else, and build the story only from its fact sheet (`videos/<slug>/research.md`). Purely fictional or emotional pieces can skip this.
+ 1. **Understand the idea.** Extract: the message (one sentence), the audience, the platform and format, the duration, and the mandatory text or brand. If the user gave a project, read `project_inspect` for brand colours and fonts.
+    - Ask at most **one** round of questions, and only for things that change the piece: format, duration, mandatory text. Choose everything else yourself and state it in the brief as a decision.
+ 2. **Find the concept.** Write 2–3 different creative angles in one line each (metaphor, journey, transformation, contrast, countdown…). Pick one and say why in one sentence. See `references/craft.md`.
+@@ -20,7 +20,7 @@ Output: one file, `briefs/<slug>.md`, following `references/brief-template.md` e
+ 5. **Write each shot.** Framing, what is on screen (as buildable pieces), what moves and how, text, transition out. Name every object the way it should appear in the layers panel.
+ 6. **Feasibility pass.** Check every shot against `references/feasibility.md`. Replace anything Lienzo cannot do with an equivalent it can, and note the swap under "Feasibility notes".
+ 6b. **Facts pass.** Every on-screen text or visual that asserts a fact must cite a fact ID (`F3`) from the fact sheet, in the shot's Text line. No ID, no claim. Then run `lienzo-research` in verify mode on the finished brief.
+-7. **Write the brief** to `briefs/<slug>.md` and show the user a short summary: concept, style, shot list table. Offer to hand it to `lienzo-animate`.
++7. **Write the brief** to `videos/<slug>/brief.md` and show the user a short summary: concept, style, shot list table. Offer to hand it to `lienzo-animate`.
+ 8. **Hand-off.** When the user agrees, the builder follows `lienzo-animate` with the brief as its input. The brief's "Build prompt" section is the exact message to give it.
+ 
+ ## Principles
+@@ -39,4 +39,4 @@ Output: one file, `briefs/<slug>.md`, following `references/brief-template.md` e
+ - `lienzo-art-direction` skill — named styles, object design, motion polish, frame critique.
+ - `references/craft.md` — storytelling, pacing, composition, colour and motion language.
+ - `references/feasibility.md` — what Lienzo can and cannot do, with substitutions.
+-- `examples/viaje.md` — a complete brief (the 4-shot road trip built in `lab/`).
++- `videos/viaje/brief.md` in the Animator repo — a complete brief (the 4-shot road trip).
+diff --git a/skills/lienzo-storyboard/references/brief-template.md b/skills/lienzo-storyboard/references/brief-template.md
+index 0b61f95..b7efd10 100644
+--- a/skills/lienzo-storyboard/references/brief-template.md
++++ b/skills/lienzo-storyboard/references/brief-template.md
+@@ -59,7 +59,7 @@ Units: seconds for time, canvas pixels for position and size (`x, y` = top-left
+ - <music mood, voice-over script> or none
+ 
+ ## Sources
+-- **Fact sheet:** `briefs/<slug>.research.md` or "not needed (fiction)"
++- **Fact sheet:** `videos/<slug>/research.md` or "not needed (fiction)"
+ - **Verification:** passed on <date> / pending
+ - **Facts per shot:** 1: F1, F2 · 2: F4 …
+ 
+@@ -67,7 +67,7 @@ Units: seconds for time, canvas pixels for position and size (`x, y` = top-left
+ - <idea> → <substitution Lienzo can build> (or "all shots buildable as written")
+ 
+ ## Build prompt
+-> Use the lienzo-animate skill to build `briefs/<slug>.md` in project `<project>` as scene `<scene>`.
++> Use the lienzo-animate skill to build `videos/<slug>/brief.md` in project `<project>` as scene `<scene>`.
+ > Follow the brief exactly: shot timings, palette, layer names and text strings.
+ > Use a generator script. Save the scene, then <export mp4 | hand over for joint-mode review>.
+ ````
+diff --git a/skills/lienzo-storyboard/references/feasibility.md b/skills/lienzo-storyboard/references/feasibility.md
+index b940dfa..881ffa2 100644
+--- a/skills/lienzo-storyboard/references/feasibility.md
++++ b/skills/lienzo-storyboard/references/feasibility.md
+@@ -1,6 +1,6 @@
+ # Feasibility: what Lienzo can build
+ 
+-Source of truth: the `lienzo-animate` skill (`references/gotchas.md`) and `LIENZO-IMPROVEMENTS.md` in the Animator repo. Update this file when Lienzo changes.
++Source of truth: the `lienzo-animate` skill (`references/gotchas.md`). Update this file when Lienzo changes.
+ 
+ ## Works well
+ 

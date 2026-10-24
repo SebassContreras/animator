@@ -1,17 +1,10 @@
-// Generates lab/ringana-omega-v2.json: same story, text and timing as ringana-omega.gen.cjs,
-// redesigned with lienzo-art-direction (style "Bright science", see briefs/ringana-omega-v2.md).
-// Run: node lab/ringana-omega-v2.gen.cjs
+// Generates scene.json beside this file: same story, text and timing as ../ringana-omega/scene.gen.cjs,
+// redesigned with lienzo-art-direction (style "Bright science", see brief.md); colours come from palette.json.
+// Run: node videos/ringana-omega-v2/scene.gen.cjs
 const fs = require("fs");
-const { rect, ell, path, group } = require("./lib/compact.cjs");
+const { rect, ell, path, group } = require("../../lib/primitives.cjs");
 const W = 1080, H = 1920, D = 24;
-const C = {
-  sea0: "#072630", sea: "#0E3B43", sea2: "#1A6470", seabed: "#082E33", fg: "#05211F",
-  algaFar: "#2F6B63", alga: "#4FA37B", algaDark: "#2E6E52", algaLight: "#8FD3A8",
-  drop: "#F2B33D", dropDark: "#C9861C", dropLight: "#FFE08A",
-  cap: "#5B1F33", capDark: "#3A1020", capLight: "#8A3A55",
-  body: "#E8EFEA", organ: "#FF7A59", organDark: "#D9533A", organLight: "#FFB199",
-  text: "#FFFFFF", low: "#E4572E",
-};
+const C = require("./palette.json");
 
 const shot = (id, name, a, b, children, extra = {}, xin = 0.1) => group(id, 0, 0, W, H, children, {
   name,
@@ -258,4 +251,4 @@ const scene = {
 };
 // the last texts must not fade out before the end
 scene.elements.filter((e) => /^t7/.test(e.id)).forEach((e) => delete e.anim.out);
-fs.writeFileSync(__dirname + "/ringana-omega-v2.json", JSON.stringify(scene, null, 1));
+fs.writeFileSync(__dirname + "/scene.json", JSON.stringify(scene, null, 1));

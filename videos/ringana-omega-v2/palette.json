@@ -1,0 +1,23 @@
+{
+  "sea0": "#072630",
+  "sea": "#0E3B43",
+  "sea2": "#1A6470",
+  "seabed": "#082E33",
+  "fg": "#05211F",
+  "algaFar": "#2F6B63",
+  "alga": "#4FA37B",
+  "algaDark": "#2E6E52",
+  "algaLight": "#8FD3A8",
+  "drop": "#F2B33D",
+  "dropDark": "#C9861C",
+  "dropLight": "#FFE08A",
+  "cap": "#5B1F33",
+  "capDark": "#3A1020",
+  "capLight": "#8A3A55",
+  "body": "#E8EFEA",
+  "organ": "#FF7A59",
+  "organDark": "#D9533A",
+  "organLight": "#FFB199",
+  "text": "#FFFFFF",
+  "low": "#E4572E"
+}

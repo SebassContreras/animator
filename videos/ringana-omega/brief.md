@@ -129,7 +129,7 @@
   "Omega 3 without fish? / It comes straight from microalgae. Nine hundred sixty milligrams, every day. / Supporting a normal heart, your brain, and your vision. / With vitamins D3, K2 and E. / In their own study, levels rose sixty-three percent in ninety days. / BEYOND omega."
 
 ## Sources
-- **Fact sheet:** `briefs/ringana-omega.research.md`
+- **Fact sheet:** `research.md` (same folder)
 - **Verification:** passed on 2026-10-24 against the official product page and RINGANA's study PDF
 - **Facts per shot:** 2: F2, F3 · 3: F5 · 4: F6, F7 · 5: F4, F8–F10 · 6: F12, F13 · 7: F1
 
@@ -139,6 +139,6 @@
 - Gauge needle count-up → a text element updated by keyframes, or 4 discrete steps (4.8 → 6.0 → 7.0 → 7.9) if Lienzo can't animate numbers.
 
 ## Build prompt
-> Use the lienzo-animate skill to build `briefs/ringana-omega.md` in project `ringana` as scene `omega`.
+> Use the lienzo-animate skill to build `videos/ringana-omega/brief.md` in project `ringana` as scene `omega`.
 > Follow the brief exactly: shot timings, palette, layer names and text strings.
 > Use a generator script. Save the scene, then hand over for joint-mode review.

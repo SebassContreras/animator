@@ -1,6 +1,6 @@
 # Findings log
 
-Sessions using the `lienzo-animate` skill against real Lienzo. Each entry: what happened, the cause, what changed in the skill (or a proposal for Lienzo, tracked in `LIENZO-IMPROVEMENTS.md`).
+Sessions using the `lienzo-animate` skill against real Lienzo. Each entry: what happened, the cause, what changed in the skill (or a proposal for Lienzo).
 
 ## Session 2026-10-24 · project `animator-lab`, scene `viaje`
 
@@ -21,7 +21,7 @@ Goal: a 12 s vertical video with 4 shots, in joint mode (the user corrects by ha
 2. **`particles.speed` is an integer ≥ 1** (laps per loop), not a continuous speed. `0.3` invalidated the whole shot. **Skill:** documented in elements and gotchas.
 3. **Particles do not fall.** They only float around their place inside the box (`drift`). Falling leaves or real rain are not possible with `particles`. **Skill:** documented. **Lienzo:** improvement #12.
 4. **`scene_inspect_layout` ignores visibility windows.** It flags shot 2 as `out_of_bounds` at t=7.5 and t=10.5, when it is no longer visible. **Skill:** ignore warnings for shots outside their window. **Lienzo:** improvement #13.
-5. **Repetition.** Car, wheels, houses and shots repeat a lot. Writing the JSON by hand is slow and error-prone. A small generator script (`lab/viaje.gen.cjs`) with `shot`, `car`, `rect`… helpers fixed the dangerous defaults once. **Skill:** recommended for scenes with more than one shot. **Lienzo:** improvement #10.
+5. **Repetition.** Car, wheels, houses and shots repeat a lot. Writing the JSON by hand is slow and error-prone. A small generator script (`videos/viaje/scene.gen.cjs`) with `shot`, `car`, `rect`… helpers fixed the dangerous defaults once. **Skill:** recommended for scenes with more than one shot. **Lienzo:** improvement #10.
 6. **Joint mode: do not overwrite the user.** Rebuilding with `scene_build` + `overwrite` wipes manual corrections. **Skill:** after the user's turn, read `scene_get` and apply `element_update`/`keyframe_set`. If a rebuild is needed, carry the user's changes into the generator first. **Lienzo:** improvement #6.
 
 ### User's turn
@@ -36,7 +36,7 @@ The user reviewed the scene in the editor and reported four problems in words. T
 
 ## Session 2026-10-24 · project `ringana`, scene `omega`
 
-Goal: a 24 s vertical reel about the benefits of RINGANA BEYOND omega (omega 3 from microalgae), with a voice-over. Files: `briefs/ringana-omega.md`, `briefs/ringana-omega.research.md`, `lab/ringana-omega.gen.cjs`, export `projects/ringana/exports/omega.mp4` in Lienzo.
+Goal: a 24 s vertical reel about the benefits of RINGANA BEYOND omega (omega 3 from microalgae), with a voice-over. Files: `videos/ringana-omega/brief.md`, `videos/ringana-omega/research.md`, `videos/ringana-omega/scene.gen.cjs`, export `projects/ringana/exports/omega.mp4` in Lienzo.
 
 ### Research
 
@@ -68,9 +68,9 @@ Goal: a 24 s vertical reel about the benefits of RINGANA BEYOND omega (omega 3 f
 
 ## Session 2026-10-24 · scene `omega-v2` (art direction pass)
 
-Goal: test the new `lienzo-art-direction` skill by redesigning `omega` without touching story, text, facts or voice. Files: `briefs/ringana-omega-v2.md`, `lab/ringana-omega-v2.gen.cjs`, `lab/lib/compact.cjs`. Exports in Lienzo: `omega-v2.mp4` and `omega-compare.mp4` (v1 | v2 side by side).
+Goal: test the new `lienzo-art-direction` skill by redesigning `omega` without touching story, text, facts or voice. Files: `videos/ringana-omega-v2/brief.md`, `videos/ringana-omega-v2/scene.gen.cjs`, `lib/primitives.cjs`. Exports in Lienzo: `omega-v2.mp4` and `omega-compare.mp4` (v1 | v2 side by side).
 
-1. **Shared primitives moved to `lab/lib/compact.cjs`** (now used by two generators). The v1 output was byte-identical before and after the move.
+1. **Shared primitives moved to `lib/primitives.cjs`** (now used by two generators). The v1 output was byte-identical before and after the move.
 2. **A large `bgGlow` washes the frame white.** Halos of 400–520 px with `bgGlow` turned shots 3–5 into a white haze and hid the heart. Fix: big halos are plain discs at 4–12 % opacity; `bgGlow` only on small focal objects. **Skill:** rule in `styles.md`.
 3. **The review checklist caught both defects** (focal point, contrast) on the first preview pass.
 4. **Voice tracks had to be copied by hand again** from `omega.json` into the new scene (see improvement for `scene_generate_speech`).

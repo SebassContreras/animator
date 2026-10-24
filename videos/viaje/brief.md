@@ -114,6 +114,6 @@
 - Crown sway needs a pivot at the trunk top → described in shot 2.
 
 ## Build prompt
-> Use the lienzo-animate skill to build `briefs/viaje.md` in project `animator-lab` as scene `viaje`.
+> Use the lienzo-animate skill to build `videos/viaje/brief.md` in project `animator-lab` as scene `viaje`.
 > Follow the brief exactly: shot timings, palette, layer names and text strings.
 > Use a generator script. Save the scene, then hand over for joint-mode review.

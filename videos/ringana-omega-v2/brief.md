@@ -1,6 +1,6 @@
 # RINGANA omega 3 · v2 (art direction pass)
 
-Same piece as `briefs/ringana-omega.md`: identical idea, concept, shot list, timings, on-screen text, facts and voice-over. Only the look changes, made with the `lienzo-art-direction` skill. Generator: `lab/ringana-omega-v2.gen.cjs`, scene `omega-v2` in project `ringana`.
+Same piece as `../ringana-omega/brief.md`: identical idea, concept, shot list, timings, on-screen text, facts and voice-over. Only the look changes, made with the `lienzo-art-direction` skill. Facts and sources: `../ringana-omega/research.md` (not copied). Generator: `scene.gen.cjs`, scene `omega-v2` in project `ringana`.
 
 ## Visual style
 - **Style:** Bright science — keeps the dark sea and the product's aubergine; keeps Montserrat (brand) instead of a rounded sans.

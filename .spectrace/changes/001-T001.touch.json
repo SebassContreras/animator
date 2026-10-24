@@ -1,0 +1,50 @@
+{
+ "files": {
+  "videos/ringana-omega/brief.md": {
+   "from": "briefs/ringana-omega.md",
+   "lang": "markdown",
+   "lines": [
+    0,
+    0
+   ],
+   "other": {},
+   "status": "renamed",
+   "symbols": []
+  },
+  "videos/ringana-omega/research.md": {
+   "from": "briefs/ringana-omega.research.md",
+   "lang": "markdown",
+   "lines": [
+    0,
+    0
+   ],
+   "other": {},
+   "status": "renamed",
+   "symbols": []
+  },
+  "videos/ringana-omega/scene.gen.cjs": {
+   "from": "lab/ringana-omega.gen.cjs",
+   "lang": "file",
+   "lines": [
+    0,
+    0
+   ],
+   "other": {},
+   "status": "renamed",
+   "symbols": []
+  },
+  "videos/ringana-omega/scene.json": {
+   "from": "lab/ringana-omega.json",
+   "lang": "file",
+   "lines": [
+    0,
+    0
+   ],
+   "other": {},
+   "status": "renamed",
+   "symbols": []
+  }
+ },
+ "partial": false,
+ "skipped": []
+}

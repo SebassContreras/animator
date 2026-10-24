@@ -59,7 +59,7 @@ Units: seconds for time, canvas pixels for position and size (`x, y` = top-left 
 - <music mood, voice-over script> or none
 
 ## Sources
-- **Fact sheet:** `briefs/<slug>.research.md` or "not needed (fiction)"
+- **Fact sheet:** `videos/<slug>/research.md` or "not needed (fiction)"
 - **Verification:** passed on <date> / pending
 - **Facts per shot:** 1: F1, F2 · 2: F4 …
 
@@ -67,7 +67,7 @@ Units: seconds for time, canvas pixels for position and size (`x, y` = top-left 
 - <idea> → <substitution Lienzo can build> (or "all shots buildable as written")
 
 ## Build prompt
-> Use the lienzo-animate skill to build `briefs/<slug>.md` in project `<project>` as scene `<scene>`.
+> Use the lienzo-animate skill to build `videos/<slug>/brief.md` in project `<project>` as scene `<scene>`.
 > Follow the brief exactly: shot timings, palette, layer names and text strings.
 > Use a generator script. Save the scene, then <export mp4 | hand over for joint-mode review>.
 ````

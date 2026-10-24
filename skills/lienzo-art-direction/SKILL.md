@@ -32,7 +32,7 @@ You are the art director. `lienzo-storyboard` decides **what** the story shows; 
 
 ## Verified example
 
-`briefs/ringana-omega-v2.md` + `lab/ringana-omega-v2.gen.cjs` (scene `omega-v2`, project `ringana`): the v1 piece redesigned with this skill; the user rated it "much, much better" (2026-10-24). To redesign an existing piece the same way:
+`videos/ringana-omega-v2/brief.md` + `videos/ringana-omega-v2/scene.gen.cjs` (scene `omega-v2`, project `ringana`): the v1 piece redesigned with this skill; the user rated it "much, much better" (2026-10-24). To redesign an existing piece the same way:
 
 1. Keep story, text, facts, timing and voice; write a short `-v2` brief with only the style and the changes per shot.
 2. Copy the v1 generator, swap flat pieces for three-tone ones, add planes, ambient motion and polish.

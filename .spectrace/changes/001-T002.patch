@@ -1,0 +1,23 @@
+diff --git a/briefs/ringana-omega-v2.md b/videos/ringana-omega-v2/brief.md
+similarity index 85%
+rename from briefs/ringana-omega-v2.md
+rename to videos/ringana-omega-v2/brief.md
+index 5802297..f2452d4 100644
+--- a/briefs/ringana-omega-v2.md
++++ b/videos/ringana-omega-v2/brief.md
+@@ -1,6 +1,6 @@
+ # RINGANA omega 3 · v2 (art direction pass)
+ 
+-Same piece as `briefs/ringana-omega.md`: identical idea, concept, shot list, timings, on-screen text, facts and voice-over. Only the look changes, made with the `lienzo-art-direction` skill. Generator: `lab/ringana-omega-v2.gen.cjs`, scene `omega-v2` in project `ringana`.
++Same piece as `../ringana-omega/brief.md`: identical idea, concept, shot list, timings, on-screen text, facts and voice-over. Only the look changes, made with the `lienzo-art-direction` skill. Facts and sources: `../ringana-omega/research.md` (not copied). Generator: `scene.gen.cjs`, scene `omega-v2` in project `ringana`.
+ 
+ ## Visual style
+ - **Style:** Bright science — keeps the dark sea and the product's aubergine; keeps Montserrat (brand) instead of a rounded sans.
+diff --git a/lab/ringana-omega-v2.gen.cjs b/videos/ringana-omega-v2/scene.gen.cjs
+similarity index 100%
+rename from lab/ringana-omega-v2.gen.cjs
+rename to videos/ringana-omega-v2/scene.gen.cjs
+diff --git a/lab/ringana-omega-v2.json b/videos/ringana-omega-v2/scene.json
+similarity index 100%
+rename from lab/ringana-omega-v2.json
+rename to videos/ringana-omega-v2/scene.json

@@ -1,6 +1,6 @@
 # Feasibility: what Lienzo can build
 
-Source of truth: the `lienzo-animate` skill (`references/gotchas.md`) and `LIENZO-IMPROVEMENTS.md` in the Animator repo. Update this file when Lienzo changes.
+Source of truth: the `lienzo-animate` skill (`references/gotchas.md`). Update this file when Lienzo changes.
 
 ## Works well
 

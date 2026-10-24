@@ -1,0 +1,5 @@
+# patch over size limit — file summary only
+lab/viaje.baseline.json (+0 -7679)
+skills/lienzo-storyboard/examples/viaje.md → videos/viaje/brief.md (+1 -1)
+lab/viaje.gen.cjs → videos/viaje/scene.gen.cjs (+2 -2)
+lab/viaje.json → videos/viaje/scene.json (+0 -0)

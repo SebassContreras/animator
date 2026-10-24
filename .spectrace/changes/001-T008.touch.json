@@ -1,0 +1,139 @@
+{
+ "files": {
+  "LOG.md": {
+   "lang": "markdown",
+   "lines": [
+    5,
+    5
+   ],
+   "other": {},
+   "status": "modified",
+   "symbols": [
+    {
+     "body": "baea34a82bc5c2ac",
+     "change": "modified",
+     "kind": "section",
+     "lines": [
+      1,
+      1
+     ],
+     "name": "Findings log"
+    },
+    {
+     "body": "5570f400b4834e48",
+     "change": "modified",
+     "kind": "section",
+     "lines": [
+      1,
+      1
+     ],
+     "name": "Findings log > Session 2026-10-24 · project `animator-lab`, scene `viaje` > Findings"
+    },
+    {
+     "body": "7403c72e0bfc949a",
+     "change": "modified",
+     "kind": "section",
+     "lines": [
+      1,
+      1
+     ],
+     "name": "Findings log > Session 2026-10-24 · project `ringana`, scene `omega`"
+    },
+    {
+     "body": "0e7934de898cccc7",
+     "change": "modified",
+     "kind": "section",
+     "lines": [
+      2,
+      2
+     ],
+     "name": "Findings log > Session 2026-10-24 · scene `omega-v2` (art direction pass)"
+    }
+   ]
+  },
+  "README.md": {
+   "lang": "markdown",
+   "lines": [
+    6,
+    7
+   ],
+   "other": {},
+   "status": "modified",
+   "symbols": [
+    {
+     "body": "710a25b3d63d8213",
+     "change": "modified",
+     "kind": "section",
+     "lines": [
+      2,
+      3
+     ],
+     "name": "Animator > Contents"
+    },
+    {
+     "body": "cc30b70c0a87f0e7",
+     "change": "modified",
+     "kind": "section",
+     "lines": [
+      2,
+      2
+     ],
+     "name": "Animator > How to use"
+    },
+    {
+     "body": "376d40df6142d2a7",
+     "change": "modified",
+     "kind": "section",
+     "lines": [
+      2,
+      2
+     ],
+     "name": "Animator > Try the example"
+    }
+   ]
+  },
+  "briefs/.gitkeep": {
+   "lang": "file",
+   "lines": [
+    0,
+    0
+   ],
+   "other": {},
+   "status": "deleted",
+   "symbols": []
+  },
+  "videos/ringana-omega/brief.md": {
+   "lang": "markdown",
+   "lines": [
+    2,
+    2
+   ],
+   "other": {},
+   "status": "modified",
+   "symbols": [
+    {
+     "body": "5b14d28401fa13b9",
+     "change": "modified",
+     "kind": "section",
+     "lines": [
+      1,
+      1
+     ],
+     "name": "RINGANA omega 3: what it does in your body > Build prompt"
+    },
+    {
+     "body": "b17cac2555ddf664",
+     "change": "modified",
+     "kind": "section",
+     "lines": [
+      1,
+      1
+     ],
+     "name": "RINGANA omega 3: what it does in your body > Sources"
+    }
+   ]
+  }
+ },
+ "partial": false,
+ "skipped": []
+}

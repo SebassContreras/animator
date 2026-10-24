@@ -4,7 +4,7 @@ Pick one per piece and copy its block into the brief's "Visual style". Hex value
 
 Add a style here only after it worked in a real piece (note the brief).
 
-Used in: Bright science → `briefs/ringana-omega-v2.md`.
+Used in: Bright science → `videos/ringana-omega-v2/brief.md`.
 
 ## Bright science (explainers, facts, products)
 

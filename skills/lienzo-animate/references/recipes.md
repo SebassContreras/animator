@@ -1,6 +1,6 @@
 # Recipes
 
-Tested in `examples/car-road-tree.json` and `lab/viaje.gen.cjs`.
+Tested in `examples/car-road-tree.json` and `videos/viaje/scene.gen.cjs`.
 
 ## Centred text (instead of `text` + `at`)
 

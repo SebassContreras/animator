@@ -1,4 +1,4 @@
-// Generates lab/viaje.json (compact scene for Lienzo's scene_build). Run: node lab/viaje.gen.cjs
+// Generates scene.json beside this file (compact scene for Lienzo's scene_build). Run: node videos/viaje/scene.gen.cjs
 const fs = require("fs");
 const W = 1080, H = 1920, D = 12;
 const flat = (o) => ({ border: { width: 0 }, shadow: { enabled: false }, ...o, fill: { gradient: false, opacity: 1, ...(o.fill || {}) } });
@@ -144,4 +144,4 @@ const scene = {
     fadeBlack],
 };
 nameAll(scene.elements);
-fs.writeFileSync(__dirname + "/viaje.json", JSON.stringify(scene, null, 1));
+fs.writeFileSync(__dirname + "/scene.json", JSON.stringify(scene, null, 1));

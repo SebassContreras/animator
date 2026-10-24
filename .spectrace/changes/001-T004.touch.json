@@ -1,0 +1,47 @@
+{
+ "files": {
+  "lib/primitives.cjs": {
+   "from": "lab/lib/compact.cjs",
+   "lang": "file",
+   "lines": [
+    0,
+    0
+   ],
+   "other": {},
+   "status": "renamed",
+   "symbols": []
+  },
+  "videos/ringana-omega-v2/scene.gen.cjs": {
+   "lang": "file",
+   "lines": [
+    1,
+    1
+   ],
+   "other": {
+    "file": [
+     1,
+     1
+    ]
+   },
+   "status": "modified",
+   "symbols": []
+  },
+  "videos/ringana-omega/scene.gen.cjs": {
+   "lang": "file",
+   "lines": [
+    1,
+    1
+   ],
+   "other": {
+    "file": [
+     1,
+     1
+    ]
+   },
+   "status": "modified",
+   "symbols": []
+  }
+ },
+ "partial": false,
+ "skipped": []
+}

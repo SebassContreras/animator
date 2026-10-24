@@ -11,7 +11,7 @@ There is no native camera or "shot": **build them with groups** (see `references
 ## Required workflow
 
 1. **Project.** `project_list`; if none fits, `project_create`. Every scene tool needs `project`.
-2. **Shot list.** If you were given a brief from the `lienzo-storyboard` skill (`briefs/<slug>.md`), it is your spec. If its Sources section says verification is "pending", stop and run `lienzo-research` in verify mode first. Follow its timings, palette, layer names, positions and text exactly, and do not redesign it, and never change or add factual text: on-screen facts come only from the verified brief. If a shot cannot be built as written, build the closest version and report the gap. Without a brief, write a table first: shot, start–end (s), what is seen, what moves, text. Total duration = end of the last shot. For anything beyond a simple scene, suggest running `lienzo-storyboard` first.
+2. **Shot list.** If you were given a brief from the `lienzo-storyboard` skill (`videos/<slug>/brief.md`), it is your spec. If its Sources section says verification is "pending", stop and run `lienzo-research` in verify mode first. Follow its timings, palette, layer names, positions and text exactly, and do not redesign it, and never change or add factual text: on-screen facts come only from the verified brief. If a shot cannot be built as written, build the closest version and report the gap. Without a brief, write a table first: shot, start–end (s), what is seen, what moves, text. Total duration = end of the last shot. For anything beyond a simple scene, suggest running `lienzo-storyboard` first.
 3. **Compact scene.** Write ONE scene with `scene_build` (`compact` + `save` + `overwrite: true`). Each shot is a full-size `group`. See `references/compact-format.md`.
 4. **Look.** `scene_preview` at least once per shot, plus just before and after each cut. Actually look at the image, and critique it with `lienzo-art-direction` → `references/review.md`.
 5. **Measure.** `scene_inspect_layout` with `times` at the same moments. Its text widths are NOT reliable (see gotchas); trust the image.
@@ -30,7 +30,7 @@ Lienzo has "Modo conjunto" (joint mode): the editor shows each change the agent 
 
 ## Large scenes: use a generator
 
-With more than one shot, write a small Node script that outputs the compact JSON with helpers such as `shot()`, `rect()`, `car()`. Dangerous defaults get fixed once and pieces are reused. Example: `lab/viaje.gen.cjs` in the Animator repo.
+With more than one shot, write a small Node script that outputs the compact JSON with helpers such as `shot()`, `rect()`, `car()`. Dangerous defaults get fixed once and pieces are reused. Example: `videos/viaje/scene.gen.cjs` in the Animator repo.
 
 ## Rules that fail most often (read `references/gotchas.md`)
 

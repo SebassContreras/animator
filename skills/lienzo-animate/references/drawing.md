@@ -28,7 +28,7 @@ Mound (view 1080×520): M0 120 Q540 0 1080 120 V520 H0 Z
 Roof (view w×h): M0 h L w/2 0 L w h Z
 ```
 
-## Three-tone pieces (verified in `lab/ringana-omega-v2.gen.cjs`)
+## Three-tone pieces (verified in `videos/ringana-omega-v2/scene.gen.cjs`)
 
 Light from the top-left. Each piece = base + shadow path on top + highlight; see `lienzo-art-direction` → `shapes.md`.
 

@@ -1,0 +1,66 @@
+{
+ "files": {
+  "videos/ringana-omega-v2/palette.json": {
+   "lang": "file",
+   "lines": [
+    23,
+    0
+   ],
+   "other": {
+    "file": [
+     23,
+     0
+    ]
+   },
+   "status": "new",
+   "symbols": []
+  },
+  "videos/ringana-omega-v2/scene.gen.cjs": {
+   "lang": "file",
+   "lines": [
+    5,
+    12
+   ],
+   "other": {
+    "file": [
+     5,
+     12
+    ]
+   },
+   "status": "modified",
+   "symbols": []
+  },
+  "videos/ringana-omega/palette.json": {
+   "lang": "file",
+   "lines": [
+    11,
+    0
+   ],
+   "other": {
+    "file": [
+     11,
+     0
+    ]
+   },
+   "status": "new",
+   "symbols": []
+  },
+  "videos/ringana-omega/scene.gen.cjs": {
+   "lang": "file",
+   "lines": [
+    4,
+    4
+   ],
+   "other": {
+    "file": [
+     4,
+     4
+    ]
+   },
+   "status": "modified",
+   "symbols": []
+  }
+ },
+ "partial": false,
+ "skipped": []
+}

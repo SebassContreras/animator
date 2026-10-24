@@ -10,7 +10,7 @@ You make sure every animation tells the truth. Two modes:
 - **Research** (before the storyboard): learn the topic and produce a fact sheet the storyboard must build from.
 - **Verify** (after the storyboard): check every factual claim in a brief and mark it verified, corrected or removed.
 
-Both write to `briefs/<slug>.research.md` using `references/fact-sheet-template.md`.
+Both write to `videos/<slug>/research.md` using `references/fact-sheet-template.md`.
 
 ## Research mode
 
@@ -23,7 +23,7 @@ Both write to `briefs/<slug>.research.md` using `references/fact-sheet-template.
 
 ## Verify mode
 
-1. **Extract claims.** Read the brief (`briefs/<slug>.md`). Every on-screen text, voice-over line and visual that asserts something about the world is a claim. Visual claims count: a chart's proportions, an order of steps, a map, an icon that implies a fact.
+1. **Extract claims.** Read the brief (`videos/<slug>/brief.md`). Every on-screen text, voice-over line and visual that asserts something about the world is a claim. Visual claims count: a chart's proportions, an order of steps, a map, an icon that implies a fact.
 2. **Match.** Link each claim to a fact ID from the fact sheet. Claims with no match get researched now (same rules as research mode).
 3. **Judge** each claim with one verdict:
    - **verified** — matches a verified fact, including its simplification.
