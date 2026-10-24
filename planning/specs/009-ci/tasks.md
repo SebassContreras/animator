@@ -6,7 +6,8 @@
 - [x] T002 [agent] [status:done] Append A16 (CI on GitHub Actions; a change is accepted only when `pnpm test` and `trace check` pass) to `planning/architecture.md`, add its line to `AGENTS.md`, remove "Still to define: CI"
       covers: D3@1, R2@1
       changes: AGENTS.md (+1 -0)
-- [ ] T003 [agent] [status:in_progress] Push and watch the first run with `gh run watch`; the task closes only when the run is green
+- [x] T003 [agent] [status:done] Push and watch the first run with `gh run watch`; the task closes only when the run is green
       covers: D4@1, R3@1
+      changes: none
 - [ ] T004 [human] [status:todo] Open the Actions tab on GitHub and confirm the first CI run is green
       covers: R3@1
