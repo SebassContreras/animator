@@ -10,7 +10,7 @@ Every generator in `videos/`.
 
 ## Requirements
 
-- R1@1: `lib/` has one module per responsibility: primitives (rect, ellipse, path, group), scene helpers (shot, text, fade to black), environment (sea, light rays, particles, seabed, halo), objects (capsule, drop, frond, heart, eye, sparkle) and motion (pop with overshoot, heartbeat).
+- R1@2: `lib/` has one module per responsibility — primitives, scene helpers, environment, objects, motion — and this list names the module each piece joins when R2 lets it in: primitives (rect, ellipse, path, group), scene helpers (shot, text, fade to black), environment (sea, light rays, particles, seabed, halo), objects (capsule, drop, frond, heart, eye, sparkle), motion (pop with overshoot, heartbeat). Pieces used by only one video stay in its generator until a second one uses them.
 - R2@1: A piece moves into `lib/` only if at least two videos use it, or it is a primitive; everything else stays in the video's generator (A5, A13).
 - R3@1: Every colour a `lib/` piece draws comes from an argument; a test that passes two different palettes gets two different colours in the output.
 - R4@1: `videos/<slug>/palette.json` maps roles to `{ base, shadow, highlight }` hex values (one-tone roles may give only `base`), and the generator reads its colours from it.
