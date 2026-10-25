@@ -1,0 +1,159 @@
+{
+ "files": {
+  "skills/lienzo-animate/SKILL.md": {
+   "lang": "markdown",
+   "lines": [
+    2,
+    2
+   ],
+   "other": {},
+   "status": "modified",
+   "symbols": [
+    {
+     "body": "702d1a3605f86234",
+     "change": "modified",
+     "kind": "section",
+     "lines": [
+      1,
+      1
+     ],
+     "name": "Lienzo: complex animations"
+    },
+    {
+     "body": "ed77a3f22b4aa28c",
+     "change": "modified",
+     "kind": "section",
+     "lines": [
+      1,
+      1
+     ],
+     "name": "Lienzo: complex animations > Rules that fail most often (read `references/gotchas.md`)"
+    }
+   ]
+  },
+  "skills/lienzo-animate/references/gotchas.md": {
+   "lang": "markdown",
+   "lines": [
+    4,
+    0
+   ],
+   "other": {},
+   "status": "modified",
+   "symbols": [
+    {
+     "body": "bd65cc2e59b469bf",
+     "change": "modified",
+     "kind": "section",
+     "lines": [
+      4,
+      0
+     ],
+     "name": "Verified mistakes"
+    }
+   ]
+  },
+  "skills/lienzo-animate/references/shots-camera.md": {
+   "lang": "markdown",
+   "lines": [
+    47,
+    23
+   ],
+   "other": {},
+   "status": "modified",
+   "symbols": [
+    {
+     "body": "9e212431526cc57b",
+     "change": "modified",
+     "kind": "section",
+     "lines": [
+      1,
+      1
+     ],
+     "name": "Shots, cuts and camera"
+    },
+    {
+     "body": "9784009e9aad3008",
+     "change": "removed",
+     "kind": "section",
+     "lines": [
+      0,
+      6
+     ],
+     "name": "Shots, cuts and camera > Camera"
+    },
+    {
+     "body": "23f4378287dc2c05",
+     "change": "added",
+     "kind": "section",
+     "lines": [
+      9,
+      0
+     ],
+     "name": "Shots, cuts and camera > Camera (verified 2026-10-25)"
+    },
+    {
+     "body": "dc804f34482b92c3",
+     "change": "added",
+     "kind": "section",
+     "lines": [
+      14,
+      0
+     ],
+     "name": "Shots, cuts and camera > Legacy: shot = full-screen group"
+    },
+    {
+     "body": "db7387ada9200690",
+     "change": "added",
+     "kind": "section",
+     "lines": [
+      15,
+      0
+     ],
+     "name": "Shots, cuts and camera > Native shots"
+    },
+    {
+     "body": "f64ed8fcea9b6de5",
+     "change": "modified",
+     "kind": "section",
+     "lines": [
+      1,
+      1
+     ],
+     "name": "Shots, cuts and camera > Parallax (depth)"
+    },
+    {
+     "body": "84ba140005791282",
+     "change": "removed",
+     "kind": "section",
+     "lines": [
+      0,
+      9
+     ],
+     "name": "Shots, cuts and camera > Shot = full-screen group"
+    },
+    {
+     "body": "ff1ec8db6042b68d",
+     "change": "removed",
+     "kind": "section",
+     "lines": [
+      0,
+      6
+     ],
+     "name": "Shots, cuts and camera > Transitions"
+    },
+    {
+     "body": "cb61eef6d9b1490d",
+     "change": "added",
+     "kind": "section",
+     "lines": [
+      7,
+      0
+     ],
+     "name": "Shots, cuts and camera > Transitions (verified 2026-10-25)"
+    }
+   ]
+  }
+ },
+ "partial": false,
+ "skipped": []
+}

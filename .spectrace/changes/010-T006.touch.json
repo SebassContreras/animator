@@ -1,0 +1,21 @@
+{
+ "files": {
+  "videos/_template/scene.gen.cjs": {
+   "lang": "file",
+   "lines": [
+    11,
+    10
+   ],
+   "other": {
+    "file": [
+     11,
+     10
+    ]
+   },
+   "status": "modified",
+   "symbols": []
+  }
+ },
+ "partial": false,
+ "skipped": []
+}

@@ -1,0 +1,47 @@
+{
+ "files": {
+  "skills/lienzo-storyboard/references/feasibility.md": {
+   "lang": "markdown",
+   "lines": [
+    10,
+    10
+   ],
+   "other": {},
+   "status": "modified",
+   "symbols": [
+    {
+     "body": "2616c52ce02ce3d9",
+     "change": "modified",
+     "kind": "section",
+     "lines": [
+      3,
+      6
+     ],
+     "name": "Feasibility: what Lienzo can build > Needs a substitution"
+    },
+    {
+     "body": "7e46eb9535a62d19",
+     "change": "modified",
+     "kind": "section",
+     "lines": [
+      1,
+      1
+     ],
+     "name": "Feasibility: what Lienzo can build > Not possible today"
+    },
+    {
+     "body": "b840245e15e74349",
+     "change": "modified",
+     "kind": "section",
+     "lines": [
+      6,
+      3
+     ],
+     "name": "Feasibility: what Lienzo can build > Works well"
+    }
+   ]
+  }
+ },
+ "partial": false,
+ "skipped": []
+}

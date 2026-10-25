@@ -14,7 +14,7 @@ Three layers combine on each element, in this order: **tracks** (keyframes), the
 
 - `in` / `out` kinds: `fade, pop, slide, zoom, rotate, bounce, flip, back`, plus `draw` on `path` (draws the stroke on).
 - `delay` = the scene second it starts. Before its `in`, the element is **not visible** (fade). After its `out`, neither. This defines visibility windows.
-- `loop` kinds: `float, pulse, breathe, bounce, flash, heartbeat, jello, swing, tada, wobble, highlight`. `cycles` = whole cycles per scene, for seamless loops. Loops rotate/scale around the centre of the box.
+- `loop` kinds: `float, pulse, breathe, bounce, flash, heartbeat, jello, swing, tada, wobble, highlight`. `cycles` = whole cycles per scene, for seamless loops. Loops rotate/scale around `origin` (default the box centre).
 - `from` (slide direction): `up, down, left, right`.
 - `group.stagger` (s): spreads the group's `in`/`out` over its children, one after another.
 
@@ -28,13 +28,17 @@ Three layers combine on each element, in this order: **tracks** (keyframes), the
 }
 ```
 
-- Tuple `[t, value, easing]`; the easing shapes the segment **from** that keyframe to the next. Before the first and after the last, the value holds.
-- Animatable paths per kind: `component_list`. Common ones: `x, y, w, h, opacity` (not on rect/ellipse/group: use `fill.opacity`), `fill.color`, and the channels `@rotate` (degrees, around the box centre) and `@scale` (around the centre).
-- Easings: `linear, ease-in, ease-out, ease-in-out, quad-*, cubic-*, back-*, bounce-*, elastic-*` (`-in`, `-out`, `-in-out`).
-- **Tracks do not repeat**: after the last keyframe the value freezes. Continuous motion must last until the end of its shot.
-- Instant change: two keyframes one frame apart (1/fps s).
-- Spinning wheel: `@rotate` `[[0,0,"linear"],[D, 360*n]]`. To match the spin to the travel: degrees per second ≈ speed(px/s) / (π·diameter) · 360.
+- Tuple `[t, value, easing]`; the easing shapes the segment **from** that keyframe to the next. Before the first and after the last, the value holds, unless the track repeats.
+- Animatable paths per kind: `component_list`. Common ones: `x, y, w, h, opacity` (every kind, groups included; a group's opacity multiplies its children's), `fill.color`, and the channels `@rotate` (degrees) and `@scale`, both around `origin`.
+- Easings: `linear, ease, ease-in, ease-out, ease-in-out, quad-*, cubic-*, back-*, bounce-*, elastic-*` (`-in`, `-out`, `-in-out`), plus `step`/`hold` (the value jumps at the next keyframe).
+- **Repeat:** the object form `{ "keys": [...], "repeat": "loop" | "pingpong", "until": 6 }` replays the keys (pingpong goes back and forth) until `until` (default: the scene end). A plain array does not repeat: the value freezes after the last keyframe. `keyframe_set` takes `repeat` and `until` too.
+- Instant change: a `step`/`hold` easing, or two keyframes one frame apart (1/fps s).
+- Spinning wheel: `@rotate` `{ "keys": [[0,0,"linear"],[1, 360]], "repeat": "loop" }` (one turn per second), or `[[0,0,"linear"],[D, 360*n]]`. To match the spin to the travel: degrees per second ≈ speed(px/s) / (π·diameter) · 360.
+
+## origin
+
+`origin` is the pivot of `@rotate`, `@scale` and loop transforms: an anchor (`"center"`, `"top"`, `"bottom-left"`, …), `[x, y]` or `{x, y}` in fractions of the box (default `[0.5, 0.5]`).
 
 ## Animation presets
 
-`animPreset: {"name": "...", "start": 1.2}` copies a preset from `presets/animations/` starting at second `start`. Useful to repeat the same entry on many elements.
+`animPreset: {"name": "...", "start": 1.2}` copies a preset from `presets/animations/` starting at second `start`. Useful to repeat the same entry on many elements. `animation_list` lists them, `animation_save` adds one.

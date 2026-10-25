@@ -1,16 +1,16 @@
 # Drawing objects
 
-An object = a `group` of pieces. Each single-colour piece = one `path` (or rect/ellipse).
+An object = a `group` of pieces. Each single-colour piece = one `path` (or rect/ellipse), or one `path` with `mode: "layers"` holding several colour shapes in the same box. An object used more than once becomes a `symbol`.
 
 ## Method
 
 1. Pick a box for the object (e.g. car 500×240) and use it as the group's `cw`/`ch`.
 2. Draw each piece in its own `view`, usually equal to its box (`view: {x:0, y:0, w, h}` with the element's `w`/`h`). Then 1 unit of `d` = 1 px.
 3. Order back to front: shadow → body → windows → wheels → details.
-4. Anything that spins (wheels, blades) is its own element with a square box centred on the axle: `@rotate` turns around the box centre.
+4. Anything that spins (wheels, blades) is its own element with a square box centred on the axle: `@rotate` turns around `origin` (default the box centre).
 5. Things that move together (the whole car) go in a group, and you animate the group.
 6. Parts that must stay joined (crown on trunk, roof on wall) must overlap by at least 20 px, more if anything sways.
-7. Flat style: 2–4 tones per object, no gradient or shadow (see gotchas), optional outlines with `border.width`.
+7. Flat style: 2–4 tones per object, `defaults: "flat"`, and `stroke.width: 0` on paths unless you want their outline (see gotchas).
 
 ## Useful SVG commands in `d`
 
@@ -44,10 +44,10 @@ Halo behind a big area: plain ellipse at 4–12 % opacity, never `bgGlow` (it wa
 
 ## Composition ideas
 
-- **Tree:** `rect` trunk with `radius` + crown = group of 3 overlapping `ellipse`s in shades of green, with a gentle `loop: swing`. Centre the crown group's box on the trunk top so it sways from there (recipe in recipes.md).
+- **Tree:** `rect` trunk with `radius` + crown = group of 3 overlapping `ellipse`s in shades of green, with a gentle `loop: swing`. Set the crown's `origin` on the trunk top so it sways from there (recipe in recipes.md).
 - **House:** `rect` (wall) + triangle `path` (roof, base overlapping the wall) + `rect` (door, windows). Do not use `polygon` `sides: 3`: it leaves a gap.
 - **Cloud:** group of 3–4 white `ellipse`s; move its `x` slowly until the end of the shot.
-- **Simple person:** `ellipse` (head) + `path` (body) + high-`radius` `rect`s for arms and legs; swing arms with `@rotate`. It turns around the box centre, not the shoulder: put the arm in a group twice as tall, with the arm in the top half, and rotate the group.
-- **Stars, dust, fireflies:** `particles` with `link.opacity: 0`; `drift: 0` for still stars.
+- **Simple person:** `ellipse` (head) + `path` (body) + high-`radius` `rect`s for arms and legs; swing arms with `@rotate` and `origin: "top"` (the shoulder).
+- **Stars, dust, fireflies, snow:** `particles` with `link.distance: 0`; `motion: "static"` for still stars (`twinkle` to blink), `"fall"` for snow and rain.
 - **Rain/snow that falls:** a tall group of drops with a looping `y` track (particles cannot fall).
 - **Realistic objects:** `image` with a PNG/SVG from the project, or `three` with `shape: "model"` and a `.glb`.

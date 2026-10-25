@@ -1,0 +1,135 @@
+diff --git a/skills/lienzo-animate/SKILL.md b/skills/lienzo-animate/SKILL.md
+index a92cca6..9913d0b 100644
+--- a/skills/lienzo-animate/SKILL.md
++++ b/skills/lienzo-animate/SKILL.md
+@@ -6,7 +6,7 @@ description: Build complex animated scenes in Lienzo (the JSON canvas editor) th
+ # Lienzo: complex animations
+ 
+ Lienzo draws a JSON scene with Canvas 2D. What `scene_preview` shows is what gets exported.
+-Shots, transitions and camera moves are native: a scene-level `shots` list, and each element says which `shot` it belongs to (see `references/shots-camera.md`).
++Shots are native: a scene-level `shots` list, and each element says which `shot` it belongs to. Shot `transition`s are not drawn and the native camera misplaces groups, so fades and camera moves over groups still use elements' `anim`/`opacity` and group `@scale` (see `references/shots-camera.md`).
+ 
+ ## Required workflow
+ 
+@@ -52,7 +52,7 @@ A new piece stays in the video's generator; it moves to `lib/` only after the vi
+ - A `path` with several `shapes` morphs between them unless `"mode": "layers"`.
+ - Group children use **local coordinates** (0..cw, 0..ch). Always set `cw`/`ch` equal to `w`/`h`.
+ - **Centred text:** a `text` with `x: 0`, `w` = frame width and `align: "center"`. Never `at` on text without `w`.
+-- Fade anything with `opacity` (every kind has it, animatable); cuts and cross-fades are a shot's `transition`.
++- Fade anything with `opacity` (every kind has it, animatable) or `anim` `fade`; a shot's `transition` draws nothing.
+ - Tracks hold their last value unless the track has `repeat: "loop"` / `"pingpong"` (and `until`). Continuous motion either repeats or lasts to the end of its shot.
+ - Rotation and scale pivot on `origin` (default the box centre): set it to the joint.
+ - Gradient angle: 0 = left→right, 90 = top→bottom.
+diff --git a/skills/lienzo-animate/references/gotchas.md b/skills/lienzo-animate/references/gotchas.md
+index 4ac3a12..10988ef 100644
+--- a/skills/lienzo-animate/references/gotchas.md
++++ b/skills/lienzo-animate/references/gotchas.md
+@@ -22,4 +22,8 @@ All of these were reproduced against Lienzo (after its spec 062) with probe scen
+ | The user's corrections disappear | `scene_build` + `overwrite` rewrites the scene | in joint mode, `scene_get` and targeted edits (see SKILL.md) |
+ | The user cannot find what to fix | too many elements with technical ids | give every shot, object and piece a readable `name` ("Shot 2 · tree crown") |
+ | Text renders in another font | the font is not installed in the project | read the `notices` of `scene_build` / `scene_validate` ("no está instalada"); `font_install` each family used |
++| A shot's `transition` (fade, slide, zoom) does nothing visible; both shots show at once | the renderer ignores `transition.kind`; it only widens both shots' windows by `duration` | no `transition`; build fades with `anim.in` / `opacity` (see shots-camera) |
++| A group in a shot with a `camera` is in the wrong place or gone | the camera is applied again inside each group (engine fault) | native camera only for shots without groups; else legacy group shot with `@scale` / `x` |
++| A caption or logo without `shot` zooms or pans | the active shot's camera moves every element | no native camera while a shot-less element is on screen |
++| A `rect` has rounded corners | `radius` defaults to a non-zero value | `"radius": 0` |
+ | `out_of_bounds` on a legacy group shot that zooms | the shot group grows through `@scale` | expected for group shots; native shots move the camera instead |
+diff --git a/skills/lienzo-animate/references/shots-camera.md b/skills/lienzo-animate/references/shots-camera.md
+index 9bf54d8..fa2f385 100644
+--- a/skills/lienzo-animate/references/shots-camera.md
++++ b/skills/lienzo-animate/references/shots-camera.md
+@@ -1,40 +1,64 @@
+ # Shots, cuts and camera
+ 
+-Lienzo has no shots or camera. Build them like this (verified in `examples/car-road-tree.json`):
++Shots are native: a scene-level `shots` list, and each top-level element names its `shot`. Edit them later with `shot_set`.
+ 
+-## Shot = full-screen group
++## Native shots
+ 
+ ```json
+-{ "id": "shot-1", "name": "Shot 1 · road", "kind": "group", "x": 0, "y": 0, "w": 1080, "h": 1920, "cw": 1080, "ch": 1920,
+-  "anim": { "out": { "kind": "fade", "delay": 2.9, "duration": 0.1 } },
+-  "children": [ ... ] }
++"shots": [
++  { "id": "s1", "name": "Shot 1 · road", "start": 0, "end": 3 },
++  { "id": "s2", "name": "Shot 2 · tree", "start": 3, "end": 6, "camera": { "zoom": 1.1 } }
++],
++"elements": [
++  { "id": "road-bg", "kind": "rect", "shot": "s1", "x": 0, "y": 0, "w": 1080, "h": 1920, ... },
++  { "id": "tree-bg", "kind": "rect", "shot": "s2", "x": 0, "y": 0, "w": 1080, "h": 1920, ... },
++  { "id": "caption", "kind": "text", "x": 0, "y": 1600, "w": 1080, "align": "center", ... }
++]
+ ```
+ 
+-- The first shot only has `out`. Middle shots have `in` and `out`. The last one only `in`.
+-- Shot from A to B: `in.delay = A`, `out.delay = B - out.duration`.
+-- The shot must cover everything (a 1080×1920 sky/backdrop `rect` as first child), or the scene background or the previous shot shows through.
+-- Order in `elements`: shots in chronological order. The later one sits on top.
+-- Every moving thing inside a shot must keep moving until B (tracks freeze after their last keyframe).
++- An element with `shot` is drawn only from the shot's `start` to its `end`. Its `anim` delays and track times stay in **scene seconds**.
++- An element without `shot` is drawn for the whole scene (logos, captions, voice subtitles).
++- Shots in chronological order; each shot needs a full-frame backdrop as its first element, or the background shows through.
++- `scene_inspect_layout` skips elements outside their shot, so its warnings only cover what is visible.
++
++## Transitions (verified 2026-10-25)
+ 
+-## Transitions
++`transition: {kind, duration}` is stored and shown in the editor, but **the renderer does not draw it**: the engine only widens both shots' visible windows by `duration`, so the two shots overlap at full opacity (the later one on top). It does not fade, slide or zoom.
+ 
+ | Transition | How |
+ |---|---|
+-| Hard cut | `out` and `in` `fade` with `duration` 0.1 at the same second |
+-| Cross-fade | shot B enters with a 0.5–1 s `fade` while A is still visible (no `out` on A until B is opaque) |
+-| Fade to black | full-screen black `rect` with `fill.opacity` tracks 0→1→0 around the cut |
+-| Wipe | shot B with `in` `slide` `from: "right"`, large `amount` |
+-| Zoom in | shot B with `in` `zoom` |
++| Hard cut | no `transition` (or `kind: "cut"`) |
++| Cross-fade of length d | no `transition`; shot A's `end` = B's `start` + d (A stays visible underneath), and every element of B enters with `anim.in` `fade`, `delay` = B's `start`, `duration` = d |
++| Fade to black | full-screen black `rect` with no `shot`, last in `elements`, `opacity` track 0→1→0 around the cut |
++| Wipe / zoom in | shot B's backdrop group with `anim.in` `slide` (`from`, large `amount`) or `zoom` |
++
++## Camera (verified 2026-10-25)
++
++`camera: {x, y, zoom, tracks}` translates and scales around the frame centre: `x`/`y` move the content (positive `x` moves it right), `zoom` > 1 enlarges. `tracks` animate `x`, `y` and `zoom` in scene seconds (`shot_set` edits them).
++
++Two engine faults limit it today:
++
++- The camera is **applied again inside every group**, so a group in a zooming or panning shot is drawn in the wrong place (or off-canvas).
++- The camera of the active shot also moves **elements without `shot`** (captions, logos).
+ 
+-## Camera
++So use the native camera only for shots whose elements are all top-level shapes, images and text, and when no element without `shot` is on screen. Otherwise use the legacy camera below.
+ 
+-The camera is the shot group itself (or a "world" group inside it):
++## Legacy: shot = full-screen group
++
++Used by existing videos (ringana-omega-v2, `examples/car-road-tree.json`); still the way to move a camera over grouped pieces.
++
++```json
++{ "id": "shot-1", "name": "Shot 1 · road", "kind": "group", "x": 0, "y": 0, "w": 1080, "h": 1920, "cw": 1080, "ch": 1920,
++  "anim": { "out": { "kind": "fade", "delay": 2.9, "duration": 0.1 } },
++  "children": [ ... ] }
++```
+ 
+-- **Slow zoom (Ken Burns):** `"@scale": [[A, 1, "linear"], [B, 1.15]]` on the shot. Scales from the centre.
+-- **Pan:** the world is bigger than the canvas (e.g. `w: 3240, cw: 3240`) and you animate its `x` from 0 to -2160.
+-- **Zoom to a point:** animate the world group's `x, y, w, h` together (with fixed `cw`/`ch`) to frame an area.
++- First shot only has `out`, middle shots `in` and `out`, the last only `in`. Shot from A to B: `in.delay = A`, `out.delay = B - out.duration`.
++- Cross-fade: shot B enters with a 0.5–1 s `fade` while A is still visible.
++- **Slow zoom (Ken Burns):** `"@scale": [[A, 1, "linear"], [B, 1.15]]` on the shot group (pivot = `origin`, default centre). `scene_inspect_layout` then reports `out_of_bounds`; expected.
++- **Pan:** a "world" group wider than the canvas (`w: 3240, cw: 3240`) whose `x` goes from 0 to -2160.
++- **Zoom to a point:** set the shot group's `origin` to that point and animate `@scale`.
+ - **Shake:** `loop` `wobble` or `jello` with a small `amount`.
+-- `scene_inspect_layout` reports `out_of_bounds` when the shot scales beyond the canvas. Expected for zoom/pan.
+ 
+ ## Parallax (depth)
+ 
+@@ -46,7 +70,7 @@ Layers at different speeds, each looping over an exact period:
+ | mid trees | 50 % |
+ | road and markings | 100 % (one pattern period) |
+ 
+-Repeated pattern: a group twice as wide with the pattern twice, and `x` from `0` to `-width` over the loop duration. The last frame then matches the first.
++Repeated pattern: a group twice as wide with the pattern twice, and `x` from `0` to `-width` with `repeat: "loop"` on the track. Each cycle then ends where it started.
+ 
+ ## Shot list template
+ 

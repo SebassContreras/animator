@@ -1,0 +1,27 @@
+{
+ "files": {
+  "skills/lienzo-animate/references/gotchas.md": {
+   "lang": "markdown",
+   "lines": [
+    17,
+    21
+   ],
+   "other": {},
+   "status": "modified",
+   "symbols": [
+    {
+     "body": "9de4cf2157706012",
+     "change": "modified",
+     "kind": "section",
+     "lines": [
+      17,
+      21
+     ],
+     "name": "Verified mistakes"
+    }
+   ]
+  }
+ },
+ "partial": false,
+ "skipped": []
+}

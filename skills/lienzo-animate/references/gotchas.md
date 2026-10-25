@@ -1,29 +1,29 @@
 # Verified mistakes
 
-All of these were reproduced against Lienzo while writing and testing this skill.
+All of these were reproduced against Lienzo (after its spec 062) with probe scenes built with `scene_build` and checked in `scene_preview`.
 
 | Symptom | Cause | Fix |
 |---|---|---|
-| Shapes with a dark gradient and a shadow you never asked for | rect/ellipse/path/polygon/star default to `fill.gradient: true` and `shadow.enabled: true` | `"fill": {"gradient": false, ...}`, `"shadow": {"enabled": false}`, `"border": {"width": 0}` |
-| Only the first shape of a path shows | several `shapes` = morph frames, not layers | one `path` per colour layer |
-| Group child in a strange place | children use local coords; default `cw/ch` of 100 stretches the content | always `cw = w`, `ch = h` |
-| Text off-centre with `at` | the text measurer underestimates width (about 1/4 of the real width) | full-width transparent `rect` with a centred `label` (recipe) |
-| `at` inside a group does nothing useful | `at` resolves against the scene and is not applied properly to children | explicit coordinates on children |
-| No `opacity` on `group`, `rect`, `ellipse` | the field does not exist | group: `anim.in/out fade`; shapes: `fill.opacity` |
-| `effects` disappears | `scene_build` drops it | `element_update` afterwards, top level, full object `{blur, blend, mask}` |
-| `element_update` says "No existe el elemento" | it only sees top-level elements | rebuild with `scene_build` + `overwrite` (only if the user has not edited the scene) |
+| Shapes with a dark gradient, a shadow and a border you never asked for | rect/ellipse/path/polygon/star default to `fill.gradient: true`, `shadow.enabled: true` and a border | `"defaults": "flat"` at the scene level (or per shape `fill.gradient: false`, `shadow.enabled: false`, `border.width: 0`) |
+| A path has a light-blue outline even with `defaults: "flat"` | `path` defaults to `stroke: {width: 3, color: "#93c5fd"}`; `flat` does not touch `stroke` | `"stroke": {"width": 0}` on every filled path |
+| Shapes look slightly see-through | `fill.opacity` defaults to `0.9` | `"fill": {"opacity": 1, ...}` when the colour must be exact |
+| A radial or multi-stop fill draws as a flat colour | `defaults: "flat"` sets `fill.gradient: false`, which also turns off `type: "radial"` and `stops` | set `"gradient": true` on that fill |
+| Background has a gradient, dots and a spotlight you never asked for | the background defaults keep `gradient`, `dots` and `spotlight: 0.35` even when you give a `color` | `"background": {"color": ..., "gradient": false, "dots": false, "spotlight": 0}` |
+| Only the first shape of a path shows | `mode` defaults to `"morph"`: several `shapes` are morph frames | `"mode": "layers"`, each shape with its own `fill` (a colour string) |
+| Group child in a strange place or clipped away | children use local coords (0..cw, 0..ch); default `cw/ch` is 100; `at` on a child resolves against the group's `w`/`h`, not `cw`/`ch` | always `cw = w`, `ch = h` |
+| Text with `at` sits off-centre | without `w`, the measured width is still short (~844 px measured vs ~920 px drawn for an 80 px headline), so the left edge is too far right | centred text: `text` with `x: 0`, `w` = frame width, `align: "center"`; never `at` on text without `w` |
+| `scene_inspect_layout` box widths for text without `w` are too small | same measurement | give text a `w`; trust `scene_preview` |
+| A field you set has no effect and there is no notice | unknown keys are dropped silently (e.g. `color` on `particles`; its colour is `dot.color`) | check the field names with `component_list` / `docs/components.md`; read the expanded element `scene_build` returns |
+| `particles` draw a network of lines | `link` is on by default | `"link": {"distance": 0}` (or `width`/`opacity` 0) for plain dots |
 | Gradient in the wrong direction | 0° = left→right | 90° = top→bottom, 180° = right→left |
-| Jump when the GIF/MP4 repeats | the loop does not close | integer `cycles`; tracks that end at the start value or shift by exactly one period |
-| `out_of_bounds` from `scene_inspect_layout` on a zooming shot | the shot grows through `@scale` | expected; ignore it |
-| Absurd text widths in `scene_inspect_layout` `boxes` | same text measurer | trust `scene_preview` |
-| `Invalid input` at `compact.elements.N` with no detail | the union of kinds hides the real field | validate that element's children one by one with `scene_build` without `save` |
-| Particles invalidate the whole shot | `speed` and `count` are integers (`speed` ≥ 1, laps per loop) | `speed: 1` for slow motion, lower `drift` |
-| `out_of_bounds` warnings for a shot that is no longer visible | `scene_inspect_layout` ignores `anim.in/out` | ignore warnings outside the shot's window |
+| Jump when the GIF/MP4 repeats | the loop does not close | integer `cycles`; tracks that end at the start value, or `repeat: "loop"` with a period that divides the duration |
+| A `polygon` triangle does not touch the box | `fit` defaults to `"circle"`: a regular inscribed triangle | `"fit": "box"` |
+| A rotating piece comes loose (crown, arm) | `@rotate`, `@scale` and loops turn around `origin`, default the box centre | set `origin` to the joint (`"bottom"`, `[0.5, 0.9]`, …) |
 | The user's corrections disappear | `scene_build` + `overwrite` rewrites the scene | in joint mode, `scene_get` and targeted edits (see SKILL.md) |
-| Something "stops" halfway through a shot | tracks hold their last value; the loop was shorter than the shot | put the last keyframe at the end of the shot (or scene) |
-| A rotating piece comes loose (crown, arm) | `@rotate` and `swing` turn around the box centre | centre the group's box on the joint (see recipes) |
-| A `polygon` triangle does not touch the wall | `sides: 3` is a regular inscribed triangle; its base sits at ~75 % of the box | use a `path` `M0 h L w/2 0 L w h Z` |
-| "Still" particles move | `particles` always wander | `drift: 0` for still stars |
 | The user cannot find what to fix | too many elements with technical ids | give every shot, object and piece a readable `name` ("Shot 2 · tree crown") |
-| Text renders in a serif font | the font is not installed in the project; Lienzo falls back silently | `font_list` before building; `font_install` each family and weight used |
-| The voice ends later (or earlier) than `audioDuration` says | `audioDuration` can be wrong (1.5 s reported, ~2.7 s heard) | measure the export with `ffmpeg -i out.mp4 -af silencedetect=noise=-35dB:d=0.3 -f null -` |
+| Text renders in another font | the font is not installed in the project | read the `notices` of `scene_build` / `scene_validate` ("no está instalada"); `font_install` each family used |
+| A shot's `transition` (fade, slide, zoom) does nothing visible; both shots show at once | the renderer ignores `transition.kind`; it only widens both shots' windows by `duration` | no `transition`; build fades with `anim.in` / `opacity` (see shots-camera) |
+| A group in a shot with a `camera` is in the wrong place or gone | the camera is applied again inside each group (engine fault) | native camera only for shots without groups; else legacy group shot with `@scale` / `x` |
+| A caption or logo without `shot` zooms or pans | the active shot's camera moves every element | no native camera while a shot-less element is on screen |
+| A `rect` has rounded corners | `radius` defaults to a non-zero value | `"radius": 0` |
+| `out_of_bounds` on a legacy group shot that zooms | the shot group grows through `@scale` | expected for group shots; native shots move the camera instead |

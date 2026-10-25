@@ -14,4 +14,4 @@ Index of every spec. `Status` and `Stage` are written only by `trace`. Grammar:
 | 007 | promote-ringana-omega-v2 | done        | 004 | —     | 7 |
 | 008 | lib-discoverability | done        | 005, 006 | —     | 8 |
 | 009 | keep-omega-v2 | done        | 007, 008 | —     | 9 |
-| 010 | lienzo-062-sync | todo | 008 | build | 10 |
+| 010 | lienzo-062-sync | done        | 008 | —     | 10 |

@@ -1,0 +1,183 @@
+diff --git a/skills/lienzo-animate/SKILL.md b/skills/lienzo-animate/SKILL.md
+index df31da0..a92cca6 100644
+--- a/skills/lienzo-animate/SKILL.md
++++ b/skills/lienzo-animate/SKILL.md
+@@ -1,20 +1,20 @@
+ ---
+ name: lienzo-animate
+-description: Build complex animated scenes in Lienzo (the JSON canvas editor) through its MCP tools or `pnpm lienzo` CLI — illustrated objects (cars, trees, characters, landscapes) drawn from paths and shapes, motion with keyframes, parallax, and multi-shot videos with cuts and camera moves. Use whenever the user asks Lienzo for an animation, a scene, a reel/story, "una animación", "un video", "tomas/planos", or anything beyond a static card.
++description: Build complex animated scenes in Lienzo (the JSON canvas editor) through its MCP tools or `pnpm lienzo` CLI — illustrated objects (cars, trees, characters, landscapes) drawn from paths and shapes, motion with keyframes and loops, parallax, reusable symbols, and multi-shot videos with native shots, transitions and camera moves. Use whenever the user asks Lienzo for an animation, a scene, a reel/story, "una animación", "un video", "tomas/planos", or anything beyond a static card.
+ ---
+ 
+ # Lienzo: complex animations
+ 
+ Lienzo draws a JSON scene with Canvas 2D. What `scene_preview` shows is what gets exported.
+-There is no native camera or "shot": **build them with groups** (see `references/shots-camera.md`).
++Shots, transitions and camera moves are native: a scene-level `shots` list, and each element says which `shot` it belongs to (see `references/shots-camera.md`).
+ 
+ ## Required workflow
+ 
+-1. **Project.** `project_list`; if none fits, `project_create`. Every scene tool needs `project`.
++1. **Project.** `project_list`; if none fits, `project_create`. Every scene tool needs `project` (there is no default). `project_inspect` shows its brand, assets and fonts; `asset_add` brings in a local file.
+ 2. **Shot list.** If you were given a brief from the `lienzo-storyboard` skill (`videos/<slug>/brief.md`), it is your spec. If its Sources section says verification is "pending", stop and run `lienzo-research` in verify mode first. Follow its timings, palette, layer names, positions and text exactly, and do not redesign it, and never change or add factual text: on-screen facts come only from the verified brief. If a shot cannot be built as written, build the closest version and report the gap. Without a brief, write a table first: shot, start–end (s), what is seen, what moves, text. Total duration = end of the last shot. For anything beyond a simple scene, suggest running `lienzo-storyboard` first.
+-3. **Compact scene.** Edit `videos/<slug>/scene.gen.cjs` (copied from `videos/_template/` by `lienzo-storyboard`), run `node videos/<slug>/scene.gen.cjs`, then write ONE scene with `scene_build` (`compact` = the contents of `videos/<slug>/scene.json`, + `save` + `overwrite: true`; with the CLI, `--json @file`). Each shot is a full-size `group`. See `references/compact-format.md`.
+-4. **Look.** `scene_preview` at least once per shot, plus just before and after each cut. Actually look at the image, and critique it with `lienzo-art-direction` → `references/review.md`.
+-5. **Measure.** `scene_inspect_layout` with `times` at the same moments. Its text widths are NOT reliable (see gotchas); trust the image.
++3. **Compact scene.** Edit `videos/<slug>/scene.gen.cjs` (copied from `videos/_template/` by `lienzo-storyboard`), run `node videos/<slug>/scene.gen.cjs`, then write ONE scene with `scene_build` (`compact` = the contents of `videos/<slug>/scene.json`, + `save` + `overwrite: true`; with the CLI, `--json @file`). Read its `notices` (missing fonts). Use `defaults: "flat"`, one `shots` entry per shot, and `shot` on each top-level element. See `references/compact-format.md`.
++4. **Look.** `scene_validate`, then `scene_preview` at least once per shot, plus just before and after each cut. Actually look at the image, and critique it with `lienzo-art-direction` → `references/review.md`.
++5. **Measure.** `scene_inspect_layout` with `times` at the same moments (it skips elements not visible at that time). Text widths are only reliable for text with `w` (see gotchas); trust the image.
+ 6. **Fix and repeat** steps 3–5 until every shot looks right.
+ 7. **Export.** `scene_export` with `format: "mp4"` (or `gif` for short loops).
+ 8. **Close out** (only after the user approves the export). Write every finding of the session into `videos/<slug>/learnings.md` under its kind: `Piece` (goes to `lib/`), `Rule` (goes to a skill), `Engine` (a Lienzo limitation) or `Local` (stays in the video). Show the classification to the user, who can move or drop any finding. For the confirmed `Piece` and `Rule` findings, open a promotion spec `NNN-promote-<slug>` in the Animator repo with `spectrace-start` (one R item per finding) and plan it with `spectrace-plan`; do not promote anything in this step, the spec's tasks do it and add `— promoted: <path>` to the finding. For each `Engine` finding, ask the user to file an issue in the Lienzo repo and end the finding with `— tracks: <url>`.
+@@ -25,7 +25,7 @@ Lienzo has "Modo conjunto" (joint mode): the editor shows each change the agent
+ 
+ - Do not take screenshots if the user says they will review it. Build, save and hand over the turn.
+ - When you come back, **always read the scene with `scene_get`** before touching anything. The user's changes win.
+-- Use targeted changes (`element_update`, `keyframe_set`). **Never** run `scene_build` + `overwrite` on a scene the user corrected, unless you first carry their changes into the generator or the compact JSON.
++- Use targeted changes (`element_update`, `keyframe_set`, `shot_set`, `scene_update`); nested elements are reached with a `group/child` path. **Never** run `scene_build` + `overwrite` on a scene the user corrected, unless you first carry their changes into the generator or the compact JSON.
+ - When the user reports problems in words, fix them at the source (generator/compact JSON), confirm the scene file has no manual edits (compare with your last saved copy), then rebuild.
+ - Note what the user corrected in `videos/<slug>/learnings.md`: it shows what is wrong in the way you build, and close-out (step 8) classifies it.
+ 
+@@ -48,15 +48,17 @@ A new piece stays in the video's generator; it moves to `lib/` only after the vi
+ 
+ ## Rules that fail most often (read `references/gotchas.md`)
+ 
+-- Rect, ellipse, path, polygon and star come with **gradient and shadow on by default**: always set `"fill": {"gradient": false, ...}` and `"shadow": {"enabled": false}` unless you want them.
+-- Several entries in a `path`'s `shapes` **morph**; they do not stack. One colour layer = one `path`.
++- Set `"defaults": "flat"` on every scene: shapes otherwise get a gradient, a shadow and a border. It does not cover a `path`'s `stroke` (`"stroke": {"width": 0}`), the background (`gradient`, `dots`, `spotlight` off) or `fill.opacity` (default 0.9).
++- A `path` with several `shapes` morphs between them unless `"mode": "layers"`.
+ - Group children use **local coordinates** (0..cw, 0..ch). Always set `cw`/`ch` equal to `w`/`h`.
+-- **Do not use `at` to centre text**: it measures widths wrong. For centred text use a full-width transparent `rect` with a `label` (recipe in `references/recipes.md`).
+-- `group` **has no `opacity`**: cuts are made with the group's `anim.in`/`anim.out` of kind `fade`.
+-- **Tracks do not repeat**: after the last keyframe the value freezes. Continuous motion must last until the end of its shot.
+-- **Everything rotates around the centre of its box.** To pivot elsewhere, centre the group's box on the pivot.
++- **Centred text:** a `text` with `x: 0`, `w` = frame width and `align: "center"`. Never `at` on text without `w`.
++- Fade anything with `opacity` (every kind has it, animatable); cuts and cross-fades are a shot's `transition`.
++- Tracks hold their last value unless the track has `repeat: "loop"` / `"pingpong"` (and `until`). Continuous motion either repeats or lasts to the end of its shot.
++- Rotation and scale pivot on `origin` (default the box centre): set it to the joint.
+ - Gradient angle: 0 = left→right, 90 = top→bottom.
+-- Seamless loops: integer `loop.cycles`, and cyclic tracks whose last keyframe returns to the start state (or shifts by exactly one period).
++- Seamless loops: integer `loop.cycles`, and cyclic tracks whose period divides the duration.
++- Repeated pieces (trees, people, icons): define a `symbol` once and place `use` instances.
++- Unknown fields are dropped without a notice: check names with `component_list`.
+ - Give every shot, object and main piece a readable `name` so the user can find it in the layers panel.
+ 
+ ## References
+@@ -64,10 +66,10 @@ A new piece stays in the video's generator; it moves to `lib/` only after the vi
+ - `references/compact-format.md` — compact scene format and tools.
+ - `references/elements.md` — which component to use for what, and its fields.
+ - `references/motion.md` — entry/loop/exit, keyframes, channels, easings.
+-- `references/shots-camera.md` — shots, cuts, fades, camera (pan/zoom), parallax.
++- `references/shots-camera.md` — native shots, transitions, camera (pan/zoom), parallax; group shots as the legacy pattern.
+ - `references/drawing.md` — drawing objects with paths (car, tree, house, person).
+ - `references/recipes.md` — copy-ready recipes.
+ - `references/gotchas.md` — verified mistakes and how to avoid them.
+-- `examples/car-road-tree.json` — verified scene: car on a road → cut → tree shot with zoom. Its render is `examples/car-road-tree.mp4`.
++- `examples/car-road-tree.json` — verified scene: car on a road → cut → tree shot with zoom. Its render is `examples/car-road-tree.mp4`. It predates native shots (legacy group shots): copy its drawing, not its shot structure.
+ 
+-Start by copying and adapting the example instead of starting from scratch.
++Start from `videos/_template/scene.gen.cjs` and adapt the example's pieces instead of starting from scratch.
+diff --git a/skills/lienzo-animate/references/compact-format.md b/skills/lienzo-animate/references/compact-format.md
+index a1ba98a..96a3437 100644
+--- a/skills/lienzo-animate/references/compact-format.md
++++ b/skills/lienzo-animate/references/compact-format.md
+@@ -1,44 +1,76 @@
+ # Compact format and tools
+ 
+-`scene_build` takes `{ compact, project, save?, overwrite? }`. Every field is optional and filled with the component's defaults.
+-The full JSON schema lives in the Lienzo repo: `schemas/compact-scene.json`.
++`scene_build` takes `{ compact, project, save?, overwrite? }`. Without `save` it only returns the expanded scene and its `notices` (missing fonts, …); read them. Every field is optional and filled with the component's defaults.
++The full JSON schema lives in the Lienzo repo: `schemas/compact-scene.json`; component fields in its `docs/components.md`.
+ 
+ ```json
+ {
+-  "size": [1080, 1920],
++  "size": "Story",
+   "duration": 6,
+   "fps": 30,
+-  "background": { "color": "#87CEEB", "gradient": true, "color2": "#E0F2FE", "angle": 90, "dots": false, "spotlight": 0 },
+-  "elements": [ { "id": "sun", "kind": "ellipse", "x": 760, "y": 260, "w": 180, "h": 180 } ]
++  "defaults": "flat",
++  "background": { "color": "#87CEEB", "gradient": false, "dots": false, "spotlight": 0 },
++  "symbols": { "tree": { "w": 200, "h": 300, "children": [ ... ] } },
++  "shots": [
++    { "id": "s1", "name": "Shot 1 · road", "start": 0, "end": 3 },
++    { "id": "s2", "name": "Shot 2 · tree", "start": 3, "end": 6, "transition": { "kind": "fade", "duration": 0.5 }, "camera": { "zoom": 1.1 } }
++  ],
++  "elements": [ { "id": "sun", "kind": "ellipse", "shot": "s1", "x": 760, "y": 260, "w": 180, "h": 180 } ],
++  "audioTracks": [ { "assetId": "...", "startOffset": 0, "volume": 1 } ]
+ }
+ ```
+ 
+-- `size`: `[w, h]`, `"1080x1920"` or a preset by name (`"story"`). Vertical reel/story = `[1080, 1920]`; square = `[1080, 1080]`; landscape = `[1920, 1080]`.
+-- `background`: a partial object or a background preset name (`preset_list`).
++- `size`: `[w, h]`, `"1080x1920"` or a preset by name (`"Story"`). Vertical reel/story = `[1080, 1920]`; square = `[1080, 1080]`; landscape = `[1920, 1080]`.
++- `defaults: "flat"`: turns off the default gradient, shadow and border of shapes (not a path's `stroke`, not the background). Always set it.
++- `background`: a partial object or a background preset name (`preset_list`). Turn off `gradient`, `dots` and `spotlight` explicitly when you want a plain colour.
++- `shots`: native shots, transitions and camera (see `shots-camera.md`).
++- `symbols` + `kind: "use"`: define a piece once and place instances (`symbol`, `x, y, w, h`, `overrides` keyed by child id).
++- `audioTracks`: the scene's audio; `scene_build` keeps the stored audio unless you pass it.
+ - Element: `kind` + the component's fields, plus shortcuts:
+-  - `id`: stable and readable (`car`, `wheel-l`). Tracks, lines and masks need it.
++  - `id`: stable and readable (`car`, `wheel-l`). Tracks, lines, masks and `group/child` targets need it.
+   - `name`: label shown in the editor's layers panel. Make it human ("Shot 2 · tree crown").
++  - `shot`: id of the shot it belongs to (top-level elements only); it is visible only in that shot.
+   - `preset`: start from a preset (`preset_list`, `preset_get`).
+-  - `at`: `"center"`, `"top"`, … or `{anchor, offset:[dx,dy]}`. Top level only and **not for text** (see gotchas).
++  - `at`: `"center"`, `"top"`, … or `{anchor, offset:[dx,dy]}`. Inside a group it resolves against the group's box. Not for text without `w` (see gotchas).
+   - `fit: "canvas"`: covers the whole canvas.
+   - `from` / `to`: ids a `line` connects.
+-  - `tracks`: `{ "x": [[t, value, easing?], ...], "@rotate": [...] }`.
++  - `opacity` (0–1, every kind, animatable) and `origin` (pivot for rotate/scale: anchor name, `[x, y]` or `{x, y}` in box fractions).
++  - `tracks`: `{ "x": [[t, value, easing?], ...] }`, or `{ "@rotate": { "keys": [...], "repeat": "loop" | "pingpong", "until": 6 } }`.
+   - `anim`: `"fade"` (entry shortcut) or `{in, loop, out}`.
+   - `animPreset`: `"name"` or `{name, start}` from `presets/animations/`.
++  - `effects`: partial `{blur, blend, mask}`, merged with the defaults.
+   - `children`: only on `group`.
+ 
+-## Tools (MCP, or `pnpm lienzo <tool>` from the Lienzo repo)
++## Tools (MCP, or `pnpm lienzo <tool> --json '{...}'` from the Lienzo repo)
+ 
+-| Tool | Use |
+-|---|---|
+-| `component_list` | kinds and the animatable paths of each |
+-| `preset_list` / `preset_get` | element and background presets |
+-| `scene_build` | build/save the compact scene (the main route) |
+-| `scene_validate` | validate without saving |
+-| `scene_get` | read the expanded scene |
+-| `element_update` / `keyframe_set` | targeted edits without rebuilding (top-level elements only) |
+-| `scene_preview` | PNG at time `t` (`scale` 0.3–0.5 is enough) |
+-| `scene_inspect_layout` | off-canvas, overlaps, contrast, boxes (`times`) |
+-| `scene_export` | `format`: `png`, `gif`, `mp4` |
++Every scene, asset and export tool needs `project` (no default). Targets are an `id` or a `group/child` path. Patches deep-merge: objects key by key, arrays replaced whole; in `scene_update` a `null` deletes a key. Errors come back as `{ code, message, path }`.
+ 
+-With the CLI, pass large objects with `--json @file.json`. While you are still drafting, rebuilding with `scene_build` + `overwrite: true` beats many `element_update` calls. Once the user has edited the scene, switch to targeted edits (see joint mode in SKILL.md).
++| Area | Tool | Use |
++|---|---|---|
++| Project | `project_list` / `project_create` / `project_inspect` | pick, create or read a project (brand, assets, presets, scenes) |
++| | `project_update` / `project_delete` | brand name, palette, fonts, default canvas; delete |
++| | `asset_add` | copy a local file (image, svg, glb, audio, font; ≤ 20 MB) into `assets/`, returns the `src` |
++| Scene | `scene_list` / `scene_get` | list scenes; read the expanded JSON |
++| | `scene_build` | build/save the compact scene (the main route) |
++| | `scene_create` | empty scene (`mode: "static"` or `"video"`) |
++| | `scene_update` | patch `width`, `height`, `duration`, `fps`, `mode`, `audio`, `audioTracks`, `symbols` |
++| | `scene_rename` / `scene_delete` | manage scene files (`name`) |
++| | `background_set` | background from a preset or `values` |
++| | `shot_set` | create, edit or `remove` a shot (start, end, transition, camera) |
++| | `scene_generate_speech` | TTS voice + synced subtitles; `asTrack: true` + `startOffset` adds one track per shot |
++| Check | `scene_validate` | first failing path + notices, without saving |
++| | `scene_inspect_layout` | overlaps, off-canvas, broken lines, contrast, drawn boxes at `times` |
++| | `scene_preview` | PNG at time `t` (`scale` 0.3–0.5; `out` saves it in `exports/`) |
++| | `scene_export` | `format`: `png`, `gif`, `mp4` (WebM without H.264) |
++| Elements | `component_list` | kinds and the animatable paths of each |
++| | `element_add` / `element_update` / `element_remove` | targeted edits (`parent` inserts in a group, `at` re-centres) |
++| | `element_move` | layer order: `front`, `back`, `forward`, `backward` or an index |
++| | `element_group` / `element_ungroup` | group 2+ top-level elements, or ungroup |
++| | `image_trim` | crop an image's transparent margin (changes `crop`, not the file) |
++| Motion | `keyframe_set` / `keyframe_remove` | one keyframe at `path`, `t` (`repeat`, `until` on the track) |
++| | `animation_list` / `animation_save` | animation presets (`animPreset`) |
++| Presets | `preset_list` / `preset_get` | element and background presets |
++| | `preset_validate` / `preset_save` / `preset_rename` / `preset_delete` | project presets (built-ins are read-only) |
++| Fonts | `font_list` / `font_install` | available fonts; install a Google family or a local file |
++
++With the CLI, pass large objects with `--json @file.json` (an absolute path; the CLI runs from the Lienzo repo). While you are still drafting, rebuilding with `scene_build` + `overwrite: true` beats many `element_update` calls. Once the user has edited the scene, switch to targeted edits (see joint mode in SKILL.md).
