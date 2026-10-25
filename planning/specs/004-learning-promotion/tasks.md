@@ -31,8 +31,9 @@
       covers: D5@1, R4@1
       changes: LOG.md (+0 -78)
 - [x] T010 [agent] [status:done] Add step 8 "Close out" to `skills/lienzo-animate/SKILL.md`: after approval, write findings by kind, confirm the classification with the user, open a `NNN-promote-<slug>` spec (spectrace-start + spectrace-plan) for confirmed Piece/Rule findings, and ask the user to file Lienzo issues for Engine findings; in Joint mode, replace "Log what the user corrected" with a pointer to `learnings.md`
-      covers: D6@1, R2@1, A13@1
+      covers: D6@1, R2@1, A13@2
       changes: skills/lienzo-animate/SKILL.md (+2 -1)
+      └─ reviewed 2026-10-25: A13@2 only adds a route for Lienzo-feature wrappers; the video-proven route this task built still holds
 - [ ] T011 [human] [status:todo] On the next approved video, run close-out and confirm the classification and the promotion spec it opens
       covers: R2@1
 - [x] T012 [agent] [status:done] List the unmarked Piece and Rule findings of `viaje`, `ringana-omega` and `ringana-omega-v2`, with the target file proposed for each, in the task report
@@ -42,6 +43,7 @@
       covers: D8@1
       changes: none
 - [x] T014 [agent] [status:done] For each video with confirmed findings, open its `NNN-promote-<slug>` spec with spectrace-start (one R item per finding) and plan it with spectrace-plan
-      covers: D8@1, R2@1, A13@1
+      covers: D8@1, R2@1, A13@2
       changes: none
+      └─ reviewed 2026-10-25: A13@2 only adds a route for Lienzo-feature wrappers; the video-proven route this task built still holds
       └─ blocked: waiting for T013: user confirmation of the T012 list

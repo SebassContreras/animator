@@ -22,7 +22,7 @@ Project-wide decisions. Grammar: `.spectrace/format.md`.
 - A5@1: KISS / YAGNI: abstract only with 2+ uses, 2+ vendors or a test that needs it — why: avoids accidental complexity.
 - A11@1: Shared pieces in `lib/` take colours from a palette argument and never hardcode a video's colours — why: the same piece serves any theme or brand.
 - A12@1: Primitives are flat by default (gradient and shadow off) — why: Lienzo turns both on by default and that was the most common defect.
-- A13@1: A learning moves from a video's `learnings.md` to `lib/` (reusable piece) or a skill (rule) only after it worked in a real video, and the promotion is recorded as a spec task — why: global knowledge holds only proven things and stays traceable.
+- A13@2: A learning moves from a video's `learnings.md` to `lib/` (reusable piece) or a skill (rule) only after it worked in a real video, and the promotion is recorded as a spec task; a `lib/` helper or skill rule that only wraps a Lienzo feature may be promoted once it renders correctly in `scene_preview` — why: global knowledge holds only proven things and stays traceable, and engine features can be proven without making a video.
 - A14@1: Every new video goes through `lienzo-art-direction` (named style + frame review) — why: the redesigned ringana-omega v2 was rated "much, much better" than the flat v1.
 - A15@1: All repo content and on-screen text are in English; conversation with the user is in Spanish — why: user rule.
 

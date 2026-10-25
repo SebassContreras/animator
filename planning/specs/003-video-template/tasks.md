@@ -26,8 +26,9 @@
       covers: D9@1, D2@1
       changes: skills/lienzo-art-direction/SKILL.md (+1 -1), skills/lienzo-storyboard/references/brief-template.md (+5 -4), videos/_template/brief.md (+4 -3)
 - [x] T009 [agent] [status:done] In `skills/lienzo-animate/SKILL.md`, make step 3 run `node videos/<slug>/scene.gen.cjs` then `scene_build` from its `scene.json`; add "Start from lib/" (one line per module, reuse first, new pieces stay local until promoted); point the multi-shot example to `videos/_template/` and ringana-omega-v2
-      covers: D10@1, A13@1
+      covers: D10@1, A13@2
       changes: skills/lienzo-animate/SKILL.md (+15 -2)
+      └─ reviewed 2026-10-25: A13@2 only adds a route for Lienzo-feature wrappers; the video-proven route this task built still holds
 - [x] T010 [human] [status:done] Approve the first video made from the template (copied with storyboard step 0a, built through the generator)
       covers: R3@1, R4@1
       changes: none

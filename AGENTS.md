@@ -18,7 +18,7 @@ Agent skills plus a shared Node library for making Lienzo videos: one folder per
 - Generators only write compact JSON; Lienzo builds and exports (A8).
 - Node 24, CommonJS `.cjs`, no dependencies, pnpm (A9); tests with `node --test` (A10).
 - `lib/` pieces take a palette argument, never hardcoded colours (A11); flat by default (A12).
-- Promote a learning only after it worked in a real video, as a traced task (A13).
+- Promote a learning only after it worked in a real video (or, for a wrapper of a Lienzo feature, in `scene_preview`), as a traced task (A13).
 - Every video goes through `lienzo-art-direction` (A14).
 
 ## Style
