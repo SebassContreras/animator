@@ -54,7 +54,7 @@ Window `rect` with `"fill.color": [[t, "#1E293B"], [t + 0.3, "#FDE047"]]`. Stagg
 
 ## Slow shot zoom
 
-Native: the shot's `camera.tracks.zoom` `[[3, 1, "linear"], [6, 1.15]]`, only if the shot has no groups (see shots-camera). Otherwise `"@scale"` with the same keys on a legacy shot group.
+The shot's `camera.tracks.zoom` `[[3, 1, "linear"], [6, 1.15]]` (see shots-camera); groups in the shot zoom with it.
 
 ## Glowing sun or moon
 

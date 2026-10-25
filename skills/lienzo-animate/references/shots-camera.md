@@ -21,31 +21,29 @@ Shots are native: a scene-level `shots` list, and each top-level element names i
 - Shots in chronological order; each shot needs a full-frame backdrop as its first element, or the background shows through.
 - `scene_inspect_layout` skips elements outside their shot, so its warnings only cover what is visible.
 
-## Transitions (verified 2026-10-25)
+## Transitions (Lienzo 063)
 
-`transition: {kind, duration}` is stored and shown in the editor, but **the renderer does not draw it**: the engine only widens both shots' visible windows by `duration`, so the two shots overlap at full opacity (the later one on top). It does not fade, slide or zoom.
+A shot's `transition: {kind, duration}` plays over `duration` **before its `start`** (entering) and **after its `end`** (leaving), so consecutive shots overlap there:
 
-| Transition | How |
-|---|---|
-| Hard cut | no `transition` (or `kind: "cut"`) |
-| Cross-fade of length d | no `transition`; shot A's `end` = B's `start` + d (A stays visible underneath), and every element of B enters with `anim.in` `fade`, `delay` = B's `start`, `duration` = d |
-| Fade to black | full-screen black `rect` with no `shot`, last in `elements`, `opacity` track 0→1→0 around the cut |
-| Wipe / zoom in | shot B's backdrop group with `anim.in` `slide` (`from`, large `amount`) or `zoom` |
+| `kind` | Entering | Leaving |
+|---|---|---|
+| `cut` (or none) | appears at `start` | disappears at `end` |
+| `fade` | opacity 0 → 1, over the previous shot | opacity 1 → 0 |
+| `slide` | comes in from the right edge | goes out to the left |
+| `zoom` | grows 0.8 → 1 while fading in | shrinks while fading out |
+
+- Cross-fade A → B: give B `transition: {kind: "fade", duration: d}`; A stays drawn under it until its `end` (= B's `start`).
+- Fade to black (no native kind): full-screen black `rect` with no `shot`, last in `elements`, `opacity` track 0→1→0 around the cut.
 
 ## Camera (verified 2026-10-25)
 
 `camera: {x, y, zoom, tracks}` translates and scales around the frame centre: `x`/`y` move the content (positive `x` moves it right), `zoom` > 1 enlarges. `tracks` animate `x`, `y` and `zoom` in scene seconds (`shot_set` edits them).
 
-Two engine faults limit it today:
-
-- The camera is **applied again inside every group**, so a group in a zooming or panning shot is drawn in the wrong place (or off-canvas).
-- The camera of the active shot also moves **elements without `shot`** (captions, logos).
-
-So use the native camera only for shots whose elements are all top-level shapes, images and text, and when no element without `shot` is on screen. Otherwise use the legacy camera below.
+Since Lienzo 063 the camera moves only the elements of its own shot, groups included (applied once, at any depth), and never elements without `shot` (captions, logos and subtitles stay put). It is the way to pan and zoom; the legacy pattern below is only for existing videos.
 
 ## Legacy: shot = full-screen group
 
-Used by existing videos (ringana-omega-v2, `examples/car-road-tree.json`); still the way to move a camera over grouped pieces.
+Used by existing videos (ringana-omega-v2, `examples/car-road-tree.json`). New scenes use native shots and camera.
 
 ```json
 { "id": "shot-1", "name": "Shot 1 · road", "kind": "group", "x": 0, "y": 0, "w": 1080, "h": 1920, "cw": 1080, "ch": 1920,

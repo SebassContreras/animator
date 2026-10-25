@@ -4,7 +4,7 @@ Live list: `component_list`. Coordinates: `x, y` = top-left corner; `w, h` = box
 
 | I need | kind | Key fields |
 |---|---|---|
-| Free silhouette (car, tree, mountain, person) | `path` | `shapes:[{d, fill?}]`, `mode` (`morph` default, `layers` = stacked shapes), `view:{x,y,w,h}` (coordinate system of `d`), `fill`, `stroke` (default width 3: set 0), `progress` (stroke drawn 0–1) |
+| Free silhouette (car, tree, mountain, person) | `path` | `shapes:[{d, fill?}]`, `mode` (`morph` default, `layers` = stacked shapes), `view:{x,y,w,h}` (coordinate system of `d`), `fill`, `border` (the outline: `width` default 0, `color`), `progress` (outline drawn 0–1) |
 | Block, ground, road, sky, shot backdrop | `rect` | `radius` (default rounded: set 0), `fill{color,gradient,type,stops,color2,angle,opacity}`, `border{width,color,style}`, `shadow{enabled}`, `label{text,font,size,weight,color,align}` |
 | Sun, wheel, tree crown, cloud (circles) | `ellipse` | same as rect |
 | Hexagons, triangles, stars, badges | `polygon` (`sides`, `fit`) / `star` (`points`, `inner`) | same as rect. `fit: "circle"` (default) is regular and inscribed; `fit: "box"` stretches the vertices to the whole box (roofs, triangles) |

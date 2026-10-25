@@ -10,7 +10,7 @@ An object = a `group` of pieces. Each single-colour piece = one `path` (or rect/
 4. Anything that spins (wheels, blades) is its own element with a square box centred on the axle: `@rotate` turns around `origin` (default the box centre).
 5. Things that move together (the whole car) go in a group, and you animate the group.
 6. Parts that must stay joined (crown on trunk, roof on wall) must overlap by at least 20 px, more if anything sways.
-7. Flat style: 2–4 tones per object, `defaults: "flat"`, and `stroke.width: 0` on paths unless you want their outline (see gotchas).
+7. Flat style: 2–4 tones per object and `defaults: "flat"`; paths have no outline unless you set `border.width` (see gotchas).
 
 ## Useful SVG commands in `d`
 

@@ -6,7 +6,7 @@ description: Build complex animated scenes in Lienzo (the JSON canvas editor) th
 # Lienzo: complex animations
 
 Lienzo draws a JSON scene with Canvas 2D. What `scene_preview` shows is what gets exported.
-Shots are native: a scene-level `shots` list, and each element says which `shot` it belongs to. Shot `transition`s are not drawn and the native camera misplaces groups, so fades and camera moves over groups still use elements' `anim`/`opacity` and group `@scale` (see `references/shots-camera.md`).
+Shots are native: a scene-level `shots` list, and each element says which `shot` it belongs to. Shots have `transition`s (fade, slide, zoom) and a `camera` that moves only that shot's elements (see `references/shots-camera.md`).
 
 ## Required workflow
 
@@ -48,11 +48,11 @@ A new piece stays in the video's generator; it moves to `lib/` only after the vi
 
 ## Rules that fail most often (read `references/gotchas.md`)
 
-- Set `"defaults": "flat"` on every scene: shapes otherwise get a gradient, a shadow and a border. It does not cover a `path`'s `stroke` (`"stroke": {"width": 0}`), the background (`gradient`, `dots`, `spotlight` off) or `fill.opacity` (default 0.9).
+- Set `"defaults": "flat"` on every scene: shapes otherwise get a gradient, a shadow and a border. It does not cover the background (`gradient`, `dots`, `spotlight` off). Paths have no stroke and fills are opaque by default (Lienzo 063).
 - A `path` with several `shapes` morphs between them unless `"mode": "layers"`.
 - Group children use **local coordinates** (0..cw, 0..ch). Always set `cw`/`ch` equal to `w`/`h`.
-- **Centred text:** a `text` with `x: 0`, `w` = frame width and `align: "center"`. Never `at` on text without `w`.
-- Fade anything with `opacity` (every kind has it, animatable) or `anim` `fade`; a shot's `transition` draws nothing.
+- **Centred text:** `at: "center"` works with bundled fonts; with any other font give the text `x: 0`, `w` = frame width and `align: "center"`.
+- Fade anything with `opacity` (every kind has it, animatable) or `anim` `fade`; between shots use the shot's `transition`.
 - Tracks hold their last value unless the track has `repeat: "loop"` / `"pingpong"` (and `until`). Continuous motion either repeats or lasts to the end of its shot.
 - Rotation and scale pivot on `origin` (default the box centre): set it to the joint.
 - Gradient angle: 0 = left→right, 90 = top→bottom.
