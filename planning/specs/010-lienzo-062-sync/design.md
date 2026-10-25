@@ -21,3 +21,7 @@
 
 - D3. Pros: no video changes and two ways to make shots during the transition. Cons: `lib/` holds old and new helpers side by side. Mitigation: the skill marks the old ones legacy (used by ringana-omega-v2 only).
 - D1. Pros: docs match the engine, not its specs. Cons: probes are not kept. Mitigation: each confirmed fact is written in the gotcha row or reference itself.
+
+## Follow-up (2026-10-25)
+
+- D6@1 (implements R8, R7): `lienzo-animate` (SKILL.md, `gotchas.md`, `shots-camera.md`, `recipes.md`, `drawing.md`, `elements.md`) and `lienzo-storyboard/references/feasibility.md` are edited in place to describe the native transitions and camera and the new defaults. Trade-off: legacy videos keep their old patterns — mitigated by keeping the legacy section in `shots-camera.md` for them.

@@ -21,3 +21,9 @@
 - [x] T007 [agent] [status:done] Remove outdated limits from `lienzo-storyboard`, `lienzo-art-direction` and `lienzo-research`
       covers: R7@1, D5@1
       changes: skills/lienzo-storyboard/references/feasibility.md (+10 -10)
+- [x] T008 [agent] [status:done] Adopt the `lienzo-animate` edits for Lienzo 063 (transitions, camera, text, defaults, notices, `border`)
+      covers: R8@1, D6@1
+      changes: skills/lienzo-animate/SKILL.md (+4 -4), skills/lienzo-animate/references/drawing.md (+1 -1), skills/lienzo-animate/references/elements.md (+1 -1), skills/lienzo-animate/references/gotchas.md (+5 -10), skills/lienzo-animate/references/recipes.md (+1 -1), skills/lienzo-animate/references/shots-camera.md (+13 -15)
+- [x] T009 [agent] [status:done] Update `lienzo-storyboard/references/feasibility.md`: native transitions and camera over groups are feasible
+      covers: R8@1, D6@1
+      changes: skills/lienzo-storyboard/references/feasibility.md (+2 -4)

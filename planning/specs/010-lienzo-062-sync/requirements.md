@@ -29,3 +29,7 @@ The agent that plans and builds a Lienzo video.
 ## Owner split
 
 Agent tasks only.
+
+## Follow-up (2026-10-25)
+
+- R8@1: After Lienzo 063, the skills no longer recommend the workarounds it fixed (shot transitions, camera over groups and shot-less elements, text width with `at`, fill-opacity and path-stroke defaults, silently ignored fields), and name a path's outline `border`, not `stroke`.

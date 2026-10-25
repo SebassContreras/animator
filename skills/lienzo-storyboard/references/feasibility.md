@@ -5,8 +5,8 @@ Source of truth: the `lienzo-animate` skill (`references/gotchas.md`). Update th
 ## Works well
 
 - Flat illustration from simple shapes and SVG paths: vehicles, trees, houses, clouds, hills, cities, icons, simple characters.
-- Multi-shot videos (native shots) with hard cuts, cross-fades, fade to black, wipes and zoom-ins (the builder makes fades with element fades, not the shot's transition).
-- Camera: slow zoom, pan across a wide world, zoom to an area, shake.
+- Multi-shot videos (native shots) with hard cuts, cross-fades, slides and zoom transitions between shots, and fade to black.
+- Camera: slow zoom, pan across a wide world, zoom to an area, shake — over grouped objects too; captions and logos stay fixed.
 - Parallax scrolling, spinning wheels, swaying, floating, pulsing, glows.
 - Colour changes over time (lights turning on, sky shifting); fading any element or group in and out.
 - Radial and multi-stop gradients; windows/cards that crop their content.
@@ -25,14 +25,12 @@ Source of truth: the `lienzo-animate` skill (`references/gotchas.md`). Update th
 | Character walking | body bobbing (`float`) + legs swinging around the hip pivot, world scrolling behind |
 | Realistic people, faces, photos | flat stylised figures, or an `image` from the project |
 | Rotation around a joint (arm, door, crown) | allowed; describe the joint so the builder can set the pivot (`origin`) |
-| Camera move over grouped objects (zoom or pan across a scene of compound pieces) | allowed; the builder moves the shot's group, not the native camera |
 | Falling leaves that tumble | `fall` particles with a leaf as `template` |
 
 ## Not possible today
 
 - Frame-by-frame or hand-drawn animation, fluid/smoke simulation, physics, real lighting on 2D shapes.
 - Video clips as input.
-- Animated shot transitions as such (the shot's own fade/slide/zoom is not drawn); ask for the effect and the builder fades or slides the elements.
 
 ## Budget
 
