@@ -8,7 +8,7 @@ Agent skills plus a shared Node library for making Lienzo videos: one folder per
 - `planning/architecture.md` — project-wide decisions (A items).
 - `planning/styles.md` — style detail.
 - `planning/roadmap.md` — specs, order, status.
-- `planning/NNN-name.md` — one file per spec: goal, requirements (R), design (D), tasks, changes.
+- `planning/specs/NNN-name.md` — one file per spec: goal, requirements (R), design (D), tasks, changes.
 - `skills/` — the global knowledge: research, storyboard, art direction, animate.
 
 ## Stack & conventions
@@ -61,7 +61,7 @@ Work is planned in `planning/`:
 ```
 planning/product.md      what this is, who it's for, stack, how to run and test, docs
 planning/roadmap.md      specs in order, their status, and a free "Ideas" list
-planning/NNN-name.md     one file per spec
+planning/specs/NNN-name.md  one file per spec
 ```
 
 A spec file:
