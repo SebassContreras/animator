@@ -6,20 +6,10 @@
       "sourceType": "local",
       "computedHash": "a40471aeb6121d9003eb628f3ad5161e4cc8d6b1d3d2da6dc2b80a410923301a"
     },
-    "spectrace-fix": {
-      "source": "../spectrace",
-      "sourceType": "local",
-      "computedHash": "f12461da4bc6637839678672886c405f4ce1448d69ec70f3827b3fad064b95e9"
-    },
     "spectrace-plan": {
       "source": "../spectrace",
       "sourceType": "local",
       "computedHash": "ce96387e7788d73b68d842260e8a72abe65fe1bd36eb3b8b10e3876268873ca6"
-    },
-    "spectrace-start": {
-      "source": "../spectrace",
-      "sourceType": "local",
-      "computedHash": "aea05223adafa8d0d544a72adf53d2d7d1591cb94f168a98c1268e6eae745317"
     }
   }
 }

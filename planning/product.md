@@ -21,3 +21,7 @@ The user and the coding agents that research, storyboard, art-direct and build L
 - Changes to Lienzo itself (engine improvements are tracked in the Lienzo repo).
 - Producing new videos.
 - Publishing the skills to a registry.
+
+## Docs
+- README.md — what it is, install, usage
+- AGENTS.md — how agents work in this repo

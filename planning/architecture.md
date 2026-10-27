@@ -1,6 +1,6 @@
 # Architecture
 
-Project-wide decisions. Grammar: `.spectrace/format.md`.
+Project-wide decisions.
 
 ## Container
 
