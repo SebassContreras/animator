@@ -4,12 +4,22 @@
     "spectrace-change": {
       "source": "../spectrace",
       "sourceType": "local",
-      "computedHash": "a40471aeb6121d9003eb628f3ad5161e4cc8d6b1d3d2da6dc2b80a410923301a"
+      "computedHash": "39bde6e8fed70f853d1e07060498692884e17f27c4b7327711fffe8371d45254"
+    },
+    "spectrace-init": {
+      "source": "../spectrace",
+      "sourceType": "local",
+      "computedHash": "fd78325cc185d09929d39a0d3f448ef9213846f32775150a97f88687caa1a854"
     },
     "spectrace-plan": {
       "source": "../spectrace",
       "sourceType": "local",
-      "computedHash": "ce96387e7788d73b68d842260e8a72abe65fe1bd36eb3b8b10e3876268873ca6"
+      "computedHash": "bf4340c8ad888d3c5817013519232aff08d1ba5c6ddf1ee41403ec8c6b0d817a"
+    },
+    "spectrace-review": {
+      "source": "../spectrace",
+      "sourceType": "local",
+      "computedHash": "6920819721cb472c4cfc1b8e3463447c8913ec04324c738d96e470b37ec70603"
     }
   }
 }
