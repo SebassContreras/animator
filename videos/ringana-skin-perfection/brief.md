@@ -116,7 +116,7 @@
   - Wrinkle line: a soft wavy path 700×120 at (190, 560), 14 px wide pill-ended stroke in `skin.shadow`; second shape almost flat (amplitude ÷ 3).
   - Stat card 1: `surface.base` pill 840×300 at (120, 780), radius 60, soft shadow; a 12×200 `accent.base` bar at its left inside edge; number "−14 %" 120 px heading at y 820; label "wrinkle depth in 2 weeks*" 44 px body at y 960, both `text`.
   - Stat card 2: same card at the same place; "Up to 49 %" 120 px heading; label "better skin barrier*" 44 px body.
-  - Footnote: "*Research Centre study, 23 participants, 2 weeks." 30 px body, `w` 920 at x 80, y 1620.
+  - Footnote: "*RINGANA study, 23 participants, 2 weeks." 30 px body, `w` 920 at x 80, y 1620.
 - **Motion:**
   - Card 1 in at 13.7 s (slide 30 px + fade, `cubic-out` 0.5 s); its number counts −0 → −14 % (13.9–14.9 s, steps of 2); the wrinkle line morphs flatter over the same time (`ease-in-out`). Card 1 out at 15.4 s (fade `cubic-in` 0.25 s).
   - Card 2 in at 15.5 s; its number counts 0 → 49 % (15.6–16.4 s, steps of 7); out with the shot.
@@ -143,11 +143,17 @@
 - **Back blob:** one organic blob path reused at different sizes, vertical two-colour gradient of its role, low opacity.
 
 ## Audio (optional)
-- None in this version: no voice-over and no music. Decision: this test checks the visual pipeline and a new style first; voice can be added in the Lienzo scene later.
+- Voice-over: Kokoro (local), voice `af_bella`, one clip per shot, no subtitles (the on-screen text carries the words). Voice timings live in the Lienzo scene, not here. No music (the project has no music asset). Script, one line per shot; it does not repeat the on-screen text:
+  1. "When skin is dry, moisture slips away." [F7]
+  2. "A rich cream forms a protective film." [F12]
+  3. "A moisture regulator that helps protect skin." [F4]
+  4. "Natural actives and plant extracts." [F3, F5]
+  5. "Tested in a RINGANA study." [F8]
+  6. "FRESH skin perfection." [F1]
 
 ## Sources
 - **Fact sheet:** `videos/ringana-skin-perfection/research.md`
-- **Verification:** passed on 2026-10-31 against the official product page (open question: study attribution, see research.md)
+- **Verification:** passed on 2026-10-31 against the official product page; study attributed as "RINGANA study" by the user
 - **Facts per shot:** 1: F7 · 2: F2, F12 · 3: F4 · 4: F3, F5 · 5: F8, F9 · 6: F1
 
 ## Feasibility notes

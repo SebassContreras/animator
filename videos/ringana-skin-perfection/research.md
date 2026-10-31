@@ -17,7 +17,7 @@ The official product page is the primary source for product facts (brand guide �
 | F5 | It contains Epilobium fleischeri leaf/stem extract, a "senolytic active ingredient extracted from Alpine willowherb", and Myrothamnus flabellifolia extract, a "relaxing extract from the resurrection plant". | "Alpine willowherb" · "Resurrection plant" | verified | [S1] |
 | F6 | Use: apply any time to chosen areas of skin; for face, neck and décolletage, and for lips and the eye and mouth areas; on single spots or all over. | "Any time: face, neck, lips, eyes" | verified | [S1] |
 | F7 | The page lists the skin demands it is for: dry to very dry, damaged skin; wrinkles, lines and crow's feet; tired, puffy eyes; skin ageing caused by cellular exhaustion; skin redness and irritation; weakened skin barrier. Suitable for all skin types, demanding skin in particular. | "Dry skin? Weakened barrier?" | verified | [S1] |
-| F8 | Study ("tested in a Research Centre study"): 23 participants, mean age 47.13; instant effect measured after 30 minutes and use over 2 weeks; LifeViz micro camera (wrinkles around the mouth and nasolabial area), probe measurements of skin barrier, viscoelasticity and hydration, and a questionnaire. | footnote: "*Research Centre study, 23 participants, 2 weeks." | verified as stated on the page | [S1] |
+| F8 | Study ("tested in a Research Centre study"): 23 participants, mean age 47.13; instant effect measured after 30 minutes and use over 2 weeks; LifeViz micro camera (wrinkles around the mouth and nasolabial area), probe measurements of skin barrier, viscoelasticity and hydration, and a questionnaire. | footnote: "*RINGANA study, 23 participants, 2 weeks." | verified as stated on the page | [S1] |
 | F9 | Measured results: 14 % less wrinkle depth after 2 weeks (on average); 10 % less wrinkle depth after 30 minutes (on average); 6.9 % more elastic skin properties; up to 49 % better facial skin barrier. | "−14 % wrinkle depth in 2 weeks*" · "Up to 49 % better skin barrier*" | verified as stated on the page | [S1] |
 | F10 | Questionnaire results (self-reported): 95.6 % softer and hydrated skin immediately after use; 82.6 % rough areas immediately softer; 69.6 % eye-area wrinkles immediately reduced; 65.2 % skin felt firmer after 2 weeks. | "95.6 % felt softer, hydrated skin*" | verified as self-reported | [S1] |
 | F11 | RINGANA's fresh cosmetics are dermatologically tested, suitable for sensitive skin, contain organic ingredients and are made in fresh, small batches. | "Made fresh, in small batches" | verified | [S1] |
@@ -26,7 +26,7 @@ The official product page is the primary source for product facts (brand guide �
 ### Notes per fact
 - **F2:** A search-engine summary of the press release [S2] says "seven ceramides"; the ingredient list on [S1] names four ceramides. The press release did not render, so the count is not used on screen.
 - **F5:** "senolytic" and the page's "reduces harmful zombie cells" are marketing wording, not shown on screen (see Myths).
-- **F8:** The page does not name the research centre or say who commissioned the study, and gives no year. The brand guide asks for RINGANA's own studies to be attributed as "RINGANA study" with the sample size; since the page does not say it is RINGANA's own, the footnote uses the page's own wording. See Open questions.
+- **F8:** The page does not name the research centre or say who commissioned the study, and gives no year. The brand guide asks for RINGANA's own studies to be attributed as "RINGANA study" with the sample size; since the page does not say it is RINGANA's own, the user decided on "RINGANA study" (2026-10-31), the brand guide's wording for RINGANA's own studies.
 - **F9:** Figures are averages or upper bounds ("up to 49 %"); keep "on average" / "up to" on screen. Measured on 23 people over 2 weeks: never "clinically proven".
 - **F10:** Self-reported: always "felt", never as a measured result.
 
@@ -59,8 +59,8 @@ Verified on 2026-10-31 against [S1].
 | 4 | "Bakuchiol & Alpine willowherb" | F3, F5 | verified (names only, no benefit claimed) | unchanged |
 | 5 | "−14 % wrinkle depth*" / "in 2 weeks, on average" | F9 | verified | unchanged |
 | 5 | "Up to 49 % better skin barrier*" | F9 | verified | unchanged |
-| 5 | "*Research Centre study, 23 participants, 2 weeks." | F8 | verified (page wording) | unchanged |
+| 5 | "*RINGANA study, 23 participants, 2 weeks." | F8 | verified; attributed as a RINGANA study by the user (2026-10-31), per the brand guide | unchanged |
 | 6 | "RINGANA FRESH skin perfection" / "Recovery cream" | F1 | verified | unchanged |
 
 ## Open questions for the user
-- **Study attribution (F8):** the page says "Research Centre study" without naming who ran or paid for it. The brief uses that wording. If RINGANA commissioned it, the brand guide wants "RINGANA study, 23 participants" instead.
+- none. Study attribution (F8) resolved on 2026-10-31: the user asked for "RINGANA study", as the brand guide does for RINGANA's own studies; the page itself only says "Research Centre study".

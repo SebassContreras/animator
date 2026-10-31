@@ -21,6 +21,7 @@ Session 2026-10-31, scene `skin-perfection` (project `ringana`), export `skin-pe
 - Large compact scenes (36 KB here) go through the CLI, `pnpm lienzo scene_build --json @<file>`, with `{ project, compact, save, overwrite }` in the file, instead of inline in the MCP call.
 - `videos/_template/learnings.md` ships placeholder bullets, so `tests/videos/learnings.test.cjs` fails as soon as the template is copied; the template should ship empty sections.
 - ringana.com renders with JavaScript: a plain fetch gets an empty shell. With `browser-nav`, `snapshot` lists headings and buttons but not paragraph text, so the open panels were read from `screenshot`s (cookies: "Save Selection" with only the essential ones).
+- Kokoro clips carry about 0.5 s of padding: a 5-word line lasts about 3 s, so six clips nearly fill 20 s. Write voice lines of ≤ 5 words for 3 s shots, and check that the clips' total fits before placing them.
 
 ## Engine
 
@@ -32,4 +33,4 @@ Pending issues, to file in the Lienzo repo at close-out (not bullets until they 
 
 - Soft depth on a white brand: the brand's white replaces the style's warm off-white; the orange accent is never text (3.2:1 on white), only the mortar and the card bars.
 - Shot 2 has about 33 elements (12 cells, 12 mortar pieces), a little over the ≤ 30 budget; the cells are one symbol, so the layers panel stays readable.
-- Open question for the user: the page calls the study a "Research Centre study"; if RINGANA commissioned it, the footnote should say "RINGANA study, 23 participants".
+- The page calls the study a "Research Centre study"; the user chose the footnote "RINGANA study, 23 participants, 2 weeks." (brand guide wording).

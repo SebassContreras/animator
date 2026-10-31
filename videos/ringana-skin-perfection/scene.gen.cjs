@@ -245,7 +245,7 @@ const s5 = [
   flatPath("s5-wrinkle", 190, 560, 700, 140, [WAVY, CALM], C.skin.shadow, { name: "Wrinkle line", shot: "s5", tracks: { morph: [[13.9, 0, "ease-in-out"], [14.9, 1]] } }),
   card("s5-card-1", "Stat card · wrinkle depth", "−", 14, "wrinkle depth in 2 weeks*", 13.7, 13.9, 15.4),
   card("s5-card-2", "Stat card · skin barrier", "Up to ", 49, "better skin barrier*", 15.5, 15.6),
-  say("t5", "Shot 5 · footnote", "*Research Centre study, 23 participants, 2 weeks.", 1620, 30, 13.8, 17, body({ shot: "s5" })),
+  say("t5", "Shot 5 · footnote", "*RINGANA study, 23 participants, 2 weeks.", 1620, 30, 13.8, 17, body({ shot: "s5" })),
 ];
 
 // --- Shot 6 · The product (17–20) ------------------------------------------------------
