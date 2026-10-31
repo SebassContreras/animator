@@ -27,8 +27,10 @@ idea ──▶ research ──▶ storyboard ──▶ art direction ──▶ b
 ## Repo layout
 
 ```
+*.md (root)        project contracts: PRODUCT, ARCHITECTURE, ENGINEERING, DESIGN, TESTING, CHANGES, AGENTS
 skills/            the four skills above
-lib/primitives.cjs shared drawing helpers (rect, ell, path, group) with flat defaults
+lib/               shared, palette-driven generator pieces (flat primitives, scene, environment, objects, motion, palette check)
+videos/_template/  the smallest working video, copied to start a new one
 videos/<slug>/     one folder per video:
   brief.md           the storyboard
   research.md        facts and sources (when the video states facts)
@@ -37,7 +39,7 @@ videos/<slug>/     one folder per video:
   scene.json         the compact scene Lienzo builds
   learnings.md       what this video taught us
 tests/             node --test suites
-planning/          specs and decisions (spectrace)
+planning/          roadmap and specs (spectrace)
 ```
 
 Example video: `videos/ringana-omega-v2/` (a 24 s product reel with voice-over).
@@ -66,10 +68,11 @@ Example video: `videos/ringana-omega-v2/` (a 24 s product reel with voice-over).
 
 1. Tell the agent your idea.
 2. If it states real facts, `lienzo-research` writes `videos/<slug>/research.md` with sources.
-3. `lienzo-storyboard` writes `videos/<slug>/brief.md`. Review and adjust it.
+3. `lienzo-storyboard` copies `videos/_template/` and writes `videos/<slug>/brief.md`, with `lienzo-art-direction` choosing the style and palette. Review and adjust it.
 4. `lienzo-research` verifies every claim in the brief.
 5. Ask the agent to build it; `lienzo-animate` follows the brief's "Build prompt".
 6. Review the preview in Lienzo and ask for fixes in plain words.
+7. Once you approve the export, the agent writes what the video taught into `learnings.md` and proposes what to promote to `lib/` or the skills.
 
 ## Regenerate a scene and run the tests
 
@@ -77,6 +80,10 @@ Example video: `videos/ringana-omega-v2/` (a 24 s product reel with voice-over).
 node videos/ringana-omega-v2/scene.gen.cjs   # writes videos/ringana-omega-v2/scene.json
 pnpm test                                    # generators still produce their known scenes
 ```
+
+## Working on this repo
+
+Changes to the skills and `lib/` follow [spectrace](https://github.com/SebassContreras/spectrace): agents start at [AGENTS.md](AGENTS.md), and the work is planned in `planning/roadmap.md` and `planning/specs/`.
 
 ## License
 

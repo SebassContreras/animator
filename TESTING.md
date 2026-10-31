@@ -19,7 +19,18 @@ Systematically cover the observable space:
 - **Behavior, Not Coverage:** Test observable behaviors, element coordinates, and deterministic output structures rather than chasing raw coverage percentages.
 - **Unit Before Integration:** Test shared library pieces in `lib/` with fast, isolated unit tests before running full video scene renders.
 - **What to Skip:** Do not test code without logic (pure declarative configuration objects or simple getters) nor external Lienzo engine behaviors.
-- **Tripwire Rule:** If a spec's tests exceed three times its requirements (`R` items), stop and justify the reason in the task report.
+- **Regression First:** Write a failing regression test before every bug fix. Never weaken a test to make code pass.
+- **Visual Quality:** Not unit-tested. It is checked by eye on Lienzo previews with the `lienzo-art-direction` review checklist.
+- **Tripwire Rule:** If a spec's tests exceed three times its requirements (`R` items), stop and justify the reason in the task report. It is a tripwire, not a cap.
+
+---
+
+## 🗂️ Test Layout & Guard Tests
+
+- **`tests/lib/`:** Unit tests for each `lib/` module.
+- **`tests/videos/`:** Golden test (a generator keeps writing its fixture scene in `tests/videos/fixtures/` byte for byte), template test (a copy of `videos/_template/` runs unedited), and the `learnings.md` format test.
+- **`tests/skills/`:** Every `lib/` export must be listed in `lienzo-animate` → "Start from lib/". Adding an export means updating that list in the same change.
+- **Traceability:** Each test file opens with a comment naming the spec items it proves (e.g., `(002/R4)`).
 
 ---
 
@@ -48,4 +59,5 @@ Systematically cover the observable space:
   ```sh
   pnpm test
   ```
-  *(Runs `node --test "tests/**/*.test.cjs"`)*
+  *(Runs `node --test "tests/**/*.test.cjs"`; a bare folder argument fails on Node 24.)*
+- **Run Rule:** A task runs only the narrowest command covering the files it touched. The full suite runs at session end or when a shared module in `lib/` changed. There is no affected-only mode.

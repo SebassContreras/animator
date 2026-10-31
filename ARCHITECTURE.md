@@ -18,21 +18,33 @@ Animator is a hybrid architecture composed of agent skills (`skills/`), a shared
 ### 3. Layer Boundaries & Directory Map
 ```text
 animator/
+├── *.md                        # Root contracts (PRODUCT, ARCHITECTURE, ENGINEERING, DESIGN, TESTING, CHANGES, AGENTS)
+├── .agents/skills/             # Spectrace skills installed from ../spectrace (pinned in skills-lock.json)
 ├── skills/                     # Global knowledge & agent skills
 │   ├── lienzo-research/        # Factual research for videos
 │   ├── lienzo-storyboard/      # Narrative, beats, and craft rules
 │   ├── lienzo-art-direction/   # Visual style, palette, and review
-│   └── lienzo-animate/         # Scene generator assembly
+│   └── lienzo-animate/         # Scene generator assembly (+ examples/)
 ├── lib/                        # Shared, palette-agnostic generator pieces
+│   ├── primitives.cjs          # Flat rect / ell / path / group
+│   ├── scene.cjs               # Shots, labels, closing fade
+│   ├── environment.cjs         # Backdrops and particles
+│   ├── objects.cjs             # Recurring objects
+│   ├── motion.cjs              # Reusable keyframe tracks
+│   └── palette.cjs             # Palette validation
 ├── videos/                     # Self-contained video workspaces
+│   ├── _template/              # Smallest working video; copied to start a new one
 │   └── <slug>/                 # Single video folder
 │       ├── brief.md            # Video prompt and intent
-│       ├── research.md         # Factual backing (if applicable)
+│       ├── research.md         # Factual backing (only when the video states facts)
 │       ├── palette.json        # Color tokens (roles & tones)
 │       ├── scene.gen.cjs       # Deterministic scene generator
-│       ├── scene.json          # Compiled scene JSON
+│       ├── scene.json          # Generated compact scene (never edited by hand)
 │       └── learnings.md        # Proven findings eligible for promotion
-├── tests/                      # Automated unit tests
+├── tests/                      # node --test suites
+│   ├── lib/                    # Unit tests for lib/
+│   ├── videos/                 # Golden scenes, template run, learnings format
+│   └── skills/                 # Skill docs stay in sync with lib/
 └── planning/                   # Execution roadmap and spec slices
     ├── roadmap.md              # Active specs and backlog
     └── specs/                  # Atomic specification files
@@ -57,7 +69,7 @@ flowchart TD
 
 ## 🔒 Structural Invariants & Boundaries
 
-1. **Self-Contained Video Folders:** Every video in `videos/<slug>/` has a fixed shape (`brief.md`, `palette.json`, `scene.gen.cjs`, `scene.json`, `learnings.md`).
+1. **Self-Contained Video Folders:** Every video in `videos/<slug>/` is a copy of `videos/_template/` with a fixed shape (`brief.md`, `palette.json`, `scene.gen.cjs`, `scene.json`, `learnings.md`, plus `research.md` when the video states facts).
 2. **Pure Generators:** Scene generators are pure scripts that output scene JSON. They never assume Lienzo is running during generation.
 3. **Palette Parameterization:** Shared pieces in `lib/` must take their colors from a palette argument and never hardcode brand-specific colors.
 4. **Learning Promotion Seam:** Proven techniques move from `learnings.md` to `lib/` or `skills/` only after verification in a video or preview.

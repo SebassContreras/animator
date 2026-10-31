@@ -9,6 +9,7 @@ Instructions and operational constraints for AI coding agents.
   - Full suite: `pnpm test`
 - **Language Hard Rule:** English in all code files, markdown documents, and on-screen text; Spanish only in conversation with the user.
 - **Commits:** Standard Conventional Commits (`feat:`, `fix:`, `docs:`, `refactor:`). No rigid hook trailers or custom formats.
+- **Spectrace Skills:** `.agents/skills/spectrace-*` are installed from `../spectrace` (pinned in `skills-lock.json`). Never edit them here; change them in spectrace and reinstall.
 
 ## 🧭 Repository Blueprint & Pointers
 This codebase uses a progressive disclosure model with clear separation of concerns across 7 root contracts:
@@ -38,13 +39,17 @@ Agents execute work incrementally using the specs in `planning/`:
    - Maintain documentation integrity: do not delete or alter comments/docstrings unrelated to your changes.
 
 3. **Verify:**
-   - Run the relevant test suite (`node --test tests/<path>.test.cjs` or `pnpm test`).
-   - For `Verify:` or `Review:` tasks, perform the explicit check and record results under the task (e.g., `verified: <summary>`).
+   - Run the narrowest test covering the touched files, as described in [TESTING.md](./TESTING.md). Never mark a task done without verifying.
+   - For `Verify:` or `Review:` tasks, perform the explicit check and record results under the task (e.g., `verified: <summary>`). Code audits against the root contracts use `spectrace-review`.
 
 4. **Close Task & Commit:**
    - Mark the checkbox as completed: `- [x] NNN/TNNN [agent] ...`.
    - If all tasks in the spec are complete, update the spec's status to `done` in `planning/roadmap.md`.
    - Stage touched files by name and commit with a clear Conventional Commit message.
+
+5. **Contradictions or Changes:** Propose them to the user; the `spectrace-change` skill applies them to `CHANGES.md` and the affected specs.
+
+6. **New Ideas:** Add them to `planning/roadmap.md` under `## Ideas`.
 
 ---
 
@@ -54,4 +59,4 @@ Agents execute work incrementally using the specs in `planning/`:
 3. **Keep `planning/` Clean:** Only actionable specs and the roadmap belong in `planning/`. Durable architecture and governance belong at the root.
 4. **When Blocked:** Add an indented `blocked: <reason>` line below the task, commit the note, inform the user, and move to unblocked work.
 5. **No Speculative Abstractions:** Never introduce premature interfaces, adapters, or base classes for single-use cases. Abstract only for 2+ concrete consumers or vendors.
-6. **Flat Primitives by Default:** Geometric primitives must have gradients and shadows disabled by default unless art direction explicitly calls for them.
+6. **Sync Before Status:** Run `git pull` and `git status` before reporting pending tasks or answering "what's next".

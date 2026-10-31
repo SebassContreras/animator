@@ -56,7 +56,7 @@ Agent tasks; the user confirms each promotion during close-out.
 ### Trade-offs
 
 - D1. Pros: no new syntax. The 003 template and its headings stay valid, so 003/D5 needs no change. Cons: a free-text suffix can be mistyped. Mitigation: D7's test checks the Engine suffix, which R5 makes mandatory. The `promoted` suffix is optional by nature.
-- D2. Pros: each video's file reads on its own. Cons: rewriting may lose nuance from the log. Mitigation: the deleted session log stays in git history, and each migration task's patch in `.spectrace/changes/` shows the old and new text side by side.
+- D2. Pros: each video's file reads on its own. Cons: rewriting may lose nuance from the log. Mitigation: the deleted session log stays in git history, and each migration commit shows the old and new text side by side.
 - D3. Pros: a `promoted` mark is a checked fact, not a claim copied from the log. Cons: more work per finding. Mitigation: the check is one search per rule, and unfound rules are reported, not silently fixed.
 - D4. Pros: engine work lives where Lienzo's owner tracks it, and R5's "no separate list" holds. Cons: it depends on the user filing issues, so the spec can stall. Mitigation: `[human]` tasks never hold a spec open, and the T002–T004 reports draft each issue's title and body so filing is copy-paste.
 - D5. Pros: one source of truth with nothing to keep in sync. Cons: a link to the session log from outside the repo breaks. Mitigation: git history keeps the file. The repo is the only known consumer, and full-repository grep proves no internal mention is left.
@@ -71,9 +71,7 @@ Agent tasks; the user confirms each promotion during close-out.
 - [x] 004/T004 [agent] Migrate the `omega-v2` session into `videos/ringana-omega-v2/learnings.md` under its kind sections, verify existing promotions, and draft Lienzo issue templates — covers D2, D3, R1, R3
 - [x] 004/T005 [human] File one issue in the Lienzo repo per engine finding (drafts in the T002–T004 reports) and give the agent the URLs — covers D4
 - [x] 004/T006 [agent] Replace every `— tracks: TODO` in the three videos' `learnings.md` with its Lienzo issue URL — covers D4, R5
-      blocked: waiting for T005: Lienzo issue URLs
 - [x] 004/T007 [agent] Test in `tests/videos/learnings.test.cjs` using parameterized table-driven tests that each video's `learnings.md` satisfies structural and engine tracking invariants across partitions — covers R1, R5, D7
-      blocked: waiting for T006: engine bullets still end in TODO
 - [x] 004/T008 [agent] Re-point every mention of `LOG.md` outside history (`README.md`, `PRODUCT.md`, `skills/lienzo-art-direction/SKILL.md`, `skills/lienzo-art-direction/references/motion-polish.md`, the `videos/viaje/scene.gen.cjs` comment) to the video's `learnings.md` or the skill file that holds the rule; golden tests stay green — covers D5
 - [x] 004/T009 [agent] Delete `LOG.md` and verify via repository-wide search that no tracked files retain dangling references to it — covers D5, R4
 - [x] 004/T010 [agent] Add step 8 "Close out" to `skills/lienzo-animate/SKILL.md`: after approval, write findings by kind, confirm classification with the user, open a `NNN-promote-<slug>` spec using `spectrace-plan` for confirmed Piece/Rule findings, and ask the user to file Lienzo issues for Engine findings; in Joint mode, point to `learnings.md` — covers D6, R2
@@ -84,4 +82,3 @@ Agent tasks; the user confirms each promotion during close-out.
 - [x] 004/T013 [human] Confirm, move or drop each finding listed in T012 — covers D8
 - [x] 004/T014 [agent] For each video with confirmed findings, scaffold its `NNN-promote-<slug>` spec using `spectrace-plan` (one R item per finding) — covers D8, R2
       reviewed 2026-10-25: Promotion workflow supports both video-proven and Lienzo native-feature wrappers
-      blocked: waiting for T013: user confirmation of the T012 list

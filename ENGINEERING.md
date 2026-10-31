@@ -22,8 +22,8 @@ This document defines the craftsmanship, code quality standards, and software en
 - Avoid inheritance hierarchies. Default to **composition + pure helper functions**.
 
 ### 4. Service Layer + Anti-Corruption / Dependency Inversion (DIP)
-- Wrap external tools and APIs (such as Lienzo engine integrations or third-party utilities) in adapter interfaces.
-- Generator code and domain logic depend on interfaces and pure data contracts, not vendor-specific internals.
+- The only boundary with Lienzo is the compact scene JSON contract: generators and `lib/` emit plain data and never call the Lienzo CLI or MCP tools.
+- Wrap an external tool in an adapter only when code actually starts calling it (2+ call sites or a test seam), per KISS / YAGNI above.
 
 ### 5. Small Interfaces & Pure Functions
 - Prefer small function signatures and pure functions that take inputs (e.g., coordinates, dimensions, palette) and return deterministic scene element objects.
@@ -36,7 +36,11 @@ This document defines the craftsmanship, code quality standards, and software en
   - `kebab-case`: files, directories, Markdown documents (e.g., `scene.gen.cjs`, `004-learning-promotion.md`).
   - `camelCase`: functions, variables, object properties (e.g., `makePalette`, `nativeShot`).
   - `UPPER_SNAKE_CASE`: constants, default configuration objects.
+- Each `lib/` module opens with a one-line comment stating its responsibility; comments cite the spec item behind a non-obvious choice (e.g., `(010/D3)`).
 
 ### 7. Document Trade-offs
 - Every significant technical choice has trade-offs.
 - Document pros, cons, and active mitigations directly in the relevant spec, code comments, or `CHANGES.md`.
+
+### 8. Verify Against Official Sources
+- Ground non-trivial choices (Node APIs, Lienzo features, libraries) in official documentation or web research, and cite the source in the spec's design item.

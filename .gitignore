@@ -1,5 +1,3 @@
-.spectrace/index.db
-.spectrace/state.json
 __pycache__/
 videos/_template/scene.json
 videos/tmp-*/

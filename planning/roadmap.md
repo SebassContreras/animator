@@ -1,6 +1,8 @@
 # Roadmap
 
-Specs in execution order. `Status` (`todo`, `in progress`, `done`) is maintained directly by agents and humans as specs progress. Specs 001–010 not listed were finished under the old spectrace format (one folder per spec); they live in git history.
+Specs in execution order. `Status` (`todo`, `in progress`, `done`) is maintained directly by agents and humans as specs progress.
+
+> Historical note: Specs 001–010 not listed here were finished under the legacy spectrace format; they live in git history. See [CHANGES.md](../CHANGES.md).
 
 | ID  | Spec | Status | Depends on |
 |-----|------|--------|------------|

@@ -40,5 +40,5 @@ Animator is a set of agent skills plus a shared Node library for making animated
 ## 5. Non-Goals & Boundaries
 
 - **Lienzo Engine Modifications:** Engine improvements are tracked and implemented in the Lienzo repository itself.
-- **Producing New Videos:** This repo maintains the skills and generator library; video production workflows are separate.
+- **New Videos as Roadmap Work:** Specs improve the skills and `lib/`. Making a new video is a use of the skills (README § Make a video), not a spec; `videos/<slug>/` holds the reference video and the sources for learning promotion.
 - **Registry Publishing:** Publishing skills to an external public registry is out of scope for now.

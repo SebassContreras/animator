@@ -18,6 +18,22 @@ When an existing architectural design or requirement needs to change:
 
 ## 📜 Change Log
 
+### 2026-10-31 — Governance: Align Contracts With Spectrace 0.32
+
+- **Scope:** Root contracts, spec 004, roadmap, and ignore files.
+- **What Changed:**
+  - Restored project rules lost in the 2026-10-30 migration: sync before status (`AGENTS.md`), the test run rule, regression-first, and visual-quality checks (`TESTING.md`), and verification against official sources (`ENGINEERING.md`).
+  - Single responsibility: language and learning-promotion rules left `DESIGN.md` (owned by `AGENTS.md` and `ARCHITECTURE.md`); flat-primitive rule left `AGENTS.md` (owned by `DESIGN.md`).
+  - `ENGINEERING.md` § DIP now states the real Lienzo boundary (scene JSON) instead of requiring speculative adapters.
+  - `PRODUCT.md` non-goal "Producing New Videos" reworded: videos are made with the skills, but making one is not spec work. This matches the README and `videos/`.
+  - `DESIGN.md` now matches the skills: palette roles `background`/`main`/`secondary`/`accent`/`text` (was "primary"), scene-level `defaults: "flat"`, and the readability numbers from `craft.md`. The skills win when the two differ.
+  - `ARCHITECTURE.md` directory map lists `.agents/skills/`, `videos/_template/`, the `lib/` modules, and the test folders. `TESTING.md` documents the guard tests (golden, template, lib-list). `README.md` adds art direction and close-out to "Make a video".
+  - Removed stale `blocked:` notes on done tasks and the `.spectrace/changes/` reference in spec 004; dropped `.spectrace/` entries from `.gitignore`.
+- **Why:**
+  - Keep each contract single-purpose and consistent with the `spectrace-init` upgrade checklist.
+- **Replaced Items:**
+  - Legacy `.spectrace/` runtime paths and the local `core.hooksPath=.githooks` setting.
+
 ### 2026-10-30 — Governance: Upgrade to Spectrace 7-Contract Suite
 
 - **Scope:** Repository governance, agent execution protocol, and contract structure.

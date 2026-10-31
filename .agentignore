@@ -23,7 +23,8 @@ build/
 out/
 .cache/
 
-# Videos compiled scene outputs (when large)
+# Generated scenes: edit videos/<slug>/scene.gen.cjs, never the JSON.
+# lienzo-animate still reads the file explicitly to pass it to scene_build.
 videos/*/scene.json
 
 # Test and coverage artifacts
