@@ -120,7 +120,7 @@ const without = (role) => Object.fromEntries(Object.entries(BRAND).filter(([r]) 
 const REJECTED = [
   ["a story role with only a tone", BRAND, { sea: { shadow: "#072630" } }, /"sea" needs a #RRGGBB base/],
   ...["background", "primary", "secondary", "accent", "text"].map((role) =>
-    [`missing required role ${role}`, without(role), {}, new RegExp(`required role\(s\) "${role}": set them in the Lienzo brand .* or in palette.json`)]),
+    [`missing required role ${role}`, without(role), {}, new RegExp(`"${role}": set them in the Lienzo brand .* or in palette\.json`)]),
   ["two missing required roles", { background: "#1B1F4B", primary: "#FF6B6B", text: "#FFFFFF" }, {}, /"secondary", "accent"/],
   ["a bad hex in palette.json", BRAND, { accent: { base: "#FFE66" } }, /"accent"/],
 ];
