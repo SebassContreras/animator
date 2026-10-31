@@ -15,6 +15,17 @@ Pick the one that makes the message felt, not just stated.
 | Reveal | hide → hint → reveal | launches, surprises |
 | Loop | an endless cycle that makes a point | routines, flows, GIFs |
 
+## Platform length
+
+Checked 2026-10-31. Pick the length from the goal. Band ends are included (15 and 30 s are inside). The sources are vendor studies, so read them as a direction, not a law.
+
+- **Completion** (an explanation or a product message): **15–30 s**, the default. Completion falls as length grows: Reels at 15 s averaged 78 % completion in a 50-Reel test ([CreatorHouse](https://creatorhouse.app/blog/instagram-reel-length-2026-test)); on TikTok 0–10 s completes best ([Fanpage Karma](https://www.fanpagekarma.com/insights/optimal-tiktok-video-length/)), and 21–34 s averages 62 % vs 48 % over 60 s ([Opus](https://www.opus.pro/blog/tiktok-length-format-retention-data)). The 15 s lower bound is a house rule: below it an explanation barely fits (see the 5–8 s row below). A shorter piece (a loop, a single image) is fine when chosen on purpose.
+- **Reach**: **45–60 s**, only when the brief states reach as the goal, and only with a story that holds that long. Among brand Reels, 45–60 s has the highest engagement (0.35 %) and views (10,374); 120–180 s comes second for engagement (0.33 %) ([Socialinsider, 9.8 M Reels, Jan–Jun 2026](https://www.socialinsider.io/blog/instagram-reels-length/)).
+- **Past 180 s**: engagement drops to 0.15 % and views to 4,428, below every shorter length, and Socialinsider reports such Reels are not placed in the Reels tab ([Socialinsider](https://www.socialinsider.io/social-media-benchmarks/social-media-video-statistics)).
+- Instagram's head, Adam Mosseri, says there is no one perfect length: the goal is to keep people watching (as reported by [Buffer](https://buffer.com/resources/instagram-reels-length), undated).
+
+A brand guide's own length rules replace all of this.
+
 ## Pacing (short social video)
 
 | Duration | Shots | Notes |

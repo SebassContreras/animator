@@ -61,8 +61,12 @@ Agent tasks. The user confirms any flagged duration.
 ### Approach
 
 - D1 (R1): `craft.md` gets a "Platform length" note above its pacing table:
-  - completion falls as length grows (Reels: about 78 % at 15 s in a 50-Reel test; TikTok: 0–10 s
-    completes best and 21–34 s averages 62 % vs 48 % over 60 s) _(source per figure: T001)_;
+  - completion falls as length grows: Reels at 15 s averaged 78 % completion in a 50-Reel test
+    _(CreatorHouse, May 2026: https://creatorhouse.app/blog/instagram-reel-length-2026-test)_;
+    on TikTok 0–10 s completes best _(Fanpage Karma, about February 2026:
+    https://www.fanpagekarma.com/insights/optimal-tiktok-video-length/)_, and 21–34 s averages
+    62 % vs 48 % over 60 s _(Opus, author's own analysis:
+    https://www.opus.pro/blog/tiktok-length-format-retention-data)_;
   - among brand Reels, 45–60 s has the highest engagement (0.35 %) and views (10,374); 120–180 s
     comes second for engagement (0.33 %); past 180 s engagement drops to 0.15 % and views to
     4,428, below every shorter length, and Socialinsider reports that such Reels are not placed
@@ -78,12 +82,7 @@ Agent tasks. The user confirms any flagged duration.
   `ringana`'s guide): the data favours shorter, but below 15 s an explanation or product message
   barely fits (the pacing table's 5–8 s row holds one image and one line). A shorter length
   (loops, a single image) is fine when chosen on purpose. The note is dated and calls its
-  sources directional. _(remaining sources, vendor studies, so directional; T001 maps each to
-  its figure: https://www.bytecap.io/research/best-instagram-reels-length,
-  https://creatorhouse.app/blog/instagram-reel-length-2026-test,
-  https://www.highviz.io/blog/how-long-should-instagram-reels-be/,
-  https://www.fanpagekarma.com/insights/optimal-tiktok-video-length/,
-  https://www.opus.pro/blog/tiktok-length-format-retention-data)_
+  sources directional (all are vendor studies).
 - D2 (R2): Storyboard step 1, right after 011/D11 picks the duration, applies the R2 table. The
   band comes from the guide's length rules, which are the duration figures the guide states
   (e.g. `ringana`'s "## Format and length"), or, when it states none or there is no guide, from
@@ -115,8 +114,10 @@ Agent tasks. The user confirms any flagged duration.
   600 s.
 
 ## Tasks
-- [ ] 012/T001 [agent] Verify: map each remaining D1 figure (78 % at 15 s in a 50-Reel test, TikTok 0–10 s and 21–34 s vs over 60 s completion) to the URL that states it; cite it in D1, reword it as reported by its secondary source, or drop it; drop any URL that supports no figure; record `verified:` under the task. Socialinsider and Mosseri were checked on 2026-10-31 (D1) — covers R1, D1
-- [ ] 012/T002 [agent] `skills/lienzo-storyboard/references/craft.md`: add the "Platform length" note, dated, above the pacing table: the two bands, the 15 s house rule, the short-format line and the 180 s warning, each figure beside its source as T001 left D1 — covers R1, D1
-- [ ] 012/T003 [agent] `lienzo-storyboard` SKILL.md step 1 "Duration": after 011/D11's value, apply the R2 table with the guide's length rules or, without them, craft.md's "Platform length" note (named, figures not restated); refuse only what a guide rule forbids; fold the question into step 1's single round — covers R2, D2, D3
-- [ ] 012/T004 [agent] `skills/lienzo-storyboard/references/brief-template.md` and `videos/_template/brief.md`: the Duration line records the goal and the band result; run `node --test tests/videos/template.test.cjs` — covers R2, D2
-- [ ] 012/T005 [agent] Review: walk each R2 row (5, 14.9, 15, 30, 30.1, 44.9, 45 and 60 with each goal, 60.1, 180, 180.1, and `ringana`'s guide at 30, 30.1, 90, 90.1) through the finished step 1 text; record under the task what it prescribes per row; a row left undecided reopens T003 — covers R2, D3
+- [x] 012/T001 [agent] Verify: map each remaining D1 figure (78 % at 15 s in a 50-Reel test, TikTok 0–10 s and 21–34 s vs over 60 s completion) to the URL that states it; cite it in D1, reword it as reported by its secondary source, or drop it; drop any URL that supports no figure; record `verified:` under the task. Socialinsider and Mosseri were checked on 2026-10-31 (D1) — covers R1, D1
+  - verified: 2026-10-31. 78 % at 15 s → CreatorHouse (50 Reels, 5 cohorts); 0–10 s → Fanpage Karma; 62 % vs 48 % → Opus. highviz.io states none of the figures and bytecap.io could not be read: both dropped from D1.
+- [x] 012/T002 [agent] `skills/lienzo-storyboard/references/craft.md`: add the "Platform length" note, dated, above the pacing table: the two bands, the 15 s house rule, the short-format line and the 180 s warning, each figure beside its source as T001 left D1 — covers R1, D1
+- [x] 012/T003 [agent] `lienzo-storyboard` SKILL.md step 1 "Duration": after 011/D11's value, apply the R2 table with the guide's length rules or, without them, craft.md's "Platform length" note (named, figures not restated); refuse only what a guide rule forbids; fold the question into step 1's single round — covers R2, D2, D3
+- [x] 012/T004 [agent] `skills/lienzo-storyboard/references/brief-template.md` and `videos/_template/brief.md`: the Duration line records the goal and the band result; run `node --test tests/videos/template.test.cjs` — covers R2, D2
+- [x] 012/T005 [agent] Review: walk each R2 row (5, 14.9, 15, 30, 30.1, 44.9, 45 and 60 with each goal, 60.1, 180, 180.1, and `ringana`'s guide at 30, 30.1, 90, 90.1) through the finished step 1 text; record under the task what it prescribes per row; a row left undecided reopens T003 — covers R2, D3
+  - verified: 2026-10-31. Step 1 + craft.md: 5, 14.9, 30.1, 44.9, 60.1, 180 → flagged (5 from `canvas.duration` in one question with its confirmation); 15, 30 → accepted (ends included, stated in the note); 45, 60 → accepted with `reach`, flagged with `completion`; 180.1 → flagged quoting the 180 s warning; `ringana` 30 → accepted, 30.1 and 90 → flagged, 90.1 → refused. No row left undecided.

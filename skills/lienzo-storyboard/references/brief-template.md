@@ -10,7 +10,7 @@ Units: seconds for time, canvas pixels for position and size (`x, y` = top-left 
 - **Message:** <one sentence the viewer must take away>
 - **Audience:** <who>
 - **Platform / format:** <e.g. Instagram reel, 1080×1920, 30 fps>
-- **Duration:** <total seconds> — <from the brief, or the brand's `canvas.duration` confirmed by the user>
+- **Duration:** <total seconds> — <from the brief, or the brand's `canvas.duration` confirmed by the user> — goal: <completion | reach> — <accepted, or outside the band and confirmed by the user>
 - **Mandatory text / brand:** <exact strings from the brand guide, plus any this video adds> or none
 
 ## Brand
