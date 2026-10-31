@@ -40,3 +40,25 @@ test("nativeShot writes a shots entry and omits camera when none is given", () =
     { id: "s2", name: "Shot 2", start: 3, end: 6, camera: { zoom: 1.2 } },
   ]);
 });
+
+// Any hardcoded family fails, not only Montserrat: every text piece takes the fonts it is given (011/R4, D10).
+const SENTINEL = { heading: { family: "Test Sans", weight: 123 }, body: { family: "Test Serif", weight: 321 } };
+const pieces = sceneHelpers({ w: 1080, h: 1920, duration: 10, palette: { text: { base: "#FFFFFF" } }, fonts: SENTINEL });
+const FACE_CASES = [
+  ["label", (extra) => pieces.label("t", "Text", "Hello", 100, 60, 0, 5, extra)],
+  ["text", (extra) => pieces.text("t", "Text", "Hello", 100, 60, 0, 5, extra).label],
+];
+
+for (const [piece, make] of FACE_CASES) {
+  test(`${piece} uses the heading font it is given, and the body font with extra.font "body"`, () => {
+    // Act
+    const faces = [make({}), make({ font: "body" }), make({ weight: 900 })].map((el) => [el.font, el.weight]);
+    // Assert
+    assert.deepEqual(faces, [["Test Sans", 123], ["Test Serif", 321], ["Test Sans", 900]]);
+  });
+}
+
+test("sceneHelpers without fonts names what to pass", () => {
+  // Act + Assert
+  assert.throws(() => sceneHelpers({ w: 1080, h: 1920, duration: 10, palette: {} }), /brandFonts/);
+});

@@ -1,7 +1,7 @@
-// brandLock / checkBrandLock over the R1 partitions and invariant (011/R1, D1, D10).
+// brandLock / checkBrandLock over the R1 partitions and invariant, brandFonts over the R4 partitions (011/R1, R4, D1, D5, D10).
 const { test } = require("node:test");
 const assert = require("node:assert/strict");
-const { brandLock, checkBrandLock } = require("../../lib/brand.cjs");
+const { brandLock, checkBrandLock, brandFonts } = require("../../lib/brand.cjs");
 
 const CANVAS = { width: 1080, height: 1920, fps: 30, duration: 20 };
 const FULL_PALETTE = { primary: "#000000", secondary: "#2D2D2D", accent: "#ED691C", background: "#FFFFFF", surface: "#F7F7F7", text: "#000000" };
@@ -48,5 +48,31 @@ for (const [name, lock, error] of INVALID) {
   test(`checkBrandLock rejects ${name}, naming it`, () => {
     // Act + Assert
     assert.throws(() => checkBrandLock(lock), error);
+  });
+}
+
+// brandFonts over the R4 partitions: [partition, lock fonts, expected { heading, body }]
+const font = (family, role, weights) => ({ family, role, weights });
+const INTER = { heading: { family: "Inter", weight: 800 }, body: { family: "Inter", weight: 400 } };
+const FONT_CASES = [
+  ["heading and body declared", [font("Montserrat", "heading", [800]), font("Lato", "body", [500])], { heading: { family: "Montserrat", weight: 800 }, body: { family: "Lato", weight: 500 } }],
+  ["only body (heading = body)", [font("Lato", "body", [400])], { heading: { family: "Lato", weight: 400 }, body: { family: "Lato", weight: 400 } }],
+  ["only heading (body = heading)", [font("Oswald", "heading", [700])], { heading: { family: "Oswald", weight: 700 }, body: { family: "Oswald", weight: 700 } }],
+  ["no fonts (system default)", [], INTER],
+  ["only accent and mono (system default)", [font("Caveat", "accent", [400]), font("JetBrains Mono", "mono", [400])], INTER],
+  ["two fonts with the same role (the first wins)", [font("Oswald", "heading", [700]), font("Poppins", "heading", [800]), font("Lato", "body", [400])],
+    { heading: { family: "Oswald", weight: 700 }, body: { family: "Lato", weight: 400 } }],
+  ["several weights (heading highest, body lowest)", [font("Inter", "heading", [400, 800, 600]), font("Inter", "body", [700, 400, 600])],
+    { heading: { family: "Inter", weight: 800 }, body: { family: "Inter", weight: 400 } }],
+];
+
+for (const [name, fonts, expected] of FONT_CASES) {
+  test(`brandFonts: ${name}`, () => {
+    // Arrange
+    const lock = { ...LOCK, fonts };
+    // Act
+    const result = brandFonts(lock);
+    // Assert
+    assert.deepEqual(result, expected);
   });
 }
