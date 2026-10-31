@@ -56,11 +56,11 @@ and fonts; `omega-v2` still generates its golden scene byte for byte; `pnpm test
 - R3: `tones(base)` derives `shadow` and `highlight` from a base with the D3 rule (perceptual
   lightness plus a small hue shift, not a plain lightness change). Partitions:
   - a mid base;
-  - base L exactly 40 (shadow −12) and just under 40 (shadow −8);
+  - a base just above L 40 (shadow −12) and just under it (shadow −8): no hex lands exactly on 40;
   - base L between 85 and 97 (highlight capped at 97);
   - base L above 97 (highlight keeps the base L);
   - `#000000` (the shadow is black) and `#FFFFFF` (the highlight is white);
-  - chroma exactly 0.02 (hue shift) and just under (no hue shift);
+  - a base just above chroma 0.02 (hue shift) and just under it (no hue shift);
   - a hue within 6° of the target (it stops at the target, never past it);
   - a hue on the far side of 0°/360° from the target (the shorter arc wraps through 0°);
   - a saturated base whose shifted tone falls out of sRGB (chroma is reduced until it fits).
