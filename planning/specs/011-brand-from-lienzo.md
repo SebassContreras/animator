@@ -361,7 +361,7 @@ drift report (R6), and the migrated brief.
   brief sets no duration. Mitigation: the brief records the answer, so it is asked once per video.
 
 ## Tasks
-- [ ] 011/T001 [agent] `tests/skills/lib-list.test.cjs`: replace the six copied tests with one table over every `lib/*.cjs` read from the folder, so `brand.cjs` and any later module are guarded — covers D10
+- [x] 011/T001 [agent] `tests/skills/lib-list.test.cjs`: replace the six copied tests with one table over every `lib/*.cjs` read from the folder, so `brand.cjs` and any later module are guarded — covers D10
 - [ ] 011/T002 [agent] `lib/brand.cjs`: the header line, `brandLock(inspect)` and `checkBrandLock(lock)` with the D1 schema; the "Start from lib/" list in `skills/lienzo-animate/SKILL.md` names both in the same task — covers R1, D1
 - [ ] 011/T003 [agent] Table test (`tests/lib/brand.test.cjs`) of `brandLock` and `checkBrandLock` over the R1 partitions (each invalid row asserts the error names the role or key) and the invariant `checkBrandLock(brandLock(x))` for every valid row — covers R1, D1, D10
 - [ ] 011/T004 [agent] `lib/palette.cjs`: `tones(base)` implementing the D3 rule; the "Start from lib/" list names it in the same task — covers R3, D3
