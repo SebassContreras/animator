@@ -43,7 +43,7 @@ Before drawing a piece, check the Animator repo's `lib/` and reuse what is there
 - `lib/objects.cjs` — `heart(id, x, y, color)`.
 - `lib/motion.cjs` — `heartbeat(t0, beats, opts)`: scale pulse tracks; `countUp(steps)`: `label.text` track for a counting number (colourless).
 - `lib/palette.cjs` — `checkPalette(require("./palette.json"))`; `tones(base)` → `{ shadow, highlight }` derived in OKLCH (shadows cooler, highlights warmer); `resolvePalette(lock, require("./palette.json"))`: the palette a generator uses (brand colours, then `palette.json` overrides and story roles, derived tones for any tone left out; fails naming each missing required role).
-- `lib/brand.cjs` — `brandLock(inspect)`: the `brand.lock.json` snapshot from a `project_inspect` result; `checkBrandLock(require("./brand.lock.json"))`: checks it and returns it.
+- `lib/brand.cjs` — `brandLock(inspect)`: the `brand.lock.json` snapshot from a `project_inspect` result; `checkBrandLock(require("./brand.lock.json"))`: checks it and returns it; `brandFonts(lock)` → `{ heading, body }`, each `{ family, weight }` (Inter 800 / 400 when the brand declares none).
 
 A new piece stays in the video's generator; it moves to `lib/` only after the video worked (or, for a wrapper of a Lienzo feature, once it renders right in `scene_preview`), through close-out (see `ARCHITECTURE.md` § Learning Promotion Seam).
 
