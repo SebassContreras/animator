@@ -1,13 +1,18 @@
 # RINGANA omega 3 · v2 (art direction pass)
 
-The art-direction redesign of the first ringana-omega piece (since removed): same idea, concept, shot list, timings, on-screen text, facts and voice-over, made with the `lienzo-art-direction` skill. Where "Visual style" or "Changes per shot" differ from the shots or objects below, they win. Facts and sources: `research.md` (same folder). Generator: `scene.gen.cjs`, scene `omega-v2` in project `ringana`.
+The art-direction redesign of the first ringana-omega piece (since removed): same idea, concept, shot list, timings, on-screen text, facts and voice-over, made with the `lienzo-art-direction` skill. Where "Visual style" or "Changes per shot" differ from the shots or objects below, they win. Facts and sources: `research.md` (same folder). Generator: `scene.gen.cjs`, built from project `ringana`'s brand. Its Lienzo scene `omega-v2` was deleted on 2026-10-31 and is not rebuilt.
 
 ## Idea
 - **Message:** BEYOND omega gives you 960 mg of plant-based omega 3 (from microalgae) a day for your heart, brain and vision.
-- **Audience:** Adults interested in natural wellbeing, especially people who eat little or no fish; RINGANA customers and partners.
+- **Audience:** from the brand guide (adults interested in natural wellbeing; for BEYOND omega, people who eat little or no fish).
 - **Platform / format:** Instagram/TikTok reel, 1080×1920, 30 fps
-- **Duration:** 24 s
-- **Mandatory text / brand:** "RINGANA BEYOND omega" + disclaimer. No official logo file (text only). On-screen text in English.
+- **Duration:** 24 s — set by this brief (the brand's `canvas.duration` is 20 s)
+- **Mandatory text / brand:** from the brand guide: the product name "RINGANA BEYOND omega", the food-supplement disclaimer, the text-only brand mark, English on screen.
+
+## Brand
+- **Lienzo project:** `ringana` (snapshot in `brand.lock.json`)
+- **Overrides:** `text` (white on the dark sea; the brand's text is black)
+- **Precedence:** what this video sets (`palette.json`, this brief) wins; anything it leaves out comes from the brand; anything the brand lacks comes from the system defaults (`DESIGN.md` → Brand inheritance).
 
 ## Concept
 - **Angles considered:** (a) the journey of a golden drop through the body; (b) from the algae sea to the capsule; (c) a gauge that fills from "low" to "optimal" omega 3.
@@ -15,16 +20,20 @@ The art-direction redesign of the first ringana-omega piece (since removed): sam
 - **Story in one line:** algae in the sea → capsule (960 mg) → lights up heart, brain, eyes → vitamins → Omega-3 Index gauge rises → product + disclaimer.
 
 ## Visual style
-- **Style:** Bright science — keeps the dark sea and the product's aubergine; keeps Montserrat (brand) instead of a rounded sans.
+- **Style:** Bright science — keeps the dark sea and the product's aubergine; uses the brand fonts (Montserrat 800 / 500) instead of a rounded sans.
 - **References:** Kurzgesagt (flat shading, glow on the focal object, layered depth); TED-Ed (simple organ icons).
-- **Palette:** each colour of v1 gets a shadow and a highlight tone.
-  | Role | Shadow | Base | Highlight |
-  |---|---|---|---|
-  | sea (gradient) | #072630 | #0E3B43 | #1A6470 |
-  | algae | #2E6E52 | #4FA37B | #8FD3A8 |
-  | omega drop | #C9861C | #F2B33D | #FFE08A |
-  | capsule | #3A1020 | #5B1F33 | #8A3A55 |
-  | organ | #D9533A | #FF7A59 | #FFB199 |
+- **Palette:** overrides and story roles only; hex values (hand-picked shadow and highlight tones) live in `palette.json`.
+  | Role | What it paints |
+  |---|---|
+  | sea | the backdrop gradient |
+  | seabed, fg, algaFar | the seabed, the dark foreground fronds, the pale far algae |
+  | alga | the mid algae and the alga that becomes the capsule |
+  | drop | the golden omega drop and the gold accents |
+  | capsule | the aubergine capsules and the hero capsule |
+  | organ | the heart and the lit organs |
+  | body | the body silhouette |
+  | low | the gauge's low zone |
+  | text | override: all on-screen text, white |
 - **Light:** from the top-left in every shot; shadow tone on the right/bottom half of each object.
 
 ## Changes per shot
@@ -135,7 +144,7 @@ All text: slide in with `cubic-out`, fade out with `cubic-in`. Every shot has am
 - **Silhouette:** 220 px head + neck + rounded torso, #E8EFEA at 15 %.
 
 ## Audio (optional)
-- Voice-over: Kokoro (local), voice `af_bella`, one clip per shot placed as `audioTracks` (starts: 0.5, 3.4, 9.2, 14.3, 17.4, 21.3 s). No music yet. Script:
+- Voice-over: Kokoro (local), voice `af_bella`, one clip per shot. Voice timings belong to the Lienzo scene, not this brief (that scene was deleted on 2026-10-31). No music yet. Script:
   "Omega 3 without fish? / It comes straight from microalgae. Nine hundred sixty milligrams, every day. / Supporting a normal heart, your brain, and your vision. / With vitamins D3, K2 and E. / In their own study, levels rose sixty-three percent in ninety days. / BEYOND omega."
 
 ## Sources
