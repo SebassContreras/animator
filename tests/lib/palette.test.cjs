@@ -1,7 +1,7 @@
 // checkPalette accepts role → { base, shadow?, highlight? } hex maps and names the role it rejects (002/R4); tones and resolvePalette cover 011/R3, R10.
 const { test } = require("node:test");
 const assert = require("node:assert/strict");
-const { checkPalette, tones } = require("../../lib/palette.cjs");
+const { checkPalette, tones, resolvePalette } = require("../../lib/palette.cjs");
 
 test("a palette with three-tone and one-tone roles is returned unchanged", () => {
   // Arrange
@@ -77,6 +77,64 @@ for (const [name, base, shadow, highlight] of PARTITIONS) {
 test("tones gives the same tones for the same base", () => {
   // Act
   const runs = [tones("#4FA37B"), tones("#4FA37B")];
+  // Assert
+  assert.deepEqual(runs[0], runs[1]);
+});
+
+// resolvePalette(lock, overrides) over the R10 partitions and invariants (011/R10, D4, D10).
+const BRAND = { background: "#1B1F4B", primary: "#FF6B6B", secondary: "#4ECDC4", accent: "#FFE66D", text: "#FFFFFF" };
+const lockOf = (palette) => ({ project: "sample", palette, fonts: [], canvas: { width: 1080, height: 1920, fps: 30, duration: 20 }, guide: null });
+const derived = (base) => ({ base, ...tones(base) });
+
+// [partition, overrides, role to check, expected role]
+const RESOLVED = [
+  ["no overrides", {}, "primary", derived("#FF6B6B")],
+  ["a tone override on a brand role", { primary: { shadow: "#111111" } }, "primary", { ...derived("#FF6B6B"), shadow: "#111111" }],
+  ["a base-only override re-derives the tones", { primary: { base: "#4FA37B" } }, "primary", derived("#4FA37B")],
+  ["a whole-role override", { primary: { base: "#4FA37B", shadow: "#2E6E52", highlight: "#8FD3A8" } }, "primary", { base: "#4FA37B", shadow: "#2E6E52", highlight: "#8FD3A8" }],
+  ["a story role with only base gets derived tones", { sea: { base: "#0E3B43" } }, "sea", derived("#0E3B43")],
+];
+
+for (const [name, overrides, role, expected] of RESOLVED) {
+  test(`resolvePalette: ${name}`, () => {
+    // Act
+    const palette = resolvePalette(lockOf(BRAND), overrides);
+    // Assert
+    assert.deepEqual(palette[role], expected);
+  });
+
+  test(`resolvePalette keeps every tone palette.json sets and mutates nothing: ${name}`, () => {
+    // Arrange
+    const lock = lockOf(BRAND);
+    const before = JSON.stringify([lock, overrides]);
+    const set = Object.entries(overrides).flatMap(([r, entry]) => Object.entries(entry).map(([tone, hex]) => [r, tone, hex]));
+    // Act
+    const palette = resolvePalette(lock, overrides);
+    // Assert
+    assert.deepEqual(set.map(([r, tone]) => [r, tone, palette[r][tone]]), set);
+    assert.equal(JSON.stringify([lock, overrides]), before);
+  });
+}
+
+const without = (role) => Object.fromEntries(Object.entries(BRAND).filter(([r]) => r !== role));
+const REJECTED = [
+  ["a story role with only a tone", BRAND, { sea: { shadow: "#072630" } }, /"sea" needs a #RRGGBB base/],
+  ...["background", "primary", "secondary", "accent", "text"].map((role) =>
+    [`missing required role ${role}`, without(role), {}, new RegExp(`required role\(s\) "${role}": set them in the Lienzo brand .* or in palette.json`)]),
+  ["two missing required roles", { background: "#1B1F4B", primary: "#FF6B6B", text: "#FFFFFF" }, {}, /"secondary", "accent"/],
+  ["a bad hex in palette.json", BRAND, { accent: { base: "#FFE66" } }, /"accent"/],
+];
+
+for (const [name, brand, overrides, error] of REJECTED) {
+  test(`resolvePalette rejects ${name}, naming it`, () => {
+    // Act + Assert
+    assert.throws(() => resolvePalette(lockOf(brand), overrides), error);
+  });
+}
+
+test("resolvePalette gives the same palette for the same inputs", () => {
+  // Act
+  const runs = [resolvePalette(lockOf(BRAND), { sea: { base: "#0E3B43" } }), resolvePalette(lockOf(BRAND), { sea: { base: "#0E3B43" } })];
   // Assert
   assert.deepEqual(runs[0], runs[1]);
 });
