@@ -1,0 +1,4466 @@
+{
+ "size": [
+  1080,
+  1920
+ ],
+ "duration": 20,
+ "fps": 30,
+ "defaults": "flat",
+ "background": {
+  "color": "#FFFFFF",
+  "gradient": false,
+  "dots": false,
+  "spotlight": 0
+ },
+ "symbols": {
+  "cell": {
+   "w": 210,
+   "h": 120,
+   "children": [
+    {
+     "border": {
+      "width": 0
+     },
+     "shadow": {
+      "enabled": false
+     },
+     "id": "shade",
+     "kind": "rect",
+     "x": 0,
+     "y": 0,
+     "w": 210,
+     "h": 120,
+     "radius": 60,
+     "fill": {
+      "gradient": false,
+      "opacity": 1,
+      "color": "#C8ADA1"
+     }
+    },
+    {
+     "border": {
+      "width": 0
+     },
+     "shadow": {
+      "enabled": false
+     },
+     "id": "core",
+     "kind": "rect",
+     "x": 0,
+     "y": 0,
+     "w": 202,
+     "h": 112,
+     "radius": 56,
+     "fill": {
+      "gradient": false,
+      "opacity": 1,
+      "color": "#F2D3C1"
+     }
+    },
+    {
+     "border": {
+      "width": 0
+     },
+     "shadow": {
+      "enabled": false
+     },
+     "id": "shine",
+     "kind": "rect",
+     "x": 30,
+     "y": 20,
+     "w": 70,
+     "h": 16,
+     "radius": 8,
+     "fill": {
+      "gradient": false,
+      "opacity": 0.9,
+      "color": "#FFEFDA"
+     }
+    }
+   ]
+  },
+  "droplet": {
+   "w": 100,
+   "h": 120,
+   "children": [
+    {
+     "border": {
+      "width": 0
+     },
+     "shadow": {
+      "enabled": false
+     },
+     "id": "shade",
+     "kind": "path",
+     "x": 0,
+     "y": 0,
+     "w": 100,
+     "h": 120,
+     "view": {
+      "x": 0,
+      "y": 0,
+      "w": 100,
+      "h": 120
+     },
+     "shapes": [
+      {
+       "d": "M50 0 C62 24 90 52 90 78 C90 102 72 118 50 118 C28 118 10 102 10 78 C10 52 38 24 50 0 Z"
+      }
+     ],
+     "fill": {
+      "gradient": false,
+      "opacity": 1,
+      "color": "#7E9CAD"
+     }
+    },
+    {
+     "border": {
+      "width": 0
+     },
+     "shadow": {
+      "enabled": false
+     },
+     "id": "core",
+     "kind": "path",
+     "x": 0,
+     "y": 0,
+     "w": 92,
+     "h": 110,
+     "view": {
+      "x": 0,
+      "y": 0,
+      "w": 100,
+      "h": 120
+     },
+     "shapes": [
+      {
+       "d": "M50 0 C62 24 90 52 90 78 C90 102 72 118 50 118 C28 118 10 102 10 78 C10 52 38 24 50 0 Z"
+      }
+     ],
+     "fill": {
+      "gradient": false,
+      "opacity": 1,
+      "color": "#9CC3D5"
+     }
+    },
+    {
+     "border": {
+      "width": 0
+     },
+     "shadow": {
+      "enabled": false
+     },
+     "id": "shine",
+     "kind": "ellipse",
+     "x": 30,
+     "y": 62,
+     "w": 18,
+     "h": 22,
+     "fill": {
+      "gradient": false,
+      "opacity": 0.85,
+      "color": "#C0EBFA"
+     }
+    }
+   ]
+  },
+  "creamdrop": {
+   "w": 100,
+   "h": 120,
+   "children": [
+    {
+     "border": {
+      "width": 0
+     },
+     "shadow": {
+      "enabled": false
+     },
+     "id": "shade",
+     "kind": "path",
+     "x": 0,
+     "y": 0,
+     "w": 100,
+     "h": 120,
+     "view": {
+      "x": 0,
+      "y": 0,
+      "w": 100,
+      "h": 120
+     },
+     "shapes": [
+      {
+       "d": "M50 0 C62 24 90 52 90 78 C90 102 72 118 50 118 C28 118 10 102 10 78 C10 52 38 24 50 0 Z"
+      }
+     ],
+     "fill": {
+      "gradient": false,
+      "opacity": 1,
+      "color": "#C8BBA1"
+     }
+    },
+    {
+     "border": {
+      "width": 0
+     },
+     "shadow": {
+      "enabled": false
+     },
+     "id": "core",
+     "kind": "path",
+     "x": 0,
+     "y": 0,
+     "w": 92,
+     "h": 110,
+     "view": {
+      "x": 0,
+      "y": 0,
+      "w": 100,
+      "h": 120
+     },
+     "shapes": [
+      {
+       "d": "M50 0 C62 24 90 52 90 78 C90 102 72 118 50 118 C28 118 10 102 10 78 C10 52 38 24 50 0 Z"
+      }
+     ],
+     "fill": {
+      "gradient": false,
+      "opacity": 1,
+      "color": "#EFE3C2"
+     }
+    },
+    {
+     "border": {
+      "width": 0
+     },
+     "shadow": {
+      "enabled": false
+     },
+     "id": "shine",
+     "kind": "ellipse",
+     "x": 30,
+     "y": 62,
+     "w": 18,
+     "h": 22,
+     "fill": {
+      "gradient": false,
+      "opacity": 0.85,
+      "color": "#FEF6D4"
+     }
+    }
+   ]
+  }
+ },
+ "shots": [
+  {
+   "id": "s1",
+   "name": "Shot 1 · Thirsty skin",
+   "start": 0,
+   "end": 3.5,
+   "camera": {
+    "zoom": 1,
+    "tracks": {
+     "zoom": [
+      [
+       0,
+       1,
+       "linear"
+      ],
+      [
+       3.5,
+       1.04
+      ]
+     ]
+    }
+   }
+  },
+  {
+   "id": "s2",
+   "name": "Shot 2 · The cream lands",
+   "start": 3.5,
+   "end": 7,
+   "camera": {
+    "zoom": 1.04,
+    "tracks": {
+     "zoom": [
+      [
+       3.5,
+       1.04,
+       "linear"
+      ],
+      [
+       7,
+       1.08
+      ]
+     ]
+    }
+   },
+   "transition": {
+    "kind": "fade",
+    "duration": 0.4
+   }
+  },
+  {
+   "id": "s3",
+   "name": "Shot 3 · Moisture, held",
+   "start": 7,
+   "end": 10.5,
+   "camera": {
+    "zoom": 1,
+    "tracks": {
+     "zoom": [
+      [
+       7,
+       1,
+       "linear"
+      ],
+      [
+       10.5,
+       1.04
+      ]
+     ]
+    }
+   },
+   "transition": {
+    "kind": "fade",
+    "duration": 0.4
+   }
+  },
+  {
+   "id": "s4",
+   "name": "Shot 4 · Plant actives",
+   "start": 10.5,
+   "end": 13.5,
+   "transition": {
+    "kind": "fade",
+    "duration": 0.4
+   }
+  },
+  {
+   "id": "s5",
+   "name": "Shot 5 · Measured",
+   "start": 13.5,
+   "end": 17,
+   "camera": {
+    "zoom": 1,
+    "tracks": {
+     "zoom": [
+      [
+       13.5,
+       1,
+       "linear"
+      ],
+      [
+       17,
+       1.03
+      ]
+     ]
+    }
+   },
+   "transition": {
+    "kind": "fade",
+    "duration": 0.4
+   }
+  },
+  {
+   "id": "s6",
+   "name": "Shot 6 · The product",
+   "start": 17,
+   "end": 20,
+   "camera": {
+    "zoom": 1,
+    "tracks": {
+     "zoom": [
+      [
+       17,
+       1,
+       "linear"
+      ],
+      [
+       20,
+       1.04
+      ]
+     ]
+    }
+   },
+   "transition": {
+    "kind": "fade",
+    "duration": 0.4
+   }
+  }
+ ],
+ "elements": [
+  {
+   "border": {
+    "width": 0
+   },
+   "shadow": {
+    "enabled": false
+   },
+   "id": "s1-bg",
+   "kind": "rect",
+   "x": 0,
+   "y": 0,
+   "w": 1080,
+   "h": 1920,
+   "radius": 0,
+   "name": "Backdrop",
+   "shot": "s1",
+   "fill": {
+    "gradient": false,
+    "opacity": 1,
+    "color": "#FFFFFF"
+   }
+  },
+  {
+   "border": {
+    "width": 0
+   },
+   "shadow": {
+    "enabled": false
+   },
+   "id": "s1-back",
+   "kind": "path",
+   "x": -110,
+   "y": 350,
+   "w": 1300,
+   "h": 1300,
+   "view": {
+    "x": 0,
+    "y": 0,
+    "w": 100,
+    "h": 100
+   },
+   "shapes": [
+    {
+     "d": "M52 4 C74 2 95 18 97 44 C99 70 82 95 54 97 C26 99 4 82 3 54 C2 26 24 6 52 4 Z"
+    }
+   ],
+   "name": "Back blob",
+   "shot": "s1",
+   "opacity": 0.7,
+   "tracks": {
+    "x": [
+     [
+      0,
+      -110,
+      "linear"
+     ],
+     [
+      3.5,
+      -90
+     ]
+    ]
+   },
+   "fill": {
+    "gradient": true,
+    "opacity": 1,
+    "color": "#FFDDC7",
+    "color2": "#F2D3C1",
+    "angle": 90
+   }
+  },
+  {
+   "id": "s1-cells",
+   "kind": "group",
+   "x": 0,
+   "y": 0,
+   "w": 1080,
+   "h": 1920,
+   "cw": 1080,
+   "ch": 1920,
+   "children": [
+    {
+     "id": "s1-cells-1",
+     "kind": "use",
+     "symbol": "cell",
+     "x": 78,
+     "y": 880,
+     "w": 214,
+     "h": 120,
+     "name": "Cell 1"
+    },
+    {
+     "id": "s1-cells-2",
+     "kind": "use",
+     "symbol": "cell",
+     "x": 320,
+     "y": 880,
+     "w": 204,
+     "h": 120,
+     "name": "Cell 2"
+    },
+    {
+     "id": "s1-cells-3",
+     "kind": "use",
+     "symbol": "cell",
+     "x": 552,
+     "y": 880,
+     "w": 216,
+     "h": 120,
+     "name": "Cell 3"
+    },
+    {
+     "id": "s1-cells-4",
+     "kind": "use",
+     "symbol": "cell",
+     "x": 796,
+     "y": 880,
+     "w": 206,
+     "h": 120,
+     "name": "Cell 4"
+    },
+    {
+     "id": "s1-cells-5",
+     "kind": "use",
+     "symbol": "cell",
+     "x": -41,
+     "y": 1028,
+     "w": 206,
+     "h": 120,
+     "name": "Cell 5"
+    },
+    {
+     "id": "s1-cells-6",
+     "kind": "use",
+     "symbol": "cell",
+     "x": 193,
+     "y": 1028,
+     "w": 218,
+     "h": 120,
+     "name": "Cell 6"
+    },
+    {
+     "id": "s1-cells-7",
+     "kind": "use",
+     "symbol": "cell",
+     "x": 439,
+     "y": 1028,
+     "w": 200,
+     "h": 120,
+     "name": "Cell 7"
+    },
+    {
+     "id": "s1-cells-8",
+     "kind": "use",
+     "symbol": "cell",
+     "x": 667,
+     "y": 1028,
+     "w": 212,
+     "h": 120,
+     "name": "Cell 8"
+    },
+    {
+     "id": "s1-cells-9",
+     "kind": "use",
+     "symbol": "cell",
+     "x": 907,
+     "y": 1028,
+     "w": 210,
+     "h": 120,
+     "name": "Cell 9"
+    },
+    {
+     "id": "s1-cells-10",
+     "kind": "use",
+     "symbol": "cell",
+     "x": 72,
+     "y": 1176,
+     "w": 208,
+     "h": 120,
+     "name": "Cell 10"
+    },
+    {
+     "id": "s1-cells-11",
+     "kind": "use",
+     "symbol": "cell",
+     "x": 308,
+     "y": 1176,
+     "w": 214,
+     "h": 120,
+     "name": "Cell 11"
+    },
+    {
+     "id": "s1-cells-12",
+     "kind": "use",
+     "symbol": "cell",
+     "x": 550,
+     "y": 1176,
+     "w": 202,
+     "h": 120,
+     "name": "Cell 12"
+    },
+    {
+     "id": "s1-cells-13",
+     "kind": "use",
+     "symbol": "cell",
+     "x": 780,
+     "y": 1176,
+     "w": 216,
+     "h": 120,
+     "name": "Cell 13"
+    }
+   ],
+   "name": "Skin cells",
+   "shot": "s1",
+   "tracks": {
+    "@scale": {
+     "keys": [
+      [
+       0,
+       1,
+       "ease-in-out"
+      ],
+      [
+       1.5,
+       0.99
+      ]
+     ],
+     "repeat": "pingpong"
+    }
+   }
+  },
+  {
+   "id": "s1-moisture",
+   "kind": "group",
+   "x": 0,
+   "y": 0,
+   "w": 1080,
+   "h": 1920,
+   "cw": 1080,
+   "ch": 1920,
+   "children": [
+    {
+     "id": "s1-drop-1",
+     "kind": "use",
+     "symbol": "droplet",
+     "x": 272,
+     "y": 900,
+     "w": 68,
+     "h": 81.6,
+     "name": "Escaping drop 1",
+     "tracks": {
+      "y": [
+       [
+        0.2,
+        900,
+        "cubic-in"
+       ],
+       [
+        1.5999999999999999,
+        580,
+        "hold"
+       ],
+       [
+        1.65,
+        900,
+        "cubic-in"
+       ],
+       [
+        3.0500000000000003,
+        580
+       ]
+      ],
+      "opacity": [
+       [
+        0.2,
+        1,
+        "cubic-in"
+       ],
+       [
+        1.5999999999999999,
+        0,
+        "hold"
+       ],
+       [
+        1.65,
+        1,
+        "cubic-in"
+       ],
+       [
+        3.0500000000000003,
+        0
+       ]
+      ]
+     }
+    },
+    {
+     "id": "s1-drop-2",
+     "kind": "use",
+     "symbol": "droplet",
+     "x": 740,
+     "y": 900,
+     "w": 84,
+     "h": 100.8,
+     "name": "Escaping drop 2",
+     "tracks": {
+      "y": [
+       [
+        0.45,
+        900,
+        "cubic-in"
+       ],
+       [
+        1.8499999999999999,
+        580,
+        "hold"
+       ],
+       [
+        1.9,
+        900,
+        "cubic-in"
+       ],
+       [
+        3.3000000000000003,
+        580
+       ]
+      ],
+      "opacity": [
+       [
+        0.45,
+        1,
+        "cubic-in"
+       ],
+       [
+        1.8499999999999999,
+        0,
+        "hold"
+       ],
+       [
+        1.9,
+        1,
+        "cubic-in"
+       ],
+       [
+        3.3000000000000003,
+        0
+       ]
+      ]
+     }
+    },
+    {
+     "id": "s1-drop-3",
+     "kind": "use",
+     "symbol": "droplet",
+     "x": 394,
+     "y": 1048,
+     "w": 62,
+     "h": 74.39999999999999,
+     "name": "Escaping drop 3",
+     "tracks": {
+      "y": [
+       [
+        0.7,
+        1048,
+        "cubic-in"
+       ],
+       [
+        2.0999999999999996,
+        728,
+        "hold"
+       ],
+       [
+        2.15,
+        1048,
+        "cubic-in"
+       ],
+       [
+        3.55,
+        728
+       ]
+      ],
+      "opacity": [
+       [
+        0.7,
+        1,
+        "cubic-in"
+       ],
+       [
+        2.0999999999999996,
+        0,
+        "hold"
+       ],
+       [
+        2.15,
+        1,
+        "cubic-in"
+       ],
+       [
+        3.55,
+        0
+       ]
+      ]
+     }
+    },
+    {
+     "id": "s1-drop-4",
+     "kind": "use",
+     "symbol": "droplet",
+     "x": 614,
+     "y": 1048,
+     "w": 78,
+     "h": 93.6,
+     "name": "Escaping drop 4",
+     "tracks": {
+      "y": [
+       [
+        0.95,
+        1048,
+        "cubic-in"
+       ],
+       [
+        2.3499999999999996,
+        728,
+        "hold"
+       ],
+       [
+        2.4,
+        1048,
+        "cubic-in"
+       ],
+       [
+        3.8,
+        728
+       ]
+      ],
+      "opacity": [
+       [
+        0.95,
+        1,
+        "cubic-in"
+       ],
+       [
+        2.3499999999999996,
+        0,
+        "hold"
+       ],
+       [
+        2.4,
+        1,
+        "cubic-in"
+       ],
+       [
+        3.8,
+        0
+       ]
+      ]
+     }
+    },
+    {
+     "id": "s1-drop-5",
+     "kind": "use",
+     "symbol": "droplet",
+     "x": 261,
+     "y": 1196,
+     "w": 66,
+     "h": 79.2,
+     "name": "Escaping drop 5",
+     "tracks": {
+      "y": [
+       [
+        1.2,
+        1196,
+        "cubic-in"
+       ],
+       [
+        2.5999999999999996,
+        876,
+        "hold"
+       ],
+       [
+        2.65,
+        1196,
+        "cubic-in"
+       ],
+       [
+        4.05,
+        876
+       ]
+      ],
+      "opacity": [
+       [
+        1.2,
+        1,
+        "cubic-in"
+       ],
+       [
+        2.5999999999999996,
+        0,
+        "hold"
+       ],
+       [
+        2.65,
+        1,
+        "cubic-in"
+       ],
+       [
+        4.05,
+        0
+       ]
+      ]
+     }
+    },
+    {
+     "id": "s1-drop-6",
+     "kind": "use",
+     "symbol": "droplet",
+     "x": 496,
+     "y": 1196,
+     "w": 80,
+     "h": 96,
+     "name": "Escaping drop 6",
+     "tracks": {
+      "y": [
+       [
+        1.45,
+        1196,
+        "cubic-in"
+       ],
+       [
+        2.8499999999999996,
+        876,
+        "hold"
+       ],
+       [
+        2.9,
+        1196,
+        "cubic-in"
+       ],
+       [
+        4.3,
+        876
+       ]
+      ],
+      "opacity": [
+       [
+        1.45,
+        1,
+        "cubic-in"
+       ],
+       [
+        2.8499999999999996,
+        0,
+        "hold"
+       ],
+       [
+        2.9,
+        1,
+        "cubic-in"
+       ],
+       [
+        4.3,
+        0
+       ]
+      ]
+     }
+    }
+   ],
+   "name": "Escaping moisture",
+   "shot": "s1"
+  },
+  {
+   "border": {
+    "width": 0
+   },
+   "shadow": {
+    "enabled": false
+   },
+   "id": "s1-front",
+   "kind": "path",
+   "x": -180,
+   "y": 1560,
+   "w": 600,
+   "h": 500,
+   "view": {
+    "x": 0,
+    "y": 0,
+    "w": 100,
+    "h": 100
+   },
+   "shapes": [
+    {
+     "d": "M52 4 C74 2 95 18 97 44 C99 70 82 95 54 97 C26 99 4 82 3 54 C2 26 24 6 52 4 Z"
+    }
+   ],
+   "name": "Front blob",
+   "shot": "s1",
+   "opacity": 0.8,
+   "fill": {
+    "gradient": true,
+    "opacity": 1,
+    "color": "#E3B5A4",
+    "color2": "#B89187",
+    "angle": 90
+   }
+  },
+  {
+   "id": "t1",
+   "kind": "text",
+   "name": "Shot 1 · title",
+   "x": 80,
+   "y": 330,
+   "w": 920,
+   "align": "center",
+   "text": "Dry skin?\nWeakened barrier?",
+   "font": "Montserrat",
+   "size": 72,
+   "weight": 800,
+   "color": "#000000",
+   "anim": {
+    "in": {
+     "kind": "slide",
+     "from": "down",
+     "amount": 30,
+     "delay": 0.4,
+     "duration": 0.5,
+     "easing": "cubic-out"
+    },
+    "out": {
+     "kind": "fade",
+     "delay": 2.95,
+     "duration": 0.25,
+     "easing": "cubic-in"
+    }
+   },
+   "shot": "s1"
+  },
+  {
+   "border": {
+    "width": 0
+   },
+   "shadow": {
+    "enabled": false
+   },
+   "id": "s2-bg",
+   "kind": "rect",
+   "x": 0,
+   "y": 0,
+   "w": 1080,
+   "h": 1920,
+   "radius": 0,
+   "name": "Backdrop",
+   "shot": "s2",
+   "fill": {
+    "gradient": false,
+    "opacity": 1,
+    "color": "#FFFFFF"
+   }
+  },
+  {
+   "border": {
+    "width": 0
+   },
+   "shadow": {
+    "enabled": false
+   },
+   "id": "s2-back",
+   "kind": "path",
+   "x": -90,
+   "y": 350,
+   "w": 1300,
+   "h": 1300,
+   "view": {
+    "x": 0,
+    "y": 0,
+    "w": 100,
+    "h": 100
+   },
+   "shapes": [
+    {
+     "d": "M52 4 C74 2 95 18 97 44 C99 70 82 95 54 97 C26 99 4 82 3 54 C2 26 24 6 52 4 Z"
+    }
+   ],
+   "name": "Back blob",
+   "shot": "s2",
+   "opacity": 0.7,
+   "tracks": {
+    "x": [
+     [
+      3.5,
+      -90,
+      "linear"
+     ],
+     [
+      7,
+      -70
+     ]
+    ]
+   },
+   "fill": {
+    "gradient": true,
+    "opacity": 1,
+    "color": "#FFDDC7",
+    "color2": "#F2D3C1",
+    "angle": 90
+   }
+  },
+  {
+   "id": "s2-cells",
+   "kind": "group",
+   "x": 0,
+   "y": 0,
+   "w": 1080,
+   "h": 1920,
+   "cw": 1080,
+   "ch": 1920,
+   "children": [
+    {
+     "id": "s2-cells-1",
+     "kind": "use",
+     "symbol": "cell",
+     "x": 78,
+     "y": 880,
+     "w": 214,
+     "h": 120,
+     "name": "Cell 1"
+    },
+    {
+     "id": "s2-cells-2",
+     "kind": "use",
+     "symbol": "cell",
+     "x": 320,
+     "y": 880,
+     "w": 204,
+     "h": 120,
+     "name": "Cell 2"
+    },
+    {
+     "id": "s2-cells-3",
+     "kind": "use",
+     "symbol": "cell",
+     "x": 552,
+     "y": 880,
+     "w": 216,
+     "h": 120,
+     "name": "Cell 3"
+    },
+    {
+     "id": "s2-cells-4",
+     "kind": "use",
+     "symbol": "cell",
+     "x": 796,
+     "y": 880,
+     "w": 206,
+     "h": 120,
+     "name": "Cell 4"
+    },
+    {
+     "id": "s2-cells-5",
+     "kind": "use",
+     "symbol": "cell",
+     "x": -41,
+     "y": 1028,
+     "w": 206,
+     "h": 120,
+     "name": "Cell 5"
+    },
+    {
+     "id": "s2-cells-6",
+     "kind": "use",
+     "symbol": "cell",
+     "x": 193,
+     "y": 1028,
+     "w": 218,
+     "h": 120,
+     "name": "Cell 6"
+    },
+    {
+     "id": "s2-cells-7",
+     "kind": "use",
+     "symbol": "cell",
+     "x": 439,
+     "y": 1028,
+     "w": 200,
+     "h": 120,
+     "name": "Cell 7"
+    },
+    {
+     "id": "s2-cells-8",
+     "kind": "use",
+     "symbol": "cell",
+     "x": 667,
+     "y": 1028,
+     "w": 212,
+     "h": 120,
+     "name": "Cell 8"
+    },
+    {
+     "id": "s2-cells-9",
+     "kind": "use",
+     "symbol": "cell",
+     "x": 907,
+     "y": 1028,
+     "w": 210,
+     "h": 120,
+     "name": "Cell 9"
+    },
+    {
+     "id": "s2-cells-10",
+     "kind": "use",
+     "symbol": "cell",
+     "x": 72,
+     "y": 1176,
+     "w": 208,
+     "h": 120,
+     "name": "Cell 10"
+    },
+    {
+     "id": "s2-cells-11",
+     "kind": "use",
+     "symbol": "cell",
+     "x": 308,
+     "y": 1176,
+     "w": 214,
+     "h": 120,
+     "name": "Cell 11"
+    },
+    {
+     "id": "s2-cells-12",
+     "kind": "use",
+     "symbol": "cell",
+     "x": 550,
+     "y": 1176,
+     "w": 202,
+     "h": 120,
+     "name": "Cell 12"
+    },
+    {
+     "id": "s2-cells-13",
+     "kind": "use",
+     "symbol": "cell",
+     "x": 780,
+     "y": 1176,
+     "w": 216,
+     "h": 120,
+     "name": "Cell 13"
+    }
+   ],
+   "name": "Skin cells",
+   "shot": "s2",
+   "tracks": {
+    "@scale": {
+     "keys": [
+      [
+       0,
+       1,
+       "ease-in-out"
+      ],
+      [
+       1.5,
+       0.99
+      ]
+     ],
+     "repeat": "pingpong"
+    }
+   }
+  },
+  {
+   "id": "s2-mortar",
+   "kind": "group",
+   "x": 0,
+   "y": 0,
+   "w": 1080,
+   "h": 1920,
+   "cw": 1080,
+   "ch": 1920,
+   "children": [
+    {
+     "border": {
+      "width": 0
+     },
+     "shadow": {
+      "enabled": false
+     },
+     "id": "s2-band-1",
+     "kind": "rect",
+     "x": 540,
+     "y": 1004,
+     "w": 0,
+     "h": 20,
+     "radius": 10,
+     "name": "Ceramide band 1",
+     "tracks": {
+      "x": [
+       [
+        5.5,
+        540,
+        "cubic-out"
+       ],
+       [
+        6,
+        40
+       ]
+      ],
+      "w": [
+       [
+        5.5,
+        0,
+        "cubic-out"
+       ],
+       [
+        6,
+        1000
+       ]
+      ]
+     },
+     "fill": {
+      "gradient": false,
+      "opacity": 1,
+      "color": "#ED691C"
+     }
+    },
+    {
+     "border": {
+      "width": 0
+     },
+     "shadow": {
+      "enabled": false
+     },
+     "id": "s2-band-2",
+     "kind": "rect",
+     "x": 540,
+     "y": 1152,
+     "w": 0,
+     "h": 20,
+     "radius": 10,
+     "name": "Ceramide band 2",
+     "tracks": {
+      "x": [
+       [
+        5.6,
+        540,
+        "cubic-out"
+       ],
+       [
+        6.1,
+        40
+       ]
+      ],
+      "w": [
+       [
+        5.6,
+        0,
+        "cubic-out"
+       ],
+       [
+        6.1,
+        1000
+       ]
+      ]
+     },
+     "fill": {
+      "gradient": false,
+      "opacity": 1,
+      "color": "#ED691C"
+     }
+    },
+    {
+     "border": {
+      "width": 0
+     },
+     "shadow": {
+      "enabled": false
+     },
+     "id": "s2-mortar-1",
+     "kind": "rect",
+     "x": 528,
+     "y": 940,
+     "w": 20,
+     "h": 0,
+     "radius": 10,
+     "name": "Ceramide 1",
+     "tracks": {
+      "y": [
+       [
+        5.2,
+        940,
+        "cubic-out"
+       ],
+       [
+        5.6000000000000005,
+        884
+       ]
+      ],
+      "h": [
+       [
+        5.2,
+        0,
+        "cubic-out"
+       ],
+       [
+        5.6000000000000005,
+        112
+       ]
+      ]
+     },
+     "fill": {
+      "gradient": false,
+      "opacity": 1,
+      "color": "#ED691C"
+     }
+    },
+    {
+     "border": {
+      "width": 0
+     },
+     "shadow": {
+      "enabled": false
+     },
+     "id": "s2-mortar-2",
+     "kind": "rect",
+     "x": 526,
+     "y": 1236,
+     "w": 20,
+     "h": 0,
+     "radius": 10,
+     "name": "Ceramide 2",
+     "tracks": {
+      "y": [
+       [
+        5.28,
+        1236,
+        "cubic-out"
+       ],
+       [
+        5.680000000000001,
+        1180
+       ]
+      ],
+      "h": [
+       [
+        5.28,
+        0,
+        "cubic-out"
+       ],
+       [
+        5.680000000000001,
+        112
+       ]
+      ]
+     },
+     "fill": {
+      "gradient": false,
+      "opacity": 1,
+      "color": "#ED691C"
+     }
+    },
+    {
+     "border": {
+      "width": 0
+     },
+     "shadow": {
+      "enabled": false
+     },
+     "id": "s2-mortar-3",
+     "kind": "rect",
+     "x": 643,
+     "y": 1088,
+     "w": 20,
+     "h": 0,
+     "radius": 10,
+     "name": "Ceramide 3",
+     "tracks": {
+      "y": [
+       [
+        5.36,
+        1088,
+        "cubic-out"
+       ],
+       [
+        5.760000000000001,
+        1032
+       ]
+      ],
+      "h": [
+       [
+        5.36,
+        0,
+        "cubic-out"
+       ],
+       [
+        5.760000000000001,
+        112
+       ]
+      ]
+     },
+     "fill": {
+      "gradient": false,
+      "opacity": 1,
+      "color": "#ED691C"
+     }
+    },
+    {
+     "border": {
+      "width": 0
+     },
+     "shadow": {
+      "enabled": false
+     },
+     "id": "s2-mortar-4",
+     "kind": "rect",
+     "x": 415,
+     "y": 1088,
+     "w": 20,
+     "h": 0,
+     "radius": 10,
+     "name": "Ceramide 4",
+     "tracks": {
+      "y": [
+       [
+        5.44,
+        1088,
+        "cubic-out"
+       ],
+       [
+        5.840000000000001,
+        1032
+       ]
+      ],
+      "h": [
+       [
+        5.44,
+        0,
+        "cubic-out"
+       ],
+       [
+        5.840000000000001,
+        112
+       ]
+      ]
+     },
+     "fill": {
+      "gradient": false,
+      "opacity": 1,
+      "color": "#ED691C"
+     }
+    },
+    {
+     "border": {
+      "width": 0
+     },
+     "shadow": {
+      "enabled": false
+     },
+     "id": "s2-mortar-5",
+     "kind": "rect",
+     "x": 296,
+     "y": 940,
+     "w": 20,
+     "h": 0,
+     "radius": 10,
+     "name": "Ceramide 5",
+     "tracks": {
+      "y": [
+       [
+        5.5200000000000005,
+        940,
+        "cubic-out"
+       ],
+       [
+        5.920000000000001,
+        884
+       ]
+      ],
+      "h": [
+       [
+        5.5200000000000005,
+        0,
+        "cubic-out"
+       ],
+       [
+        5.920000000000001,
+        112
+       ]
+      ]
+     },
+     "fill": {
+      "gradient": false,
+      "opacity": 1,
+      "color": "#ED691C"
+     }
+    },
+    {
+     "border": {
+      "width": 0
+     },
+     "shadow": {
+      "enabled": false
+     },
+     "id": "s2-mortar-6",
+     "kind": "rect",
+     "x": 772,
+     "y": 940,
+     "w": 20,
+     "h": 0,
+     "radius": 10,
+     "name": "Ceramide 6",
+     "tracks": {
+      "y": [
+       [
+        5.6000000000000005,
+        940,
+        "cubic-out"
+       ],
+       [
+        6.000000000000001,
+        884
+       ]
+      ],
+      "h": [
+       [
+        5.6000000000000005,
+        0,
+        "cubic-out"
+       ],
+       [
+        6.000000000000001,
+        112
+       ]
+      ]
+     },
+     "fill": {
+      "gradient": false,
+      "opacity": 1,
+      "color": "#ED691C"
+     }
+    },
+    {
+     "border": {
+      "width": 0
+     },
+     "shadow": {
+      "enabled": false
+     },
+     "id": "s2-mortar-7",
+     "kind": "rect",
+     "x": 756,
+     "y": 1236,
+     "w": 20,
+     "h": 0,
+     "radius": 10,
+     "name": "Ceramide 7",
+     "tracks": {
+      "y": [
+       [
+        5.68,
+        1236,
+        "cubic-out"
+       ],
+       [
+        6.08,
+        1180
+       ]
+      ],
+      "h": [
+       [
+        5.68,
+        0,
+        "cubic-out"
+       ],
+       [
+        6.08,
+        112
+       ]
+      ]
+     },
+     "fill": {
+      "gradient": false,
+      "opacity": 1,
+      "color": "#ED691C"
+     }
+    },
+    {
+     "border": {
+      "width": 0
+     },
+     "shadow": {
+      "enabled": false
+     },
+     "id": "s2-mortar-8",
+     "kind": "rect",
+     "x": 284,
+     "y": 1236,
+     "w": 20,
+     "h": 0,
+     "radius": 10,
+     "name": "Ceramide 8",
+     "tracks": {
+      "y": [
+       [
+        5.76,
+        1236,
+        "cubic-out"
+       ],
+       [
+        6.16,
+        1180
+       ]
+      ],
+      "h": [
+       [
+        5.76,
+        0,
+        "cubic-out"
+       ],
+       [
+        6.16,
+        112
+       ]
+      ]
+     },
+     "fill": {
+      "gradient": false,
+      "opacity": 1,
+      "color": "#ED691C"
+     }
+    },
+    {
+     "border": {
+      "width": 0
+     },
+     "shadow": {
+      "enabled": false
+     },
+     "id": "s2-mortar-9",
+     "kind": "rect",
+     "x": 883,
+     "y": 1088,
+     "w": 20,
+     "h": 0,
+     "radius": 10,
+     "name": "Ceramide 9",
+     "tracks": {
+      "y": [
+       [
+        5.84,
+        1088,
+        "cubic-out"
+       ],
+       [
+        6.24,
+        1032
+       ]
+      ],
+      "h": [
+       [
+        5.84,
+        0,
+        "cubic-out"
+       ],
+       [
+        6.24,
+        112
+       ]
+      ]
+     },
+     "fill": {
+      "gradient": false,
+      "opacity": 1,
+      "color": "#ED691C"
+     }
+    },
+    {
+     "border": {
+      "width": 0
+     },
+     "shadow": {
+      "enabled": false
+     },
+     "id": "s2-mortar-10",
+     "kind": "rect",
+     "x": 169,
+     "y": 1088,
+     "w": 20,
+     "h": 0,
+     "radius": 10,
+     "name": "Ceramide 10",
+     "tracks": {
+      "y": [
+       [
+        5.92,
+        1088,
+        "cubic-out"
+       ],
+       [
+        6.32,
+        1032
+       ]
+      ],
+      "h": [
+       [
+        5.92,
+        0,
+        "cubic-out"
+       ],
+       [
+        6.32,
+        112
+       ]
+      ]
+     },
+     "fill": {
+      "gradient": false,
+      "opacity": 1,
+      "color": "#ED691C"
+     }
+    }
+   ],
+   "name": "Ceramide mortar",
+   "shot": "s2"
+  },
+  {
+   "id": "s2-moisture",
+   "kind": "group",
+   "x": 0,
+   "y": 0,
+   "w": 1080,
+   "h": 1920,
+   "cw": 1080,
+   "ch": 1920,
+   "children": [
+    {
+     "id": "s2-drop-1",
+     "kind": "use",
+     "symbol": "droplet",
+     "x": 147,
+     "y": 1048,
+     "w": 64,
+     "h": 76.8,
+     "name": "Kept drop 1",
+     "tracks": {
+      "y": {
+       "keys": [
+        [
+         3.6,
+         1048,
+         "cubic-out"
+        ],
+        [
+         4.8,
+         900,
+         "ease-in-out"
+        ],
+        [
+         5.800000000000001,
+         908,
+         "ease-in-out"
+        ],
+        [
+         6.800000000000001,
+         900
+        ]
+       ],
+       "repeat": "none"
+      }
+     }
+    },
+    {
+     "id": "s2-drop-2",
+     "kind": "use",
+     "symbol": "droplet",
+     "x": 624,
+     "y": 1048,
+     "w": 58,
+     "h": 69.6,
+     "name": "Kept drop 2",
+     "tracks": {
+      "y": {
+       "keys": [
+        [
+         3.8000000000000003,
+         1048,
+         "cubic-out"
+        ],
+        [
+         5,
+         914,
+         "ease-in-out"
+        ],
+        [
+         6,
+         922,
+         "ease-in-out"
+        ],
+        [
+         7,
+         914
+        ]
+       ],
+       "repeat": "none"
+      }
+     }
+    },
+    {
+     "id": "s2-drop-3",
+     "kind": "use",
+     "symbol": "droplet",
+     "x": 857,
+     "y": 1048,
+     "w": 72,
+     "h": 86.39999999999999,
+     "name": "Kept drop 3",
+     "tracks": {
+      "y": {
+       "keys": [
+        [
+         4,
+         1048,
+         "cubic-out"
+        ],
+        [
+         5.2,
+         928,
+         "ease-in-out"
+        ],
+        [
+         6.2,
+         936,
+         "ease-in-out"
+        ],
+        [
+         7.2,
+         928
+        ]
+       ],
+       "repeat": "none"
+      }
+     }
+    },
+    {
+     "id": "s2-drop-4",
+     "kind": "use",
+     "symbol": "droplet",
+     "x": 505,
+     "y": 1196,
+     "w": 62,
+     "h": 74.39999999999999,
+     "name": "Kept drop 4",
+     "tracks": {
+      "y": {
+       "keys": [
+        [
+         4.2,
+         1196,
+         "cubic-out"
+        ],
+        [
+         5.4,
+         942,
+         "ease-in-out"
+        ],
+        [
+         6.4,
+         950,
+         "ease-in-out"
+        ],
+        [
+         7.4,
+         942
+        ]
+       ],
+       "repeat": "none"
+      }
+     }
+    }
+   ],
+   "name": "Kept moisture",
+   "shot": "s2"
+  },
+  {
+   "border": {
+    "width": 0
+   },
+   "shadow": {
+    "enabled": false
+   },
+   "id": "s2-cream-shadow",
+   "kind": "ellipse",
+   "x": 430,
+   "y": 852,
+   "w": 220,
+   "h": 36,
+   "name": "Drop shadow",
+   "shot": "s2",
+   "fill": {
+    "gradient": false,
+    "opacity": 0.3,
+    "color": "#C8ADA1"
+   },
+   "tracks": {
+    "opacity": [
+     [
+      3.7,
+      0,
+      "cubic-out"
+     ],
+     [
+      4.5,
+      1
+     ]
+    ],
+    "x": [
+     [
+      4.7,
+      430,
+      "ease-in-out"
+     ],
+     [
+      5.4,
+      90
+     ]
+    ],
+    "w": [
+     [
+      4.7,
+      220,
+      "ease-in-out"
+     ],
+     [
+      5.4,
+      900
+     ]
+    ]
+   }
+  },
+  {
+   "id": "s2-cream",
+   "kind": "group",
+   "x": 90,
+   "y": 0,
+   "w": 910,
+   "h": 370,
+   "cw": 910,
+   "ch": 370,
+   "children": [
+    {
+     "border": {
+      "width": 0
+     },
+     "shadow": {
+      "enabled": false
+     },
+     "id": "s2-cream-shade",
+     "kind": "path",
+     "x": 8,
+     "y": 8,
+     "w": 900,
+     "h": 360,
+     "view": {
+      "x": 0,
+      "y": 0,
+      "w": 900,
+      "h": 360
+     },
+     "shapes": [
+      {
+       "d": "M450 0 C480 60 570 120 570 190 C570 250 515 290 450 290 C385 290 330 250 330 190 C330 120 420 60 450 0 Z"
+      },
+      {
+       "d": "M450 270 C700 270 900 285 900 315 C900 345 700 360 450 360 C200 360 0 345 0 315 C0 285 200 270 450 270 Z"
+      }
+     ],
+     "tracks": {
+      "morph": [
+       [
+        4.7,
+        0,
+        "ease-in-out"
+       ],
+       [
+        5.4,
+        1
+       ]
+      ]
+     },
+     "fill": {
+      "gradient": false,
+      "opacity": 1,
+      "color": "#C8BBA1"
+     }
+    },
+    {
+     "border": {
+      "width": 0
+     },
+     "shadow": {
+      "enabled": false
+     },
+     "id": "s2-cream-core",
+     "kind": "path",
+     "x": 0,
+     "y": 0,
+     "w": 900,
+     "h": 360,
+     "view": {
+      "x": 0,
+      "y": 0,
+      "w": 900,
+      "h": 360
+     },
+     "shapes": [
+      {
+       "d": "M450 0 C480 60 570 120 570 190 C570 250 515 290 450 290 C385 290 330 250 330 190 C330 120 420 60 450 0 Z"
+      },
+      {
+       "d": "M450 270 C700 270 900 285 900 315 C900 345 700 360 450 360 C200 360 0 345 0 315 C0 285 200 270 450 270 Z"
+      }
+     ],
+     "tracks": {
+      "morph": [
+       [
+        4.7,
+        0,
+        "ease-in-out"
+       ],
+       [
+        5.4,
+        1
+       ]
+      ]
+     },
+     "fill": {
+      "gradient": false,
+      "opacity": 1,
+      "color": "#EFE3C2"
+     }
+    },
+    {
+     "border": {
+      "width": 0
+     },
+     "shadow": {
+      "enabled": false
+     },
+     "id": "s2-cream-shine",
+     "kind": "ellipse",
+     "x": 360,
+     "y": 80,
+     "w": 40,
+     "h": 70,
+     "name": "Highlight",
+     "tracks": {
+      "opacity": [
+       [
+        4.7,
+        1,
+        "ease-in"
+       ],
+       [
+        5,
+        0
+       ]
+      ]
+     },
+     "fill": {
+      "gradient": false,
+      "opacity": 1,
+      "color": "#FEF6D4"
+     }
+    }
+   ],
+   "name": "Cream drop",
+   "shot": "s2",
+   "tracks": {
+    "y": [
+     [
+      3.5,
+      -420
+     ],
+     [
+      3.7,
+      -420,
+      "cubic-out"
+     ],
+     [
+      4.5,
+      570
+     ]
+    ]
+   }
+  },
+  {
+   "border": {
+    "width": 0
+   },
+   "shadow": {
+    "enabled": false
+   },
+   "id": "s2-front",
+   "kind": "path",
+   "x": -180,
+   "y": 1560,
+   "w": 600,
+   "h": 500,
+   "view": {
+    "x": 0,
+    "y": 0,
+    "w": 100,
+    "h": 100
+   },
+   "shapes": [
+    {
+     "d": "M52 4 C74 2 95 18 97 44 C99 70 82 95 54 97 C26 99 4 82 3 54 C2 26 24 6 52 4 Z"
+    }
+   ],
+   "name": "Front blob",
+   "shot": "s2",
+   "opacity": 0.8,
+   "fill": {
+    "gradient": true,
+    "opacity": 1,
+    "color": "#E3B5A4",
+    "color2": "#B89187",
+    "angle": 90
+   }
+  },
+  {
+   "id": "t2",
+   "kind": "text",
+   "name": "Shot 2 · title",
+   "x": 80,
+   "y": 330,
+   "w": 920,
+   "align": "center",
+   "text": "Ceramides strengthen the skin barrier",
+   "font": "Montserrat",
+   "size": 72,
+   "weight": 800,
+   "color": "#000000",
+   "anim": {
+    "in": {
+     "kind": "slide",
+     "from": "down",
+     "amount": 30,
+     "delay": 5,
+     "duration": 0.5,
+     "easing": "cubic-out"
+    },
+    "out": {
+     "kind": "fade",
+     "delay": 6.55,
+     "duration": 0.25,
+     "easing": "cubic-in"
+    }
+   },
+   "shot": "s2"
+  },
+  {
+   "border": {
+    "width": 0
+   },
+   "shadow": {
+    "enabled": false
+   },
+   "id": "s3-bg",
+   "kind": "rect",
+   "x": 0,
+   "y": 0,
+   "w": 1080,
+   "h": 1920,
+   "radius": 0,
+   "name": "Backdrop",
+   "shot": "s3",
+   "fill": {
+    "gradient": false,
+    "opacity": 1,
+    "color": "#FFFFFF"
+   }
+  },
+  {
+   "border": {
+    "width": 0
+   },
+   "shadow": {
+    "enabled": false
+   },
+   "id": "s3-back",
+   "kind": "path",
+   "x": -110,
+   "y": 310,
+   "w": 1300,
+   "h": 1300,
+   "view": {
+    "x": 0,
+    "y": 0,
+    "w": 100,
+    "h": 100
+   },
+   "shapes": [
+    {
+     "d": "M52 4 C74 2 95 18 97 44 C99 70 82 95 54 97 C26 99 4 82 3 54 C2 26 24 6 52 4 Z"
+    }
+   ],
+   "name": "Back blob",
+   "shot": "s3",
+   "opacity": 0.7,
+   "tracks": {
+    "@scale": {
+     "keys": [
+      [
+       7,
+       1,
+       "ease-in-out"
+      ],
+      [
+       8.5,
+       1.02
+      ]
+     ],
+     "repeat": "pingpong",
+     "until": 10.5
+    }
+   },
+   "fill": {
+    "gradient": true,
+    "opacity": 1,
+    "color": "#FFDDC7",
+    "color2": "#F2D3C1",
+    "angle": 90
+   }
+  },
+  {
+   "id": "s3-cell",
+   "kind": "group",
+   "x": 190,
+   "y": 720,
+   "w": 700,
+   "h": 420,
+   "cw": 700,
+   "ch": 420,
+   "children": [
+    {
+     "border": {
+      "width": 0
+     },
+     "shadow": {
+      "enabled": false
+     },
+     "id": "s3-cell-shade",
+     "kind": "rect",
+     "x": 0,
+     "y": 0,
+     "w": 700,
+     "h": 420,
+     "radius": 210,
+     "fill": {
+      "gradient": false,
+      "opacity": 1,
+      "color": "#C8ADA1"
+     }
+    },
+    {
+     "border": {
+      "width": 0
+     },
+     "shadow": {
+      "enabled": false
+     },
+     "id": "s3-cell-core",
+     "kind": "rect",
+     "x": 0,
+     "y": 0,
+     "w": 680,
+     "h": 400,
+     "radius": 200,
+     "fill": {
+      "gradient": false,
+      "opacity": 1,
+      "color": "#F2D3C1"
+     }
+    },
+    {
+     "border": {
+      "width": 0
+     },
+     "shadow": {
+      "enabled": false
+     },
+     "id": "s3-cell-shine",
+     "kind": "rect",
+     "x": 120,
+     "y": 52,
+     "w": 180,
+     "h": 26,
+     "radius": 13,
+     "fill": {
+      "gradient": false,
+      "opacity": 0.9,
+      "color": "#FFEFDA"
+     }
+    }
+   ],
+   "name": "Big cell",
+   "shot": "s3",
+   "tracks": {
+    "@scale": {
+     "keys": [
+      [
+       7,
+       1,
+       "ease-in-out"
+      ],
+      [
+       8.5,
+       0.99
+      ]
+     ],
+     "repeat": "pingpong",
+     "until": 10.5
+    }
+   }
+  },
+  {
+   "id": "s3-moisture",
+   "kind": "group",
+   "x": 0,
+   "y": 0,
+   "w": 1080,
+   "h": 1920,
+   "cw": 1080,
+   "ch": 1920,
+   "children": [
+    {
+     "id": "s3-drop-1",
+     "kind": "use",
+     "symbol": "droplet",
+     "x": 330,
+     "y": 820,
+     "w": 80,
+     "h": 96,
+     "name": "Moisture 1",
+     "tracks": {
+      "y": {
+       "keys": [
+        [
+         7,
+         820,
+         "ease-in-out"
+        ],
+        [
+         8.2,
+         808
+        ]
+       ],
+       "repeat": "pingpong"
+      }
+     }
+    },
+    {
+     "id": "s3-drop-2",
+     "kind": "use",
+     "symbol": "droplet",
+     "x": 520,
+     "y": 900,
+     "w": 56,
+     "h": 67.2,
+     "name": "Moisture 2",
+     "tracks": {
+      "y": {
+       "keys": [
+        [
+         7,
+         900,
+         "ease-in-out"
+        ],
+        [
+         8.399999999999999,
+         888
+        ]
+       ],
+       "repeat": "pingpong"
+      }
+     }
+    },
+    {
+     "id": "s3-drop-3",
+     "kind": "use",
+     "symbol": "droplet",
+     "x": 660,
+     "y": 800,
+     "w": 64,
+     "h": 76.8,
+     "name": "Moisture 3",
+     "tracks": {
+      "y": {
+       "keys": [
+        [
+         7,
+         800,
+         "ease-in-out"
+        ],
+        [
+         8.6,
+         788
+        ]
+       ],
+       "repeat": "pingpong"
+      }
+     }
+    },
+    {
+     "id": "s3-drop-4",
+     "kind": "use",
+     "symbol": "droplet",
+     "x": 430,
+     "y": 960,
+     "w": 44,
+     "h": 52.8,
+     "name": "Moisture 4",
+     "tracks": {
+      "y": {
+       "keys": [
+        [
+         7,
+         960,
+         "ease-in-out"
+        ],
+        [
+         8.799999999999999,
+         948
+        ]
+       ],
+       "repeat": "pingpong"
+      }
+     }
+    },
+    {
+     "id": "s3-drop-5",
+     "kind": "use",
+     "symbol": "droplet",
+     "x": 760,
+     "y": 930,
+     "w": 50,
+     "h": 60,
+     "name": "Moisture 5",
+     "tracks": {
+      "y": {
+       "keys": [
+        [
+         7,
+         930,
+         "ease-in-out"
+        ],
+        [
+         9,
+         918
+        ]
+       ],
+       "repeat": "pingpong"
+      }
+     }
+    }
+   ],
+   "name": "Moisture inside",
+   "shot": "s3"
+  },
+  {
+   "border": {
+    "width": 0
+   },
+   "shadow": {
+    "enabled": true,
+    "color": "#000000",
+    "opacity": 0.12,
+    "blur": 40,
+    "x": 0,
+    "y": 14
+   },
+   "id": "s3-ectoin",
+   "kind": "rect",
+   "x": 120,
+   "y": 1240,
+   "w": 380,
+   "h": 96,
+   "radius": 48,
+   "name": "Ectoin pill",
+   "shot": "s3",
+   "label": {
+    "text": "Ectoin",
+    "font": "Montserrat",
+    "size": 40,
+    "weight": 500,
+    "color": "#000000",
+    "align": "center"
+   },
+   "anim": {
+    "in": {
+     "kind": "slide",
+     "from": "down",
+     "amount": 40,
+     "delay": 8,
+     "duration": 0.5,
+     "easing": "cubic-out"
+    }
+   },
+   "fill": {
+    "gradient": false,
+    "opacity": 1,
+    "color": "#F7F7F7"
+   }
+  },
+  {
+   "border": {
+    "width": 0
+   },
+   "shadow": {
+    "enabled": true,
+    "color": "#000000",
+    "opacity": 0.12,
+    "blur": 40,
+    "x": 0,
+    "y": 14
+   },
+   "id": "s3-hyaluronic",
+   "kind": "rect",
+   "x": 580,
+   "y": 1240,
+   "w": 380,
+   "h": 96,
+   "radius": 48,
+   "name": "Hyaluronic acid pill",
+   "shot": "s3",
+   "label": {
+    "text": "Hyaluronic acid",
+    "font": "Montserrat",
+    "size": 40,
+    "weight": 500,
+    "color": "#000000",
+    "align": "center"
+   },
+   "anim": {
+    "in": {
+     "kind": "slide",
+     "from": "down",
+     "amount": 40,
+     "delay": 8.15,
+     "duration": 0.5,
+     "easing": "cubic-out"
+    }
+   },
+   "fill": {
+    "gradient": false,
+    "opacity": 1,
+    "color": "#F7F7F7"
+   }
+  },
+  {
+   "id": "t3",
+   "kind": "text",
+   "name": "Shot 3 · title",
+   "x": 80,
+   "y": 330,
+   "w": 920,
+   "align": "center",
+   "text": "Ectoin + hyaluronic acid",
+   "font": "Montserrat",
+   "size": 72,
+   "weight": 800,
+   "color": "#000000",
+   "anim": {
+    "in": {
+     "kind": "slide",
+     "from": "down",
+     "amount": 30,
+     "delay": 7.4,
+     "duration": 0.5,
+     "easing": "cubic-out"
+    },
+    "out": {
+     "kind": "fade",
+     "delay": 10.05,
+     "duration": 0.25,
+     "easing": "cubic-in"
+    }
+   },
+   "shot": "s3"
+  },
+  {
+   "id": "t3b",
+   "kind": "text",
+   "name": "Shot 3 · support",
+   "x": 80,
+   "y": 1440,
+   "w": 920,
+   "align": "center",
+   "text": "Moisturising",
+   "font": "Montserrat",
+   "size": 48,
+   "weight": 500,
+   "color": "#000000",
+   "anim": {
+    "in": {
+     "kind": "slide",
+     "from": "down",
+     "amount": 30,
+     "delay": 8.6,
+     "duration": 0.5,
+     "easing": "cubic-out"
+    },
+    "out": {
+     "kind": "fade",
+     "delay": 10.05,
+     "duration": 0.25,
+     "easing": "cubic-in"
+    }
+   },
+   "shot": "s3"
+  },
+  {
+   "border": {
+    "width": 0
+   },
+   "shadow": {
+    "enabled": false
+   },
+   "id": "s4-bg",
+   "kind": "rect",
+   "x": 0,
+   "y": 0,
+   "w": 1080,
+   "h": 1920,
+   "radius": 0,
+   "name": "Backdrop",
+   "shot": "s4",
+   "fill": {
+    "gradient": false,
+    "opacity": 1,
+    "color": "#FFFFFF"
+   }
+  },
+  {
+   "border": {
+    "width": 0
+   },
+   "shadow": {
+    "enabled": false
+   },
+   "id": "s4-far",
+   "kind": "path",
+   "x": 0,
+   "y": 1150,
+   "w": 1200,
+   "h": 560,
+   "view": {
+    "x": 0,
+    "y": 0,
+    "w": 1200,
+    "h": 560
+   },
+   "shapes": [
+    {
+     "d": "M0 560 L0 260 Q180 40 380 200 Q520 300 640 160 Q820 -20 1080 220 Q1140 250 1200 240 L1200 560 Z"
+    }
+   ],
+   "name": "Far hills",
+   "shot": "s4",
+   "fill": {
+    "gradient": false,
+    "opacity": 0.45,
+    "color": "#C5DBC3"
+   },
+   "tracks": {
+    "x": [
+     [
+      10.5,
+      0,
+      "linear"
+     ],
+     [
+      13.5,
+      -30
+     ]
+    ]
+   }
+  },
+  {
+   "border": {
+    "width": 0
+   },
+   "shadow": {
+    "enabled": false
+   },
+   "id": "s4-near",
+   "kind": "path",
+   "x": 0,
+   "y": 1300,
+   "w": 1200,
+   "h": 560,
+   "view": {
+    "x": 0,
+    "y": 0,
+    "w": 1200,
+    "h": 560
+   },
+   "shapes": [
+    {
+     "d": "M0 560 L0 380 Q240 200 470 330 Q700 450 880 300 Q980 230 1080 280 Q1140 300 1200 290 L1200 560 Z"
+    }
+   ],
+   "name": "Near hills",
+   "shot": "s4",
+   "fill": {
+    "gradient": false,
+    "opacity": 0.85,
+    "color": "#C5DBC3"
+   },
+   "tracks": {
+    "x": [
+     [
+      10.5,
+      0,
+      "linear"
+     ],
+     [
+      13.5,
+      -45
+     ]
+    ]
+   }
+  },
+  {
+   "id": "s4-willowherb",
+   "kind": "group",
+   "x": 300,
+   "y": 860,
+   "w": 400,
+   "h": 860,
+   "cw": 400,
+   "ch": 860,
+   "children": [
+    {
+     "border": {
+      "width": 0
+     },
+     "shadow": {
+      "enabled": false
+     },
+     "id": "s4-stem",
+     "kind": "path",
+     "x": 0,
+     "y": 0,
+     "w": 400,
+     "h": 860,
+     "view": {
+      "x": 0,
+      "y": 0,
+      "w": 400,
+      "h": 860
+     },
+     "shapes": [
+      {
+       "d": "M190 860 C196 640 214 360 226 120 L244 122 C232 360 216 640 210 860 Z"
+      }
+     ],
+     "fill": {
+      "gradient": false,
+      "opacity": 1,
+      "color": "#798F80"
+     }
+    },
+    {
+     "id": "s4-leaf-1",
+     "kind": "group",
+     "x": 120,
+     "y": 470,
+     "w": 70,
+     "h": 220,
+     "cw": 70,
+     "ch": 220,
+     "children": [
+      {
+       "border": {
+        "width": 0
+       },
+       "shadow": {
+        "enabled": false
+       },
+       "id": "s4-leaf-1-base",
+       "kind": "path",
+       "x": 0,
+       "y": 0,
+       "w": 70,
+       "h": 220,
+       "view": {
+        "x": 0,
+        "y": 0,
+        "w": 70,
+        "h": 220
+       },
+       "shapes": [
+        {
+         "d": "M35 220 C-10.5 132 10.5 26.4 35 0 C59.5 26.4 80.5 132 35 220 Z"
+        }
+       ],
+       "fill": {
+        "gradient": false,
+        "opacity": 1,
+        "color": "#9DB5A0"
+       }
+      },
+      {
+       "border": {
+        "width": 0
+       },
+       "shadow": {
+        "enabled": false
+       },
+       "id": "s4-leaf-1-shade",
+       "kind": "path",
+       "x": 0,
+       "y": 0,
+       "w": 70,
+       "h": 220,
+       "view": {
+        "x": 0,
+        "y": 0,
+        "w": 70,
+        "h": 220
+       },
+       "shapes": [
+        {
+         "d": "M35 220 L35 0 C59.5 26.4 80.5 132 35 220 Z"
+        }
+       ],
+       "fill": {
+        "gradient": false,
+        "opacity": 1,
+        "color": "#798F80"
+       }
+      }
+     ],
+     "name": "Leaf",
+     "origin": "bottom",
+     "tracks": {
+      "@rotate": [
+       [
+        10.5,
+        -42
+       ]
+      ]
+     }
+    },
+    {
+     "id": "s4-leaf-2",
+     "kind": "group",
+     "x": 222,
+     "y": 370,
+     "w": 70,
+     "h": 220,
+     "cw": 70,
+     "ch": 220,
+     "children": [
+      {
+       "border": {
+        "width": 0
+       },
+       "shadow": {
+        "enabled": false
+       },
+       "id": "s4-leaf-2-base",
+       "kind": "path",
+       "x": 0,
+       "y": 0,
+       "w": 70,
+       "h": 220,
+       "view": {
+        "x": 0,
+        "y": 0,
+        "w": 70,
+        "h": 220
+       },
+       "shapes": [
+        {
+         "d": "M35 220 C-10.5 132 10.5 26.4 35 0 C59.5 26.4 80.5 132 35 220 Z"
+        }
+       ],
+       "fill": {
+        "gradient": false,
+        "opacity": 1,
+        "color": "#9DB5A0"
+       }
+      },
+      {
+       "border": {
+        "width": 0
+       },
+       "shadow": {
+        "enabled": false
+       },
+       "id": "s4-leaf-2-shade",
+       "kind": "path",
+       "x": 0,
+       "y": 0,
+       "w": 70,
+       "h": 220,
+       "view": {
+        "x": 0,
+        "y": 0,
+        "w": 70,
+        "h": 220
+       },
+       "shapes": [
+        {
+         "d": "M35 220 L35 0 C59.5 26.4 80.5 132 35 220 Z"
+        }
+       ],
+       "fill": {
+        "gradient": false,
+        "opacity": 1,
+        "color": "#798F80"
+       }
+      }
+     ],
+     "name": "Leaf",
+     "origin": "bottom",
+     "tracks": {
+      "@rotate": [
+       [
+        10.5,
+        38
+       ]
+      ]
+     }
+    },
+    {
+     "id": "s4-leaf-3",
+     "kind": "group",
+     "x": 132,
+     "y": 250,
+     "w": 70,
+     "h": 220,
+     "cw": 70,
+     "ch": 220,
+     "children": [
+      {
+       "border": {
+        "width": 0
+       },
+       "shadow": {
+        "enabled": false
+       },
+       "id": "s4-leaf-3-base",
+       "kind": "path",
+       "x": 0,
+       "y": 0,
+       "w": 70,
+       "h": 220,
+       "view": {
+        "x": 0,
+        "y": 0,
+        "w": 70,
+        "h": 220
+       },
+       "shapes": [
+        {
+         "d": "M35 220 C-10.5 132 10.5 26.4 35 0 C59.5 26.4 80.5 132 35 220 Z"
+        }
+       ],
+       "fill": {
+        "gradient": false,
+        "opacity": 1,
+        "color": "#9DB5A0"
+       }
+      },
+      {
+       "border": {
+        "width": 0
+       },
+       "shadow": {
+        "enabled": false
+       },
+       "id": "s4-leaf-3-shade",
+       "kind": "path",
+       "x": 0,
+       "y": 0,
+       "w": 70,
+       "h": 220,
+       "view": {
+        "x": 0,
+        "y": 0,
+        "w": 70,
+        "h": 220
+       },
+       "shapes": [
+        {
+         "d": "M35 220 L35 0 C59.5 26.4 80.5 132 35 220 Z"
+        }
+       ],
+       "fill": {
+        "gradient": false,
+        "opacity": 1,
+        "color": "#798F80"
+       }
+      }
+     ],
+     "name": "Leaf",
+     "origin": "bottom",
+     "tracks": {
+      "@rotate": [
+       [
+        10.5,
+        -34
+       ]
+      ]
+     }
+    },
+    {
+     "id": "s4-leaf-4",
+     "kind": "group",
+     "x": 214,
+     "y": 160,
+     "w": 70,
+     "h": 220,
+     "cw": 70,
+     "ch": 220,
+     "children": [
+      {
+       "border": {
+        "width": 0
+       },
+       "shadow": {
+        "enabled": false
+       },
+       "id": "s4-leaf-4-base",
+       "kind": "path",
+       "x": 0,
+       "y": 0,
+       "w": 70,
+       "h": 220,
+       "view": {
+        "x": 0,
+        "y": 0,
+        "w": 70,
+        "h": 220
+       },
+       "shapes": [
+        {
+         "d": "M35 220 C-10.5 132 10.5 26.4 35 0 C59.5 26.4 80.5 132 35 220 Z"
+        }
+       ],
+       "fill": {
+        "gradient": false,
+        "opacity": 1,
+        "color": "#9DB5A0"
+       }
+      },
+      {
+       "border": {
+        "width": 0
+       },
+       "shadow": {
+        "enabled": false
+       },
+       "id": "s4-leaf-4-shade",
+       "kind": "path",
+       "x": 0,
+       "y": 0,
+       "w": 70,
+       "h": 220,
+       "view": {
+        "x": 0,
+        "y": 0,
+        "w": 70,
+        "h": 220
+       },
+       "shapes": [
+        {
+         "d": "M35 220 L35 0 C59.5 26.4 80.5 132 35 220 Z"
+        }
+       ],
+       "fill": {
+        "gradient": false,
+        "opacity": 1,
+        "color": "#798F80"
+       }
+      }
+     ],
+     "name": "Leaf",
+     "origin": "bottom",
+     "tracks": {
+      "@rotate": [
+       [
+        10.5,
+        30
+       ]
+      ]
+     }
+    },
+    {
+     "border": {
+      "width": 0
+     },
+     "shadow": {
+      "enabled": false
+     },
+     "id": "s4-flower-1",
+     "kind": "ellipse",
+     "x": 206,
+     "y": 96,
+     "w": 64,
+     "h": 52.48,
+     "name": "Flower",
+     "tracks": {
+      "@scale": [
+       [
+        11.3,
+        0.8,
+        "cubic-out"
+       ],
+       [
+        11.700000000000001,
+        1
+       ]
+      ],
+      "opacity": [
+       [
+        11.3,
+        0,
+        "cubic-out"
+       ],
+       [
+        11.700000000000001,
+        1
+       ]
+      ]
+     },
+     "fill": {
+      "gradient": false,
+      "opacity": 1,
+      "color": "#E3B5A4"
+     }
+    },
+    {
+     "border": {
+      "width": 0
+     },
+     "shadow": {
+      "enabled": false
+     },
+     "id": "s4-flower-2",
+     "kind": "ellipse",
+     "x": 168,
+     "y": 46,
+     "w": 54,
+     "h": 44.279999999999994,
+     "name": "Flower",
+     "tracks": {
+      "@scale": [
+       [
+        11.4,
+        0.8,
+        "cubic-out"
+       ],
+       [
+        11.8,
+        1
+       ]
+      ],
+      "opacity": [
+       [
+        11.4,
+        0,
+        "cubic-out"
+       ],
+       [
+        11.8,
+        1
+       ]
+      ]
+     },
+     "fill": {
+      "gradient": false,
+      "opacity": 1,
+      "color": "#FFDDC7"
+     }
+    },
+    {
+     "border": {
+      "width": 0
+     },
+     "shadow": {
+      "enabled": false
+     },
+     "id": "s4-flower-3",
+     "kind": "ellipse",
+     "x": 246,
+     "y": 52,
+     "w": 56,
+     "h": 45.919999999999995,
+     "name": "Flower",
+     "tracks": {
+      "@scale": [
+       [
+        11.5,
+        0.8,
+        "cubic-out"
+       ],
+       [
+        11.9,
+        1
+       ]
+      ],
+      "opacity": [
+       [
+        11.5,
+        0,
+        "cubic-out"
+       ],
+       [
+        11.9,
+        1
+       ]
+      ]
+     },
+     "fill": {
+      "gradient": false,
+      "opacity": 1,
+      "color": "#FFDDC7"
+     }
+    },
+    {
+     "border": {
+      "width": 0
+     },
+     "shadow": {
+      "enabled": false
+     },
+     "id": "s4-flower-4",
+     "kind": "ellipse",
+     "x": 196,
+     "y": 0,
+     "w": 50,
+     "h": 41,
+     "name": "Flower",
+     "tracks": {
+      "@scale": [
+       [
+        11.6,
+        0.8,
+        "cubic-out"
+       ],
+       [
+        12,
+        1
+       ]
+      ],
+      "opacity": [
+       [
+        11.6,
+        0,
+        "cubic-out"
+       ],
+       [
+        12,
+        1
+       ]
+      ]
+     },
+     "fill": {
+      "gradient": false,
+      "opacity": 1,
+      "color": "#E3B5A4"
+     }
+    },
+    {
+     "border": {
+      "width": 0
+     },
+     "shadow": {
+      "enabled": false
+     },
+     "id": "s4-flower-5",
+     "kind": "ellipse",
+     "x": 236,
+     "y": 140,
+     "w": 46,
+     "h": 37.72,
+     "name": "Flower",
+     "tracks": {
+      "@scale": [
+       [
+        11.7,
+        0.8,
+        "cubic-out"
+       ],
+       [
+        12.1,
+        1
+       ]
+      ],
+      "opacity": [
+       [
+        11.7,
+        0,
+        "cubic-out"
+       ],
+       [
+        12.1,
+        1
+       ]
+      ]
+     },
+     "fill": {
+      "gradient": false,
+      "opacity": 1,
+      "color": "#FFDDC7"
+     }
+    }
+   ],
+   "name": "Alpine willowherb",
+   "shot": "s4",
+   "origin": "bottom",
+   "tracks": {
+    "@scale": [
+     [
+      10.6,
+      0,
+      "cubic-out"
+     ],
+     [
+      11.4,
+      1
+     ]
+    ]
+   },
+   "anim": {
+    "loop": {
+     "kind": "swing",
+     "amount": 3,
+     "cycles": 6
+    }
+   }
+  },
+  {
+   "border": {
+    "width": 0
+   },
+   "shadow": {
+    "enabled": false
+   },
+   "id": "s4-drop-shadow",
+   "kind": "ellipse",
+   "x": 700,
+   "y": 1180,
+   "w": 190,
+   "h": 34,
+   "name": "Drop shadow",
+   "shot": "s4",
+   "fill": {
+    "gradient": false,
+    "opacity": 0.3,
+    "color": "#C8ADA1"
+   },
+   "tracks": {
+    "opacity": [
+     [
+      11.2,
+      0,
+      "cubic-out"
+     ],
+     [
+      11.7,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "s4-bakuchiol",
+   "kind": "use",
+   "symbol": "creamdrop",
+   "x": 720,
+   "y": 980,
+   "w": 150,
+   "h": 180,
+   "name": "Bakuchiol drop",
+   "shot": "s4",
+   "tracks": {
+    "opacity": [
+     [
+      11.2,
+      0,
+      "cubic-out"
+     ],
+     [
+      11.7,
+      1
+     ]
+    ],
+    "y": {
+     "keys": [
+      [
+       11.2,
+       980,
+       "ease-in-out"
+      ],
+      [
+       12.5,
+       960
+      ]
+     ],
+     "repeat": "pingpong"
+    }
+   }
+  },
+  {
+   "border": {
+    "width": 0
+   },
+   "shadow": {
+    "enabled": false
+   },
+   "id": "s4-front",
+   "kind": "path",
+   "x": 760,
+   "y": 1600,
+   "w": 500,
+   "h": 400,
+   "view": {
+    "x": 0,
+    "y": 0,
+    "w": 100,
+    "h": 100
+   },
+   "shapes": [
+    {
+     "d": "M52 4 C74 2 95 18 97 44 C99 70 82 95 54 97 C26 99 4 82 3 54 C2 26 24 6 52 4 Z"
+    }
+   ],
+   "name": "Front blob",
+   "shot": "s4",
+   "opacity": 0.85,
+   "tracks": {
+    "x": [
+     [
+      10.5,
+      760,
+      "linear"
+     ],
+     [
+      13.5,
+      700
+     ]
+    ]
+   },
+   "fill": {
+    "gradient": true,
+    "opacity": 1,
+    "color": "#9DB5A0",
+    "color2": "#798F80",
+    "angle": 90
+   }
+  },
+  {
+   "id": "t4",
+   "kind": "text",
+   "name": "Shot 4 · title",
+   "x": 80,
+   "y": 330,
+   "w": 920,
+   "align": "center",
+   "text": "Bakuchiol &\nAlpine willowherb",
+   "font": "Montserrat",
+   "size": 72,
+   "weight": 800,
+   "color": "#000000",
+   "anim": {
+    "in": {
+     "kind": "slide",
+     "from": "down",
+     "amount": 30,
+     "delay": 11,
+     "duration": 0.5,
+     "easing": "cubic-out"
+    },
+    "out": {
+     "kind": "fade",
+     "delay": 13.05,
+     "duration": 0.25,
+     "easing": "cubic-in"
+    }
+   },
+   "shot": "s4"
+  },
+  {
+   "border": {
+    "width": 0
+   },
+   "shadow": {
+    "enabled": false
+   },
+   "id": "s5-bg",
+   "kind": "rect",
+   "x": 0,
+   "y": 0,
+   "w": 1080,
+   "h": 1920,
+   "radius": 0,
+   "name": "Backdrop",
+   "shot": "s5",
+   "fill": {
+    "gradient": false,
+    "opacity": 1,
+    "color": "#FFFFFF"
+   }
+  },
+  {
+   "border": {
+    "width": 0
+   },
+   "shadow": {
+    "enabled": false
+   },
+   "id": "s5-back",
+   "kind": "path",
+   "x": -110,
+   "y": 330,
+   "w": 1300,
+   "h": 1300,
+   "view": {
+    "x": 0,
+    "y": 0,
+    "w": 100,
+    "h": 100
+   },
+   "shapes": [
+    {
+     "d": "M52 4 C74 2 95 18 97 44 C99 70 82 95 54 97 C26 99 4 82 3 54 C2 26 24 6 52 4 Z"
+    }
+   ],
+   "name": "Back blob",
+   "shot": "s5",
+   "opacity": 0.5,
+   "tracks": {
+    "@scale": {
+     "keys": [
+      [
+       13.5,
+       1,
+       "ease-in-out"
+      ],
+      [
+       15,
+       1.02
+      ]
+     ],
+     "repeat": "pingpong",
+     "until": 17
+    }
+   },
+   "fill": {
+    "gradient": true,
+    "opacity": 1,
+    "color": "#FFDDC7",
+    "color2": "#F2D3C1",
+    "angle": 90
+   }
+  },
+  {
+   "border": {
+    "width": 0
+   },
+   "shadow": {
+    "enabled": false
+   },
+   "id": "s5-wrinkle",
+   "kind": "path",
+   "x": 190,
+   "y": 560,
+   "w": 700,
+   "h": 140,
+   "view": {
+    "x": 0,
+    "y": 0,
+    "w": 700,
+    "h": 140
+   },
+   "shapes": [
+    {
+     "d": "M0 60 C90 0 170 0 260 60 C350 120 430 120 520 60 C580 20 640 20 700 60 L700 74 C640 34 580 34 520 74 C430 134 350 134 260 74 C170 14 90 14 0 74 Z"
+    },
+    {
+     "d": "M0 60 C90 40 170 40 260 60 C350 80 430 80 520 60 C580 47 640 47 700 60 L700 74 C640 61 580 61 520 74 C430 94 350 94 260 74 C170 54 90 54 0 74 Z"
+    }
+   ],
+   "name": "Wrinkle line",
+   "shot": "s5",
+   "tracks": {
+    "morph": [
+     [
+      13.9,
+      0,
+      "ease-in-out"
+     ],
+     [
+      14.9,
+      1
+     ]
+    ]
+   },
+   "fill": {
+    "gradient": false,
+    "opacity": 1,
+    "color": "#C8ADA1"
+   }
+  },
+  {
+   "id": "s5-card-1",
+   "kind": "group",
+   "x": 120,
+   "y": 780,
+   "w": 840,
+   "h": 300,
+   "cw": 840,
+   "ch": 300,
+   "children": [
+    {
+     "border": {
+      "width": 0
+     },
+     "shadow": {
+      "enabled": true,
+      "color": "#000000",
+      "opacity": 0.12,
+      "blur": 40,
+      "x": 0,
+      "y": 14
+     },
+     "id": "s5-card-1-bg",
+     "kind": "rect",
+     "x": 0,
+     "y": 0,
+     "w": 840,
+     "h": 300,
+     "radius": 60,
+     "fill": {
+      "gradient": false,
+      "opacity": 1,
+      "color": "#F7F7F7"
+     }
+    },
+    {
+     "border": {
+      "width": 0
+     },
+     "shadow": {
+      "enabled": false
+     },
+     "id": "s5-card-1-bar",
+     "kind": "rect",
+     "x": 40,
+     "y": 50,
+     "w": 12,
+     "h": 200,
+     "radius": 6,
+     "name": "Accent bar",
+     "fill": {
+      "gradient": false,
+      "opacity": 1,
+      "color": "#ED691C"
+     }
+    },
+    {
+     "id": "s5-card-1-num",
+     "kind": "counter",
+     "name": "Number",
+     "x": 0,
+     "y": 40,
+     "w": 840,
+     "h": 140,
+     "from": 0,
+     "to": 14,
+     "decimals": 0,
+     "prefix": "−",
+     "suffix": " %",
+     "font": "Montserrat",
+     "weight": 800,
+     "size": 110,
+     "color": "#000000",
+     "align": "center",
+     "tracks": {
+      "progress": [
+       [
+        13.9,
+        0,
+        "cubic-out"
+       ],
+       [
+        14.9,
+        1
+       ]
+      ]
+     }
+    },
+    {
+     "id": "s5-card-1-caption",
+     "kind": "text",
+     "name": "Caption",
+     "x": 0,
+     "y": 190,
+     "w": 840,
+     "align": "center",
+     "text": "wrinkle depth in 2 weeks*",
+     "font": "Montserrat",
+     "size": 44,
+     "weight": 500,
+     "color": "#000000"
+    }
+   ],
+   "name": "Stat card · wrinkle depth",
+   "shot": "s5",
+   "anim": {
+    "in": {
+     "kind": "slide",
+     "from": "down",
+     "amount": 30,
+     "delay": 13.7,
+     "duration": 0.5,
+     "easing": "cubic-out"
+    },
+    "out": {
+     "kind": "fade",
+     "delay": 15.15,
+     "duration": 0.25,
+     "easing": "cubic-in"
+    }
+   }
+  },
+  {
+   "id": "s5-card-2",
+   "kind": "group",
+   "x": 120,
+   "y": 780,
+   "w": 840,
+   "h": 300,
+   "cw": 840,
+   "ch": 300,
+   "children": [
+    {
+     "border": {
+      "width": 0
+     },
+     "shadow": {
+      "enabled": true,
+      "color": "#000000",
+      "opacity": 0.12,
+      "blur": 40,
+      "x": 0,
+      "y": 14
+     },
+     "id": "s5-card-2-bg",
+     "kind": "rect",
+     "x": 0,
+     "y": 0,
+     "w": 840,
+     "h": 300,
+     "radius": 60,
+     "fill": {
+      "gradient": false,
+      "opacity": 1,
+      "color": "#F7F7F7"
+     }
+    },
+    {
+     "border": {
+      "width": 0
+     },
+     "shadow": {
+      "enabled": false
+     },
+     "id": "s5-card-2-bar",
+     "kind": "rect",
+     "x": 40,
+     "y": 50,
+     "w": 12,
+     "h": 200,
+     "radius": 6,
+     "name": "Accent bar",
+     "fill": {
+      "gradient": false,
+      "opacity": 1,
+      "color": "#ED691C"
+     }
+    },
+    {
+     "id": "s5-card-2-num",
+     "kind": "counter",
+     "name": "Number",
+     "x": 0,
+     "y": 40,
+     "w": 840,
+     "h": 140,
+     "from": 0,
+     "to": 49,
+     "decimals": 0,
+     "prefix": "Up to ",
+     "suffix": " %",
+     "font": "Montserrat",
+     "weight": 800,
+     "size": 110,
+     "color": "#000000",
+     "align": "center",
+     "tracks": {
+      "progress": [
+       [
+        15.6,
+        0,
+        "cubic-out"
+       ],
+       [
+        16.4,
+        1
+       ]
+      ]
+     }
+    },
+    {
+     "id": "s5-card-2-caption",
+     "kind": "text",
+     "name": "Caption",
+     "x": 0,
+     "y": 190,
+     "w": 840,
+     "align": "center",
+     "text": "better skin barrier*",
+     "font": "Montserrat",
+     "size": 44,
+     "weight": 500,
+     "color": "#000000"
+    }
+   ],
+   "name": "Stat card · skin barrier",
+   "shot": "s5",
+   "anim": {
+    "in": {
+     "kind": "slide",
+     "from": "down",
+     "amount": 30,
+     "delay": 15.5,
+     "duration": 0.5,
+     "easing": "cubic-out"
+    }
+   }
+  },
+  {
+   "id": "t5",
+   "kind": "text",
+   "name": "Shot 5 · footnote",
+   "x": 80,
+   "y": 1620,
+   "w": 920,
+   "align": "center",
+   "text": "*RINGANA study, 23 participants, 2 weeks.",
+   "font": "Montserrat",
+   "size": 30,
+   "weight": 500,
+   "color": "#000000",
+   "anim": {
+    "in": {
+     "kind": "slide",
+     "from": "down",
+     "amount": 30,
+     "delay": 13.8,
+     "duration": 0.5,
+     "easing": "cubic-out"
+    },
+    "out": {
+     "kind": "fade",
+     "delay": 16.75,
+     "duration": 0.25,
+     "easing": "cubic-in"
+    }
+   },
+   "shot": "s5"
+  },
+  {
+   "border": {
+    "width": 0
+   },
+   "shadow": {
+    "enabled": false
+   },
+   "id": "s6-bg",
+   "kind": "rect",
+   "x": 0,
+   "y": 0,
+   "w": 1080,
+   "h": 1920,
+   "radius": 0,
+   "name": "Backdrop",
+   "shot": "s6",
+   "fill": {
+    "gradient": false,
+    "opacity": 1,
+    "color": "#FFFFFF"
+   }
+  },
+  {
+   "border": {
+    "width": 0
+   },
+   "shadow": {
+    "enabled": false
+   },
+   "id": "s6-back",
+   "kind": "path",
+   "x": -10,
+   "y": 350,
+   "w": 1100,
+   "h": 1100,
+   "view": {
+    "x": 0,
+    "y": 0,
+    "w": 100,
+    "h": 100
+   },
+   "shapes": [
+    {
+     "d": "M52 4 C74 2 95 18 97 44 C99 70 82 95 54 97 C26 99 4 82 3 54 C2 26 24 6 52 4 Z"
+    }
+   ],
+   "name": "Back blob",
+   "shot": "s6",
+   "opacity": 0.7,
+   "tracks": {
+    "@scale": {
+     "keys": [
+      [
+       17,
+       1,
+       "ease-in-out"
+      ],
+      [
+       18.5,
+       1.02
+      ]
+     ],
+     "repeat": "pingpong",
+     "until": 20
+    }
+   },
+   "fill": {
+    "gradient": true,
+    "opacity": 1,
+    "color": "#FFDDC7",
+    "color2": "#F2D3C1",
+    "angle": 90
+   }
+  },
+  {
+   "border": {
+    "width": 0
+   },
+   "shadow": {
+    "enabled": false
+   },
+   "id": "s6-pedestal-shadow",
+   "kind": "ellipse",
+   "x": 260,
+   "y": 1250,
+   "w": 560,
+   "h": 50,
+   "name": "Pedestal shadow",
+   "shot": "s6",
+   "fill": {
+    "gradient": false,
+    "opacity": 0.35,
+    "color": "#C8ADA1"
+   },
+   "tracks": {
+    "opacity": [
+     [
+      17.1,
+      0,
+      "cubic-out"
+     ],
+     [
+      17.6,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "s6-pedestal",
+   "kind": "group",
+   "x": 280,
+   "y": 1180,
+   "w": 520,
+   "h": 90,
+   "cw": 520,
+   "ch": 90,
+   "children": [
+    {
+     "border": {
+      "width": 0
+     },
+     "shadow": {
+      "enabled": false
+     },
+     "id": "s6-ped",
+     "kind": "rect",
+     "x": 0,
+     "y": 0,
+     "w": 520,
+     "h": 90,
+     "radius": 45,
+     "fill": {
+      "gradient": false,
+      "opacity": 1,
+      "color": "#E3B5A4"
+     }
+    },
+    {
+     "border": {
+      "width": 0
+     },
+     "shadow": {
+      "enabled": false
+     },
+     "id": "s6-ped-top",
+     "kind": "rect",
+     "x": 30,
+     "y": 8,
+     "w": 460,
+     "h": 18,
+     "radius": 9,
+     "fill": {
+      "gradient": false,
+      "opacity": 1,
+      "color": "#FFDDC7"
+     }
+    }
+   ],
+   "name": "Pedestal",
+   "shot": "s6",
+   "tracks": {
+    "opacity": [
+     [
+      17.1,
+      0,
+      "cubic-out"
+     ],
+     [
+      17.6,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "s6-bottle",
+   "kind": "group",
+   "x": 420,
+   "y": 580,
+   "w": 240,
+   "h": 600,
+   "cw": 240,
+   "ch": 600,
+   "children": [
+    {
+     "border": {
+      "width": 0
+     },
+     "shadow": {
+      "enabled": true,
+      "color": "#000000",
+      "opacity": 0.12,
+      "blur": 40,
+      "x": 0,
+      "y": 14
+     },
+     "id": "s6-body-shade",
+     "kind": "rect",
+     "x": 0,
+     "y": 170,
+     "w": 240,
+     "h": 430,
+     "radius": 40,
+     "fill": {
+      "gradient": false,
+      "opacity": 1,
+      "color": "#C8BBA1"
+     }
+    },
+    {
+     "border": {
+      "width": 0
+     },
+     "shadow": {
+      "enabled": false
+     },
+     "id": "s6-body",
+     "kind": "rect",
+     "x": 0,
+     "y": 170,
+     "w": 192,
+     "h": 430,
+     "radius": 40,
+     "fill": {
+      "gradient": false,
+      "opacity": 1,
+      "color": "#EFE3C2"
+     }
+    },
+    {
+     "border": {
+      "width": 0
+     },
+     "shadow": {
+      "enabled": false
+     },
+     "id": "s6-body-shine",
+     "kind": "rect",
+     "x": 26,
+     "y": 210,
+     "w": 40,
+     "h": 340,
+     "radius": 20,
+     "fill": {
+      "gradient": false,
+      "opacity": 1,
+      "color": "#FEF6D4"
+     }
+    },
+    {
+     "border": {
+      "width": 0
+     },
+     "shadow": {
+      "enabled": false
+     },
+     "id": "s6-cap-shade",
+     "kind": "rect",
+     "x": 0,
+     "y": 0,
+     "w": 240,
+     "h": 186,
+     "radius": 30,
+     "fill": {
+      "gradient": false,
+      "opacity": 1,
+      "color": "#D0D0D0"
+     }
+    },
+    {
+     "border": {
+      "width": 0
+     },
+     "shadow": {
+      "enabled": false
+     },
+     "id": "s6-cap",
+     "kind": "rect",
+     "x": 0,
+     "y": 0,
+     "w": 200,
+     "h": 186,
+     "radius": 30,
+     "fill": {
+      "gradient": false,
+      "opacity": 1,
+      "color": "#FFFFFF"
+     }
+    },
+    {
+     "id": "s6-sprig",
+     "kind": "group",
+     "x": 90,
+     "y": 300,
+     "w": 60,
+     "h": 110,
+     "cw": 60,
+     "ch": 110,
+     "children": [
+      {
+       "border": {
+        "width": 0
+       },
+       "shadow": {
+        "enabled": false
+       },
+       "id": "s6-sprig-stem",
+       "kind": "rect",
+       "x": 27,
+       "y": 30,
+       "w": 6,
+       "h": 80,
+       "radius": 3,
+       "fill": {
+        "gradient": false,
+        "opacity": 1,
+        "color": "#798F80"
+       }
+      },
+      {
+       "border": {
+        "width": 0
+       },
+       "shadow": {
+        "enabled": false
+       },
+       "id": "s6-sprig-l",
+       "kind": "path",
+       "x": 0,
+       "y": 10,
+       "w": 30,
+       "h": 64,
+       "view": {
+        "x": 0,
+        "y": 0,
+        "w": 30,
+        "h": 64
+       },
+       "shapes": [
+        {
+         "d": "M15 64 C-4.5 38.4 4.5 7.68 15 0 C25.5 7.68 34.5 38.4 15 64 Z"
+        }
+       ],
+       "tracks": {
+        "@rotate": [
+         [
+          17,
+          -30
+         ]
+        ]
+       },
+       "fill": {
+        "gradient": false,
+        "opacity": 1,
+        "color": "#9DB5A0"
+       }
+      },
+      {
+       "border": {
+        "width": 0
+       },
+       "shadow": {
+        "enabled": false
+       },
+       "id": "s6-sprig-r",
+       "kind": "path",
+       "x": 30,
+       "y": 0,
+       "w": 30,
+       "h": 64,
+       "view": {
+        "x": 0,
+        "y": 0,
+        "w": 30,
+        "h": 64
+       },
+       "shapes": [
+        {
+         "d": "M15 64 C-4.5 38.4 4.5 7.68 15 0 C25.5 7.68 34.5 38.4 15 64 Z"
+        }
+       ],
+       "tracks": {
+        "@rotate": [
+         [
+          17,
+          30
+         ]
+        ]
+       },
+       "fill": {
+        "gradient": false,
+        "opacity": 1,
+        "color": "#9DB5A0"
+       }
+      }
+     ],
+     "name": "Sprig mark"
+    }
+   ],
+   "name": "FRESH skin perfection bottle",
+   "shot": "s6",
+   "tracks": {
+    "y": [
+     [
+      17.2,
+      640,
+      "cubic-out"
+     ],
+     [
+      17.9,
+      580
+     ]
+    ],
+    "opacity": [
+     [
+      17.2,
+      0,
+      "cubic-out"
+     ],
+     [
+      17.9,
+      1
+     ]
+    ],
+    "@scale": {
+     "keys": [
+      [
+       18,
+       1,
+       "ease-in-out"
+      ],
+      [
+       19.5,
+       1.01
+      ]
+     ],
+     "repeat": "pingpong"
+    }
+   }
+  },
+  {
+   "id": "t6",
+   "kind": "text",
+   "name": "Shot 6 · product name",
+   "x": 80,
+   "y": 1330,
+   "w": 920,
+   "align": "center",
+   "text": "RINGANA\nFRESH skin perfection",
+   "font": "Montserrat",
+   "size": 64,
+   "weight": 800,
+   "color": "#000000",
+   "anim": {
+    "in": {
+     "kind": "slide",
+     "from": "down",
+     "amount": 30,
+     "delay": 17.6,
+     "duration": 0.5,
+     "easing": "cubic-out"
+    }
+   },
+   "shot": "s6"
+  },
+  {
+   "id": "t6b",
+   "kind": "text",
+   "name": "Shot 6 · support",
+   "x": 80,
+   "y": 1510,
+   "w": 920,
+   "align": "center",
+   "text": "Recovery cream",
+   "font": "Montserrat",
+   "size": 44,
+   "weight": 500,
+   "color": "#000000",
+   "anim": {
+    "in": {
+     "kind": "slide",
+     "from": "down",
+     "amount": 30,
+     "delay": 17.9,
+     "duration": 0.5,
+     "easing": "cubic-out"
+    }
+   },
+   "shot": "s6"
+  }
+ ]
+}

@@ -1,4 +1,4 @@
-// Golden test: the generator must keep writing the scene it wrote before its pieces moved to lib/ (001/R4); no generator writes audioTracks (011/R7).
+// Golden test: the generator must keep writing the scene it wrote before its pieces moved to lib/ (001/R4, 013/D8); no generator writes audioTracks (011/R7).
 const { test } = require("node:test");
 const assert = require("node:assert/strict");
 const { execFileSync } = require("node:child_process");
@@ -13,14 +13,19 @@ const generate = (slug) => {
 };
 const fixture = (slug) => fs.readFileSync(path.join(__dirname, "fixtures", `${slug}.scene.json`), "utf8");
 
-test("ringana-omega-v2 generator writes scene.json beside itself, byte-identical to the pre-move scene", () => {
-  // Arrange
-  const expected = normalizeEol(fixture("ringana-omega-v2"));
-  // Act
-  const actual = normalizeEol(generate("ringana-omega-v2"));
-  // Assert
-  assert.equal(actual, expected);
-});
+// one row per fixture: the generator keeps writing it byte for byte (013/D8)
+const GOLDEN = fs.readdirSync(path.join(__dirname, "fixtures")).map((f) => f.replace(/\.scene\.json$/, ""));
+
+for (const slug of GOLDEN) {
+  test(`${slug} generator writes scene.json beside itself, byte-identical to its fixture`, () => {
+    // Arrange
+    const expected = normalizeEol(fixture(slug));
+    // Act
+    const actual = normalizeEol(generate(slug));
+    // Assert
+    assert.equal(actual, expected);
+  });
+}
 
 // A scene's audio belongs to the Lienzo scene: no generator writes audioTracks (011/R7, D10).
 const VIDEOS = fs.readdirSync(path.join(root, "videos")).filter((slug) => fs.existsSync(path.join(root, "videos", slug, "scene.gen.cjs")));

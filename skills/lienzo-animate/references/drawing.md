@@ -42,6 +42,12 @@ Drop: dark full circle + base circle at 90 % size top-left + white glint → cre
 Halo behind a big area: plain ellipse at 4–12 % opacity, never `bgGlow` (it washes the frame white)
 ```
 
+## Scale and growth (verified in `videos/ringana-skin-perfection/scene.gen.cjs`)
+
+- A symbol placed much larger than its definition scales its details too: a highlight sliver became a sign-like bar at 3.3×. Draw large variants at their own size.
+- A layer that drifts with an `x` track needs its drift added to its width, or its edge shows (`w: W + 120` for a 45 px drift).
+- Grow a piece along one axis with `w`/`h` plus `x`/`y` tracks (there is no per-axis scale channel), until Lienzo 088 adds per-axis scale channels.
+
 ## Composition ideas
 
 - **Tree:** `rect` trunk with `radius` + crown = group of 3 overlapping `ellipse`s in shades of green, with a gentle `loop: swing`. Set the crown's `origin` on the trunk top so it sways from there (recipe in recipes.md).

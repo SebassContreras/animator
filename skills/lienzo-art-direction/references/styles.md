@@ -4,7 +4,7 @@ Pick one per piece and copy its block into the brief's "Visual style". Hex value
 
 Add a style here only after it worked in a real piece (note the brief).
 
-Used in: Bright science → `videos/ringana-omega-v2/brief.md`.
+Used in: Bright science → `videos/ringana-omega-v2/brief.md`; Soft depth → `videos/ringana-skin-perfection/brief.md`.
 
 ## Bright science (explainers, facts, products)
 
@@ -25,6 +25,7 @@ Calm, airy, layered.
 - **Shading:** two-colour vertical gradients (light top → slightly darker bottom) on big shapes; `shadow` enabled only on the focal object, low opacity, large blur.
 - **Type:** one elegant sans or serif (e.g. DM Sans, Playfair Display), 600 / 400.
 - **Motion:** `cubic-out` and `ease-in-out`, long fades, slow `breathe`; no bounces.
+- **On a white brand** (ringana-skin-perfection): the brand's white replaces the warm off-white background, the brand fonts replace the style's, and an accent that fails 4.5:1 on white is never text, only shapes.
 
 ## Bold graphic (promos, announcements, tips lists)
 

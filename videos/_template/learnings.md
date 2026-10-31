@@ -1,19 +1,19 @@
 # <slug> — Learnings
 
-What this video taught, one bullet per finding, under its kind (004/R1). Close-out promotes `Piece` and `Rule` findings. A promoted finding ends with `— promoted: <repo path>`; every `Engine` finding ends with `— tracks: <url>`.
+What this video taught, one bullet per finding, under its kind (004/R1). Close-out promotes `Piece` and `Rule` findings. A promoted finding ends with `— promoted: <repo path>`; every `Engine` finding ends with `— tracks: Lienzo spec <NNN>` or `— tracks: <Lienzo issue URL>`.
 
 ## Piece
 
-- <reusable drawing or motion that goes to `lib/`, with the generator function it lives in> — promoted: <lib/ file, once promoted>
+Reusable drawing or motion that goes to `lib/`, with the generator function it lives in.
 
 ## Rule
 
-- <rule that goes to a skill> — promoted: <skill file, once promoted>
+A rule that goes to a skill.
 
 ## Engine
 
-- <Lienzo limitation> — tracks: <link to the Lienzo issue that tracks it>
+A Lienzo limitation, ending `— tracks: Lienzo spec <NNN>` (the Lienzo spec that fixes it) or `— tracks: <Lienzo issue URL>`.
 
 ## Local
 
-- <finding that only applies to this video>
+A finding that only applies to this video.

@@ -73,6 +73,8 @@ A brand guide's own length rules replace all of this.
 - One typeface, two weights. Title 72–96 px, support 40–56 px on 1080-wide canvases.
 - Long titles take the low end: a 20-character title fits at 72 px on a 1080-wide canvas; 88 px was cut off.
 - Text enters after the image (0.2–0.4 s later), so the eye lands on the image first.
+- Break two-line titles by hand with `
+`: the automatic wrap breaks in the wrong place ("Dry skin? Weakened barrier?" broke after "Weakened"; ringana-skin-perfection).
 
 ## Voice-over
 
@@ -80,3 +82,4 @@ A brand guide's own length rules replace all of this.
 - The voice does not repeat the on-screen text: short, varied lines; numbers and terms stay on screen. One sentence may run across a cut as a single clip.
 - Never split one sentence into two clips: the gap makes it sound broken.
 - Keep the brand out of the voice unless the user asks for it.
+- A Kokoro clip carries about 0.4 s of silence at the start and 0.6 s at the end (measured with `ffmpeg silencedetect` at −40 dB; ringana-skin-perfection): write ≤ 5 words for a 3 s shot, and check that the clips' total fits the scene before placing them, until Lienzo 089 reports the voiced span.

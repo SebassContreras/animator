@@ -25,5 +25,5 @@
 - Add the year for statistics ("2024", "2025").
 - Search "myth", "misconception" or "debunked" plus the topic to find pitfalls.
 - Run independent searches in parallel.
-- A brand site that blocks crawlers (`robots.txt: disallow: /`): open the official page in the user's real browser with `pwa-nav` (`open <url> --launch --allow-origin`) from the start, or ask the user to paste the page text.
+- A brand site that blocks crawlers (`robots.txt: disallow: /`) or renders with JavaScript (a plain fetch gets an empty shell): open the official page in the user's real browser with `browser-nav` (`pwa-nav` is its legacy alias; `open <url> --launch --allow-origin`) from the start, or ask the user to paste the page text. Its `snapshot` lists headings and buttons but not paragraph text: open each panel and read it from a `screenshot`. Cookie banners get the essential-only choice (ringana.com, ringana-skin-perfection).
 - Look for linked PDFs first (studies, data sheets): they hold the richest facts, and browser snapshots miss body text inside tabs.

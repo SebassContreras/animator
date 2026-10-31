@@ -1,4 +1,4 @@
-// Learnings format: the video's learnings.md has the four kind sections and links every engine finding (004/R1, 004/R5).
+// Learnings format: each video's learnings.md, and the template's, has the four kind sections and tracks every engine finding (004/R1, 013/R1, 013/R11).
 const { test } = require("node:test");
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
@@ -6,11 +6,13 @@ const path = require("node:path");
 
 const root = path.join(__dirname, "..", "..");
 const KINDS = ["Piece", "Rule", "Engine", "Local"];
-const TRACKED = /— tracks: https:\/\/github\.com\/[^/\s]+\/lienzo\/issues\/\d+$/;
+// an Engine finding ends with a Lienzo issue URL or a three-digit Lienzo spec (013/D7)
+const TRACKED = /— tracks: (https:\/\/github\.com\/[^/\s]+\/lienzo\/issues\/\d+|Lienzo spec \d{3})$/;
+const isTracked = (bullet) => TRACKED.test(bullet);
 
-// Registered active video workspaces subject to learnings format invariants
+// every video workspace, plus the template, so a copy passes unedited (013/D1)
 const VIDEOS = fs.readdirSync(path.join(root, "videos"), { withFileTypes: true })
-  .filter((entry) => entry.isDirectory() && !entry.name.startsWith("_"))
+  .filter((entry) => entry.isDirectory() && (!entry.name.startsWith("_") || entry.name === "_template"))
   .map((entry) => entry.name);
 
 // Splits learnings.md into its `## ` sections: [{ heading, bullets }] in file order.
@@ -21,11 +23,28 @@ const sections = (slug) => fs.readFileSync(path.join(root, "videos", slug, "lear
     return { heading: heading.slice(3).trim(), bullets: lines.filter((l) => l.startsWith("- ")) };
   });
 
-const untracked = (slug) => {
-  const engineSection = sections(slug).find((s) => s.heading === "Engine");
-  if (!engineSection) return [];
-  return engineSection.bullets.filter((b) => !TRACKED.test(b));
-};
+const untracked = (slug) => sections(slug)
+  .filter((s) => s.heading === "Engine")
+  .flatMap((s) => s.bullets.filter((b) => !isTracked(b)));
+
+const TRACKING_CASES = [
+  ["spec reference", "- no per-axis scale — tracks: Lienzo spec 088", true],
+  ["issue URL", "- no voice span — tracks: https://github.com/SebassContreras/lienzo/issues/10", true],
+  ["neither", "- no voice span", false],
+  ["TODO", "- no voice span — tracks: TODO", false],
+  ["two digits", "- no voice span — tracks: Lienzo spec 87", false],
+  ["four digits", "- no voice span — tracks: Lienzo spec 0870", false],
+  ["lower case", "- no voice span — tracks: lienzo spec 087", false],
+  ["issue of another repo", "- no voice span — tracks: https://github.com/SebassContreras/animator/issues/10", false],
+  ["text after the suffix", "- no voice span — tracks: Lienzo spec 089 (open)", false],
+];
+
+for (const [partition, bullet, expected] of TRACKING_CASES) {
+  test(`tracking suffix: ${partition} is ${expected ? "accepted" : "rejected"}`, () => {
+    // Act + Assert
+    assert.equal(isTracked(bullet), expected);
+  });
+}
 
 // Parameterized table tests asserting structure and tracking invariants across videos
 for (const slug of VIDEOS) {
@@ -36,10 +55,17 @@ for (const slug of VIDEOS) {
     assert.deepEqual(headings, KINDS);
   });
 
-  test(`every ${slug} engine finding links the Lienzo issue that tracks it`, () => {
+  test(`every ${slug} engine finding is tracked by a Lienzo issue or spec`, () => {
     // Arrange / Act
     const missing = untracked(slug);
     // Assert
     assert.deepEqual(missing, []);
   });
 }
+
+test("the template's learnings sections hold no bullets", () => {
+  // Arrange / Act
+  const bullets = sections("_template").flatMap((s) => s.bullets);
+  // Assert
+  assert.deepEqual(bullets, []);
+});

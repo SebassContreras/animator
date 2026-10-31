@@ -10,6 +10,8 @@ const C = resolvePalette(lock, require("./palette.json"));
 const F = brandFonts(lock);
 const { sceneHelpers, nativeShot } = require("../../lib/scene.cjs");
 const { rect, ell, path, group } = require("../../lib/primitives.cjs");
+const { blob } = require("../../lib/environment.cjs");
+const { teardrop } = require("../../lib/objects.cjs");
 
 const { label } = sceneHelpers({ w: W, h: H, duration: D, palette: C, fonts: F, textMotion: { amount: 30, inDuration: 0.5, easeIn: "cubic-out", easeOut: "cubic-in" } });
 
@@ -26,22 +28,8 @@ const SOFT = { enabled: true, color: "#000000", opacity: 0.12, blur: 40, x: 0, y
 
 // --- Recurring objects ---------------------------------------------------------------
 
-// Organic blob in a 100×100 view; vertical two-colour gradient of its role (Soft depth: gradients on big shapes).
-const BLOB = "M52 4 C74 2 95 18 97 44 C99 70 82 95 54 97 C26 99 4 82 3 54 C2 26 24 6 52 4 Z";
-const blob = (id, name, x, y, w, h, top, bottom, extra = {}) => path(id, x, y, w, h, BLOB, bottom, {
-  name, view: { x: 0, y: 0, w: 100, h: 100 }, ...extra,
-  fill: { gradient: true, color: top, color2: bottom, angle: 90, ...(extra.fill || {}) },
-});
 // slow breathing on a back blob (pingpong 1 → 1.02, 3 s)
 const breathe = (t0, until, amount = 1.02) => ({ "@scale": { keys: [[t0, 1, "ease-in-out"], [t0 + 1.5, amount]], repeat: "pingpong", until } });
-
-// Teardrop, point up, in a 100×120 view: shadow drop, base drop up-left of it, highlight dot top-left (light from the top-left).
-const TEAR = "M50 0 C62 24 90 52 90 78 C90 102 72 118 50 118 C28 118 10 102 10 78 C10 52 38 24 50 0 Z";
-const tear = (role) => ({ w: 100, h: 120, children: [
-  path("shade", 0, 0, 100, 120, TEAR, C[role].shadow),
-  path("core", 0, 0, 92, 110, TEAR, C[role].base, { view: { x: 0, y: 0, w: 100, h: 120 } }),
-  ell("shine", 30, 62, 18, 22, C[role].highlight, { fill: { opacity: 0.85 } }),
-] });
 
 // Skin cell: pill with the shadow tone bottom-right, base up-left of it, highlight sliver top-left.
 const cellSymbol = { w: 210, h: 120, children: [
@@ -50,7 +38,7 @@ const cellSymbol = { w: 210, h: 120, children: [
   rect("shine", 30, 20, 70, 16, C.skin.highlight, { radius: 8, fill: { opacity: 0.9 } }),
 ] };
 
-const symbols = { cell: cellSymbol, droplet: tear("moisture"), creamdrop: tear("cream") };
+const symbols = { cell: cellSymbol, droplet: teardrop(C.moisture), creamdrop: teardrop(C.cream) };
 const use = (id, symbol, x, y, w, h, extra = {}) => ({ id, kind: "use", symbol, x, y, w, h, ...extra });
 
 // Cell rows in a brick pattern: widths vary ±10 px so the rows are not mechanical; the gap stays 28 px.
@@ -90,10 +78,10 @@ const escaping = ESCAPE.map((gi, i) => {
 });
 const s1 = [
   backdrop("s1-bg", "s1"),
-  blob("s1-back", "Back blob", -110, 350, 1300, 1300, C.blush.highlight, C.skin.base, { shot: "s1", opacity: 0.7, tracks: { x: [[0, -110, "linear"], [3.5, -90]] } }),
+  blob("s1-back", "Back blob", { x: -110, y: 350, w: 1300, h: 1300 }, C.blush.highlight, C.skin.base, { shot: "s1", opacity: 0.7, tracks: { x: [[0, -110, "linear"], [3.5, -90]] } }),
   cells("s1-cells", "s1"),
   group("s1-moisture", 0, 0, W, H, escaping, { name: "Escaping moisture", shot: "s1" }),
-  blob("s1-front", "Front blob", -180, 1560, 600, 500, C.blush.base, C.blush.shadow, { shot: "s1", opacity: 0.8 }),
+  blob("s1-front", "Front blob", { x: -180, y: 1560, w: 600, h: 500 }, C.blush.base, C.blush.shadow, { shot: "s1", opacity: 0.8 }),
   say("t1", "Shot 1 · title", "Dry skin?\nWeakened barrier?", 330, 72, 0.4, 3.2, { shot: "s1" }),
 ];
 
@@ -119,10 +107,7 @@ const bands = [1000, 1148].map((y, k) => {
 const DROP = "M450 0 C480 60 570 120 570 190 C570 250 515 290 450 290 C385 290 330 250 330 190 C330 120 420 60 450 0 Z";
 const FILM = "M450 270 C700 270 900 285 900 315 C900 345 700 360 450 360 C200 360 0 345 0 315 C0 285 200 270 450 270 Z";
 const MORPH = [[4.7, 0, "ease-in-out"], [5.4, 1]];
-const morphing = (id, x, y, color) => flatPath(id, x, y, 900, 360, [DROP, FILM], color, { tracks: { morph: MORPH } });
-function flatPath(id, x, y, w, h, ds, color, extra = {}) {
-  return { ...path(id, x, y, w, h, ds[0], color, extra), shapes: ds.map((d) => ({ d })) };
-}
+const morphing = (id, x, y, color) => path(id, x, y, 900, 360, [DROP, FILM], color, { tracks: { morph: MORPH } });
 const DROP_Y = [[3.5, -420], [3.7, -420, "cubic-out"], [4.5, 570]];
 const cream = group("s2-cream", 90, 0, 910, 370, [
   morphing("s2-cream-shade", 8, 8, C.cream.shadow),
@@ -144,13 +129,13 @@ const kept = KEPT.map((gi, i) => {
 });
 const s2 = [
   backdrop("s2-bg", "s2"),
-  blob("s2-back", "Back blob", -90, 350, 1300, 1300, C.blush.highlight, C.skin.base, { shot: "s2", opacity: 0.7, tracks: { x: [[3.5, -90, "linear"], [7, -70]] } }),
+  blob("s2-back", "Back blob", { x: -90, y: 350, w: 1300, h: 1300 }, C.blush.highlight, C.skin.base, { shot: "s2", opacity: 0.7, tracks: { x: [[3.5, -90, "linear"], [7, -70]] } }),
   cells("s2-cells", "s2"),
   group("s2-mortar", 0, 0, W, H, [...bands, ...mortar], { name: "Ceramide mortar", shot: "s2" }),
   group("s2-moisture", 0, 0, W, H, kept, { name: "Kept moisture", shot: "s2" }),
   creamShadow,
   cream,
-  blob("s2-front", "Front blob", -180, 1560, 600, 500, C.blush.base, C.blush.shadow, { shot: "s2", opacity: 0.8 }),
+  blob("s2-front", "Front blob", { x: -180, y: 1560, w: 600, h: 500 }, C.blush.base, C.blush.shadow, { shot: "s2", opacity: 0.8 }),
   say("t2", "Shot 2 · title", "Ceramides strengthen the skin barrier", 330, 72, 5.0, 6.8, { shot: "s2" }),
 ];
 
@@ -166,7 +151,7 @@ const pill = (id, name, x, t, text) => rect(id, x, 1240, 380, 96, C.surface.base
 });
 const s3 = [
   backdrop("s3-bg", "s3"),
-  blob("s3-back", "Back blob", -110, 310, 1300, 1300, C.blush.highlight, C.skin.base, { shot: "s3", opacity: 0.7, tracks: breathe(7, 10.5) }),
+  blob("s3-back", "Back blob", { x: -110, y: 310, w: 1300, h: 1300 }, C.blush.highlight, C.skin.base, { shot: "s3", opacity: 0.7, tracks: breathe(7, 10.5) }),
   group("s3-cell", 190, 720, 700, 420, [
     rect("s3-cell-shade", 0, 0, 700, 420, C.skin.shadow, { radius: 210 }),
     rect("s3-cell-core", 0, 0, 680, 400, C.skin.base, { radius: 200 }),
@@ -217,7 +202,7 @@ const s4 = [
     name: "Bakuchiol drop", shot: "s4",
     tracks: { opacity: [[11.2, 0, "cubic-out"], [11.7, 1]], y: { keys: [[11.2, 980, "ease-in-out"], [12.5, 960]], repeat: "pingpong" } },
   }),
-  blob("s4-front", "Front blob", 760, 1600, 500, 400, C.sage.base, C.sage.shadow, { shot: "s4", opacity: 0.85, tracks: { x: [[10.5, 760, "linear"], [13.5, 700]] } }),
+  blob("s4-front", "Front blob", { x: 760, y: 1600, w: 500, h: 400 }, C.sage.base, C.sage.shadow, { shot: "s4", opacity: 0.85, tracks: { x: [[10.5, 760, "linear"], [13.5, 700]] } }),
   say("t4", "Shot 4 · title", "Bakuchiol &\nAlpine willowherb", 330, 72, 11.0, 13.3, { shot: "s4" }),
 ];
 
@@ -241,8 +226,8 @@ const card = (id, name, prefix, to, caption, tIn, tCount, tOut) => group(id, 120
 });
 const s5 = [
   backdrop("s5-bg", "s5"),
-  blob("s5-back", "Back blob", -110, 330, 1300, 1300, C.blush.highlight, C.skin.base, { shot: "s5", opacity: 0.5, tracks: breathe(13.5, 17) }),
-  flatPath("s5-wrinkle", 190, 560, 700, 140, [WAVY, CALM], C.skin.shadow, { name: "Wrinkle line", shot: "s5", tracks: { morph: [[13.9, 0, "ease-in-out"], [14.9, 1]] } }),
+  blob("s5-back", "Back blob", { x: -110, y: 330, w: 1300, h: 1300 }, C.blush.highlight, C.skin.base, { shot: "s5", opacity: 0.5, tracks: breathe(13.5, 17) }),
+  path("s5-wrinkle", 190, 560, 700, 140, [WAVY, CALM], C.skin.shadow, { name: "Wrinkle line", shot: "s5", tracks: { morph: [[13.9, 0, "ease-in-out"], [14.9, 1]] } }),
   card("s5-card-1", "Stat card · wrinkle depth", "−", 14, "wrinkle depth in 2 weeks*", 13.7, 13.9, 15.4),
   card("s5-card-2", "Stat card · skin barrier", "Up to ", 49, "better skin barrier*", 15.5, 15.6),
   say("t5", "Shot 5 · footnote", "*RINGANA study, 23 participants, 2 weeks.", 1620, 30, 13.8, 17, body({ shot: "s5" })),
@@ -271,7 +256,7 @@ const bottle = group("s6-bottle", 420, 580, 240, 600, [
 });
 const s6 = [
   backdrop("s6-bg", "s6"),
-  blob("s6-back", "Back blob", -10, 350, 1100, 1100, C.blush.highlight, C.skin.base, { shot: "s6", opacity: 0.7, tracks: breathe(17, 20) }),
+  blob("s6-back", "Back blob", { x: -10, y: 350, w: 1100, h: 1100 }, C.blush.highlight, C.skin.base, { shot: "s6", opacity: 0.7, tracks: breathe(17, 20) }),
   ell("s6-pedestal-shadow", 260, 1250, 560, 50, C.skin.shadow, { name: "Pedestal shadow", shot: "s6", fill: { opacity: 0.35 }, tracks: { opacity: [[17.1, 0, "cubic-out"], [17.6, 1]] } }),
   group("s6-pedestal", 280, 1180, 520, 90, [
     rect("s6-ped", 0, 0, 520, 90, C.blush.base, { radius: 45 }),
