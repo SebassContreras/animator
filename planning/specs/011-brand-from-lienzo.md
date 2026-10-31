@@ -26,6 +26,10 @@ and fonts; `omega-v2` still generates its golden scene byte for byte; `pnpm test
   the brief's voice starts (0.5, 3.4, 9.2, 14.3, 17.4, 21.3 s) no longer match the Lienzo scene
   (0.5, 2.1, 7.1, 12.8, 16.8, 21.3 s): two places hold the same data and they have drifted. The
   brief's palette table repeats `palette.json`'s hexes the same way.
+- The user deleted the `omega-v2` scene from Lienzo on purpose on 2026-10-31, after Lienzo 086
+  closed, and it is not rebuilt; its six unused voice clips were deleted the same day. The
+  video keeps its generator, `scene.json` and golden fixture in Animator, so its migration still
+  proves the brand pieces; only its voice has no Lienzo scene to point to.
 
 ## Requirements
 - R1: Each video has `brand.lock.json`, the snapshot of its Lienzo project in the D1 schema. The
@@ -105,7 +109,8 @@ and fonts; `omega-v2` still generates its golden scene byte for byte; `pnpm test
   - it has a snapshot of project `ringana`;
   - its `palette.json` holds only its story roles and its `text` override (`#FFFFFF`);
   - its generator uses `checkBrandLock`, `resolvePalette` and brand fonts;
-  - its brief has the `## Brand` section, and its voice timings point to Lienzo;
+  - its brief has the `## Brand` section and keeps the voice script with no start times (its
+    Lienzo scene was deleted, so there is nothing to point to);
   - its `scene.json` stays byte-identical to the golden fixture.
 - R9: A video's duration is the brief's; when the brief sets none, the brand's
   `canvas.duration`, confirmed by the user (D11). Partitions: the brief sets one; the brief sets
@@ -258,7 +263,8 @@ drift report (R6), and the migrated brief.
   `ringana`'s brand `text` is `#000000`) in `palette.json`. The generator only uses those, so the
   output does not depend on `ringana`'s brand colours. The brand must still declare the five
   required roles, or `resolvePalette` fails. Fonts resolve to Montserrat 800 / 500 from the
-  snapshot. The golden test is the proof.
+  snapshot. The golden test is the proof. Its Lienzo scene was deleted on 2026-10-31 and is not
+  rebuilt, so the brief drops the voice start times without pointing anywhere.
 - D10 (R1, R3, R4, R7, R10): Tests are table-driven, with AAA structure and no branches in test
   bodies _(source: `TESTING.md`, standard: `node:test` — https://nodejs.org/api/test.html)_:
   - `tests/lib/brand.test.cjs` covers the R1 and R4 partitions and invariants;
@@ -378,5 +384,5 @@ drift report (R6), and the migrated brief.
 - [ ] 011/T021 [agent] `PRODUCT.md` and `README.md` (`main` → `primary`; palette ownership moves to the Lienzo project) and a new `CHANGES.md` entry for the rename back to `primary` (past entries unchanged); Verify: the R2 search returns nothing — covers R2, R5
 - [ ] 011/T022 [agent] `omega-v2`: write `brand.lock.json` from `project_inspect` of `ringana` with the D7 command (after Lienzo 086/T012–T013) — covers R8, D9
 - [ ] 011/T023 [agent] `omega-v2`: `palette.json` keeps its story roles and the `text` override (`#FFFFFF`); `scene.gen.cjs` uses `checkBrandLock`, `resolvePalette` and `brandFonts`; Verify: the golden test passes byte for byte — covers R8, D9
-- [ ] 011/T024 [agent] `omega-v2/brief.md`: add the `## Brand` section, move brand content now held by the Lienzo guide out of the brief, and replace the voice start times with a pointer to the Lienzo scene — covers R5, R7, R8
+- [ ] 011/T024 [agent] `omega-v2/brief.md`: add the `## Brand` section, move brand content now held by the Lienzo guide out of the brief, and drop the voice start times, keeping the script (the Lienzo scene was deleted on 2026-10-31) — covers R5, R7, R8
 - [ ] 011/T025 [human] Review the migrated `omega-v2` brief and the `ringana` brand it now inherits from — covers R8
