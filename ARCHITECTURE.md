@@ -77,4 +77,4 @@ flowchart TD
 2. **Pure Generators:** Scene generators are pure scripts that output scene JSON. They never assume Lienzo is running during generation.
 3. **Brand Parameterization:** Shared pieces in `lib/` take colours from a palette argument and fonts from a `fonts` argument, and never name a brand's colour or font.
 4. **Learning Promotion Seam:** Proven techniques move from `learnings.md` to `lib/` or `skills/` only after verification in a video or preview.
-5. **Engineering & Testing:** For code craftsmanship (KISS, SRP, DIP) see [ENGINEERING.md](./ENGINEERING.md). For verification standards see [TESTING.md](./TESTING.md).
+5. **Engineering & Testing:** For code craftsmanship (KISS, SRP, DIP, research when it pays, trade-offs) see [ENGINEERING.md](./ENGINEERING.md). For verification standards see [TESTING.md](./TESTING.md).

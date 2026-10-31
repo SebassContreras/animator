@@ -18,6 +18,17 @@ When an existing architectural design or requirement needs to change:
 
 ## 📜 Change Log
 
+### 2026-10-31 — Research Principle Gated by Decision Impact
+
+- **Scope:** `ENGINEERING.md` §8, `AGENTS.md`, `ARCHITECTURE.md`, spectrace skills.
+- **What Changed:**
+  - ENGINEERING.md §8 now requires research only when the decision needs it and cites sources as `Source: <url> (accessed YYYY-MM-DD)`.
+  - Principle lists in AGENTS.md and ARCHITECTURE.md name research and trade-offs; spectrace skills updated to the current suite.
+- **Why:**
+  - Spectrace added principle 7: research is required only when the choice is hard to reverse, depends on a fact outside the repository, or breaks a factual tie. Mandatory research on every choice invites invented citations and ritual browsing; gating it keeps citations where they change the decision.
+- **Replaced Items:**
+  - §8 "Verify Against Official Sources" (research every non-trivial choice).
+
 ### 2026-10-31 — Engine Findings Tracked by Lienzo Specs
 
 - **Scope:** `learnings.md` format (004/R5, 004/D4), `lienzo-animate` close-out, spec 013.

@@ -15,7 +15,7 @@ Instructions and operational constraints for AI coding agents.
 This codebase uses a progressive disclosure model with clear separation of concerns across 7 root contracts:
 - **[PRODUCT.md](./PRODUCT.md):** Product vision, target audience, core user problems, and functional boundaries. Read before proposing scope changes or features.
 - **[ARCHITECTURE.md](./ARCHITECTURE.md):** System topology, directory layout, layer boundaries, and structural patterns. Read before modifying structural code.
-- **[ENGINEERING.md](./ENGINEERING.md):** Code quality standards, craftsmanship principles (KISS/YAGNI, SRP, DRY, DIP/ACL), and stack conventions. Read before writing or refactoring modules.
+- **[ENGINEERING.md](./ENGINEERING.md):** Code quality standards, craftsmanship principles (KISS/YAGNI, SRP, DRY, DIP/ACL, research when it pays, trade-offs), and stack conventions. Read before writing or refactoring modules.
 - **[DESIGN.md](./DESIGN.md):** Visual design system, palette tokens, art direction rules, and animation standards. Read before writing scene generators, palettes, or visual styles.
 - **[TESTING.md](./TESTING.md):** Testing standards, contract invariants, input partitioning, and test hygiene. Read before writing or auditing tests.
 - **[CHANGES.md](./CHANGES.md):** Historical log of architecture pivots, deprecated decisions, and migration reasons. Consult when altering existing behavior.
