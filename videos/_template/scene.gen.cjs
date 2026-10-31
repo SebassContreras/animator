@@ -6,9 +6,11 @@ const W = 1080, H = 1920, D = 4;
 const { checkPalette } = require("../../lib/palette.cjs");
 const C = checkPalette(require("./palette.json"));
 const { sceneHelpers, nativeShot } = require("../../lib/scene.cjs");
+// Fonts used today, until this generator reads them from brand.lock.json (011/T010)
+const FONTS = { heading: { family: "Montserrat", weight: 800 }, body: { family: "Montserrat", weight: 500 } };
 
 const { rect, ell } = require("../../lib/primitives.cjs");
-const { label } = sceneHelpers({ w: W, h: H, duration: D, palette: C });
+const { label } = sceneHelpers({ w: W, h: H, duration: D, palette: C, fonts: FONTS });
 
 // Shot 1 · placeholder (0–4): each top-level element names its shot
 const s1 = [

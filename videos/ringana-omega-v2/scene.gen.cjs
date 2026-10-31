@@ -7,11 +7,13 @@ const W = 1080, H = 1920, D = 24;
 const { checkPalette } = require("../../lib/palette.cjs");
 const C = checkPalette(require("./palette.json"));
 const { sceneHelpers } = require("../../lib/scene.cjs");
+// Fonts used today, until this generator reads them from brand.lock.json (011/T010)
+const FONTS = { heading: { family: "Montserrat", weight: 800 }, body: { family: "Montserrat", weight: 500 } };
 const { heart } = require("../../lib/objects.cjs");
 const { heartbeat, countUp } = require("../../lib/motion.cjs");
 const { sea: seaFill, particles } = require("../../lib/environment.cjs");
 
-const { shot, text, fadeToBlack } = sceneHelpers({ w: W, h: H, duration: D, palette: C, textMotion: { amount: 30, inDuration: 0.45, easeIn: "cubic-out", easeOut: "cubic-in" } });
+const { shot, text, fadeToBlack } = sceneHelpers({ w: W, h: H, duration: D, palette: C, fonts: FONTS, textMotion: { amount: 30, inDuration: 0.45, easeIn: "cubic-out", easeOut: "cubic-in" } });
 
 // Environment: lit sea with three planes, light rays and plankton
 const sea = (id) => seaFill(id, { w: W, h: H }, C.sea.shadow, C.sea.highlight);

@@ -3,8 +3,10 @@ const { test } = require("node:test");
 const assert = require("node:assert/strict");
 const { sceneHelpers, nativeShot } = require("../../lib/scene.cjs");
 
+const FONTS = { heading: { family: "Montserrat", weight: 800 }, body: { family: "Montserrat", weight: 500 } };
+
 const labelColour = (palette) => {
-  const { text } = sceneHelpers({ w: 1080, h: 1920, duration: 10, palette });
+  const { text } = sceneHelpers({ w: 1080, h: 1920, duration: 10, palette, fonts: FONTS });
   return text("t", "Text", "Hello", 100, 60, 0, 5).label.color;
 };
 
@@ -20,7 +22,7 @@ test("text from two different palettes gets two different label colours", () => 
 
 test("label is a frame-wide centred text element coloured from the palette", () => {
   // Arrange
-  const { label } = sceneHelpers({ w: 1080, h: 1920, duration: 10, palette: { text: { base: "#FFE08A" } } });
+  const { label } = sceneHelpers({ w: 1080, h: 1920, duration: 10, palette: { text: { base: "#FFE08A" } }, fonts: FONTS });
   // Act
   const el = label("t", "Text", "Hello", 100, 60, 0, 5, { shot: "s1" });
   // Assert

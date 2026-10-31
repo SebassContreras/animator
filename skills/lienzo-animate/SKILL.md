@@ -38,7 +38,7 @@ Every video builds from its generator, `videos/<slug>/scene.gen.cjs`, which outp
 Before drawing a piece, check the Animator repo's `lib/` and reuse what is there. Every piece takes its colours from the palette (`C.<role>.<tone>`).
 
 - `lib/primitives.cjs` — `rect`, `ell`, `path`, `group`, `flat`: flat by default (gradient and shadow off).
-- `lib/scene.cjs` — `nativeShot(id, name, start, end, camera?)`: a `shots` entry; `sceneHelpers({ w, h, duration, palette })` → `label` (centred `text` with `w`, colour `palette.text.base`; `extra.shot` binds it), `fadeToBlack`, and the legacy `shot` (group) and `text` (rect + label) used by ringana-omega-v2.
+- `lib/scene.cjs` — `nativeShot(id, name, start, end, camera?)`: a `shots` entry; `sceneHelpers({ w, h, duration, palette, fonts })` (`fonts` = `brandFonts(lock)`, required) → `label` (centred `text` with `w`, colour `palette.text.base`, the heading font unless `extra.font: "body"`; `extra.shot` binds it), `fadeToBlack`, and the legacy `shot` (group) and `text` (rect + label) used by ringana-omega-v2.
 - `lib/environment.cjs` — `sea(id, frame, deep, light)`: full-frame gradient backdrop; `particles(id, name, box, { …, color })`.
 - `lib/objects.cjs` — `heart(id, x, y, color)`.
 - `lib/motion.cjs` — `heartbeat(t0, beats, opts)`: scale pulse tracks; `countUp(steps)`: `label.text` track for a counting number (colourless).
