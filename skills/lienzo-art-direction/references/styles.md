@@ -20,7 +20,7 @@ Rounded, vivid, friendly; in the spirit of Kurzgesagt or TED-Ed.
 
 Calm, airy, layered.
 
-- **Palette:** light warm background (#F6F1EB), 2 muted mains (#9DB5A0, #E3B5A4), 1 deep accent (#3D405B), text #3D405B.
+- **Palette:** light warm background (#F6F1EB), 2 muted roles (`primary` #9DB5A0, `secondary` #E3B5A4), 1 deep accent (#3D405B), text #3D405B.
 - **Shapes:** organic blobs and pills, large radius; objects sit on soft shadow ellipses.
 - **Shading:** two-colour vertical gradients (light top → slightly darker bottom) on big shapes; `shadow` enabled only on the focal object, low opacity, large blur.
 - **Type:** one elegant sans or serif (e.g. DM Sans, Playfair Display), 600 / 400.
