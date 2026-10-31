@@ -1,0 +1,34 @@
+{
+ "project": "ringana",
+ "palette": {
+  "primary": "#000000",
+  "secondary": "#2D2D2D",
+  "accent": "#ED691C",
+  "background": "#FFFFFF",
+  "surface": "#F7F7F7",
+  "text": "#000000"
+ },
+ "fonts": [
+  {
+   "family": "Montserrat",
+   "role": "heading",
+   "weights": [
+    800
+   ]
+  },
+  {
+   "family": "Montserrat",
+   "role": "body",
+   "weights": [
+    500
+   ]
+  }
+ ],
+ "canvas": {
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "duration": 20
+ },
+ "guide": "# RINGANA — brand guide\n\n## Audience\nAdults interested in natural wellbeing; RINGANA customers and partners. For supplements such as\nBEYOND omega, especially people who eat little or no fish.\n\n## Tone\nClear, warm and factual: one idea per shot, short sentences, no hype. Show origin, benefit and\nproof; never overpromise.\n\n## Language\nOn-screen text and voice-over in English.\n\n## Naming and brand mark\n- Products are named as on the official product page, with the brand first: \"RINGANA BEYOND omega\".\n- No official logo file yet: the brand mark is the name set in text (Montserrat 800).\n\n## Claim rules\n- Health claims only in the wording authorised by EU Reg. 432/2012 (e.g. \"normal heart function\",\n  \"normal brain function\", \"normal vision\"), and only when the product meets the claim's conditions.\n- Never \"prevents\", \"treats\", \"cures\" or \"fights\" a disease, and no claim the official product page\n  does not make.\n- RINGANA's own studies are attributed on screen as \"RINGANA study\", with the sample size; never\n  presented as independent science.\n- Every fact on screen comes from the official product page or a RINGANA source, listed in the\n  video's fact sheet.\n\n## Mandatory text\nFood supplements close with the disclaimer, held long enough to read:\n\"Food supplement. Not a substitute for a varied diet or medical advice. Adults only.\"\nWhen a RINGANA study is cited, add its footnote, e.g. \"*RINGANA internal study, 27 participants, 2024.\"\n\n## Preferred style\n\"Bright science\": dark sea background, flat shading with a glow on the focal object, layered\ndepth, simple organ icons; light from the top-left. Text slides in with `cubic-out` and fades\nout with `cubic-in`; every shot has ambient motion.\n\n## Format and length\nReels and TikTok, 1080×1920, 30 fps.\n- Default 15–30 s (20 s): explanatory reels aim at completion.\n- 45–60 s only when reach is the goal, as a deliberate choice.\n- Never over 90 s.\nEach brief sets its own duration.\n"
+}
