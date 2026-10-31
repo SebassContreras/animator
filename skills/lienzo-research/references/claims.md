@@ -22,11 +22,15 @@ Short text is where truth breaks. Shorten wording, never meaning.
 | "71 % of Earth's surface is water" | "71 % del planeta es agua" | surface turned into the whole planet (water is a tiny share of its mass) |
 | "Studies suggest" | "Está demostrado" | inflated certainty |
 
+## Brand claim rules
+
+The brand's own claim rules and disclaimers live in its Lienzo guide (`guide` in `videos/<slug>/brand.lock.json`, sections such as "Claim rules" and "Mandatory text"). Read them first: they add to the rules below and win where they are stricter. If the brand has no guide and the piece makes claims, propose the rules to the user for the guide (`project_update` → `guide`).
+
 ## Health claims
 
 - Phrase health benefits like the EU authorised claims (Regulation (EU) No 432/2012; check the wording in the [EU Register of health claims](https://food.ec.europa.eu/food-safety/labelling-and-nutrition/nutrition-and-health-claims/eu-register-health-claims_en)), e.g. "contributes to the normal function of the heart".
 - Leave out seller claims outside that wording (anti-inflammatory, disease prevention, "cellular energy").
-- Attribute a brand's own study on screen ("*RINGANA study, 27 people, 3 capsules/day").
+- Attribute a brand's own study on screen, in the form its guide sets (RINGANA's guide: "RINGANA study" with the sample size, plus the study footnote).
 
 ## Visual claims
 
