@@ -1,19 +1,21 @@
 // Generates scene.json beside this file: same story, text and timing as the first ringana-omega piece,
-// redesigned with lienzo-art-direction (style "Bright science", see brief.md); colours come from palette.json.
+// redesigned with lienzo-art-direction (style "Bright science", see brief.md); colours and fonts come from the brand (brand.lock.json),
+// and palette.json holds only the story roles and the white `text` override (the brand's text is black).
 // Run: node videos/ringana-omega-v2/scene.gen.cjs
 const fs = require("fs");
 const { rect, ell, path, group } = require("../../lib/primitives.cjs");
 const W = 1080, H = 1920, D = 24;
-const { checkPalette } = require("../../lib/palette.cjs");
-const C = checkPalette(require("./palette.json"));
+const { checkBrandLock, brandFonts } = require("../../lib/brand.cjs");
+const { resolvePalette } = require("../../lib/palette.cjs");
+const lock = checkBrandLock(require("./brand.lock.json"));
+const C = resolvePalette(lock, require("./palette.json"));
+const F = brandFonts(lock);
 const { sceneHelpers } = require("../../lib/scene.cjs");
-// Fonts used today, until this generator reads them from brand.lock.json (011/T010)
-const FONTS = { heading: { family: "Montserrat", weight: 800 }, body: { family: "Montserrat", weight: 500 } };
 const { heart } = require("../../lib/objects.cjs");
 const { heartbeat, countUp } = require("../../lib/motion.cjs");
 const { sea: seaFill, particles } = require("../../lib/environment.cjs");
 
-const { shot, text, fadeToBlack } = sceneHelpers({ w: W, h: H, duration: D, palette: C, fonts: FONTS, textMotion: { amount: 30, inDuration: 0.45, easeIn: "cubic-out", easeOut: "cubic-in" } });
+const { shot, text, fadeToBlack } = sceneHelpers({ w: W, h: H, duration: D, palette: C, fonts: F, textMotion: { amount: 30, inDuration: 0.45, easeIn: "cubic-out", easeOut: "cubic-in" } });
 
 // Environment: lit sea with three planes, light rays and plankton
 const sea = (id) => seaFill(id, { w: W, h: H }, C.sea.shadow, C.sea.highlight);
@@ -190,10 +192,10 @@ const s6 = shot("shot-6", "Shot 6 · the proof", 16.5, 20.5, [
   zone("s6-zone-mid", "Gauge · medium", 4, 8, C.drop.base),
   zone("s6-zone-opt", "Gauge · optimal", 8, 12, C.alga.base, { bgGlow: { enabled: true, color: C.alga.base, blur: 40, strength: 0.5 } }),
   ...[["Low", 0, 4], ["Medium", 4, 8], ["Optimal", 8, 12]].map(([t, a, b], i) => rect(`s6-lbl-${i}`, gx(a), 995, gx(b) - gx(a), 50, "#000000", {
-    name: `Gauge label · ${t}`, fill: { color: "#000000", opacity: 0 }, label: { text: t, font: "Montserrat", size: 32, weight: 500, color: C.text.base, align: "center" } })),
+    name: `Gauge label · ${t}`, fill: { color: "#000000", opacity: 0 }, label: { text: t, font: F.body.family, size: 32, weight: F.body.weight, color: C.text.base, align: "center" } })),
   group("s6-needle", gx(4.84) - 80, 740, 160, 160, [
     rect("s6-needle-val", 0, 0, 160, 76, "#FFFFFF", { radius: 38,
-      label: { text: "4.8%", font: "Montserrat", size: 40, weight: 800, color: C.sea.shadow, align: "center" },
+      label: { text: "4.8%", font: F.heading.family, size: 40, weight: F.heading.weight, color: C.sea.shadow, align: "center" },
       tracks: countUp([[16.5, "4.8%"], [17.6, "5.9%"], [18.3, "7.0%"], [19, "7.9%"]]) }),
     path("s6-needle-tri", 55, 72, 50, 40, "M0 0 L50 0 L25 40 Z", "#FFFFFF"),
   ], { name: "Needle", tracks: { x: [[16.5, gx(4.84) - 80], [17, gx(4.84) - 80, "cubic-out"], [19, gx(7.87) - 80]], "@scale": [[19, 1, "ease-out"], [19.15, 1.1, "ease-in-out"], [19.4, 1]] } }),

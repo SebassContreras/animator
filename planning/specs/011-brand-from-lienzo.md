@@ -386,6 +386,7 @@ drift report (R6), and the migrated brief.
 - [x] 011/T021 [agent] `PRODUCT.md` and `README.md` (`main` → `primary`; palette ownership moves to the Lienzo project) and a new `CHANGES.md` entry for the rename back to `primary` (past entries unchanged); Verify: the R2 search returns nothing — covers R2, R5
   verified: the R2 search over `lib videos skills ARCHITECTURE.md DESIGN.md PRODUCT.md README.md` returns nothing (exit 1).
 - [x] 011/T022 [agent] `omega-v2`: write `brand.lock.json` from `project_inspect` of `ringana` with the D7 command (after Lienzo 086/T012–T013) — covers R8, D9
-- [ ] 011/T023 [agent] `omega-v2`: `palette.json` keeps its story roles and the `text` override (`#FFFFFF`); `scene.gen.cjs` uses `checkBrandLock`, `resolvePalette` and `brandFonts`; Verify: the golden test passes byte for byte — covers R8, D9
+- [x] 011/T023 [agent] `omega-v2`: `palette.json` keeps its story roles and the `text` override (`#FFFFFF`); `scene.gen.cjs` uses `checkBrandLock`, `resolvePalette` and `brandFonts`; Verify: the golden test passes byte for byte — covers R8, D9
+  verified: the golden test passes byte for byte; `palette.json` already held only story roles and the `text` override, so it is unchanged. The generator's own gauge labels now take `brandFonts(lock)` too, so no font family is left in it.
 - [ ] 011/T024 [agent] `omega-v2/brief.md`: add the `## Brand` section, move brand content now held by the Lienzo guide out of the brief, and drop the voice start times, keeping the script (the Lienzo scene was deleted on 2026-10-31) — covers R5, R7, R8
 - [ ] 011/T025 [human] Review the migrated `omega-v2` brief and the `ringana` brand it now inherits from — covers R8
