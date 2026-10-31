@@ -10,8 +10,13 @@ Units: seconds for time, canvas pixels for position and size (`x, y` = top-left 
 - **Message:** <one sentence the viewer must take away>
 - **Audience:** <who>
 - **Platform / format:** <e.g. Instagram reel, 1080×1920, 30 fps>
-- **Duration:** <total seconds>
-- **Mandatory text / brand:** <exact strings, logo, colours> or none
+- **Duration:** <total seconds> — <from the brief, or the brand's `canvas.duration` confirmed by the user>
+- **Mandatory text / brand:** <exact strings from the brand guide, plus any this video adds> or none
+
+## Brand
+- **Lienzo project:** `<project>` (snapshot in `brand.lock.json`)
+- **Overrides:** <role names `palette.json` overrides> or none
+- **Precedence:** what this video sets (`palette.json`, this brief) wins; anything it leaves out comes from the brand; anything the brand lacks comes from the system defaults (`DESIGN.md` → Brand inheritance).
 
 ## Concept
 - **Angles considered:** <2–3 one-liners>
@@ -21,16 +26,12 @@ Units: seconds for time, canvas pixels for position and size (`x, y` = top-left 
 ## Visual style
 - **Style:** <name from `lienzo-art-direction` → `styles.md`> — <what this piece changes from it>
 - **References:** <2–4 links, what to take from each> or none
-- **Palette:** (mirrors `palette.json`; if they differ, `palette.json` wins)
-  | Role | Hex |
+- **Palette:** overrides and story roles only; hex values live in `palette.json`, brand roles come from the brand
+  | Role | What it paints |
   |---|---|
-  | background | #… |
-  | main | #… |
-  | secondary | #… |
-  | accent | #… |
-  | text | #… |
+  | <role> | … |
 - **Shapes:** <flat / rounded / geometric / outlined…>
-- **Typography:** <font, weights, sizes>
+- **Typography:** brand fonts (heading / body) unless stated; <sizes>
 - **Mood:** <3 words>
 - **Motion language:** <e.g. smooth ease-out, slow parallax, no bounces>
 
@@ -57,7 +58,7 @@ Units: seconds for time, canvas pixels for position and size (`x, y` = top-left 
 - **<Object name>:** <pieces and proportions, so the builder draws it once and reuses it>
 
 ## Audio (optional)
-- <music mood, voice-over script> or none
+- <music mood, voice-over script> or none. Voice timings live in the Lienzo scene, not here.
 
 ## Sources
 - **Fact sheet:** `videos/<slug>/research.md` or "not needed (fiction)"
