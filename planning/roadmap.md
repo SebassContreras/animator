@@ -7,6 +7,7 @@ Specs in execution order. `Status` (`todo`, `in progress`, `done`) is maintained
 | ID  | Spec | Status | Depends on |
 |-----|------|--------|------------|
 | 004 | learning-promotion | done | — |
+| 011 | brand-from-lienzo | todo | 004, Lienzo 086 |
 
 ## Ideas
 
