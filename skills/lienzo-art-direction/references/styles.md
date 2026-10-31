@@ -1,6 +1,6 @@
 # Styles
 
-Pick one per piece and copy its block into the brief's "Visual style". Hex values are starting points; brand colours from `project_inspect` replace them by role.
+Pick one per piece and copy its block into the brief's "Visual style". Hex values are starting points; the brand's colours (`brand.lock.json`) replace them by role, and `palette.json` holds only overrides and story roles.
 
 Add a style here only after it worked in a real piece (note the brief).
 
@@ -10,9 +10,9 @@ Used in: Bright science → `videos/ringana-omega-v2/brief.md`.
 
 Rounded, vivid, friendly; in the spirit of Kurzgesagt or TED-Ed.
 
-- **Palette:** dark saturated background (#1B1F4B), 2 vivid mains (#FF6B6B, #4ECDC4), 1 warm accent (#FFE66D), text #FFFFFF.
+- **Palette:** dark saturated background (#1B1F4B), 2 vivid roles (`primary` #FF6B6B, `secondary` #4ECDC4), 1 warm accent (#FFE66D), text #FFFFFF.
 - **Shapes:** rounded geometry, corner radius ≈ 15–25 % of the short side; no outlines.
-- **Shading:** flat. One shadow tone (same hue, −15 % lightness) on the side away from the light; one highlight tone (+15 %) on the lit edge. Glow (`bgGlow`) only on small focal objects; behind big areas use a plain disc at 4–12 % opacity, since a large `bgGlow` washes the frame white (ringana-omega v2).
+- **Shading:** flat. One shadow tone on the side away from the light and one highlight tone on the lit edge, both derived by `tones(base)` (OKLCH: shadow −12 L, hue toward blue-violet; highlight +12 L, hue toward yellow), so shadows stay cool and lively, never muddy. Glow (`bgGlow`) only on small focal objects; behind big areas use a plain disc at 4–12 % opacity, since a large `bgGlow` washes the frame white (ringana-omega v2).
 - **Type:** one rounded sans (e.g. Nunito, Poppins), 800 for titles, 500 for support.
 - **Motion:** `back-out` entries, gentle `float` on everything that is not ground, particles for atmosphere.
 
