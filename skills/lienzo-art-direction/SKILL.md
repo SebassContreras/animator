@@ -36,7 +36,7 @@ You are the art director. `lienzo-storyboard` decides **what** the story shows; 
 
 1. Keep story, text, facts, timing and voice; write a short `-v2` brief with only the style and the changes per shot.
 2. Copy the v1 generator, swap flat pieces for three-tone ones, add planes, ambient motion and polish.
-3. Build as a new scene, copy `audioTracks` from v1, export, and compare side by side with ffmpeg (needs `ffmpeg` on the PATH):
+3. Build as a new scene and set its voice in Lienzo, never in the generator (`lienzo-animate` step 3): to keep v1's voice, read v1's `audioTracks` with `scene_get` and set them on the new scene with `scene_update`; for a new voice, use `scene_generate_speech` (`asTrack`, `startOffset`). Export, and compare side by side with ffmpeg (needs `ffmpeg` on the PATH):
 
    ```
    ffmpeg -i v1.mp4 -i v2.mp4 -filter_complex "[0:v]scale=540:-2[a];[1:v]scale=540:-2[b];[a][b]hstack" -map 1:a? out.mp4

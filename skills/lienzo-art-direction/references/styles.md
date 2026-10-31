@@ -1,6 +1,6 @@
 # Styles
 
-Pick one per piece and copy its block into the brief's "Visual style". Hex values are starting points; the brand's colours (`brand.lock.json`) replace them by role, and `palette.json` holds only overrides and story roles.
+Pick one per piece and copy its rules into the brief's "Visual style" by role name, without hex values. A style's hex values are starting points for `palette.json`: the brand's colours (`brand.lock.json`) replace them by role, and `palette.json` holds only overrides and story roles. Likewise the brand's fonts replace a style's suggested type, unless the brief sets its own; when the brand has no fonts, the style's type is what you propose to the user for the brand (`lienzo-storyboard` step 1). Precedence: `DESIGN.md` → Brand inheritance.
 
 Add a style here only after it worked in a real piece (note the brief).
 
@@ -25,7 +25,7 @@ Calm, airy, layered.
 - **Shading:** two-colour vertical gradients (light top → slightly darker bottom) on big shapes; `shadow` enabled only on the focal object, low opacity, large blur.
 - **Type:** one elegant sans or serif (e.g. DM Sans, Playfair Display), 600 / 400.
 - **Motion:** `cubic-out` and `ease-in-out`, long fades, slow `breathe`; no bounces.
-- **On a white brand** (ringana-skin-perfection): the brand's white replaces the warm off-white background, the brand fonts replace the style's, and an accent that fails 4.5:1 on white is never text, only shapes.
+- **On a white brand** (ringana-skin-perfection): the brand's white replaces the warm off-white background, and an accent that fails 4.5:1 on white is never text, only shapes.
 
 ## Bold graphic (promos, announcements, tips lists)
 

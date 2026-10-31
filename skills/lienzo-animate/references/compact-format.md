@@ -15,8 +15,7 @@ The full JSON schema lives in the Lienzo repo: `schemas/compact-scene.json`; com
     { "id": "s1", "name": "Shot 1 · road", "start": 0, "end": 3 },
     { "id": "s2", "name": "Shot 2 · tree", "start": 3, "end": 6, "transition": { "kind": "fade", "duration": 0.5 }, "camera": { "zoom": 1.1 } }
   ],
-  "elements": [ { "id": "sun", "kind": "ellipse", "shot": "s1", "x": 760, "y": 260, "w": 180, "h": 180 } ],
-  "audioTracks": [ { "assetId": "...", "startOffset": 0, "volume": 1 } ]
+  "elements": [ { "id": "sun", "kind": "ellipse", "shot": "s1", "x": 760, "y": 260, "w": 180, "h": 180 } ]
 }
 ```
 
@@ -25,7 +24,7 @@ The full JSON schema lives in the Lienzo repo: `schemas/compact-scene.json`; com
 - `background`: a partial object or a background preset name (`preset_list`). Turn off `gradient`, `dots` and `spotlight` explicitly when you want a plain colour.
 - `shots`: native shots, transitions and camera (see `shots-camera.md`).
 - `symbols` + `kind: "use"`: define a piece once and place instances (`symbol`, `x, y, w, h`, `overrides` keyed by child id).
-- `audioTracks`: the scene's audio; `scene_build` keeps the stored audio unless you pass it.
+- Audio: a generator's compact scene has none. It belongs to the Lienzo scene (`lienzo-animate` step 3), and `scene_build` with `overwrite` keeps the stored audio.
 - Element: `kind` + the component's fields, plus shortcuts:
   - `id`: stable and readable (`car`, `wheel-l`). Tracks, lines, masks and `group/child` targets need it.
   - `name`: label shown in the editor's layers panel. Make it human ("Shot 2 · tree crown").

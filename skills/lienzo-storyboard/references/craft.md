@@ -70,7 +70,7 @@ A brand guide's own length rules replace all of this.
 ## Text on screen
 
 - ≤ 7 words per line, ≤ 2 lines at once, ≥ 1.5 s per line.
-- One typeface, two weights. Title 72–96 px, support 40–56 px on 1080-wide canvases.
+- The brand's heading and body fonts; without brand fonts, one typeface, two weights. Title 72–96 px, support 40–56 px on 1080-wide canvases.
 - Long titles take the low end: a 20-character title fits at 72 px on a 1080-wide canvas; 88 px was cut off.
 - Text enters after the image (0.2–0.4 s later), so the eye lands on the image first.
 - Break two-line titles by hand with `
