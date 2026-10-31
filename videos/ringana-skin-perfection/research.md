@@ -61,6 +61,12 @@ Verified on 2026-10-31 against [S1].
 | 5 | "Up to 49 % better skin barrier*" | F9 | verified | unchanged |
 | 5 | "*RINGANA study, 23 participants, 2 weeks." | F8 | verified; attributed as a RINGANA study by the user (2026-10-31), per the brand guide | unchanged |
 | 6 | "RINGANA FRESH skin perfection" / "Recovery cream" | F1 | verified | unchanged |
+| VO 1 | "When skin is dry, moisture slips away." | F7 | verified as a description of the "dry skin" demand; no product claim | unchanged |
+| VO 2 | "A rich cream forms a protective film." | F12 | verified (page: "forms a grooming protective film", "rich, creamily delicate texture") | unchanged |
+| VO 3 | "A moisture regulator that helps protect skin." | F4 | verified (page wording for ectoin) | unchanged |
+| VO 4 | "Natural actives and plant extracts." | F3, F5 | verified (bakuchiol "natural active substance"; willowherb, resurrection plant and aspen bark extracts) | unchanged |
+| VO 5 | "Tested in a RINGANA study." | F8 | verified (page: "efficacy was tested in a Research Centre study"; attributed to RINGANA by the user) | unchanged |
+| VO 6 | "FRESH skin perfection." | F1 | verified | unchanged |
 
 ## Open questions for the user
 - none. Study attribution (F8) resolved on 2026-10-31: the user asked for "RINGANA study", as the brand guide does for RINGANA's own studies; the page itself only says "Research Centre study".
