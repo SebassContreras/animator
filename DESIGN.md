@@ -19,10 +19,21 @@ The skills hold the detailed rules and numbers. This file summarizes them; if th
 ## 🌈 Palette Tokens & Primitives
 
 ### 1. Palette Structure (`palette.json`)
-Every video keeps its color tokens in `videos/<slug>/palette.json`, validated by `checkPalette` in `lib/palette.cjs`:
-- **Roles:** `background`, `main`, `secondary`, `accent`, and `text`. Add roles when a piece needs more; never rename these five.
-- **Tones:** Each role is `{ base, shadow?, highlight? }` with `#RRGGBB` values, so components can shade depth.
-- **Single source:** The brief's palette table mirrors `palette.json`; if they differ, `palette.json` wins.
+A video's palette is resolved by `resolvePalette(lock, require("./palette.json"))` in `lib/palette.cjs`: the brand's colours from `brand.lock.json`, then `videos/<slug>/palette.json`, which holds only overrides and story roles.
+- **Roles:** Lienzo's `background`, `primary`, `secondary`, `accent`, and `text` (required after resolution) and `surface` (optional). Add story roles when a piece needs more; never rename these five.
+- **Tones:** Each role is `{ base, shadow?, highlight? }` with `#RRGGBB` values, so components can shade depth. A tone left out is derived by `tones(base)` in OKLCH: shadow −12 L (−8 under L 40), chroma ×0.85, hue up to 6° toward blue-violet; highlight +12 L (at most 97), hue up to 6° toward yellow. Shadows stay cool and highlights warm, never muddy.
+- **Single source:** hex values live only in `palette.json` and the brand; the brief's palette table names each override and story role with what it paints.
+
+### Brand inheritance
+What the video sets wins; anything it leaves out comes from the brand; anything the brand lacks comes from the system:
+
+| Value | Video | Brand (`brand.lock.json`) | System |
+|---|---|---|---|
+| colour role or tone | `palette.json` | brand palette + derived tones | none: a missing required role fails, naming it |
+| fonts | the generator passes its own `fonts` to `sceneHelpers` | `brandFonts(lock)`: heading at its heaviest weight, body at its lightest | `DEFAULT_FONTS`: Inter 800 / Inter 400 |
+| duration | the brief | `canvas.duration`, confirmed by the user | never reached |
+
+Of the canvas, only `duration` is inherited; `width`, `height` and `fps` stay in each generator.
 
 ### 2. Primitive Defaults
 - **Flat Scenes:** Every compact scene sets `"defaults": "flat"`, and the background turns off `gradient`, `dots`, and `spotlight` explicitly.
