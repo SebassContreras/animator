@@ -21,13 +21,15 @@ Session 2026-10-31, scene `skin-perfection` (project `ringana`), export `skin-pe
 - Large compact scenes (36 KB here) go through the CLI, `pnpm lienzo scene_build --json @<file>`, with `{ project, compact, save, overwrite }` in the file, instead of inline in the MCP call.
 - `videos/_template/learnings.md` ships placeholder bullets, so `tests/videos/learnings.test.cjs` fails as soon as the template is copied; the template should ship empty sections.
 - ringana.com renders with JavaScript: a plain fetch gets an empty shell. With `browser-nav`, `snapshot` lists headings and buttons but not paragraph text, so the open panels were read from `screenshot`s (cookies: "Save Selection" with only the essential ones).
-- Kokoro clips carry about 0.5 s of padding: a 5-word line lasts about 3 s, so six clips nearly fill 20 s. Write voice lines of ≤ 5 words for 3 s shots, and check that the clips' total fits before placing them.
+- Kokoro clips carry about 0.4 s of silence at the start and 0.6 s at the end (`ffmpeg silencedetect`, −40 dB): a 5-word line lasts about 3 s, so six clips nearly fill 20 s. Write voice lines of ≤ 5 words for 3 s shots, and check that the clips' total fits before placing them.
 
 ## Engine
 
-Pending issues, to file in the Lienzo repo at close-out (not bullets until they have a URL):
-1. `scene_inspect_layout` reports `low_contrast` for black text "on #0b1220" in shots 1–3, while the scene background and each shot's backdrop are #FFFFFF and the text sits on a light blob.
-2. No per-axis scale channel (`@scaleX` / `@scaleY`): one-axis growth needs `w`/`h` and position tracks together.
+Tracked as Lienzo specs, not issues (user's decision); they become bullets in 013/T009:
+1. `scene_inspect_layout` reports `low_contrast` for black text "on #0b1220" in shots 1–3, while the scene background and each shot's backdrop are #FFFFFF and the text sits on a light blob (cause: unframed groups counted with their default `bodyColor`). → Lienzo 087
+2. No per-axis scale channel (`@scaleX` / `@scaleY`): one-axis growth needs `w`/`h` and position tracks together. → Lienzo 088
+3. `scene_generate_speech` reports only `audioDuration`; the silence around the voice is invisible. → Lienzo 089
+4. `scene_build` over MCP takes the compact scene inline only; a 36 KB scene needs the CLI. → Lienzo 090
 
 ## Local
 

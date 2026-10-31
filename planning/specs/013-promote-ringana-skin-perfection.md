@@ -12,7 +12,9 @@ the next video starts from it. Verification: `pnpm test` passes on a fresh copy 
   `Local` findings stay in the video.
 - The video was the first piece in Soft depth and the first test of the pipeline after spec 011:
   it found one repo bug (R1) and several gaps in the skills.
-- The two `Engine` findings go to the Lienzo repo as issues (`[human]` task), not to this spec.
+- The `Engine` findings go to the Lienzo repo as specs, not issues (user's decision, 2026-10-31):
+  Lienzo 087 contrast-unframed-groups, 088 axis-scale-channels, 089 speech-voiced-span,
+  090 build-from-file. R11 changes how Animator records that link.
 
 ## Requirements
 - R1: A copy of `videos/_template/` passes `tests/videos/learnings.test.cjs` with no edits: the
@@ -35,8 +37,10 @@ the next video starts from it. Verification: `pnpm test` passes on a fresh copy 
   large variants at their size); a layer that drifts with an `x` track needs the drift added to
   its width; one-axis growth uses `w`/`h` with `x`/`y` tracks (there is no per-axis scale).
 - R7: `lienzo-storyboard/references/craft.md` → "Text on screen" says to break two-line titles by
-  hand with `\n`, and → "Voice-over" that a Kokoro clip carries about 0.5 s of padding (≤ 5 words
-  for a 3 s shot; check that the clips' total fits the scene before placing them).
+  hand with `\n`, and → "Voice-over" that a Kokoro clip carries about 0.4 s of silence at the
+  start and 0.6 s at the end (measured with `ffmpeg silencedetect`): ≤ 5 words for a 3 s shot,
+  and check that the clips' total fits the scene before placing them, until Lienzo 089 reports
+  the voiced span.
 - R8: `lienzo-animate` (SKILL.md step 3 or `compact-format.md`) says that a large compact scene
   is built with the CLI, `pnpm lienzo scene_build --json @<file>`, the file holding
   `{ project, compact, save, overwrite }`, instead of inline in the MCP call.
@@ -47,6 +51,13 @@ the next video starts from it. Verification: `pnpm test` passes on a fresh copy 
 - R10: `lienzo-art-direction/references/styles.md` marks Soft depth as used in
   `videos/ringana-skin-perfection/brief.md`, with what a white brand changes (brand white
   background, brand fonts, an accent that fails 4.5:1 on white is never text).
+
+- R11: An `Engine` finding ends with `— tracks: Lienzo spec <NNN>` (the spec in the Lienzo repo
+  that fixes it) or, as before, with a Lienzo issue URL. `tests/videos/learnings.test.cjs`,
+  `videos/_template/learnings.md` and `lienzo-animate` step 8 say so; step 8 asks the user whether
+  to open a Lienzo spec for each Engine finding instead of asking them to file an issue.
+  Partitions: spec reference, issue URL (omega-v2's `issues/10` stays valid), neither, `TODO`,
+  `Lienzo spec 87` (not three digits). Invariant: every Engine bullet in every video passes.
 
 ### Who it serves
 Every next video: fewer bugs on copy, reusable Soft depth pieces, and the rules that cost a
@@ -61,7 +72,7 @@ rebuild this time.
 - 011 (brand snapshot and palette roles), 004 (learning promotion).
 
 ### Owner split
-Agent tasks, except filing the two Lienzo issues (`[human]`).
+Agent tasks.
 
 ## Design
 ### Approach
@@ -77,6 +88,9 @@ Agent tasks, except filing the two Lienzo issues (`[human]`).
   `lib/` names no palette role (ARCHITECTURE.md § Brand Parameterization).
 - D5 (R5–R10): text edits only; each one cites the video
   (`ringana-skin-perfection`) as its proof, like the existing omega-v2 notes.
+- D7 (R11): the test's tracking pattern accepts either suffix:
+  `— tracks: (https://github.com/<owner>/lienzo/issues/<n>|Lienzo spec \d{3})$`. A spec number
+  is enough: the Lienzo roadmap holds its name and status.
 - D6 (all): each task that promotes a finding appends `— promoted: <path>` to it in the video's
   `learnings.md` (004/R1). `lienzo-animate` → "Start from lib/" lists the new exports (guarded by
   `tests/skills/lib-list.test.cjs`).
@@ -96,4 +110,5 @@ Agent tasks, except filing the two Lienzo issues (`[human]`).
 - [ ] 013/T005 [agent] `lienzo-animate` → "Start from lib/": list `path`'s `d` list, `blob` and `teardrop`; `node --test tests/skills/lib-list.test.cjs` — covers R2–R4, D6
 - [ ] 013/T006 [agent] Skill text for R5 (counter), R6 (drawing rules), R7 (line breaks, voice padding), R8 (CLI build), R9 (browser-nav), R10 (Soft depth in styles.md) — covers R5–R10, D5
 - [ ] 013/T007 [agent] Mark each promoted finding in `videos/ringana-skin-perfection/learnings.md` with `— promoted: <path>`; run `pnpm test` — covers D6
-- [ ] 013/T008 [human] File the two Engine findings in https://github.com/SebassContreras/lienzo/issues (`scene_inspect_layout` low_contrast against #0b1220 on a white scene; no per-axis scale channel), then turn them into Engine bullets ending `— tracks: <url>` — covers the Engine findings
+- [ ] 013/T008 [agent] Tracking pattern (D7) in `tests/videos/learnings.test.cjs`, with the R11 partitions as table tests; `videos/_template/learnings.md` intro and `lienzo-animate` step 8 name both suffixes — covers R11, D7
+- [ ] 013/T009 [agent] `videos/ringana-skin-perfection/learnings.md` → Engine: one bullet per finding, ending `— tracks: Lienzo spec 087` (contrast), `088` (axis scale), `089` (voice silence), `090` (build from file); run `pnpm test` — covers R11

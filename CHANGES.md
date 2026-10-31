@@ -18,6 +18,16 @@ When an existing architectural design or requirement needs to change:
 
 ## 📜 Change Log
 
+### 2026-10-31 — Engine Findings Tracked by Lienzo Specs
+
+- **Scope:** `learnings.md` format (004/R5, 004/D4), `lienzo-animate` close-out, spec 013.
+- **What Changed:**
+  - An `Engine` finding may end with `— tracks: Lienzo spec <NNN>` instead of a Lienzo issue URL; issue URLs stay valid (omega-v2). Close-out asks whether to open a Lienzo spec, not to file an issue.
+- **Why:**
+  - The user wants engine work written as specs in the Lienzo repo, where its planning already lives, and no GitHub issues.
+- **Replaced Items:**
+  - 004/R5 and 004/D4 → 013/R11 and 013/D7 (tasks 013/T008, T009).
+
 ### 2026-10-31 — Brand From Lienzo (spec 011)
 
 - **Scope:** `lib/`, the video template, `ringana-omega-v2`, the skills, and the root contracts.
