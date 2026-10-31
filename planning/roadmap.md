@@ -9,6 +9,8 @@ Specs in execution order. `Status` (`todo`, `in progress`, `done`) is maintained
 | 004 | learning-promotion | done | — |
 | 011 | brand-from-lienzo | done | 004, Lienzo 086 |
 | 012 | platform-length | done | 011 |
+| 013 | promote-ringana-skin-perfection | todo | 011, 004 |
+| 014 | skill-drift-after-011 | todo | 011 |
 
 ## Ideas
 
@@ -16,13 +18,8 @@ Anything worth doing later. Ideas can be added freely without debate; they are c
 
 From the repo review of 2026-10-31, highest impact first:
 
-- **Prove the pipeline end to end.** Only one real video exists, and its Lienzo scene (`omega-v2`) was deleted, so the reference cannot be watched. Make 2–3 new, different videos (one fiction without research, one in a style other than Bright science) before more governance work; their `learnings.md` feed the specs below.
+- **Prove the pipeline end to end.** Only one real video existed, and its Lienzo scene (`omega-v2`) was deleted. `ringana-skin-perfection` (Soft depth, 2026-10-31) is the second; its findings are spec 013. Make 1–2 more, different videos (one fiction without research, in Night glow or Bold graphic); their `learnings.md` feed the specs below.
 - **Grow `lib/`.** It holds a heart, a gradient backdrop, particles, `heartbeat`, `countUp` and text helpers; `shot`/`text` are legacy forms kept for ringana-omega-v2. Promote recurring pieces from new videos (and candidates from omega-v2: halo, light rays, three-tone capsule/drop). Soft depth, Bold graphic and Night glow in `styles.md` have no verified piece yet.
-- **Fix skill drift after spec 011.**
-  - `lienzo-storyboard` step 3 still says "adapt its palette (4–6 hex colours with roles)"; briefs no longer hold hex values and `palette.json` holds only overrides and story roles.
-  - `lienzo-art-direction` → Verified example step 3 says "copy `audioTracks` from v1"; audio now belongs to the Lienzo scene.
-  - `lienzo-animate/references/compact-format.md` shows `audioTracks` in the compact example, while generators never write it.
-  - `styles.md` Bright science names a rounded sans (Nunito, Poppins); omega-v2 uses the brand's Montserrat. Say that brand fonts replace the style's type.
 - **Scripts instead of inline one-liners.** The template copy and the brand snapshot are long `node -e` commands inside `SKILL.md`. Make them repo scripts (e.g. `pnpm video:new <slug>`, `pnpm brand:lock <inspect.json> <slug>`, `pnpm brand:drift <slug>`) that are tested and behave the same on PowerShell and bash.
 - **Install that matches how skills resolve paths.** README says `cp -r skills/lienzo-* ~/.claude/skills/`, but the skills use repo-relative paths (`videos/_template`, `lib/`), so copies go stale and only work from the Animator repo. Document "work from this repo" or use project-level skills / a symlink. `skills-lock.json` points at a local `../spectrace`, which others cannot reproduce.
 - **`scene-lint`: check readability on `scene.json`.** Tests guard shape (golden scene byte for byte, lib list), not the DESIGN.md numbers. A pure checker can flag text contrast < 4.5:1, titles < 64 px on 1080-wide canvases, > 7 words per line, lines on screen < 1.5 s, and a final hold < 1.5 s, without Lienzo. The byte-for-byte golden test also blocks harmless `lib/` changes; consider a structural comparison.
