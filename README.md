@@ -29,12 +29,13 @@ idea ──▶ research ──▶ storyboard ──▶ art direction ──▶ b
 ```
 *.md (root)        project contracts: PRODUCT, ARCHITECTURE, ENGINEERING, DESIGN, TESTING, CHANGES, AGENTS
 skills/            the four skills above
-lib/               shared, palette-driven generator pieces (flat primitives, scene, environment, objects, motion, palette check)
+lib/               shared, palette-driven generator pieces (flat primitives, scene, environment, objects, motion, palette, brand snapshot)
 videos/_template/  the smallest working video, copied to start a new one
 videos/<slug>/     one folder per video:
   brief.md           the storyboard
   research.md        facts and sources (when the video states facts)
-  palette.json       the video's colours
+  brand.lock.json    snapshot of the Lienzo project's brand (written by lienzo-storyboard, never by hand)
+  palette.json       the video's colour overrides and story roles (brand colours come from the snapshot)
   scene.gen.cjs      Node script that writes the scene
   scene.json         the compact scene Lienzo builds
   learnings.md       what this video taught us

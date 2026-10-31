@@ -18,6 +18,20 @@ When an existing architectural design or requirement needs to change:
 
 ## 📜 Change Log
 
+### 2026-10-31 — Brand From Lienzo (spec 011)
+
+- **Scope:** `lib/`, the video template, `ringana-omega-v2`, the skills, and the root contracts.
+- **What Changed:**
+  - The Lienzo project owns the brand. Each video has `brand.lock.json`, a snapshot written from `project_inspect` by `brandLock` (`lib/brand.cjs`), and `palette.json` holds only overrides and story roles.
+  - Palette roles go back to Lienzo's names: `main` → `primary` (plus optional `surface`), reversing the 2026-10-31 governance entry below, so both repos share one vocabulary.
+  - `resolvePalette` merges brand colours and overrides and derives missing tones with `tones(base)` (OKLCH, CSS Color 4 gamut mapping); a missing required role fails, naming it.
+  - `lib/` names no brand font: `sceneHelpers` requires `fonts` (`brandFonts(lock)`), with Inter 800 / 400 as the system default.
+  - A scene's audio belongs to the Lienzo scene; briefs keep the voice script only. The brief's palette table no longer repeats hex values.
+- **Why:**
+  - Brand values were copied into each video by hand, so brand changes never reached a video, and duplicated data (voice timings, palette hexes) drifted.
+- **Replaced Items:**
+  - The `main` palette role, hand-picked brand colours in each `palette.json`, and Montserrat hardcoded in `lib/scene.cjs`.
+
 ### 2026-10-31 — Governance: Align Contracts With Spectrace 0.32
 
 - **Scope:** Root contracts, spec 004, roadmap, and ignore files.
