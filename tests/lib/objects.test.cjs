@@ -125,3 +125,59 @@ for (const [name, input, expectedCount] of RADIAL_CASES) {
     }
   });
 }
+
+// Table test covering metricCard property filtering partitions and unknown fields equivalence class (016/R3, D3)
+const FORBIDDEN_GROUP_KEYS = [
+  "bgColor", "border", "titleY", "titleFont", "titleSize", "titleWeight", "titleColor",
+  "counterY", "counterH", "counterSize", "counterColor", "glow"
+];
+
+const CARD_FILTER_CASES = [
+  [
+    "styling keys stripped while shot and tracks preserved",
+    {
+      id: "card1", x: 10, y: 20, w: 400, h: 250, title: "RPS", from: 0, to: 100,
+      extra: {
+        bgColor: "#112233", border: { width: 2, color: "#fff" }, titleY: 30, titleFont: "Inter",
+        titleSize: 24, titleWeight: 700, titleColor: "#ffffff", counterY: 100, counterH: 80,
+        counterSize: 64, counterColor: "#00ffcc", glow: { enabled: true },
+        shot: "s2", tracks: { opacity: [[0, 0], [1, 1]] }, name: "Custom Metric"
+      }
+    },
+    { shot: "s2", name: "Custom Metric", hasTracks: true }
+  ],
+  [
+    "group-only extra keys without styling keys",
+    {
+      id: "card2", x: 0, y: 0, w: 300, h: 200, title: "LATENCY",
+      extra: { shot: "s1" }
+    },
+    { shot: "s1", hasTracks: false }
+  ],
+  [
+    "extra omitted entirely",
+    {
+      id: "card3", x: 0, y: 0, w: 300, h: 200, title: "EMPTY"
+    },
+    { hasTracks: false }
+  ],
+];
+
+for (const [name, input, expected] of CARD_FILTER_CASES) {
+  test(`metricCard filtering partition: ${name}`, () => {
+    const card = metricCard(input);
+    for (const key of FORBIDDEN_GROUP_KEYS) {
+      assert.equal(Object.prototype.hasOwnProperty.call(card, key), false, `group must not have key "${key}"`);
+    }
+    if (expected.shot) {
+      assert.equal(card.shot, expected.shot);
+    }
+    if (expected.name) {
+      assert.equal(card.name, expected.name);
+    }
+    if (expected.hasTracks) {
+      assert.ok(card.tracks);
+    }
+    assert.equal(card.children.length, 3);
+  });
+}
