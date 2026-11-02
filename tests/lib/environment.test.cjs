@@ -21,3 +21,46 @@ for (const [partition, extra, read, expected] of CASES) {
     assert.deepEqual(read(e), expected);
   });
 }
+
+const { sea, particles } = require("../../lib/environment.cjs");
+
+// Table test covering sea and particles extra parameter partitions (016/R5, D5)
+const SEA_CASES = [
+  ["extra omitted produces nominal gradient rect", undefined, { shot: undefined, opacity: undefined, gradient: true, angle: 90 }],
+  ["extra shot and opacity pass through", { shot: "s1", opacity: 0.8 }, { shot: "s1", opacity: 0.8, gradient: true, angle: 90 }],
+  ["extra.fill merges into gradient fill", { fill: { opacity: 0.4 } }, { shot: undefined, opacity: undefined, gradient: true, angle: 90, fillOpacity: 0.4 }],
+];
+
+for (const [name, extra, expected] of SEA_CASES) {
+  test(`sea extra partition: ${name}`, () => {
+    const el = extra !== undefined ? sea("s", { w: 1080, h: 1920 }, "#000", "#fff", "Sea", extra) : sea("s", { w: 1080, h: 1920 }, "#000", "#fff");
+    assert.equal(el.kind, "rect");
+    assert.equal(el.w, 1080);
+    assert.equal(el.h, 1920);
+    assert.equal(el.shot, expected.shot);
+    assert.equal(el.opacity, expected.opacity);
+    assert.equal(el.fill.gradient, expected.gradient);
+    assert.equal(el.fill.angle, expected.angle);
+    if (expected.fillOpacity !== undefined) {
+      assert.equal(el.fill.opacity, expected.fillOpacity);
+    }
+  });
+}
+
+const PARTICLE_CASES = [
+  ["extra omitted produces nominal particles descriptor", undefined, { shot: undefined, opacity: undefined }],
+  ["extra shot passes through", { shot: "s2" }, { shot: "s2", opacity: undefined }],
+  ["extra shot and opacity pass through", { shot: "s1", opacity: 0.75 }, { shot: "s1", opacity: 0.75 }],
+];
+
+for (const [name, extra, expected] of PARTICLE_CASES) {
+  test(`particles extra partition: ${name}`, () => {
+    const box = { x: 0, y: 0, w: 500, h: 500 };
+    const opts = { count: 10, drift: 0.5, seed: 1, size: 4, color: "#fff", opacity: 0.9 };
+    const el = extra !== undefined ? particles("p", "Stars", box, opts, extra) : particles("p", "Stars", box, opts);
+    assert.equal(el.kind, "particles");
+    assert.equal(el.shot, expected.shot);
+    assert.equal(el.opacity, expected.opacity);
+    assert.equal(el.count, 10);
+  });
+}
