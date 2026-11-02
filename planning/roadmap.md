@@ -11,7 +11,7 @@ Specs in execution order. `Status` (`todo`, `in progress`, `done`) is maintained
 | 012 | platform-length | done | 011 |
 | 013 | promote-ringana-skin-perfection | done | 011, 004 |
 | 014 | brand-hierarchy-and-git-ignore | done | 011, 013 |
-| 015 | promote-pulse-and-botanica-learnings | todo | 014 |
+| 015 | promote-pulse-and-botanica-learnings | done | 014 |
 
 ## Ideas
 

@@ -25,7 +25,7 @@ When an existing architectural design or requirement needs to change:
   - `label()` in `lib/scene.cjs` accepts `extra.color` (defaulting to `palette.text.base` when omitted).
   - `teardrop()` in `lib/objects.cjs` accepts `prefix` to avoid global duplicate ID errors when used multiple times in groups.
   - `metricCard` promoted to `lib/objects.cjs` (tech counter card with border and glow; satisfies Spec 013 2-consumer condition).
-  - `radialLayout` promoted to `lib/objects.cjs` (radial node distribution and dynamic line connector generation).
+  - `radialLayout` promoted to `lib/objects.cjs` (radial node distribution helper; dynamic line connectors documented in skills).
   - Skills documentation updated in `skills/lienzo-animate/` for trailing keyframe easing constraints and dynamic line connector syntax.
 - **Why:**
   - Video close-out findings from `pulse-speed`, `pulse-chaos`, and `botanica-fresh` proved reusable pieces and exposed library defects in `label` and `teardrop`.
