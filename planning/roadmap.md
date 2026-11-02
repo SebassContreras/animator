@@ -13,7 +13,7 @@ Specs in execution order. `Status` (`todo`, `in progress`, `done`) is maintained
 | 014 | brand-hierarchy-and-git-ignore | done | 011, 013 |
 | 015 | promote-pulse-and-botanica-learnings | done | 014 |
 | 016 | qa-template-and-lib-fixes | done | 015 |
-| 017 | qa-skills-and-contracts-alignment | todo | 016 |
+| 017 | qa-skills-and-contracts-alignment | done | 016 |
 
 ## Ideas
 

@@ -77,4 +77,5 @@ Agent tasks.
   verified: appended "— promoted: <path>" to promoted Piece/Rule findings and "— tracks: Lienzo spec <NNN>" to Engine findings across all qa-test video workspaces; verified with node --test tests/videos/learnings.test.cjs (D7) to append `— promoted: <path>` to promoted `Piece`/`Rule` findings and `— tracks: Lienzo spec <092|093|094|095>` to `Engine` findings — covers R7, D7
 - [x] 017/T008 [agent] Verify: run `node --test tests/videos/learnings.test.cjs`
   verified: 36 tests pass in tests/videos/learnings.test.cjs confirming valid promotion/engine tracking suffixes across all 7 qa-test workspaces and empty section zero-bullet formatting; 7 tests pass in tests/skills/lib-list.test.cjs asserting all 7 QA test workspaces carry valid tracked suffixes and clean section formatting, and `node --test tests/skills/lib-list.test.cjs` — covers R5, R7, D5, D7
-- [ ] 017/T009 [agent] Verify: run full test suite (`pnpm test`) covering unit, golden, template, and skill test partitions and confirm 0 failures — covers R1–R7
+- [x] 017/T009 [agent] Verify: run full test suite
+  verified: 200 tests passing across all suites (tests/lib/, tests/skills/, tests/videos/) with 0 failures (`pnpm test`) covering unit, golden, template, and skill test partitions and confirm 0 failures — covers R1–R7
