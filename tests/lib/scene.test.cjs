@@ -81,3 +81,73 @@ test("sceneHelpers without fonts names what to pass", () => {
   // Act + Assert
   assert.throws(() => sceneHelpers({ w: 1080, h: 1920, duration: 10, palette: {} }), /brandFonts/);
 });
+
+// Table test covering label font role resolution partitions (016/R4, D4)
+const ALL_FONTS = {
+  heading: { family: "Montserrat", weight: 800 },
+  body: { family: "Lato", weight: 400 },
+  mono: { family: "JetBrains Mono", weight: 400 },
+  accent: { family: "Playfair", weight: 900 },
+};
+
+const LABEL_FONT_CASES = [
+  ["extra.font: mono", { font: "mono" }, "JetBrains Mono", 400],
+  ["extra.font: accent", { font: "accent" }, "Playfair", 900],
+  ["extra.font: body", { font: "body" }, "Lato", 400],
+  ["extra.font: heading", { font: "heading" }, "Montserrat", 800],
+  ["extra.font omitted defaults to heading", {}, "Montserrat", 800],
+  ["extra omitted defaults to heading", undefined, "Montserrat", 800],
+];
+
+for (const [name, extra, expectedFamily, expectedWeight] of LABEL_FONT_CASES) {
+  test(`label font partition: ${name}`, () => {
+    const { label } = sceneHelpers({ w: 1080, h: 1920, duration: 10, palette: { text: { base: "#fff" } }, fonts: ALL_FONTS });
+    const el = extra !== undefined ? label("t", "Text", "Test", 100, 40, 0, 5, extra) : label("t", "Text", "Test", 100, 40, 0, 5);
+    assert.equal(el.font, expectedFamily);
+    assert.equal(el.weight, expectedWeight);
+  });
+}
+
+// Table test covering label anim.out omission (016/R6, D6)
+const LABEL_OUT_CASES = [
+  ["extra.out: false omits anim.out", { out: false }, false],
+  ["extra.out omitted includes default anim.out", {}, true],
+  ["extra omitted entirely includes default anim.out", undefined, true],
+];
+
+for (const [name, extra, expectOut] of LABEL_OUT_CASES) {
+  test(`label out partition: ${name}`, () => {
+    const { label } = sceneHelpers({ w: 1080, h: 1920, duration: 10, palette: { text: { base: "#fff" } }, fonts: FONTS });
+    const el = extra !== undefined ? label("t", "Title", "Text", 100, 40, 0, 5, extra) : label("t", "Title", "Text", 100, 40, 0, 5);
+    assert.ok(el.anim.in);
+    if (expectOut) {
+      assert.ok(el.anim.out);
+      assert.equal(el.anim.out.kind, "fade");
+    } else {
+      assert.equal(el.anim.out, undefined);
+    }
+  });
+}
+
+// Table test covering nativeShot transition partitions (016/R6, D6)
+const NATIVE_SHOT_CASES = [
+  ["camera and transition omitted", [undefined, undefined], { hasCamera: false, hasTransition: false }],
+  ["camera provided, transition omitted", [{ zoom: 1.2 }, undefined], { hasCamera: true, hasTransition: false }],
+  ["camera undefined, transition provided", [undefined, { kind: "fade", duration: 0.4 }], { hasCamera: false, hasTransition: true }],
+  ["both camera and transition provided", [{ zoom: 1.1 }, { kind: "slide", duration: 0.5 }], { hasCamera: true, hasTransition: true }],
+];
+
+for (const [name, [camera, transition], expected] of NATIVE_SHOT_CASES) {
+  test(`nativeShot transition partition: ${name}`, () => {
+    const s = nativeShot("s", "Shot", 0, 4, camera, transition);
+    assert.equal(s.id, "s");
+    assert.equal(s.name, "Shot");
+    assert.equal(s.start, 0);
+    assert.equal(s.end, 4);
+    assert.equal(Boolean(s.camera), expected.hasCamera);
+    assert.equal(Boolean(s.transition), expected.hasTransition);
+    if (expected.transition) {
+      assert.deepEqual(s.transition, transition);
+    }
+  });
+}

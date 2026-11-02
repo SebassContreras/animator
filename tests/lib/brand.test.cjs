@@ -76,3 +76,54 @@ for (const [name, fonts, expected] of FONT_CASES) {
     assert.deepEqual(result, expected);
   });
 }
+
+// Table test covering brandFonts mono and accent role partitions (016/R4, D4)
+const FONT_ROLE_CASES = [
+  [
+    "heading, body, mono and accent declared",
+    [
+      font("Montserrat", "heading", [800]),
+      font("Lato", "body", [400]),
+      font("JetBrains Mono", "mono", [400, 700]),
+      font("Playfair", "accent", [600, 900]),
+    ],
+    {
+      heading: { family: "Montserrat", weight: 800 },
+      body: { family: "Lato", weight: 400 },
+      mono: { family: "JetBrains Mono", weight: 400 },
+      accent: { family: "Playfair", weight: 900 },
+    }
+  ],
+  [
+    "only heading and body preserves byte-identical output",
+    [font("Montserrat", "heading", [800]), font("Lato", "body", [400])],
+    { heading: { family: "Montserrat", weight: 800 }, body: { family: "Lato", weight: 400 } }
+  ],
+  [
+    "no fonts declares defaults without mono or accent",
+    [],
+    INTER
+  ],
+];
+
+for (const [name, fonts, expected] of FONT_ROLE_CASES) {
+  test(`brandFonts role partition: ${name}`, () => {
+    assert.deepEqual(brandFonts({ fonts }), expected);
+  });
+}
+
+const { brandNotices } = require("../../lib/brand.cjs");
+
+// Table test covering brandNotices inspect.notices partitions (016/R7, D7)
+const BRAND_NOTICES_CASES = [
+  ["inspect without notices field returns empty array", {}, []],
+  ["inspect with empty notices array returns empty array", { notices: [] }, []],
+  ["inspect with notice strings returns copy of notices", { notices: ["Font missing", "Weight missing"] }, ["Font missing", "Weight missing"]],
+  ["inspect null or undefined returns empty array", undefined, []],
+];
+
+for (const [name, input, expected] of BRAND_NOTICES_CASES) {
+  test(`brandNotices partition: ${name}`, () => {
+    assert.deepEqual(brandNotices(input), expected);
+  });
+}
