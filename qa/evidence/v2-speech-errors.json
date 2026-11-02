@@ -1,0 +1,17 @@
+{
+  "local_without_daemon": {
+    "code": "tts_generation_failed",
+    "message": "No se pudo conectar al servicio local de TTS en 'http://localhost:8880/v1/audio/speech': fetch failed. Arranca el servicio (p. ej. Kokoro en http://localhost:8880, ver el README) o pasa baseUrl",
+    "path": "baseUrl"
+  },
+  "openrouter_without_key": {
+    "code": "tts_generation_failed",
+    "message": "Clave de API de OpenRouter no configurada. Configura OPENROUTER_API_KEY o proporciónala en la petición.",
+    "path": "apiKey"
+  },
+  "custom_without_baseUrl": {
+    "code": "tts_generation_failed",
+    "message": "No se pudo conectar al servicio local de TTS en 'http://localhost:8880/v1/audio/speech': fetch failed. Arranca el servicio (p. ej. Kokoro en http://localhost:8880, ver el README) o pasa baseUrl",
+    "path": "baseUrl"
+  }
+}

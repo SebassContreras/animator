@@ -1,0 +1,931 @@
+{
+  "invalidWrites": [
+    {
+      "name": "empty_id_element_add",
+      "tool": "element_add",
+      "input": {
+        "project": "qa-test",
+        "scene": "errors",
+        "kind": "rect",
+        "patch": {
+          "id": ""
+        }
+      },
+      "result": {
+        "ok": false,
+        "error": {
+          "code": "invalid_id",
+          "message": "elements..id: un id no puede estar vacío",
+          "path": "elements..id",
+          "errors": [
+            {
+              "path": "elements..id",
+              "message": "un id no puede estar vacío"
+            }
+          ]
+        }
+      },
+      "atomicUnchanged": true
+    },
+    {
+      "name": "slash_id_element_add",
+      "tool": "element_add",
+      "input": {
+        "project": "qa-test",
+        "scene": "errors",
+        "kind": "rect",
+        "patch": {
+          "id": "a/b"
+        }
+      },
+      "result": {
+        "ok": false,
+        "error": {
+          "code": "invalid_id",
+          "message": "elements.a/b.id: un id no puede llevar «/», que separa grupo e hijo en una ruta",
+          "path": "elements.a/b.id",
+          "errors": [
+            {
+              "path": "elements.a/b.id",
+              "message": "un id no puede llevar «/», que separa grupo e hijo en una ruta"
+            }
+          ]
+        }
+      },
+      "atomicUnchanged": true
+    },
+    {
+      "name": "padded_id_element_add",
+      "tool": "element_add",
+      "input": {
+        "project": "qa-test",
+        "scene": "errors",
+        "kind": "rect",
+        "patch": {
+          "id": " padded "
+        }
+      },
+      "result": {
+        "ok": false,
+        "error": {
+          "code": "invalid_id",
+          "message": "patch.id: un id no puede empezar ni acabar con espacios",
+          "path": "patch.id",
+          "errors": [
+            {
+              "path": "patch.id",
+              "message": "un id no puede empezar ni acabar con espacios"
+            }
+          ]
+        }
+      },
+      "atomicUnchanged": true
+    },
+    {
+      "name": "duplicate_id_element_add",
+      "tool": "element_add",
+      "input": {
+        "project": "qa-test",
+        "scene": "errors",
+        "kind": "rect",
+        "patch": {
+          "id": "s1-orb-a"
+        }
+      },
+      "result": {
+        "ok": false,
+        "error": {
+          "code": "duplicate_id",
+          "message": "elements.10.id: ID duplicado «s1-orb-a» (ya está en elements.1)",
+          "path": "elements.10.id",
+          "errors": [
+            {
+              "path": "elements.10.id",
+              "message": "ID duplicado «s1-orb-a» (ya está en elements.1)"
+            }
+          ]
+        }
+      },
+      "atomicUnchanged": true
+    },
+    {
+      "name": "duplicate_id_element_group",
+      "tool": "element_group",
+      "input": {
+        "project": "qa-test",
+        "scene": "errors",
+        "ids": [
+          "s1-orb-a",
+          "s1-orb-b"
+        ],
+        "id": "s1-bg"
+      },
+      "result": {
+        "ok": false,
+        "error": {
+          "code": "duplicate_id",
+          "message": "Ya hay un elemento «s1-bg»",
+          "path": "id"
+        }
+      },
+      "atomicUnchanged": true
+    },
+    {
+      "name": "shot_end_equal_start",
+      "tool": "shot_set",
+      "input": {
+        "project": "qa-test",
+        "scene": "errors",
+        "id": "s-bad",
+        "start": 4,
+        "end": 4
+      },
+      "result": {
+        "ok": false,
+        "error": {
+          "code": "invalid_input",
+          "message": "La toma «s-bad» no dura: 'end' (4) debe ser mayor que 'start' (4)",
+          "path": "end"
+        }
+      },
+      "atomicUnchanged": true
+    },
+    {
+      "name": "shot_end_before_start",
+      "tool": "shot_set",
+      "input": {
+        "project": "qa-test",
+        "scene": "errors",
+        "id": "s-bad",
+        "start": 5,
+        "end": 3
+      },
+      "result": {
+        "ok": false,
+        "error": {
+          "code": "invalid_input",
+          "message": "La toma «s-bad» no dura: 'end' (3) debe ser mayor que 'start' (5)",
+          "path": "end"
+        }
+      },
+      "atomicUnchanged": true
+    },
+    {
+      "name": "shot_overlapping",
+      "tool": "shot_set",
+      "input": {
+        "project": "qa-test",
+        "scene": "errors",
+        "id": "s2",
+        "start": 2,
+        "end": 8
+      },
+      "result": {
+        "ok": false,
+        "error": {
+          "code": "invalid_input",
+          "message": "La toma «s2» (2–8s) se solapa con «s1» (0–4s)",
+          "path": "start"
+        }
+      },
+      "atomicUnchanged": true
+    },
+    {
+      "name": "shot_past_duration",
+      "tool": "shot_set",
+      "input": {
+        "project": "qa-test",
+        "scene": "errors",
+        "id": "s2",
+        "start": 4,
+        "end": 12
+      },
+      "result": {
+        "ok": false,
+        "error": {
+          "code": "invalid_input",
+          "message": "La toma «s2» termina en 12s, después de la escena (8s)",
+          "path": "end"
+        }
+      },
+      "atomicUnchanged": true
+    },
+    {
+      "name": "scene_update_duration_shorter_than_shots",
+      "tool": "scene_update",
+      "input": {
+        "project": "qa-test",
+        "scene": "errors",
+        "patch": {
+          "duration": 3
+        }
+      },
+      "result": {
+        "ok": false,
+        "error": {
+          "code": "invalid_input",
+          "message": "shots: La toma «s1» termina en 4s, después de la escena (3s)\nshots: La toma «s2» termina en 8s, después de la escena (3s)",
+          "path": "shots",
+          "errors": [
+            {
+              "path": "shots",
+              "message": "La toma «s1» termina en 4s, después de la escena (3s)"
+            },
+            {
+              "path": "shots",
+              "message": "La toma «s2» termina en 8s, después de la escena (3s)"
+            }
+          ]
+        }
+      },
+      "atomicUnchanged": true
+    },
+    {
+      "name": "invalid_css_color_element_update",
+      "tool": "element_update",
+      "input": {
+        "project": "qa-test",
+        "scene": "errors",
+        "id": "s1-orb-a",
+        "patch": {
+          "fill": {
+            "color": "not-a-color"
+          }
+        }
+      },
+      "result": {
+        "ok": false,
+        "error": {
+          "code": "invalid_scene",
+          "message": "elements.s1-orb-a.fill.color: No es un color: usa #rrggbb, rgb()/rgba(), hsl()/hsla() o un nombre CSS (p. ej. «red»)",
+          "path": "elements.s1-orb-a.fill.color",
+          "errors": [
+            {
+              "path": "elements.s1-orb-a.fill.color",
+              "message": "No es un color: usa #rrggbb, rgb()/rgba(), hsl()/hsla() o un nombre CSS (p. ej. «red»)"
+            }
+          ]
+        }
+      },
+      "atomicUnchanged": true
+    },
+    {
+      "name": "invalid_hex_color_background_set",
+      "tool": "background_set",
+      "input": {
+        "project": "qa-test",
+        "scene": "errors",
+        "patch": {
+          "color": "#12345"
+        }
+      },
+      "result": {
+        "ok": false,
+        "error": {
+          "code": "invalid_scene",
+          "message": "background.color: No es un color: usa #rrggbb, rgb()/rgba(), hsl()/hsla() o un nombre CSS (p. ej. «red»)",
+          "path": "background.color",
+          "errors": [
+            {
+              "path": "background.color",
+              "message": "No es un color: usa #rrggbb, rgb()/rgba(), hsl()/hsla() o un nombre CSS (p. ej. «red»)"
+            }
+          ]
+        }
+      },
+      "atomicUnchanged": true
+    },
+    {
+      "name": "invalid_color_keyframe_set",
+      "tool": "keyframe_set",
+      "input": {
+        "project": "qa-test",
+        "scene": "errors",
+        "id": "s1-orb-a",
+        "path": "fill.color",
+        "t": 1,
+        "value": "not-a-color"
+      },
+      "result": {
+        "ok": false,
+        "error": {
+          "code": "invalid_value",
+          "message": "No es un color: usa #rrggbb, rgb()/rgba(), hsl()/hsla() o un nombre CSS (p. ej. «red»)",
+          "path": "value"
+        }
+      },
+      "atomicUnchanged": true
+    },
+    {
+      "name": "keyframe_out_of_range_and_negative_t",
+      "tool": "keyframe_set",
+      "input": {
+        "project": "qa-test",
+        "scene": "errors",
+        "id": "s1-orb-a",
+        "path": "opacity",
+        "t": -1,
+        "value": 1.5
+      },
+      "result": {
+        "ok": false,
+        "error": {
+          "code": "invalid_input",
+          "message": "t: Demasiado pequeño: se esperaba que número fuera >=0",
+          "path": "t"
+        }
+      },
+      "atomicUnchanged": true
+    },
+    {
+      "name": "nonexistent_icon_element_add",
+      "tool": "element_add",
+      "input": {
+        "project": "qa-test",
+        "scene": "errors",
+        "kind": "icon",
+        "patch": {
+          "id": "bad-icon",
+          "icon": "NonexistentIconXYZ"
+        }
+      },
+      "result": {
+        "ok": false,
+        "error": {
+          "code": "unknown_icon",
+          "message": "patch.icon: No existe el icono «NonexistentIconXYZ» (nombres de lucide, p. ej. «Star», «ArrowRight»; véase lucide.dev/icons)",
+          "path": "patch.icon",
+          "errors": [
+            {
+              "path": "patch.icon",
+              "message": "No existe el icono «NonexistentIconXYZ» (nombres de lucide, p. ej. «Star», «ArrowRight»; véase lucide.dev/icons)"
+            }
+          ]
+        }
+      },
+      "atomicUnchanged": true
+    },
+    {
+      "name": "nonexistent_symbol_element_add",
+      "tool": "element_add",
+      "input": {
+        "project": "qa-test",
+        "scene": "errors",
+        "kind": "use",
+        "patch": {
+          "id": "bad-use",
+          "symbol": "no-such-symbol"
+        }
+      },
+      "result": {
+        "ok": false,
+        "error": {
+          "code": "unknown_symbol",
+          "message": "patch.symbol: Usa el símbolo «no-such-symbol», que no existe (símbolos: «solardrop»; defínelo en `symbols`)",
+          "path": "patch.symbol",
+          "errors": [
+            {
+              "path": "patch.symbol",
+              "message": "Usa el símbolo «no-such-symbol», que no existe (símbolos: «solardrop»; defínelo en `symbols`)"
+            }
+          ]
+        }
+      },
+      "atomicUnchanged": true
+    },
+    {
+      "name": "nonexistent_shot_element_update",
+      "tool": "element_update",
+      "input": {
+        "project": "qa-test",
+        "scene": "errors",
+        "id": "s1-orb-a",
+        "patch": {
+          "shot": "no-such-shot"
+        }
+      },
+      "result": {
+        "ok": false,
+        "error": {
+          "code": "unknown_shot",
+          "message": "elements.s1-orb-a.shot: Está ligado a la toma «no-such-shot», que no existe (tomas: «s1», «s2»; créala con shot_set)",
+          "path": "elements.s1-orb-a.shot",
+          "errors": [
+            {
+              "code": "unknown_shot",
+              "message": "Está ligado a la toma «no-such-shot», que no existe (tomas: «s1», «s2»; créala con shot_set)",
+              "path": "elements.s1-orb-a.shot"
+            }
+          ]
+        }
+      },
+      "atomicUnchanged": true
+    },
+    {
+      "name": "nonexistent_anim_preset_element_update",
+      "tool": "element_update",
+      "input": {
+        "project": "qa-test",
+        "scene": "errors",
+        "id": "s1-orb-a",
+        "patch": {
+          "animPreset": {
+            "name": "no-such-anim",
+            "start": 0
+          }
+        }
+      },
+      "result": {
+        "ok": false,
+        "error": {
+          "code": "unknown_anim_preset",
+          "message": "elements.s1-orb-a.animPreset: «s1-orb-a» usa la animación «no-such-anim», que no está en la biblioteca (no hay ninguno; animation_list)",
+          "path": "elements.s1-orb-a.animPreset",
+          "errors": [
+            {
+              "path": "elements.s1-orb-a.animPreset",
+              "message": "«s1-orb-a» usa la animación «no-such-anim», que no está en la biblioteca (no hay ninguno; animation_list)"
+            }
+          ]
+        }
+      },
+      "atomicUnchanged": true
+    },
+    {
+      "name": "dangling_line_target_element_add",
+      "tool": "element_add",
+      "input": {
+        "project": "qa-test",
+        "scene": "errors",
+        "kind": "line",
+        "patch": {
+          "id": "bad-line",
+          "a": {
+            "x": 0,
+            "y": 0,
+            "attach": "no-such-el"
+          }
+        }
+      },
+      "result": {
+        "ok": false,
+        "error": {
+          "code": "unknown_target",
+          "message": "patch.a.attach: El extremo inicial (from) se conecta a «no-such-el», que no existe (ids: «s1-bg», «s1-orb-a», «s1-orb-b», «s1-box», «s1-box-bg», «s1-box-pill», «s1-kicker», «s1-title», «s2-bg», «s2-drop», «s2-brand», «s2-tagline», «drop-shade», «drop-core», «drop-shine»)",
+          "path": "patch.a.attach",
+          "errors": [
+            {
+              "path": "patch.a.attach",
+              "message": "El extremo inicial (from) se conecta a «no-such-el», que no existe (ids: «s1-bg», «s1-orb-a», «s1-orb-b», «s1-box», «s1-box-bg», «s1-box-pill», «s1-kicker», «s1-title», «s2-bg», «s2-drop», «s2-brand», «s2-tagline», «drop-shade», «drop-core», «drop-shine»)"
+            }
+          ]
+        }
+      },
+      "atomicUnchanged": true
+    },
+    {
+      "name": "remove_referenced_target_element_remove",
+      "tool": "element_remove",
+      "input": {
+        "project": "qa-test",
+        "scene": "errors",
+        "id": "no-such-element"
+      },
+      "result": {
+        "ok": false,
+        "error": {
+          "code": "not_found",
+          "message": "No existe el elemento «no-such-element»",
+          "path": "id"
+        }
+      },
+      "atomicUnchanged": true
+    },
+    {
+      "name": "nonexistent_asset_file_asset_add",
+      "tool": "asset_add",
+      "input": {
+        "project": "qa-test",
+        "file": "C:/nonexistent-file-qa.png"
+      },
+      "result": {
+        "ok": false,
+        "error": {
+          "code": "not_found",
+          "message": "No existe el archivo «C:/nonexistent-file-qa.png»",
+          "path": "file"
+        }
+      }
+    },
+    {
+      "name": "nonexistent_font_file_font_install",
+      "tool": "font_install",
+      "input": {
+        "project": "qa-test",
+        "file": "C:/nonexistent-font.ttf"
+      },
+      "result": {
+        "ok": false,
+        "error": {
+          "code": "invalid_input",
+          "message": "family: Entrada inválida: se esperaba texto, recibido indefinido",
+          "path": "family"
+        }
+      }
+    },
+    {
+      "name": "nonexistent_google_font_font_install",
+      "tool": "font_install",
+      "input": {
+        "project": "qa-test",
+        "family": "NotAGoogleFontFamilyXYZ123"
+      },
+      "result": {
+        "ok": false,
+        "error": {
+          "code": "install_failed",
+          "message": "Google Fonts no tiene la familia «NotAGoogleFontFamilyXYZ123» (HTTP 400): revisa el nombre o los pesos pedidos (400)",
+          "path": "family"
+        }
+      }
+    },
+    {
+      "name": "font_install_both_family_and_file_and_bad_weight",
+      "tool": "font_install",
+      "input": {
+        "project": "qa-test",
+        "family": "Inter",
+        "file": "x.ttf",
+        "weights": [
+          50
+        ]
+      },
+      "result": {
+        "ok": false,
+        "error": {
+          "code": "invalid_input",
+          "message": "weights.0: Demasiado pequeño: se esperaba que número fuera >=100",
+          "path": "weights.0"
+        }
+      }
+    }
+  ],
+  "multiErrorAndSchemaDiscrepancies": {
+    "validate_multi_element_and_rule_errors": {
+      "ok": true,
+      "output": {
+        "valid": false,
+        "message": "compact.elements.0.opacity: Demasiado grande: se esperaba que número fuera <=1\ncompact.elements.0.fill.color: No es un color: usa #rrggbb, rgb()/rgba(), hsl()/hsla() o un nombre CSS (p. ej. «red»)\ncompact.elements.bad/id.animPreset: «bad/id» usa la animación «missing-preset», que no está en la biblioteca (no hay ninguno; animation_list)\ncompact.shots: La toma «s1» no dura: 'end' (2) debe ser mayor que 'start' (4)\ncompact.shots: La toma «bad/shot» termina en 8s, después de la escena (6s)\ncompact.shots: La toma «s1» (4–2s) se solapa con «bad/shot» (2–8s)\ncompact.elements.1.id: ID duplicado «dup» (ya está en elements.0)\ncompact.elements.bad/id.id: un id no puede llevar «/», que separa grupo e hijo en una ruta\ncompact.shots.1.id: un id no puede llevar «/», que separa grupo e hijo en una ruta\ncompact.elements.1.shot: Está ligado a la toma «missing-shot», que no existe (tomas: «s1», «bad/shot»; créala con shot_set)\ncompact.elements.1.icon: No existe el icono «NoSuchIconXYZ» (nombres de lucide, p. ej. «Star», «ArrowRight»; véase lucide.dev/icons)\ncompact.elements.bad/id.symbol: Usa el símbolo «missing-symbol», que no existe (símbolos: ninguno; defínelo en `symbols`)\ncompact.elements.bad-line.a.attach: El extremo inicial (from) se conecta a «missing-from», que no existe (ids: «dup», «bad/id»)\ncompact.elements.bad-line.b.attach: El extremo final (to) se conecta a «missing-to», que no existe (ids: «dup», «bad/id»)\ncompact.elements.1.id: ID duplicado «dup» en la escena compacta",
+        "path": "compact.elements.0.opacity",
+        "errors": [
+          {
+            "path": "compact.elements.0.opacity",
+            "message": "Demasiado grande: se esperaba que número fuera <=1"
+          },
+          {
+            "path": "compact.elements.0.fill.color",
+            "message": "No es un color: usa #rrggbb, rgb()/rgba(), hsl()/hsla() o un nombre CSS (p. ej. «red»)"
+          },
+          {
+            "path": "compact.elements.bad/id.animPreset",
+            "message": "«bad/id» usa la animación «missing-preset», que no está en la biblioteca (no hay ninguno; animation_list)"
+          },
+          {
+            "path": "compact.shots",
+            "message": "La toma «s1» no dura: 'end' (2) debe ser mayor que 'start' (4)"
+          },
+          {
+            "path": "compact.shots",
+            "message": "La toma «bad/shot» termina en 8s, después de la escena (6s)"
+          },
+          {
+            "path": "compact.shots",
+            "message": "La toma «s1» (4–2s) se solapa con «bad/shot» (2–8s)"
+          },
+          {
+            "path": "compact.elements.1.id",
+            "message": "ID duplicado «dup» (ya está en elements.0)"
+          },
+          {
+            "path": "compact.elements.bad/id.id",
+            "message": "un id no puede llevar «/», que separa grupo e hijo en una ruta"
+          },
+          {
+            "path": "compact.shots.1.id",
+            "message": "un id no puede llevar «/», que separa grupo e hijo en una ruta"
+          },
+          {
+            "path": "compact.elements.1.shot",
+            "message": "Está ligado a la toma «missing-shot», que no existe (tomas: «s1», «bad/shot»; créala con shot_set)"
+          },
+          {
+            "path": "compact.elements.1.icon",
+            "message": "No existe el icono «NoSuchIconXYZ» (nombres de lucide, p. ej. «Star», «ArrowRight»; véase lucide.dev/icons)"
+          },
+          {
+            "path": "compact.elements.bad/id.symbol",
+            "message": "Usa el símbolo «missing-symbol», que no existe (símbolos: ninguno; defínelo en `symbols`)"
+          },
+          {
+            "path": "compact.elements.bad-line.a.attach",
+            "message": "El extremo inicial (from) se conecta a «missing-from», que no existe (ids: «dup», «bad/id»)"
+          },
+          {
+            "path": "compact.elements.bad-line.b.attach",
+            "message": "El extremo final (to) se conecta a «missing-to», que no existe (ids: «dup», «bad/id»)"
+          },
+          {
+            "path": "compact.elements.1.id",
+            "message": "ID duplicado «dup» en la escena compacta"
+          }
+        ]
+      }
+    },
+    "validate_inline_compact_top_and_el_error": {
+      "ok": false,
+      "error": {
+        "code": "invalid_input",
+        "message": "compact.duration: Demasiado grande: se esperaba que número fuera <=600\ncompact.fps: Demasiado grande: se esperaba que número fuera <=60",
+        "path": "compact.duration"
+      }
+    },
+    "validate_compactFile_top_and_el_error": {
+      "ok": true,
+      "output": {
+        "valid": false,
+        "message": "compact.duration: Demasiado grande: se esperaba que número fuera <=600\ncompact.fps: Demasiado grande: se esperaba que número fuera <=60\ncompact.elements.bad-el.kind: Tipo de elemento desconocido «unknown_kind_xyz» (hay: rect, ellipse, icon, image, group, text, line, particles, three, polygon, star, arrow, badge, progress, counter, bubble, steps, list, table, code, chart, path, subtitles, use)",
+        "path": "compact.duration",
+        "errors": [
+          {
+            "path": "compact.duration",
+            "message": "Demasiado grande: se esperaba que número fuera <=600"
+          },
+          {
+            "path": "compact.fps",
+            "message": "Demasiado grande: se esperaba que número fuera <=60"
+          },
+          {
+            "path": "compact.elements.bad-el.kind",
+            "message": "Tipo de elemento desconocido «unknown_kind_xyz» (hay: rect, ellipse, icon, image, group, text, line, particles, three, polygon, star, arrow, badge, progress, counter, bubble, steps, list, table, code, chart, path, subtitles, use)"
+          }
+        ]
+      }
+    },
+    "build_inline_compact_top_and_el_error": {
+      "ok": false,
+      "error": {
+        "code": "invalid_input",
+        "message": "compact.duration: Demasiado grande: se esperaba que número fuera <=600\ncompact.fps: Demasiado grande: se esperaba que número fuera <=60",
+        "path": "compact.duration"
+      }
+    },
+    "build_compactFile_top_and_el_error": {
+      "ok": false,
+      "error": {
+        "code": "invalid_scene",
+        "message": "compact.duration: Demasiado grande: se esperaba que número fuera <=600\ncompact.fps: Demasiado grande: se esperaba que número fuera <=60\ncompact.elements.bad-el.kind: Tipo de elemento desconocido «unknown_kind_xyz» (hay: rect, ellipse, icon, image, group, text, line, particles, three, polygon, star, arrow, badge, progress, counter, bubble, steps, list, table, code, chart, path, subtitles, use)",
+        "path": "compact.duration",
+        "errors": [
+          {
+            "path": "compact.duration",
+            "message": "Demasiado grande: se esperaba que número fuera <=600"
+          },
+          {
+            "path": "compact.fps",
+            "message": "Demasiado grande: se esperaba que número fuera <=60"
+          },
+          {
+            "path": "compact.elements.bad-el.kind",
+            "message": "Tipo de elemento desconocido «unknown_kind_xyz» (hay: rect, ellipse, icon, image, group, text, line, particles, three, polygon, star, arrow, badge, progress, counter, bubble, steps, list, table, code, chart, path, subtitles, use)"
+          }
+        ]
+      }
+    }
+  },
+  "noticesAndErgonomics": {
+    "validate_notices_at_track_font_asset_camera": {
+      "ok": true,
+      "output": {
+        "valid": true,
+        "notices": [
+          "compact.elements.at-and-track: tiene `at` y una pista en x/y; la pista fija x/y y anula la posición de `at` (sus valores son absolutos: calcúlalos desde donde `at` lo deja, o quita `at`)",
+          "La cámara de «s1» tiene keyframes fuera de la toma (0–3s): zoom en 5s; los tiempos de la cámara son de la escena, no de la toma",
+          "La fuente «UninstalledFontFamilyXYZ» no está instalada; se dibujará con otra. Usa font_install (en «missing-font-text»)",
+          "El ancho del texto en «UninstalledFontFamilyXYZ» es una estimación (no hay métricas de esa fuente); compruébalo con scene_preview, no con scene_inspect_layout (en «missing-font-text»)",
+          "«missing-asset-img»: El recurso «brand/does-not-exist.png» no existe en assets/ del proyecto «qa-test» (añádelo con asset_add); se dibuja un marcador"
+        ]
+      }
+    },
+    "misplaced_keys_scene_build": {
+      "ok": false,
+      "error": {
+        "code": "invalid_input",
+        "message": "compact: Falta `compact` o `compactFile`\n«elements» no es un parámetro de scene_build: ¿van dentro de «compact»?",
+        "path": "compact"
+      }
+    },
+    "misplaced_keys_element_update": {
+      "ok": false,
+      "error": {
+        "code": "invalid_input",
+        "message": "patch: Entrada inválida: se esperaba registro, recibido indefinido\n«x» no es un parámetro de element_update: ¿van dentro de «patch»?",
+        "path": "patch"
+      }
+    },
+    "missing_project": {
+      "ok": false,
+      "error": {
+        "code": "invalid_input",
+        "message": "project: Entrada inválida: se esperaba texto, recibido indefinido",
+        "path": "project"
+      }
+    },
+    "json_string_patch": {
+      "ok": true,
+      "output": {
+        "scene": "errors",
+        "notices": []
+      }
+    }
+  },
+  "roundTripsAndIdempotency": {
+    "group_ungroup": {
+      "groupRes": {
+        "ok": true,
+        "output": {
+          "scene": "errors",
+          "notices": [],
+          "id": "s1-orbs-grouped"
+        }
+      },
+      "groupedGroupShot": "s1",
+      "ungroupRes": {
+        "ok": true,
+        "output": {
+          "scene": "errors",
+          "notices": [],
+          "ids": [
+            "s1-orb-a",
+            "s1-orb-b"
+          ]
+        }
+      },
+      "orbAAfterUngroup": {
+        "x": 220,
+        "y": 620,
+        "shot": "s1"
+      }
+    },
+    "scene_rename_roundtrip": {
+      "rename1": {
+        "ok": true,
+        "output": {
+          "scene": "errors-temp-renamed",
+          "notices": []
+        }
+      },
+      "rename2": {
+        "ok": true,
+        "output": {
+          "scene": "errors",
+          "notices": []
+        }
+      },
+      "bytesIdenticalToBaseline": true
+    },
+    "double_element_update": {
+      "update1": {
+        "ok": true,
+        "output": {
+          "scene": "errors",
+          "notices": [
+            "Campo desconocido ignorado: patch.unknownField",
+            "La fuente «UninstalledFontXYZ» no está instalada; se dibujará con otra. Usa font_install (en «s1-kicker»)",
+            "El ancho del texto en «UninstalledFontXYZ» es una estimación (no hay métricas de esa fuente); compruébalo con scene_preview, no con scene_inspect_layout (en «s1-kicker»)"
+          ]
+        }
+      },
+      "update2": {
+        "ok": true,
+        "output": {
+          "scene": "errors",
+          "notices": [
+            "Campo desconocido ignorado: patch.unknownField"
+          ]
+        }
+      },
+      "stateIdenticalBetweenFirstAndSecond": true
+    }
+  },
+  "writerDiscrepancyRepros": {
+    "group_child_at_center": {
+      "parentGroupBox": {
+        "x": 190,
+        "y": 960,
+        "w": 700,
+        "h": 260,
+        "cw": 700,
+        "ch": 260
+      },
+      "sceneCanvas": {
+        "width": 1080,
+        "height": 1920
+      },
+      "childSize": {
+        "w": 300,
+        "h": 80
+      },
+      "expectedInGroupCoords": {
+        "x": 200,
+        "y": 90
+      },
+      "fromSceneBuild": {
+        "x": 200,
+        "y": 90
+      },
+      "fromElementAddWithParent": {
+        "x": 200,
+        "y": 90
+      },
+      "fromElementUpdateOnChildPath": {
+        "x": 390,
+        "y": 920
+      },
+      "elementUpdateResult": {
+        "ok": true,
+        "output": {
+          "scene": "errors",
+          "notices": []
+        }
+      }
+    },
+    "child_counter_in_shot_group": {
+      "shotS2": {
+        "id": "s2",
+        "start": 4,
+        "end": 8
+      },
+      "counterAddedInS1GroupThenGroupReboundToS2": {
+        "progress": [
+          {
+            "t": 4,
+            "value": 0,
+            "easing": "auto"
+          },
+          {
+            "t": 5.5,
+            "value": 1,
+            "easing": "auto"
+          }
+        ]
+      },
+      "counterAddedDirectlyIntoGroupAlreadyInS2": {
+        "progress": [
+          {
+            "t": 0,
+            "value": 0,
+            "easing": "auto"
+          },
+          {
+            "t": 1.5,
+            "value": 1,
+            "easing": "auto"
+          }
+        ]
+      },
+      "counterInS1BeforeRebind": {
+        "progress": [
+          {
+            "t": 0,
+            "value": 0,
+            "easing": "auto"
+          },
+          {
+            "t": 1.5,
+            "value": 1,
+            "easing": "auto"
+          }
+        ]
+      }
+    },
+    "line_attached_to_symbol_child": {
+      "elementAddResult": {
+        "ok": true,
+        "output": {
+          "scene": "errors",
+          "notices": [],
+          "id": "line-to-symbol-child"
+        }
+      },
+      "inspectLayoutDiagnostics": [
+        {
+          "code": "dangling_attachment",
+          "elementId": "line-to-symbol-child",
+          "shot": "s1",
+          "t": 2,
+          "message": "El extremo inicial está conectado al id inexistente «drop-shade»"
+        }
+      ]
+    }
+  }
+}

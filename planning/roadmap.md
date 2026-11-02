@@ -12,6 +12,8 @@ Specs in execution order. `Status` (`todo`, `in progress`, `done`) is maintained
 | 013 | promote-ringana-skin-perfection | done | 011, 004 |
 | 014 | brand-hierarchy-and-git-ignore | done | 011, 013 |
 | 015 | promote-pulse-and-botanica-learnings | done | 014 |
+| 016 | qa-template-and-lib-fixes | todo | 015 |
+| 017 | qa-skills-and-contracts-alignment | todo | 016 |
 
 ## Ideas
 

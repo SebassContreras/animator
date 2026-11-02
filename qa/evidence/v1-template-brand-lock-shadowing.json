@@ -1,0 +1,96 @@
+{
+ "size": [
+  1080,
+  1920
+ ],
+ "duration": 4,
+ "fps": 30,
+ "defaults": "flat",
+ "background": {
+  "color": "#1B1F4B",
+  "gradient": false,
+  "dots": false,
+  "spotlight": 0
+ },
+ "shots": [
+  {
+   "id": "s1",
+   "name": "Shot 1 · placeholder",
+   "start": 0,
+   "end": 4
+  }
+ ],
+ "elements": [
+  {
+   "border": {
+    "width": 0
+   },
+   "shadow": {
+    "enabled": false
+   },
+   "id": "s1-bg",
+   "kind": "rect",
+   "x": 0,
+   "y": 0,
+   "w": 1080,
+   "h": 1920,
+   "radius": 0,
+   "name": "Shot 1 · background",
+   "shot": "s1",
+   "fill": {
+    "gradient": false,
+    "opacity": 1,
+    "color": "#1B1F4B"
+   }
+  },
+  {
+   "border": {
+    "width": 0
+   },
+   "shadow": {
+    "enabled": false
+   },
+   "id": "s1-subject",
+   "kind": "ellipse",
+   "x": 340,
+   "y": 660,
+   "w": 400,
+   "h": 400,
+   "name": "Shot 1 · main subject",
+   "shot": "s1",
+   "fill": {
+    "gradient": false,
+    "opacity": 1,
+    "color": "#FF6B6B"
+   }
+  },
+  {
+   "id": "t1",
+   "kind": "text",
+   "name": "Shot 1 · title",
+   "x": 0,
+   "y": 1240,
+   "w": 1080,
+   "align": "center",
+   "text": "Title",
+   "font": "Inter",
+   "size": 88,
+   "weight": 800,
+   "color": "#FFFFFF",
+   "anim": {
+    "in": {
+     "kind": "slide",
+     "from": "down",
+     "delay": 0.3,
+     "duration": 0.4
+    },
+    "out": {
+     "kind": "fade",
+     "delay": 3.75,
+     "duration": 0.25
+    }
+   },
+   "shot": "s1"
+  }
+ ]
+}

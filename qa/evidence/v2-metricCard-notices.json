@@ -1,0 +1,8 @@
+{
+  "valid": true,
+  "notices": [
+    "Campo desconocido ignorado: compact.elements.s3-card.bgColor",
+    "Campo desconocido ignorado: compact.elements.s3-card.titleFont (¿quisiste decir «title»?)",
+    "Campo desconocido ignorado: compact.elements.s3-card.titleColor (¿quisiste decir «title»?)"
+  ]
+}

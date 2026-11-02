@@ -1,0 +1,46 @@
+{
+  "validate_fps_61": {
+    "code": "invalid_input",
+    "message": "compact.fps: Demasiado grande: se esperaba que número fuera <=60",
+    "path": "compact.fps"
+  },
+  "validate_duration_601": {
+    "code": "invalid_input",
+    "message": "compact.duration: Demasiado grande: se esperaba que número fuera <=600",
+    "path": "compact.duration"
+  },
+  "validate_width_7681": {
+    "code": "invalid_input",
+    "message": "compact.width: Demasiado grande: se esperaba que número fuera <=7680",
+    "path": "compact.width"
+  },
+  "validate_zero_dims": {
+    "code": "invalid_input",
+    "message": "compact.width: Demasiado pequeño: se esperaba que número fuera >0\ncompact.height: Demasiado pequeño: se esperaba que número fuera >0\ncompact.duration: Demasiado pequeño: se esperaba que número fuera >0\ncompact.fps: Demasiado pequeño: se esperaba que número fuera >0",
+    "path": "compact.width"
+  },
+  "build_over_limits": {
+    "code": "invalid_input",
+    "message": "compact.width: Demasiado grande: se esperaba que número fuera <=7680\ncompact.height: Demasiado grande: se esperaba que número fuera <=7680\ncompact.duration: Demasiado grande: se esperaba que número fuera <=600\ncompact.fps: Demasiado grande: se esperaba que número fuera <=60",
+    "path": "compact.width"
+  },
+  "update_over_limits": {
+    "code": "invalid_scene",
+    "message": "width: Demasiado grande: se esperaba que número fuera <=7680\nduration: Demasiado grande: se esperaba que número fuera <=600\nfps: Demasiado grande: se esperaba que número fuera <=60",
+    "path": "width",
+    "errors": [
+      {
+        "path": "width",
+        "message": "Demasiado grande: se esperaba que número fuera <=7680"
+      },
+      {
+        "path": "duration",
+        "message": "Demasiado grande: se esperaba que número fuera <=600"
+      },
+      {
+        "path": "fps",
+        "message": "Demasiado grande: se esperaba que número fuera <=60"
+      }
+    ]
+  }
+}
