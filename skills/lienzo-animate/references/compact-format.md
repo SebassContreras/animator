@@ -1,7 +1,7 @@
 # Compact format and tools
 
 `scene_build` takes `{ compact, project, save?, overwrite? }`. Without `save` it only returns the expanded scene and its `notices` (missing fonts, …); read them. Every field is optional and filled with the component's defaults.
-The full JSON schema lives in the Lienzo repo: `schemas/compact-scene.json`; component fields in its `docs/components.md`.
+The full JSON schema lives in the Lienzo repo: `schemas/compact-scene.json`; component fields in its `docs/components.md` (see also `references/elements.md` for compact schemas of data and feedback components). Note that `brandFonts(lock)` returns `{ family, weight }` objects, so pass `F.<role>.family` to raw component `font` properties (which require string family names), and top-level role overrides belong directly in `palette.json`.
 
 ```json
 {

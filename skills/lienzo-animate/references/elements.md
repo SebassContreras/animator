@@ -16,7 +16,15 @@ Live list: `component_list`. Coordinates: `x, y` = top-left corner; `w, h` = box
 | Stars, dust, fireflies, snow, rain | `particles` | `count` (1–300), `motion` (`drift` default, `fall`, `static`), `direction` (deg, 90 = down), `gravity`, `twinkle` (0–1), `speed`, `drift` (px a point wanders), `seed`, `dot{size,color,opacity}` (the colour lives here), `link{distance:0}` to remove the connecting lines (on by default), `template` (any element as the particle) |
 | Animated connectors and arrows | `line` / `arrow` | `from`/`to` (target element IDs: automatically tracks element positions and anchors dynamically, e.g. for network meshes; proven in pulse-chaos), `width`, `color`, `opacity`, `glow`, `bend`, `style`, `flow` |
 | 3D objects | `three` | `shape` (`cube, sphere, torus, cylinder, cone, plane, text, model`), `model` (.glb), `object.rotX/Y/Z`, `spin`, `material`, `light`, `camera.*` |
-| Data | `chart`, `counter`, `progress`, `table`, `list`, `steps`, `code`, `bubble`, `badge` | see `component_list` |
+| Badge / Pill | `badge` | `text`, `color` (text color), `fill:{color}` (pill background), `showIcon`, `icon` (Lucide name), `font` (`F.<role>.family`), `size`, `weight`, `padding`, `border` (auto-sized to content; no `w`/`h`) |
+| Data chart | `chart` | `type` (`"bar"` | `"line"` | `"donut"` | `"pie"`), `data` (`"Label: val\\n..."`), `showValues`, `palette` (`"ocean"` | `"sunset"` | `"forest"` | `"mono"`), `axis`, `hole` (donut 0..1), `font`, `color`, `x,y,w,h` |
+| Step progression | `steps` | `labels` (`"Step 1\\nStep 2"`), `layout` (`"horizontal"` | `"vertical"`), `active` (1-based index), `dot` (diameter), `color`, `idle`, `numberColor`, `textColor`, `font`, `x,y,w,h` |
+| Number counter | `counter` | `from`, `to`, `progress` (0..1 animated track), `decimals`, `separator`, `prefix`, `suffix`, `font`, `size`, `color`, `align`, `x,y,w,h` |
+| Progress bar/ring | `progress` | `value` (0..100), `style` (`"bar"` | `"ring"`), `thickness`, `color`, `track`, `showNumber`, `suffix`, `font`, `x,y,w,h` |
+| Bullet list | `list` | `items` (`"Item 1\\nItem 2"`), `bullet` (`"disc"` | `"check"` | `"arrow"` | `"dash"` | `"number"`), `bulletColor`, `spacing`, `reveal` (1..N), `font`, `color`, `x,y,w,h` |
+| Data table | `table` | `cells` (`"A1\\tB1\\nA2\\tB2"`), `header` (boolean), `headerColor`, `rowColor`, `stripeColor`, `borderColor`, `reveal` (rows), `font`, `color`, `headerTextColor`, `x,y,w,h` |
+| Code block | `code` | `code` (multiline string), `language`, `theme` (`"dark"` | `"light"`), `lineNumbers`, `typed` (character progress 0..1), `cursor`, `size`, `pad`, `x,y,w,h` |
+| Chat bubble | `bubble` | `text`, `side` (`"left"` | `"right"`), `author`, `showAvatar`, `initials`, `avatarColor`, `bubbleColor`, `font`, `size`, `color`, `typing` (0..1), `x,y,w,h` |
 | Voice subtitles | `subtitles` | created by `scene_generate_speech` (`asTrack: true` + `startOffset` for one voice clip per shot, stored in `audioTracks`) |
 
 ## Effects (most kinds)
