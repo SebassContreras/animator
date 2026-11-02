@@ -18,6 +18,20 @@ When an existing architectural design or requirement needs to change:
 
 ## 📜 Change Log
 
+### 2026-11-02 — Promotion of Pulse and Botanica Learnings (spec 015)
+
+- **Scope:** `lib/scene.cjs`, `lib/objects.cjs`, `skills/lienzo-animate/`, `planning/specs/015-promote-pulse-and-botanica-learnings.md`.
+- **What Changed:**
+  - `label()` in `lib/scene.cjs` accepts `extra.color` (defaulting to `palette.text.base` when omitted).
+  - `teardrop()` in `lib/objects.cjs` accepts `prefix` to avoid global duplicate ID errors when used multiple times in groups.
+  - `metricCard` promoted to `lib/objects.cjs` (tech counter card with border and glow; satisfies Spec 013 2-consumer condition).
+  - `radialLayout` promoted to `lib/objects.cjs` (radial node distribution and dynamic line connector generation).
+  - Skills documentation updated in `skills/lienzo-animate/` for trailing keyframe easing constraints and dynamic line connector syntax.
+- **Why:**
+  - Video close-out findings from `pulse-speed`, `pulse-chaos`, and `botanica-fresh` proved reusable pieces and exposed library defects in `label` and `teardrop`.
+- **Replaced Items:**
+  - Hardcoded `palette.text.base` color in `label()`; static-only IDs in `teardrop()`.
+
 ### 2026-11-02 — Brand Directory Hierarchy and User Video Git-Ignorance
 
 - **Scope:** `videos/` folder structure, `ARCHITECTURE.md`, `PRODUCT.md`, `DESIGN.md`, `README.md`, skills (`skills/lienzo-*`), `.gitignore`, and video test suites (`tests/videos/`).
