@@ -65,20 +65,24 @@ Agent tasks; the user confirms each promotion during close-out.
 - D8. Pros: nothing proven in the first three videos is left forgotten, and it is the first real run of the close-out step. Cons: up to three new specs and more work now. Mitigation: the user's confirmation filters out weak findings, and a video with nothing confirmed opens no spec.
 
 ## Tasks
-- [x] 004/T001 [agent] In `videos/_template/learnings.md`, make the Piece and Rule placeholders show the optional `— promoted: <path>` suffix and the Engine placeholder the required `— tracks: <url>` suffix — covers D1
+- [x] 004/T001 [agent] In `videos/_template/learnings.md`, make the Piece and Rule placeholders show the optional `— promoted: <path>` suffix and the Engine placeholder the required `— tracks: <url>` suffix — covers R1, D1
 - [x] 004/T002 [agent] Move the `viaje` session of `LOG.md` into `videos/viaje/learnings.md` under its kind sections, verify existing promotions via search, set engine tracking to TODO, and draft Lienzo issue templates — covers D2, D3, R1, R3
 - [x] 004/T003 [agent] Migrate the `ringana` / `omega` session into `videos/ringana-omega/learnings.md` under its kind sections, verify existing promotions, and draft Lienzo issue templates — covers D2, D3, R1, R3
 - [x] 004/T004 [agent] Migrate the `omega-v2` session into `videos/ringana-omega-v2/learnings.md` under its kind sections, verify existing promotions, and draft Lienzo issue templates — covers D2, D3, R1, R3
-- [x] 004/T005 [human] File one issue in the Lienzo repo per engine finding (drafts in the T002–T004 reports) and give the agent the URLs — covers D4
+- [x] 004/T005 [human] File one issue in the Lienzo repo per engine finding (drafts in the T002–T004 reports) and give the agent the URLs — covers R5, D4
 - [x] 004/T006 [agent] Replace every `— tracks: TODO` in the three videos' `learnings.md` with its Lienzo issue URL — covers D4, R5
 - [x] 004/T007 [agent] Test in `tests/videos/learnings.test.cjs` using parameterized table-driven tests that each video's `learnings.md` satisfies structural and engine tracking invariants across partitions — covers R1, R5, D7
-- [x] 004/T008 [agent] Re-point every mention of `LOG.md` outside history (`README.md`, `PRODUCT.md`, `skills/lienzo-art-direction/SKILL.md`, `skills/lienzo-art-direction/references/motion-polish.md`, the `videos/viaje/scene.gen.cjs` comment) to the video's `learnings.md` or the skill file that holds the rule; golden tests stay green — covers D5
+- [x] 004/T008 [agent] Re-point every mention of `LOG.md` outside history (`README.md`, `PRODUCT.md`, `skills/lienzo-art-direction/SKILL.md`, `skills/lienzo-art-direction/references/motion-polish.md`, the `videos/viaje/scene.gen.cjs` comment) to the video's `learnings.md` or the skill file that holds the rule; golden tests stay green — covers R4, D5
 - [x] 004/T009 [agent] Delete `LOG.md` and verify via repository-wide search that no tracked files retain dangling references to it — covers D5, R4
 - [x] 004/T010 [agent] Add step 8 "Close out" to `skills/lienzo-animate/SKILL.md`: after approval, write findings by kind, confirm classification with the user, open a `NNN-promote-<slug>` spec using `spectrace-plan` for confirmed Piece/Rule findings, and ask the user to file Lienzo issues for Engine findings; in Joint mode, point to `learnings.md` — covers D6, R2
       reviewed 2026-10-25: Promotion workflow supports both video-proven and Lienzo native-feature wrappers
 - [x] 004/T011 [human] On the next approved video, run close-out and confirm the classification and the promotion spec it opens — covers R2
       verified: confirmed close-out workflow and promotion spec generation on approved video
-- [x] 004/T012 [agent] List the unmarked Piece and Rule findings of `viaje`, `ringana-omega` and `ringana-omega-v2`, with the target file proposed for each, in the task report — covers D8
-- [x] 004/T013 [human] Confirm, move or drop each finding listed in T012 — covers D8
-- [x] 004/T014 [agent] For each video with confirmed findings, scaffold its `NNN-promote-<slug>` spec using `spectrace-plan` (one R item per finding) — covers D8, R2
+- [x] 004/T012 [agent] List the unmarked Piece and Rule findings of `viaje`, `ringana-omega` and `ringana-omega-v2`, with the target file proposed for each, in the task report — covers R2, R3, D8
+- [x] 004/T013 [human] Confirm, move or drop each finding listed in T012 — covers R2, R3, D8
+- [x] 004/T014 [agent] For each video with confirmed findings, scaffold its `NNN-promote-<slug>` spec using `spectrace-plan` (one R item per finding) — covers R2, D8
       reviewed 2026-10-25: Promotion workflow supports both video-proven and Lienzo native-feature wrappers
+
+
+## Changes
+- 2026-10-31: R5 and D4 superseded by 013/R11 and 013/D7 (Engine findings link directly to Lienzo specs in addition to GitHub issue URLs).

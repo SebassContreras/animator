@@ -64,7 +64,7 @@ Agent tasks.
   - verified: inspected gotchas.md table and motion.md tracks section documenting dead trailing easing rule
 - [x] 015/T007 [agent] `skills/lienzo-animate/references/elements.md`: document dynamic `line` connectors (`from`/`to` target bindings) and scene-wide ID uniqueness constraint — covers R6, D5
   - verified: inspected elements.md dynamic line entry and Global ID uniqueness section
-- [x] 015/T008 [agent] Mark promoted findings: append `— promoted: <path>` to confirmed findings in `videos/pulse-metrics/speed/learnings.md`, `videos/pulse-metrics/chaos/learnings.md`, and `videos/botanica-lab/fresh/learnings.md` — covers D7
+- [x] 015/T008 [agent] Mark promoted findings: append `— promoted: <path>` to confirmed findings in `videos/pulse-metrics/speed/learnings.md`, `videos/pulse-metrics/chaos/learnings.md`, and `videos/botanica-lab/fresh/learnings.md` — covers R1–R6, D7
   - verified: confirmed all promoted findings end with — promoted: <path> across speed, chaos, and fresh learnings.md
-- [x] 015/T009 [agent] Verify: full test suite passes with `pnpm test` across all unit, video, and skill guard tests — covers R1–R7
+- [x] 015/T009 [agent] Verify: full test suite passes with `pnpm test` across all unit, video, and skill guard tests — covers R1–R7, D1–D7
   - verified: `pnpm test` ran 145 tests across all suites with 145 passing and 0 failures
