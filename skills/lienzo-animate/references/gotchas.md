@@ -22,3 +22,4 @@ All of these were reproduced against Lienzo (after its spec 062; rows fixed by s
 | Text renders in another font | the font is not installed in the project | read the `notices` of `scene_build` / `scene_validate` ("no está instalada"); `font_install` each family used |
 | A `rect` has rounded corners | `radius` defaults to a non-zero value | `"radius": 0` |
 | `out_of_bounds` on a legacy group shot that zooms | the shot group grows through `@scale` | expected for legacy group shots; use the native camera instead |
+| Warning on keyframe track: "Dead easing on last keyframe" | defining an easing on the trailing keyframe `[t, value, easing]` of a track | omit easing on the final keyframe `[t, value]` or use `"auto"`/`"linear"`; easings only interpolate towards a subsequent keyframe (Lienzo Spec 065, proven in pulse-speed) |

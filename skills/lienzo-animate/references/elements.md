@@ -14,7 +14,7 @@ Live list: `component_list`. Coordinates: `x, y` = top-left corner; `w, h` = box
 | Icons | `icon` | `icon` (Lucide name), `color`, `stroke`, `tile` |
 | Photos / PNG or SVG illustrations | `image` | `src` (from `asset_add`), `crop` (`image_trim` removes transparent margins), `radius`, `opacity` |
 | Stars, dust, fireflies, snow, rain | `particles` | `count` (1–300), `motion` (`drift` default, `fall`, `static`), `direction` (deg, 90 = down), `gravity`, `twinkle` (0–1), `speed`, `drift` (px a point wanders), `seed`, `dot{size,color,opacity}` (the colour lives here), `link{distance:0}` to remove the connecting lines (on by default), `template` (any element as the particle) |
-| Animated connectors and arrows | `line` / `arrow` | `from`/`to`, `bend`, `style`, `flow` |
+| Animated connectors and arrows | `line` / `arrow` | `from`/`to` (target element IDs: automatically tracks element positions and anchors dynamically, e.g. for network meshes; proven in pulse-chaos), `width`, `color`, `opacity`, `glow`, `bend`, `style`, `flow` |
 | 3D objects | `three` | `shape` (`cube, sphere, torus, cylinder, cone, plane, text, model`), `model` (.glb), `object.rotX/Y/Z`, `spin`, `material`, `light`, `camera.*` |
 | Data | `chart`, `counter`, `progress`, `table`, `list`, `steps`, `code`, `bubble`, `badge` | see `component_list` |
 | Voice subtitles | `subtitles` | created by `scene_generate_speech` (`asTrack: true` + `startOffset` for one voice clip per shot, stored in `audioTracks`) |
@@ -28,3 +28,7 @@ A partial object in the compact scene is merged with the defaults (`{"effects":{
 ## Draw order
 
 Array order is layer order: the first element is at the back. Same inside a group.
+
+## Global ID uniqueness
+
+In Lienzo, all element IDs are strictly validated across the entire scene graph, including nested children inside separate groups. Any duplicate ID raises a fatal `duplicate_id` error during `scene_build`. When repeating multi-element symbols or helpers (such as `teardrop`), pass an explicit prefix or generate distinct IDs for each instance (proven in botanica-fresh).

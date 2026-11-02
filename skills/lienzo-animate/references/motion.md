@@ -28,7 +28,7 @@ Three layers combine on each element, in this order: **tracks** (keyframes), the
 }
 ```
 
-- Tuple `[t, value, easing]`; the easing shapes the segment **from** that keyframe to the next. Before the first and after the last, the value holds, unless the track repeats.
+- Tuple `[t, value, easing]`; the easing shapes the segment **from** that keyframe to the next. Before the first and after the last, the value holds, unless the track repeats. **Never define an easing on the final keyframe** of a track (`[t, value]`), because easings only interpolate towards a subsequent keyframe; Lienzo raises a dead easing notice on trailing keyframe easings (Lienzo Spec 065, proven in pulse-speed).
 - Animatable paths per kind: `component_list`. Common ones: `x, y, w, h, opacity` (every kind, groups included; a group's opacity multiplies its children's), `fill.color`, and the channels `@rotate` (degrees) and `@scale`, both around `origin`.
 - Easings: `linear, ease, ease-in, ease-out, ease-in-out, quad-*, cubic-*, back-*, bounce-*, elastic-*` (`-in`, `-out`, `-in-out`), plus `step`/`hold` (the value jumps at the next keyframe).
 - **Repeat:** the object form `{ "keys": [...], "repeat": "loop" | "pingpong", "until": 6 }` replays the keys (pingpong goes back and forth) until `until` (default: the scene end). A plain array does not repeat: the value freezes after the last keyframe. `keyframe_set` takes `repeat` and `until` too.
