@@ -7,7 +7,7 @@ Instructions and operational constraints for AI coding agents.
 - **Verification:**
   - Narrowest test: `node --test tests/<path>.test.cjs`
   - Full suite: `pnpm test`
-- **Language Hard Rule:** English in all code files, markdown documents, and on-screen text; Spanish only in conversation with the user.
+- **Language Hard Rule:** English in all code files, markdown documents, and specs. On-screen text and voice-over default to English unless `brief.md` or `brand.md` explicitly specifies another target language (e.g. Spanish or bilingual deliverables); Spanish only in conversation with the user.
 - **Commits:** Standard Conventional Commits (`feat:`, `fix:`, `docs:`, `refactor:`). No rigid hook trailers or custom formats.
 - **Spectrace Skills:** `.agents/skills/spectrace-*` are installed from `../spectrace` (pinned in `skills-lock.json`). Never edit them here; change them in spectrace and reinstall.
 

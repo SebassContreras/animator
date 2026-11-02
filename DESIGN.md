@@ -44,7 +44,7 @@ Canvas defaults (`width`, `height`, `fps`, `duration`) are inherited from `lock.
 
 ## 👁️ Typography & Readability
 
-- **Language:** All on-screen text is English.
+- **Language:** All code, markdown documentation, and specs are in English. On-screen text and voice-over default to English unless `brief.md` or `brand.md` explicitly specifies another target language (such as Spanish or bilingual deliverables).
 - **Contrast:** Text contrast ≥ 4.5:1 against what is behind it.
 - **Legibility:** Titles ≥ 64 px on 1080-wide canvases; ≤ 7 words per line and ≤ 2 lines on screen at once (`skills/lienzo-storyboard/references/craft.md`).
 - **Pacing:** Each line stays on screen ≥ 1.5 s; the final image holds ≥ 1.5 s with the message.

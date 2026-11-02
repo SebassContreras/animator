@@ -18,6 +18,17 @@ When an existing architectural design or requirement needs to change:
 
 ## 📜 Change Log
 
+### 2026-11-02 — Target Language Policy for On-Screen Text and Voice-Over (spec 017)
+
+- **Scope:** `AGENTS.md`, `DESIGN.md` § Typography & Readability, `planning/specs/017-qa-skills-and-contracts-alignment.md`.
+- **What Changed:**
+  - Code, markdown documentation, and specs remain strictly in English.
+  - On-screen text and voice-over default to English, but may follow another target language (such as Spanish or bilingual `ES` + `EN` deliverables) when explicitly specified by `brief.md` or the brand guide (`brand.md`).
+- **Why:**
+  - The unconditional rule ("All on-screen text is English") conflicted with brand guides and briefs that require Spanish or multilingual copy (`V6 formats`, `qa/findings.md: F-25`).
+- **Replaced Items:**
+  - Unconditional English requirement for on-screen text in `AGENTS.md:10` and `DESIGN.md:47`.
+
 ### 2026-11-02 — Seven Engineering Principles Alignment (Spectrace Template)
 
 - **Scope:** `ENGINEERING.md` principles.
