@@ -53,11 +53,11 @@ Every scene, asset and export tool needs `project` (no default). Targets are an 
 | | `scene_build` | build/save the compact scene (the main route) |
 | | `scene_create` | empty scene (`mode: "static"` or `"video"`) |
 | | `scene_update` | patch `width`, `height`, `duration`, `fps`, `mode`, `audio`, `audioTracks`, `symbols` |
-| | `scene_rename` / `scene_delete` | manage scene files (`name`) |
-| | `background_set` | background from a preset or `values` |
+| | `scene_rename` / `scene_delete` | manage scene files (`scene_rename` takes `{ project, from, to }`; `scene_delete` takes `name`) |
+| | `background_set` | background from a preset or `patch` object |
 | | `shot_set` | create, edit or `remove` a shot (start, end, transition, camera) |
 | | `scene_generate_speech` | TTS voice + synced subtitles; `asTrack: true` + `startOffset` adds one track per shot |
-| Check | `scene_validate` | first failing path + notices, without saving |
+| Check | `scene_validate` | validate without saving, returns `{ valid, errors, notices }` with all failing paths |
 | | `scene_inspect_layout` | overlaps, off-canvas, broken lines, contrast, drawn boxes at `times` |
 | | `scene_preview` | PNG at time `t` (`scale` 0.3–0.5; `out` saves it in `exports/`) |
 | | `scene_export` | `format`: `png`, `gif`, `mp4` (WebM without H.264) |
