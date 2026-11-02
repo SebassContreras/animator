@@ -18,6 +18,17 @@ When an existing architectural design or requirement needs to change:
 
 ## 📜 Change Log
 
+### 2026-11-02 — Canvas Defaults Inheritance in Video Template (spec 016)
+
+- **Scope:** `videos/_template/scene.gen.cjs`, `DESIGN.md` § Brand inheritance, `planning/specs/016-qa-template-and-lib-fixes.md`.
+- **What Changed:**
+  - `videos/_template/scene.gen.cjs` inherits canvas dimensions, duration, and FPS from `lock.canvas` (`const { width: W, height: H, duration: D, fps: FPS } = lock.canvas;`).
+  - `DESIGN.md` § Brand inheritance updated: canvas defaults (`width`, `height`, `fps`, `duration`) inherit from `lock.canvas`, with individual generators retaining the ability to override them.
+- **Why:**
+  - In Spec 011, `width`, `height`, and `fps` were kept hardcoded in each generator (`DESIGN.md:36`). QA battery `V6 formats` (`qa/findings.md: F-13`) revealed that non-1080×1920 or non-30fps brands required manual edits across new video scripts. Inheriting all canvas defaults from `lock.canvas` makes templates format-agnostic.
+- **Replaced Items:**
+  - Spec 011 / `DESIGN.md:36` rule ("Of the canvas, only `duration` is inherited; `width`, `height` and `fps` stay in each generator").
+
 ### 2026-11-02 — Promotion of Pulse and Botanica Learnings (spec 015)
 
 - **Scope:** `lib/scene.cjs`, `lib/objects.cjs`, `skills/lienzo-animate/`, `planning/specs/015-promote-pulse-and-botanica-learnings.md`.

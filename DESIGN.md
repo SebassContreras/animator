@@ -30,10 +30,10 @@ What the video sets wins; anything it leaves out comes from the brand; anything 
 | Value | Video | Brand (`brand.lock.json`) | System |
 |---|---|---|---|
 | colour role or tone | `palette.json` | brand palette + derived tones | none: a missing required role fails, naming it |
-| fonts | the generator passes its own `fonts` to `sceneHelpers` | `brandFonts(lock)`: heading at its heaviest weight, body at its lightest | `DEFAULT_FONTS`: Inter 800 / Inter 400 |
-| duration | the brief | `canvas.duration`, confirmed by the user | never reached |
+| fonts | the generator passes its own `fonts` to `sceneHelpers` | `brandFonts(lock)`: heading & accent at heaviest weight, body & mono at lightest | `DEFAULT_FONTS`: Inter 800 / Inter 400 |
+| canvas defaults | the generator | `lock.canvas` (`width`, `height`, `fps`, `duration`) | `1080×1920`, `fps: 30`, `duration: 4` |
 
-Of the canvas, only `duration` is inherited; `width`, `height` and `fps` stay in each generator.
+Canvas defaults (`width`, `height`, `fps`, `duration`) are inherited from `lock.canvas` by default in the template (`videos/_template/scene.gen.cjs`), and generators can override any of them.
 
 ### 2. Primitive Defaults
 - **Flat Scenes:** Every compact scene sets `"defaults": "flat"`, and the background turns off `gradient`, `dots`, and `spotlight` explicitly.
