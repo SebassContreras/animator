@@ -18,6 +18,17 @@ When an existing architectural design or requirement needs to change:
 
 ## 📜 Change Log
 
+### 2026-11-02 — Seven Engineering Principles Alignment (Spectrace Template)
+
+- **Scope:** `ENGINEERING.md` principles.
+- **What Changed:**
+  - `ENGINEERING.md` lists the seven Spectrace principles in template order: 1 KISS/YAGNI, 2 SRP, 3 DRY via composition, 4 anti-corruption layer / DIP, 5 stack standards, 6 trade-offs, 7 research.
+  - The former §5 (small interfaces & pure functions) is merged into §5 Follow the Stack's Standards as a pure functions guideline. Former §6, §7, and §8 are renumbered to §5, §6, and §7.
+- **Why:**
+  - Spectrace audits cite principles by number (`ENG-1` … `ENG-7`). With eight sections, citations such as `ENG-5` (stack conventions), `ENG-6` (trade-offs), and `ENG-7` (research) pointed at shifted headings. Renumbering aligns Animator with the Spectrace 7-principle standard template.
+- **Replaced Items:**
+  - Eight-principle layout in `ENGINEERING.md`.
+
 ### 2026-11-02 — Canvas Defaults Inheritance in Video Template (spec 016)
 
 - **Scope:** `videos/_template/scene.gen.cjs`, `DESIGN.md` § Brand inheritance, `planning/specs/016-qa-template-and-lib-fixes.md`.

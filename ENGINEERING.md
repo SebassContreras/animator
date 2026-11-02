@@ -25,24 +25,21 @@ This document defines the craftsmanship, code quality standards, and software en
 - The only boundary with Lienzo is the compact scene JSON contract: generators and `lib/` emit plain data and never call the Lienzo CLI or MCP tools.
 - Wrap an external tool in an adapter only when code actually starts calling it (2+ call sites or a test seam), per KISS / YAGNI above.
 
-### 5. Small Interfaces & Pure Functions
-- Prefer small function signatures and pure functions that take inputs (e.g., coordinates, dimensions, palette) and return deterministic scene element objects.
-- Pure functions ensure generator code can be unit-tested without disk or engine side-effects.
-
-### 6. Follow the Stack's Standards
+### 5. Follow the Stack's Standards
 - Strictly adhere to Node 24 CommonJS (`.cjs`) conventions.
 - Zero runtime dependencies: keep the runtime lean and free of unnecessary npm packages.
+- Prefer small function signatures and pure functions that take inputs (e.g., coordinates, dimensions, palette) and return deterministic scene element objects without disk or engine side-effects.
 - Standard casing conventions:
   - `kebab-case`: files, directories, Markdown documents (e.g., `scene.gen.cjs`, `004-learning-promotion.md`).
   - `camelCase`: functions, variables, object properties (e.g., `makePalette`, `nativeShot`).
   - `UPPER_SNAKE_CASE`: constants, default configuration objects.
 - Each `lib/` module opens with a one-line comment stating its responsibility; comments cite the spec item behind a non-obvious choice (e.g., `(010/D3)`).
 
-### 7. Document Trade-offs
+### 6. Document Trade-offs
 - Every significant technical choice has trade-offs.
 - Document pros, cons, and active mitigations directly in the relevant spec, code comments, or `CHANGES.md`.
 
-### 8. Validate with Research — Only When It Changes the Decision
+### 7. Validate with Research — Only When It Changes the Decision
 - Research is not a ritual. Look it up only when at least one holds:
   - the choice is hard to reverse (file format, protocol, public surface, contract shape);
   - the answer is a fact outside this repository (Node API behaviour, Lienzo engine features, library versions, platform limits, licence terms);
