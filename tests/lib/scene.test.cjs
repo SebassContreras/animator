@@ -1,4 +1,5 @@
 // lib/ pieces take their colours from the palette argument (002/R3, A11).
+// label extra.color overrides palette.text.base (015/R1, D1).
 const { test } = require("node:test");
 const assert = require("node:assert/strict");
 const { sceneHelpers, nativeShot } = require("../../lib/scene.cjs");
@@ -28,6 +29,24 @@ test("label is a frame-wide centred text element coloured from the palette", () 
   // Assert
   assert.deepEqual([el.kind, el.x, el.w, el.align, el.color, el.shot], ["text", 0, 1080, "center", "#FFE08A", "s1"]);
 });
+
+// Table test covering extra.color partitions: custom color, undefined in extra, extra omitted (015/R1, D1)
+const LABEL_COLOR_CASES = [
+  ["custom extra.color", { color: "#FF5500" }, "#FF5500"],
+  ["extra.color undefined", { color: undefined }, "#FFE08A"],
+  ["extra omitted", undefined, "#FFE08A"],
+];
+
+for (const [name, extra, expected] of LABEL_COLOR_CASES) {
+  test(`label color partition: ${name}`, () => {
+    // Arrange
+    const { label } = sceneHelpers({ w: 1080, h: 1920, duration: 10, palette: { text: { base: "#FFE08A" } }, fonts: FONTS });
+    // Act
+    const el = extra ? label("t", "Text", "Hello", 100, 60, 0, 5, extra) : label("t", "Text", "Hello", 100, 60, 0, 5);
+    // Assert
+    assert.equal(el.color, expected);
+  });
+}
 
 test("nativeShot writes a shots entry and omits camera when none is given", () => {
   // Arrange
