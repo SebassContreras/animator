@@ -10,20 +10,34 @@ const KINDS = ["Piece", "Rule", "Engine", "Local"];
 const TRACKED = /— tracks: (https:\/\/github\.com\/[^/\s]+\/lienzo\/issues\/\d+|Lienzo spec \d{3})$/;
 const isTracked = (bullet) => TRACKED.test(bullet);
 
-// every video workspace, plus the template, so a copy passes unedited (013/D1)
-const VIDEOS = fs.readdirSync(path.join(root, "videos"), { withFileTypes: true })
-  .filter((entry) => entry.isDirectory() && (!entry.name.startsWith("_") || entry.name === "_template"))
-  .map((entry) => entry.name);
+// Recursively find all video workspaces containing learnings.md (videos/<brand>/<video> and _template)
+const findLearningsDirs = (dir = path.join(root, "videos"), prefix = "") => {
+  const results = [];
+  if (!fs.existsSync(dir)) return results;
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    if (!entry.isDirectory() || entry.name.startsWith(".") || entry.name.startsWith("tmp-")) continue;
+    const subPath = path.join(dir, entry.name);
+    const rel = prefix ? `${prefix}/${entry.name}` : entry.name;
+    if (fs.existsSync(path.join(subPath, "learnings.md"))) {
+      results.push({ slug: rel, path: subPath });
+    } else {
+      results.push(...findLearningsDirs(subPath, rel));
+    }
+  }
+  return results;
+};
+
+const VIDEOS = findLearningsDirs();
 
 // Splits learnings.md into its `## ` sections: [{ heading, bullets }] in file order.
-const sections = (slug) => fs.readFileSync(path.join(root, "videos", slug, "learnings.md"), "utf8")
+const sections = (filePath) => fs.readFileSync(path.join(filePath, "learnings.md"), "utf8")
   .split(/\r?\n(?=## )/).slice(1)
   .map((block) => {
     const [heading, ...lines] = block.split(/\r?\n/);
     return { heading: heading.slice(3).trim(), bullets: lines.filter((l) => l.startsWith("- ")) };
   });
 
-const untracked = (slug) => sections(slug)
+const untracked = (filePath) => sections(filePath)
   .filter((s) => s.heading === "Engine")
   .flatMap((s) => s.bullets.filter((b) => !isTracked(b)));
 
@@ -47,17 +61,17 @@ for (const [partition, bullet, expected] of TRACKING_CASES) {
 }
 
 // Parameterized table tests asserting structure and tracking invariants across videos
-for (const slug of VIDEOS) {
+for (const { slug, path: itemPath } of VIDEOS) {
   test(`${slug} learnings has the four kind sections once and in order`, () => {
     // Arrange / Act
-    const headings = sections(slug).map((s) => s.heading);
+    const headings = sections(itemPath).map((s) => s.heading);
     // Assert
     assert.deepEqual(headings, KINDS);
   });
 
   test(`every ${slug} engine finding is tracked by a Lienzo issue or spec`, () => {
     // Arrange / Act
-    const missing = untracked(slug);
+    const missing = untracked(itemPath);
     // Assert
     assert.deepEqual(missing, []);
   });
@@ -65,7 +79,7 @@ for (const slug of VIDEOS) {
 
 test("the template's learnings sections hold no bullets", () => {
   // Arrange / Act
-  const bullets = sections("_template").flatMap((s) => s.bullets);
+  const bullets = sections(path.join(root, "videos", "_template")).flatMap((s) => s.bullets);
   // Assert
   assert.deepEqual(bullets, []);
 });

@@ -30,20 +30,22 @@ idea ──▶ research ──▶ storyboard ──▶ art direction ──▶ b
 *.md (root)        project contracts: PRODUCT, ARCHITECTURE, ENGINEERING, DESIGN, TESTING, CHANGES, AGENTS
 skills/            the four skills above
 lib/               shared, palette-driven generator pieces (flat primitives, scene, environment, objects, motion, palette, brand snapshot)
-videos/_template/  the smallest working video, copied to start a new one
-videos/<slug>/     one folder per video:
-  brief.md           the storyboard
-  research.md        facts and sources (when the video states facts)
-  brand.lock.json    snapshot of the Lienzo project's brand (written by lienzo-storyboard, never by hand)
-  palette.json       the video's colour overrides and story roles (brand colours come from the snapshot)
-  scene.gen.cjs      Node script that writes the scene
-  scene.json         the compact scene Lienzo builds
-  learnings.md       what this video taught us
+videos/_template/            the smallest working video, copied to start a new one
+videos/<brand>/              brand workspace (gitignored; brand guide and snapshots)
+  brand.lock.json            snapshot of the Lienzo project's brand
+  brand.md                   brand identity, tone and preferences
+  <video>/                   one folder per video:
+    brief.md                 the storyboard
+    research.md              facts and sources (when the video states facts)
+    palette.json             the video's colour overrides and story roles (brand colours come from brand root)
+    scene.gen.cjs            Node script that writes the scene
+    scene.json               the compact scene Lienzo builds
+    learnings.md             what this video taught us
 tests/             node --test suites
 planning/          roadmap and specs (spectrace)
 ```
 
-Example video: `videos/ringana-omega-v2/` (a 24 s product reel with voice-over).
+Example videos: `videos/ringana/omega-v2/` (a 24 s product reel with voice-over), `videos/pulse-metrics/speed/` (metrics SaaS), `videos/botanica-lab/fresh/` (organic skincare).
 
 ## Requirements
 
@@ -67,9 +69,9 @@ Example video: `videos/ringana-omega-v2/` (a 24 s product reel with voice-over).
 
 ## Make a video
 
-1. Tell the agent your idea.
-2. If it states real facts, `lienzo-research` writes `videos/<slug>/research.md` with sources.
-3. `lienzo-storyboard` copies `videos/_template/` and writes `videos/<slug>/brief.md`, with `lienzo-art-direction` choosing the style and palette. Review and adjust it.
+1. Tell the agent your idea and target brand.
+2. If it states real facts, `lienzo-research` writes `videos/<brand>/<video>/research.md` with sources.
+3. `lienzo-storyboard` sets up `videos/<brand>/` and copies `videos/_template/` to `videos/<brand>/<video>/`, writing `brief.md`, with `lienzo-art-direction` choosing the style and palette. Review and adjust it.
 4. `lienzo-research` verifies every claim in the brief.
 5. Ask the agent to build it; `lienzo-animate` follows the brief's "Build prompt".
 6. Review the preview in Lienzo and ask for fixes in plain words.
@@ -78,7 +80,7 @@ Example video: `videos/ringana-omega-v2/` (a 24 s product reel with voice-over).
 ## Regenerate a scene and run the tests
 
 ```sh
-node videos/ringana-omega-v2/scene.gen.cjs   # writes videos/ringana-omega-v2/scene.json
+node videos/ringana/omega-v2/scene.gen.cjs  # writes videos/ringana/omega-v2/scene.json
 pnpm test                                    # generators still produce their known scenes
 ```
 

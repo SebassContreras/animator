@@ -7,17 +7,18 @@ description: Turn a concrete idea into an artistic, buildable storyboard for a L
 
 You are the director. The user brings an idea; you decide **how to tell it visually** and write a brief that another agent (with `lienzo-animate`) can build without asking anything.
 
-Output: the video folder `videos/<slug>/`, copied from `videos/_template/`, with `brief.md` filled in following `references/brief-template.md` exactly. Do not write scene JSON here.
+Output: the video folder `videos/<brand>/<video>/`, copied from `videos/_template/`, with `brief.md` filled in following `references/brief-template.md` exactly. Do not write scene JSON here.
 
 ## Workflow
 
-0a. **Create the video folder.** Pick a short kebab-case slug and copy the template from the Animator repo root (same command in PowerShell and bash; it fails instead of overwriting an existing video):
-   `node -e "require('fs').cpSync('videos/_template', 'videos/<slug>', { recursive: true, force: false, errorOnExist: true })"`
+0a. **Create the brand and video folders.** Pick kebab-case identifiers for `<brand>` and `<video>`. Create the brand folder and copy the template from the Animator repo root (fails instead of overwriting an existing video):
+   `node -e "const fs=require('fs'); fs.mkdirSync('videos/<brand>', { recursive: true }); fs.cpSync('videos/_template', 'videos/<brand>/<video>', { recursive: true, force: false, errorOnExist: true })"`
    Every later step fills the copied files in place.
-0. **Research first when the piece states facts.** If the idea involves real-world facts (science, history, health, numbers, how something works, products), run the `lienzo-research` skill in research mode before anything else, and build the story only from its fact sheet (it fills the copied `videos/<slug>/research.md`). Purely fictional or emotional pieces can skip this.
+0. **Research first when the piece states facts.** If the idea involves real-world facts (science, history, health, numbers, how something works, products), run the `lienzo-research` skill in research mode before anything else, and build the story only from its fact sheet (it fills the copied `videos/<brand>/<video>/research.md`). Purely fictional or emotional pieces can skip this.
 1. **Understand the idea and read the brand.** Extract: the message (one sentence), the audience, the platform and format, the duration, and the mandatory text. The Lienzo project owns the brand; the video records only what it changes.
-   - **Snapshot the brand.** Call `project_inspect` for the project, save its JSON result to a temp file, and write `videos/<slug>/brand.lock.json` with this command from the Animator repo root (never type lock values by hand, and never use shell redirection: it re-encodes the file on PowerShell):
-     `node -e "const fs=require('fs');const {brandLock,checkBrandLock}=require('./lib/brand.cjs');const [src,out]=process.argv.slice(1);fs.writeFileSync(out,JSON.stringify(checkBrandLock(brandLock(JSON.parse(fs.readFileSync(src,'utf8')))),null,1))" <temp file> videos/<slug>/brand.lock.json`
+   - **Snapshot the brand.** Call `project_inspect` for the project, save its JSON result to a temp file, and write `videos/<brand>/brand.lock.json` with this command from the Animator repo root (never type lock values by hand, and never use shell redirection: it re-encodes the file on PowerShell):
+     `node -e "const fs=require('fs');const {brandLock,checkBrandLock}=require('./lib/brand.cjs');const [src,out]=process.argv.slice(1);fs.writeFileSync(out,JSON.stringify(checkBrandLock(brandLock(JSON.parse(fs.readFileSync(src,'utf8')))),null,1))" <temp file> videos/<brand>/brand.lock.json`
+   - **Record brand preferences.** Write or update `videos/<brand>/brand.md` summarizing the brand's voice, aesthetic preferences, and project guidelines.
    - **Apply the guide** (`guide` in the snapshot): audience, tone, mandatory text, disclaimers, format and length. Fill the brief's `## Brand` section.
    - **Duration.** Use the one the user gives. If none, take `canvas.duration` from the snapshot and ask the user to confirm it: Lienzo always has a value (5 s by default), so a brand that never set it looks the same as one that chose 5 s. State the guide's length rules next to it, and write in the brief where the duration came from.
    - **Check the length against the goal.** The goal is `completion` unless the user says `reach`. Compare the duration with the guide's length rules (the duration figures it states, e.g. "## Format and length"); when it states none, with the bands in `references/craft.md` → "Platform length" (do not copy its figures here). Inside the completion band, or inside the reach band with goal `reach` → accepted. Anything else → say so and ask the user to confirm it or pick a value in the band; past the note's long-video limit, quote its warning. Refuse only a length the guide forbids, and ask for one it allows. When the duration came from `canvas.duration`, this and its confirmation are one question. Write the goal and the result in the brief's Duration line.
@@ -29,7 +30,7 @@ Output: the video folder `videos/<slug>/`, copied from `videos/_template/`, with
 5. **Write each shot.** Framing, what is on screen (as buildable pieces), what moves and how, text, transition out. Name every object the way it should appear in the layers panel.
 6. **Feasibility pass.** Check every shot against `references/feasibility.md`. Replace anything Lienzo cannot do with an equivalent it can, and note the swap under "Feasibility notes".
 6b. **Facts pass.** Every on-screen text or visual that asserts a fact must cite a fact ID (`F3`) from the fact sheet, in the shot's Text line. No ID, no claim. Then run `lienzo-research` in verify mode on the finished brief.
-7. **Write the brief** by filling the copied `videos/<slug>/brief.md` (replace every `<…>` placeholder) and show the user a short summary: concept, style, shot list table. Offer to hand it to `lienzo-animate`.
+7. **Write the brief** by filling the copied `videos/<brand>/<video>/brief.md` (replace every `<…>` placeholder) and show the user a short summary: concept, style, shot list table. Offer to hand it to `lienzo-animate`.
 8. **Hand-off.** When the user agrees, the builder follows `lienzo-animate` with the brief as its input. The brief's "Build prompt" section is the exact message to give it.
 
 ## Principles
@@ -48,4 +49,4 @@ Output: the video folder `videos/<slug>/`, copied from `videos/_template/`, with
 - `lienzo-art-direction` skill — named styles, object design, motion polish, frame critique.
 - `references/craft.md` — storytelling, pacing, composition, colour and motion language.
 - `references/feasibility.md` — what Lienzo can and cannot do, with substitutions.
-- `videos/ringana-omega-v2/brief.md` in the Animator repo — a complete brief (the 24 s product reel).
+- `videos/ringana/omega-v2/brief.md` in the Animator repo — a complete brief (the 24 s product reel).

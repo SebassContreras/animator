@@ -10,6 +10,7 @@ Specs in execution order. `Status` (`todo`, `in progress`, `done`) is maintained
 | 011 | brand-from-lienzo | done | 004, Lienzo 086 |
 | 012 | platform-length | done | 011 |
 | 013 | promote-ringana-skin-perfection | done | 011, 004 |
+| 014 | brand-hierarchy-and-git-ignore | done | 011, 013 |
 
 ## Ideas
 

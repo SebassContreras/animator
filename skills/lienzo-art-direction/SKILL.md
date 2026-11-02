@@ -9,7 +9,7 @@ You are the art director. `lienzo-storyboard` decides **what** the story shows; 
 
 ## When it runs
 
-1. **In the brief (storyboard step 3).** Choose one style from `references/styles.md` and copy its rules into the brief's "Visual style". The brand colours come from the snapshot (`brand.lock.json`) under Lienzo's roles `background`, `primary`, `secondary`, `accent` and `text` (never rename these five; `surface` is optional). Write into `videos/<slug>/palette.json` only what this piece changes: overrides of a brand role or a single tone, and the story roles the piece adds (`sea`, `alga`…), each `{ base, shadow?, highlight? }`. Leave tones out to get them derived (`tones` in `lib/palette.cjs`: shadows cooler and darker, highlights warmer and lighter). The brief's palette table names each override and story role with what it paints, without hex values. If the brand lacks a role the piece needs, propose it to the user for the Lienzo brand (`project_update`) instead of hiding it in `palette.json`. Design every recurring object with `references/shapes.md`. Add motion polish from `references/motion-polish.md` to each shot's Motion lines.
+1. **In the brief (storyboard step 3).** Choose one style from `references/styles.md` and copy its rules into the brief's "Visual style". The brand colours come from the snapshot (`brand.lock.json`) under Lienzo's roles `background`, `primary`, `secondary`, `accent` and `text` (never rename these five; `surface` is optional). Write into `videos/<brand>/<video>/palette.json` only what this piece changes: overrides of a brand role or a single tone, and the story roles the piece adds (`sea`, `alga`…), each `{ base, shadow?, highlight? }`. Leave tones out to get them derived (`tones` in `lib/palette.cjs`: shadows cooler and darker, highlights warmer and lighter). The brief's palette table names each override and story role with what it paints, without hex values. If the brand lacks a role the piece needs, propose it to the user for the Lienzo brand (`project_update`) instead of hiding it in `palette.json`. Design every recurring object with `references/shapes.md`. Add motion polish from `references/motion-polish.md` to each shot's Motion lines.
 2. **In the build (animate step 4).** After each `scene_preview`, critique the frame with `references/review.md`. Report failures as concrete fixes (layer, property, value), not opinions.
 3. **On request.** When the user wants references, give them from `references/review.md` → "Where to look", with what to take from each one.
 
@@ -32,7 +32,7 @@ You are the art director. `lienzo-storyboard` decides **what** the story shows; 
 
 ## Verified example
 
-`videos/ringana-omega-v2/brief.md` + `videos/ringana-omega-v2/scene.gen.cjs` (scene `omega-v2`, project `ringana`): the v1 piece redesigned with this skill; the user rated it "much, much better" (2026-10-24). To redesign an existing piece the same way:
+`videos/ringana/omega-v2/brief.md` + `videos/ringana/omega-v2/scene.gen.cjs` (scene `omega-v2`, project `ringana`): the v1 piece redesigned with this skill; the user rated it "much, much better" (2026-10-24). To redesign an existing piece the same way:
 
 1. Keep story, text, facts, timing and voice; write a short `-v2` brief with only the style and the changes per shot.
 2. Copy the v1 generator, swap flat pieces for three-tone ones, add planes, ambient motion and polish.

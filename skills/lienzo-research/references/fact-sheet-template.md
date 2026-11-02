@@ -1,11 +1,11 @@
 # Fact sheet template
 
-File: `videos/<slug>/research.md`. Keep this structure.
+File: `videos/<brand>/<video>/research.md`. Keep this structure.
 
 ````markdown
 # Research: <topic>
 
-- **Brief:** `videos/<slug>/brief.md` (or "not written yet")
+- **Brief:** `videos/<brand>/<video>/brief.md` (or "not written yet")
 - **Date:** <YYYY-MM-DD>
 - **Questions researched:** <count>
 

@@ -1,3 +1,13 @@
+# Dependencies / cache
 __pycache__/
+
+# User brand and video workspaces (only _template is tracked in git, mirroring Lienzo projects/*)
+videos/*
+!videos/.gitkeep
+!videos/_template/
+!videos/_template/**
 videos/_template/scene.json
 videos/tmp-*/
+
+# Scratch
+scratch/

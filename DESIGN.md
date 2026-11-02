@@ -19,7 +19,7 @@ The skills hold the detailed rules and numbers. This file summarizes them; if th
 ## 🌈 Palette Tokens & Primitives
 
 ### 1. Palette Structure (`palette.json`)
-A video's palette is resolved by `resolvePalette(lock, require("./palette.json"))` in `lib/palette.cjs`: the brand's colours from `brand.lock.json`, then `videos/<slug>/palette.json`, which holds only overrides and story roles.
+A video's palette is resolved by `resolvePalette(lock, require("./palette.json"))` in `lib/palette.cjs`: the brand's colours from `brand.lock.json`, then `videos/<brand>/<video>/palette.json` (falling back to `./brand.lock.json` or `../brand.lock.json` for brand tokens), which holds only overrides and story roles.
 - **Roles:** Lienzo's `background`, `primary`, `secondary`, `accent`, and `text` (required after resolution) and `surface` (optional). Add story roles when a piece needs more; never rename these five.
 - **Tones:** Each role is `{ base, shadow?, highlight? }` with `#RRGGBB` values, so components can shade depth. A tone left out is derived by `tones(base)` in OKLCH: shadow −12 L (−8 under L 40), chroma ×0.85, hue up to 6° toward blue-violet; highlight +12 L (at most 97), hue up to 6° toward yellow. Shadows stay cool and highlights warm, never muddy.
 - **Single source:** hex values live only in `palette.json` and the brand; the brief's palette table names each override and story role with what it paints.

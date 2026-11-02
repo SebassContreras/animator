@@ -18,6 +18,23 @@ When an existing architectural design or requirement needs to change:
 
 ## 📜 Change Log
 
+### 2026-11-02 — Brand Directory Hierarchy and User Video Git-Ignorance
+
+- **Scope:** `videos/` folder structure, `ARCHITECTURE.md`, `PRODUCT.md`, `DESIGN.md`, `README.md`, skills (`skills/lienzo-*`), `.gitignore`, and video test suites (`tests/videos/`).
+- **What Changed:**
+  - Videos are organized hierarchically by brand: `videos/<brand>/<video>/`.
+  - Brand identity, guide, and snapshot live at the brand level: `videos/<brand>/brand.lock.json` and `videos/<brand>/brand.md`.
+  - Individual video artifacts live under their respective brand: `videos/<brand>/<video>/` (`brief.md`, `palette.json`, `scene.gen.cjs`, `scene.json`, `learnings.md`, and optional `research.md`).
+  - RINGANA is migrated from flat root folders to its brand folder `videos/ringana/` (`omega-v2`, `skin-perfection`), treated as a regular brand rather than a special fixture.
+  - User video workspaces (`videos/*`) are ignored in `.gitignore`, preserving only `videos/.gitkeep` and `videos/_template/`, matching Lienzo's `projects/*` privacy and anti-bloat model.
+  - Generators resolve `brand.lock.json` from `./brand.lock.json` (local override) or `../brand.lock.json` (brand root), and import `lib/` regardless of folder depth.
+  - Video test suites (`tests/videos/`) recursively discover videos and run golden tests when fixtures/generators exist locally.
+- **Why:**
+  - Flat `videos/<slug>/` previously mixed tool library development with user video production, bloated git history with generated scene JSONs, lacked a dedicated brand container for shared brand guides, and duplicated brand snapshots per video.
+- **Replaced Items:**
+  - Flat `videos/<slug>/` layout, committing user video folders to git, and per-video duplication of brand knowledge.
+
+
 ### 2026-10-31 — Research Principle Gated by Decision Impact
 
 - **Scope:** `ENGINEERING.md` §8, `AGENTS.md`, `ARCHITECTURE.md`, spectrace skills.

@@ -24,7 +24,7 @@ Short text is where truth breaks. Shorten wording, never meaning.
 
 ## Brand claim rules
 
-The brand's own claim rules and disclaimers live in its Lienzo guide (`guide` in `videos/<slug>/brand.lock.json`, sections such as "Claim rules" and "Mandatory text"). Read them first: they add to the rules below and win where they are stricter. If the brand has no guide and the piece makes claims, propose the rules to the user for the guide (`project_update` → `guide`).
+The brand's own claim rules and disclaimers live in its Lienzo guide (`guide` in `videos/<brand>/brand.lock.json`, sections such as "Claim rules" and "Mandatory text"). Read them first: they add to the rules below and win where they are stricter. If the brand has no guide and the piece makes claims, propose the rules to the user for the guide (`project_update` → `guide`).
 
 ## Health claims
 

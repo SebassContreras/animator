@@ -1,15 +1,17 @@
-// Generates scene.json beside this file (compact scene for Lienzo's scene_build) from brief.md; colours and fonts come from the brand (brand.lock.json), and palette.json holds only overrides and story roles.
-// Template: copy the folder to videos/<slug>/, then replace the shot below with the brief's shots, reusing lib/ pieces first.
-// Run: node videos/<slug>/scene.gen.cjs
+// Generates scene.json beside this file (compact scene for Lienzo's scene_build) from brief.md.
+// Colours and fonts come from the brand (../brand.lock.json or local brand.lock.json); palette.json holds only overrides and story roles.
+// Run: node videos/<brand>/<video>/scene.gen.cjs
 const fs = require("fs");
+const path = require("path");
 const W = 1080, H = 1920, D = 4;
-const { checkBrandLock, brandFonts } = require("../../lib/brand.cjs");
-const { resolvePalette } = require("../../lib/palette.cjs");
-const lock = checkBrandLock(require("./brand.lock.json"));
+const root = path.resolve(__dirname, fs.existsSync(path.join(__dirname, "../../../lib")) ? "../../.." : "../..");
+const { checkBrandLock, brandFonts } = require(path.join(root, "lib/brand.cjs"));
+const { resolvePalette } = require(path.join(root, "lib/palette.cjs"));
+const lockPath = fs.existsSync(path.join(__dirname, "brand.lock.json")) ? path.join(__dirname, "brand.lock.json") : path.join(__dirname, "../brand.lock.json");
+const lock = checkBrandLock(require(lockPath));
 const C = resolvePalette(lock, require("./palette.json"));
-const { sceneHelpers, nativeShot } = require("../../lib/scene.cjs");
-
-const { rect, ell } = require("../../lib/primitives.cjs");
+const { sceneHelpers, nativeShot } = require(path.join(root, "lib/scene.cjs"));
+const { rect, ell } = require(path.join(root, "lib/primitives.cjs"));
 const { label } = sceneHelpers({ w: W, h: H, duration: D, palette: C, fonts: brandFonts(lock) });
 
 // Shot 1 · placeholder (0–4): each top-level element names its shot
