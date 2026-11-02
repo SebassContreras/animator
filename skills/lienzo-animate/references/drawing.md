@@ -46,7 +46,7 @@ Halo behind a big area: plain ellipse at 4–12 % opacity, never `bgGlow` (it wa
 
 - A symbol placed much larger than its definition scales its details too: a highlight sliver became a sign-like bar at 3.3×. Draw large variants at their own size.
 - A layer that drifts with an `x` track needs its drift added to its width, or its edge shows (`w: W + 120` for a 45 px drift).
-- Grow a piece along one axis with `w`/`h` plus `x`/`y` tracks (there is no per-axis scale channel), until Lienzo 088 adds per-axis scale channels.
+- Grow a piece along one axis with `@scaleX` and `@scaleY` keyframe tracks (Lienzo 088), or with `w`/`h` plus `x`/`y` tracks.
 
 ## Composition ideas
 
@@ -54,6 +54,5 @@ Halo behind a big area: plain ellipse at 4–12 % opacity, never `bgGlow` (it wa
 - **House:** `rect` (wall) + triangle `path` (roof, base overlapping the wall) + `rect` (door, windows). Do not use `polygon` `sides: 3`: it leaves a gap.
 - **Cloud:** group of 3–4 white `ellipse`s; move its `x` slowly until the end of the shot.
 - **Simple person:** `ellipse` (head) + `path` (body) + high-`radius` `rect`s for arms and legs; swing arms with `@rotate` and `origin: "top"` (the shoulder).
-- **Stars, dust, fireflies, snow:** `particles` with `link.distance: 0`; `motion: "static"` for still stars (`twinkle` to blink), `"fall"` for snow and rain.
-- **Rain/snow that falls:** a tall group of drops with a looping `y` track (particles cannot fall).
+- **Stars, dust, fireflies, snow, rain:** `particles` with `link.distance: 0`; `motion: "static"` for still stars (`twinkle` to blink), `"fall"` for snow and rain (with `direction: 90`, `speed`, and `gravity`). Looping `y` tracks on groups remain an alternative for custom sprite shapes.
 - **Realistic objects:** `image` with a PNG/SVG from the project, or `three` with `shape: "model"` and a `.glb`.
